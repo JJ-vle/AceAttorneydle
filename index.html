@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qui est-ce ? - Ace Attorney</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Devine le personnage de Ace Attorney !</h1>
+    <p>Entre le nom du personnage que tu penses avoir trouvé :</p>
+
+    <input type="text" id="guessInput" placeholder="Entrez un nom..." autocomplete="off" />
+    <ul id="suggestions"></ul>
+    <button id="validateButton" disabled>Valider</button>
+
+    <p id="feedback"></p>
+
+    <h2>Historique des essais :</h2>
+    <div id="history"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
