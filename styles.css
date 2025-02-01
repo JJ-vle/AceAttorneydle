@@ -62,12 +62,53 @@ body {
     margin: 5px 0;
 }
 
-.correct { 
-    color: green; 
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border: 2px solid black;
+}
+
+.history-table th, .history-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+.history-table th {
+    background-color: #f4f4f4;
     font-weight: bold;
 }
 
-.incorrect {
-    color: red; 
-    font-weight: bold;
+.correct {
+    background-color: #8fda92 !important; /* Vert clair */
+    color: black;
 }
+
+.incorrect {
+    background-color: #e57373 !important; /* Rouge clair */
+    color: black;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    text-align: center;
+    padding: 8px;
+    border: 1px solid #ddd;
+    max-width: 150px; /* Ajuste selon tes besoins */
+}
+
+img {
+    max-width: 100px;
+    height: auto;
+}
+
+

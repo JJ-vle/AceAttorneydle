@@ -4,20 +4,42 @@ let selectedIndex = -1;
 let attemptedNames = new Set(); // Stocke les noms déjà proposés
 
 // Charger les données JSON et initialiser le personnage cible
-fetch("aceattorneychars.json")
+fetch("data/aceattorneychars.json")
     .then(response => response.json())
     .then(data => {
         characterData = data;
         targetCharacter = data[Math.floor(Math.random() * data.length)];
-        console.log("Personnage à trouver :", targetCharacter.name);
+        console.log("Character to find :", targetCharacter.name);
     })
-    .catch(error => console.error("Erreur de chargement du JSON :", error));
+    .catch(error => console.error("JSON loading error :", error));
 
 const inputField = document.getElementById("guessInput");
 const suggestionsList = document.getElementById("suggestions");
 const validateButton = document.getElementById("validateButton");
 const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
+
+// Assurer la création du tableau dès le début
+function createHistoryTable() {
+    if (!document.getElementById("historyTable")) {
+        historyDiv.innerHTML = `
+            <table id="historyTable" class="history-table">
+                <thead>
+                    <tr>
+                        <th>Photo</th>
+                        <th>Name</th>
+                        <th>Occupation</th>
+                        <th>Birth year</th>
+                        <th>Eyes color</th>
+                        <th>Hair color</th>
+                        <th>Debut</th>
+                    </tr>
+                </thead>
+                <tbody id="historyBody"></tbody>
+            </table>
+        `;
+    }
+}
 
 // Fonction pour filtrer et afficher les suggestions
 inputField.addEventListener("input", function () {
@@ -110,7 +132,7 @@ validateButton.addEventListener("click", validateGuess);
 function validateGuess() {
     const guessName = inputField.value.trim();
     if (attemptedNames.has(guessName)) {
-        feedback.textContent = "⚠️ Ce personnage a déjà été proposé !";
+        feedback.textContent = "⚠️ This character is already tried !";
         feedback.className = "error";
         return;
     }
@@ -118,20 +140,20 @@ function validateGuess() {
     const guessedCharacter = characterData.find(c => c.name.toLowerCase() === guessName.toLowerCase());
 
     if (!guessedCharacter) {
-        feedback.textContent = "⚠️ Personnage non reconnu.";
+        feedback.textContent = "⚠️ Unknown character.";
         feedback.className = "error";
         return;
     }
 
-    attemptedNames.add(guessName); // Ajouter le nom aux tentatives
+    attemptedNames.add(guessName);
 
     if (guessName.toLowerCase() === targetCharacter.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
-        feedback.textContent = "🎉 Bravo ! Tu as trouvé " + targetCharacter.name + " !";
+        feedback.textContent = "🎉 Congratulation ! You found " + targetCharacter.name + " !";
         feedback.className = "success";
     } else {
         addToHistory(guessedCharacter, false);
-        feedback.textContent = "❌ Mauvaise réponse, essaie encore !";
+        feedback.textContent = "❌ wrong awnser, try again !";
         feedback.className = "error";
     }
 
@@ -139,35 +161,51 @@ function validateGuess() {
     validateButton.disabled = true;
 }
 
-// Ajouter un essai dans l'historique avec comparaison
+// Ajouter un essai sous forme de nouvelle ligne dans le tableau existant
 function addToHistory(guessedCharacter, result) {
-    const historyItem = document.createElement("div");
-    historyItem.classList.add("history-item");
+    createHistoryTable(); // Assure que le tableau est bien créé
+    const historyBody = document.getElementById("historyBody");
 
-    historyItem.innerHTML = result ? "🎉" : "❌";
-    historyItem.innerHTML += `
-        <p><strong>Nom :</strong> ${compareInfo(guessedCharacter.name, targetCharacter.name)}</p>
-        <p><strong>Occupation :</strong> ${compareInfo(guessedCharacter.occupation, targetCharacter.occupation)}</p>
-        <p><strong>Année de naissance :</strong> ${compareInfo(guessedCharacter.birthday, targetCharacter.birthday)}</p>
-        <p><strong>Couleur des yeux :</strong> ${compareInfo(guessedCharacter.eyes, targetCharacter.eyes)}</p>
-        <p><strong>Couleur des cheveux :</strong> ${compareInfo(guessedCharacter.hair, targetCharacter.hair)}</p>
-        <p><strong>Début dans la série :</strong> ${compareInfo(guessedCharacter.debut, targetCharacter.debut)}</p>
-    `;
+    //historyItem.innerHTML = result ? "🎉" : "❌";
 
-    // Extraire l'image et couper après .png
+    /*let imageUrl = guessedCharacter.image && guessedCharacter.image.length > 0 
+        ? guessedCharacter.image[0].split(".png")[0] + ".png" 
+        : "";*/
+    
+    let imageUrl = "";
     if (guessedCharacter.image && guessedCharacter.image.length > 0) {
-        let imageUrl = guessedCharacter.image[0]; // Prendre la première image
-        imageUrl = imageUrl.split(".png")[0] + ".png"; // Supprimer tout après .png
-        
-        historyItem.innerHTML += `<img src="${imageUrl}" alt="${guessedCharacter.name}" width="100">`;
+        imageUrl = guessedCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
     }
 
-    historyDiv.prepend(historyItem);
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
+        <td><img src="${imageUrl}" alt="${guessedCharacter.name}" width="100"></td>
+        ${compareInfo(guessedCharacter.name, targetCharacter.name)}
+        ${compareInfo(guessedCharacter.occupation, targetCharacter.occupation)}
+        ${compareInfo(guessedCharacter.birthday, targetCharacter.birthday)}
+        ${compareInfo(guessedCharacter.eyes, targetCharacter.eyes)}
+        ${compareInfo(guessedCharacter.hair, targetCharacter.hair)}
+        ${compareInfo(guessedCharacter.debut, targetCharacter.debut)}
+    `;
+
+    historyBody.prepend(newRow); // Ajoute en haut du tableau
 }
+
 
 // Comparer deux valeurs et appliquer la couleur correspondante
 function compareInfo(guess, target) {
-    return guess === target 
-        ? `<span class="correct">${guess}</span>` 
-        : `<span class="incorrect">${guess}</span>`;
+    // Remplacer les valeurs nulles ou non définies par "Unknown"
+    if (!guess || guess === "N/A") {
+        guess = "Unknown";
+    }
+    if (!target || target === "N/A") {
+        target = "Unknown";
+    }
+
+    // Comparer les valeurs et appliquer la couleur correspondante
+    const isCorrect = guess === target;
+    return `<td class="${isCorrect ? 'correct' : 'incorrect'}">${guess}</td>`;
 }
+
+
+createHistoryTable()
