@@ -53,19 +53,24 @@ inputField.addEventListener("input", function () {
         return;
     }
 
-    const filteredNames = characterData
-        .map(c => c.name)
-        .filter(name => name.toLowerCase().startsWith(query) && !attemptedNames.has(name));
+    const matchedCharacters = characterData.filter(c => {
+        const englishName = c.name.toLowerCase();
+        const frenchNames = (c.french || []).map(f => f.toLowerCase());
 
-    if (filteredNames.length > 0) {
+        // Retourne vrai si le début du nom anglais ou un nom français correspond à la recherche
+        return englishName.startsWith(query) || frenchNames.some(f => f.startsWith(query));
+    });
+
+    if (matchedCharacters.length > 0) {
         suggestionsList.style.display = "block";
-        filteredNames.forEach((name, index) => {
+
+        matchedCharacters.forEach((character, index) => {
             const listItem = document.createElement("li");
-            listItem.textContent = name;
+            listItem.textContent = character.name; // ⚠️ N'affiche que le nom anglais
             listItem.dataset.index = index;
 
             listItem.addEventListener("click", function () {
-                selectName(name);
+                selectName(character.name); // Insère uniquement le nom anglais
             });
 
             suggestionsList.appendChild(listItem);
@@ -75,6 +80,8 @@ inputField.addEventListener("input", function () {
         validateButton.disabled = true;
     }
 });
+
+
 
 // Gérer les flèches clavier et validation avec Entrée
 inputField.addEventListener("keydown", function (event) {
