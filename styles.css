@@ -81,17 +81,18 @@ body {
 }
 
 .correct {
-    background-color: #8fda92 !important; /* Vert clair */
+    background-color: #8fda92;
     color: black;
 }
 
 .incorrect {
-    background-color: #e57373 !important; /* Rouge clair */
+    background-color: #e57373;
     color: black;
 }
 
 .partial {
-    background-color: rgb(244, 197, 57);
+    background-color: #f4c539;
+    color: black;
 }
 
 

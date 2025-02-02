@@ -9,9 +9,10 @@ fetch("resources/data/aceattorneychars.json")
     .then(data => {
         characterData = data;
         targetCharacter = data[Math.floor(Math.random() * data.length)];
+        //targetCharacter = data.find(character => character.name === "Yanni Yogi");
         console.log("Character to find :", targetCharacter.name);
         
-        //console.log("Unique debuts:", getUniqueDebuts());
+        console.log("Unique debuts:", getUniqueDebuts());
     })
     .catch(error => console.error("JSON loading error :", error));
 
@@ -42,6 +43,7 @@ function createHistoryTable() {
         `;
     }
 }
+createHistoryTable()
 
 // Fonction pour filtrer et afficher les suggestions
 inputField.addEventListener("input", function () {
@@ -218,7 +220,6 @@ function compareInfo(guess, target) {
 
 // Fonction de comparaison des débuts
 function compareDebut(guessDebut, targetDebut) {
-
     if (!guessDebut || guessDebut === "N/A") {
         guessDebut = "Unknown";
     }
@@ -226,23 +227,67 @@ function compareDebut(guessDebut, targetDebut) {
         targetDebut = "Unknown";
     }
 
+    // Si les débuts sont identiques
     if (guessDebut === targetDebut) {
         return `<td class="correct">${guessDebut}</td>`;
     }
 
-    // Vérifie si le début appartient au même jeu
-    const isSameGame = getGameByDebut(guessDebut) === getGameByDebut(targetDebut);
+    let colorclass = "incorrect";
+    let arrowHint = "";
 
-    // Si c'est le même jeu, appliquer la classe 'partial' (jaune)
-    const className = isSameGame ? 'partial' : (guessDebut === targetDebut ? 'correct' : 'incorrect');
+    // Trouver les groupes et jeux pour chaque début
+    const guessInfo = getInfoByDebut(guessDebut);
+    const targetInfo = getInfoByDebut(targetDebut);
 
-    return `<td class="${className}">${guessDebut}</td>`;
+    if (!guessInfo || !targetInfo) {
+        return `<td class=${colorclass}>${guessDebut} error</td>`; // Si un des débuts n'est pas valide
+    }
+
+    const guessGroup = guessInfo.group;
+    const targetGroup = targetInfo.group;
+    const guessGame = guessInfo.game;
+    const targetGame = targetInfo.game;
+
+    // Si les deux débuts sont dans le même groupe
+    if (guessGroup === targetGroup) {
+        const groupGames = turnaboutGames[guessGroup]; // Accède directement aux jeux du groupe
+
+        // Si les deux débuts proviennent du même jeu
+        if (guessGame === targetGame) {
+            colorclass = "partial"; // Si c'est le même jeu, applique une classe "partielle"
+            const guessGameTurnabouts = groupGames[guessGame];
+            const targetGameTurnabouts = groupGames[targetGame];
+
+            // Trouver les indices dans les jeux respectifs
+            const guessIndex = guessGameTurnabouts.indexOf(guessDebut);
+            const targetIndex = targetGameTurnabouts.indexOf(targetDebut);
+
+            // Vérifier si c'est avant ou après dans le même jeu
+            if (guessIndex < targetIndex) {
+                arrowHint = "⬆️"; // Flèche vers le haut si c'est avant
+            } else if (guessIndex > targetIndex) {
+                arrowHint = "⬇️"; // Flèche vers le bas si c'est après
+            }
+        } else {
+            // Si les deux débuts sont dans des jeux différents, vérifier l'ordre des jeux
+            const allGames = Object.keys(groupGames); // Liste de tous les jeux dans ce groupe
+            const guessGameIndex = allGames.indexOf(guessGame);
+            const targetGameIndex = allGames.indexOf(targetGame);
+
+            // Vérifier si c'est avant ou après selon l'ordre des jeux
+            if (guessGameIndex < targetGameIndex) {
+                arrowHint = "⬆️"; // Flèche vers le haut si le jeu deviné est avant
+            } else if (guessGameIndex > targetGameIndex) {
+                arrowHint = "⬇️"; // Flèche vers le bas si le jeu deviné est après
+            }
+        }
+
+        return `<td class=${colorclass}>${guessDebut} ${arrowHint}</td>`; // Affiche le résultat avec la flèche
+    }
+
+    // Si ce n'est pas le même groupe, alors rouge (incorrect)
+    return `<td class=${colorclass}>${guessDebut}</td>`;
 }
-
-
-
-
-createHistoryTable()
 
 // Fonction pour récupérer tous les "debut" différents
 function getUniqueDebuts() {
@@ -272,12 +317,29 @@ fetch("resources/data/turnabouts.json")
     })
     .catch(error => console.error("Erreur de chargement du fichier turnabout.json :", error));
 
+// Fonction pour récupérer le groupe de chaque personnage
+function getGroupByCharacter(character) {
+    for (let group in turnaboutGames) {
+        for (let game in turnaboutGames[group]) {
+            if (turnaboutGames[group][game].includes(character.debut)) {
+                return group;
+            }
+        }
+    }
+    return null;
+}
+
 // Fonction pour récupérer le jeu d'un début d'affaire
-function getGameByDebut(debut) {
-    for (let game in turnaboutGames) {
-        if (turnaboutGames[game].includes(debut)) {
-            return game;
+function getInfoByDebut(debut) {
+    // Parcours chaque groupe
+    for (let group in turnaboutGames) {
+        // Parcours chaque jeu dans le groupe
+        for (let game in turnaboutGames[group]) {
+            if (turnaboutGames[group][game].includes(debut)) {
+                return { game: game, group: group }; // Retourne le jeu et son groupe
+            }
         }
     }
     return null; // Retourne null si le jeu n'est pas trouvé
 }
+

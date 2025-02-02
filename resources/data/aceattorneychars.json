@@ -655,7 +655,7 @@
         "eyes": "Unknown",
         "hair": "Black",
         "french": null,
-        "debut": "The Adventure of the Unbreakable Speckled Band   The Adventure of the Unspeakable Story",
+        "debut": "The Adventure of the Unspeakable Story",
         "name": "Vilen Borshevik",
         "url": "https://aceattorney.fandom.com/wiki/Vilen_Borshevik"
     },
@@ -1448,7 +1448,7 @@
         "french": [
             "Henri Hunter"
         ],
-        "debut": "Turnabout Goodbyes   Turnabout Legacy",
+        "debut": "Turnabout Legacy",
         "name": "Gregory Edgeworth",
         "url": "https://aceattorney.fandom.com/wiki/Gregory_Edgeworth"
     },
@@ -1771,7 +1771,7 @@
         "french": [
             "Misty Fey"
         ],
-        "debut": "Turnabout Sisters   Bridge to the Turnabout",
+        "debut": "Bridge to the Turnabout",
         "name": "Misty Fey",
         "url": "https://aceattorney.fandom.com/wiki/Misty_Fey"
     },
@@ -2068,9 +2068,10 @@
         "eyes": "Unknown",
         "hair": "White",
         "french": [
-            "Diego ArmandoGodot"
+            "Diego Armando",
+            "Godot"
         ],
-        "debut": "The Stolen Turnabout Turnabout Beginnings",
+        "debut": "The Stolen Turnabout",
         "name": "Godot",
         "url": "https://aceattorney.fandom.com/wiki/Godot"
     },
@@ -3207,7 +3208,7 @@
             "Amara Sigatar Khura'in",
             "Nonna"
         ],
-        "debut": "The Foreign Turnabout  Turnabout Revolution",
+        "debut": "The Foreign Turnabout",
         "name": "Amara Sigatar Khura'in",
         "url": "https://aceattorney.fandom.com/wiki/Amara_Sigatar_Khura%27in"
     },
@@ -4527,7 +4528,7 @@
         "french": [
             "Fantôme"
         ],
-        "debut": "The Monstrous Turnabout   The Cosmic Turnabout",
+        "debut": "The Cosmic Turnabout",
         "name": "Phantom",
         "url": "https://aceattorney.fandom.com/wiki/Phantom"
     },
@@ -6214,7 +6215,7 @@
         "french": [
             "Excelsius Victor"
         ],
-        "debut": "Turnabout Goodbyes   A Turnabout Forsaken",
+        "debut": "A Turnabout Forsaken",
         "name": "Excelsius Winner",
         "url": "https://aceattorney.fandom.com/wiki/Excelsius_Winner"
     },
