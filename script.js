@@ -10,6 +10,8 @@ fetch("resources/data/aceattorneychars.json")
         characterData = data;
         targetCharacter = data[Math.floor(Math.random() * data.length)];
         console.log("Character to find :", targetCharacter.name);
+        
+        //console.log("Unique debuts:", getUniqueDebuts());
     })
     .catch(error => console.error("JSON loading error :", error));
 
@@ -192,7 +194,7 @@ function addToHistory(guessedCharacter, result) {
         ${compareInfo(guessedCharacter.birthday, targetCharacter.birthday)}
         ${compareInfo(guessedCharacter.eyes, targetCharacter.eyes)}
         ${compareInfo(guessedCharacter.hair, targetCharacter.hair)}
-        ${compareInfo(guessedCharacter.debut, targetCharacter.debut)}
+        ${compareDebut(guessedCharacter.debut, targetCharacter.debut)}
     `;
 
     historyBody.prepend(newRow); // Ajoute en haut du tableau
@@ -214,5 +216,68 @@ function compareInfo(guess, target) {
     return `<td class="${isCorrect ? 'correct' : 'incorrect'}">${guess}</td>`;
 }
 
+// Fonction de comparaison des débuts
+function compareDebut(guessDebut, targetDebut) {
+
+    if (!guessDebut || guessDebut === "N/A") {
+        guessDebut = "Unknown";
+    }
+    if (!targetDebut || targetDebut === "N/A") {
+        targetDebut = "Unknown";
+    }
+
+    if (guessDebut === targetDebut) {
+        return `<td class="correct">${guessDebut}</td>`;
+    }
+
+    // Vérifie si le début appartient au même jeu
+    const isSameGame = getGameByDebut(guessDebut) === getGameByDebut(targetDebut);
+
+    // Si c'est le même jeu, appliquer la classe 'partial' (jaune)
+    const className = isSameGame ? 'partial' : (guessDebut === targetDebut ? 'correct' : 'incorrect');
+
+    return `<td class="${className}">${guessDebut}</td>`;
+}
+
+
+
 
 createHistoryTable()
+
+// Fonction pour récupérer tous les "debut" différents
+function getUniqueDebuts() {
+    if (!characterData || characterData.length === 0) {
+        console.log("No character data available.");
+        return [];
+    }
+
+    const debutsSet = new Set();
+
+    characterData.forEach(character => {
+        if (character.debut) {
+            debutsSet.add(character.debut);
+        }
+    });
+
+    return Array.from(debutsSet);
+}
+
+// Charger le fichier JSON contenant les informations des débuts
+let turnaboutGames = {};
+
+fetch("resources/data/turnabouts.json")
+    .then(response => response.json())
+    .then(data => {
+        turnaboutGames = data;
+    })
+    .catch(error => console.error("Erreur de chargement du fichier turnabout.json :", error));
+
+// Fonction pour récupérer le jeu d'un début d'affaire
+function getGameByDebut(debut) {
+    for (let game in turnaboutGames) {
+        if (turnaboutGames[game].includes(debut)) {
+            return game;
+        }
+    }
+    return null; // Retourne null si le jeu n'est pas trouvé
+}

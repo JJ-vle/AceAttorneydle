@@ -90,6 +90,11 @@ body {
     color: black;
 }
 
+.partial {
+    background-color: rgb(244, 197, 57);
+}
+
+
 table {
     table-layout: fixed;
     width: 100%;
