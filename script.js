@@ -4,7 +4,7 @@ let selectedIndex = -1;
 let attemptedNames = new Set(); // Stocke les noms déjà proposés
 
 // Charger les données JSON et initialiser le personnage cible
-fetch("data/aceattorneychars.json")
+fetch("resources/data/aceattorneychars.json")
     .then(response => response.json())
     .then(data => {
         characterData = data;
@@ -66,7 +66,7 @@ inputField.addEventListener("input", function () {
 
         matchedCharacters.forEach((character, index) => {
             const listItem = document.createElement("li");
-            listItem.textContent = character.name; // ⚠️ N'affiche que le nom anglais
+            listItem.textContent = character.name; // N'affiche que le nom anglais
             listItem.dataset.index = index;
 
             listItem.addEventListener("click", function () {
