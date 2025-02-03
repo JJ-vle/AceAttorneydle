@@ -12,7 +12,7 @@ fetch("resources/data/aceattorneychars.json")
         //targetCharacter = data.find(character => character.name === "Yanni Yogi");
         console.log("Character to find :", targetCharacter.name);
         
-        console.log("Unique debuts:", getUniqueDebuts());
+        //console.log("Unique debuts:", getUniqueDebuts());
     })
     .catch(error => console.error("JSON loading error :", error));
 
@@ -31,7 +31,7 @@ function createHistoryTable() {
                     <tr>
                         <th>Photo</th>
                         <th>Name</th>
-                        <th>Occupation</th>
+                        <th>Status</th>
                         <th>Birth year</th>
                         <th>Eyes color</th>
                         <th>Hair color</th>
@@ -192,7 +192,7 @@ function addToHistory(guessedCharacter, result) {
     newRow.innerHTML = `
         <td><img src="${imageUrl}" alt="${guessedCharacter.name}" width="100"></td>
         ${compareInfo(guessedCharacter.name, targetCharacter.name)}
-        ${compareInfo(guessedCharacter.occupation, targetCharacter.occupation)}
+        ${compareInfo(guessedCharacter.status, targetCharacter.status)}
         ${compareInfo(guessedCharacter.birthday, targetCharacter.birthday)}
         ${compareInfo(guessedCharacter.eyes, targetCharacter.eyes)}
         ${compareInfo(guessedCharacter.hair, targetCharacter.hair)}
