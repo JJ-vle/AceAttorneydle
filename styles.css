@@ -124,4 +124,13 @@ img {
     height: auto;
 }
 
+#groupFilters {
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+}
 
+#groupFilters label {
+    margin-right: 15px;
+    margin-bottom: 5px;
+    display: inline-block;
+}

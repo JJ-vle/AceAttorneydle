@@ -8,6 +8,7 @@ fetch("resources/data/aceattorneychars.json")
     .then(response => response.json())
     .then(data => {
         characterData = data;
+        filterCharacters();
         targetCharacter = data[Math.floor(Math.random() * data.length)];
         //targetCharacter = data.find(character => character.name === "Yanni Yogi");
         console.log("Character to find :", targetCharacter.name);
@@ -47,6 +48,7 @@ createHistoryTable()
 
 
 // Fonction pour filtrer et afficher les suggestions
+// Fonction pour filtrer et afficher les suggestions
 inputField.addEventListener("input", function () {
     const query = this.value.toLowerCase().trim();
     suggestionsList.innerHTML = "";
@@ -58,7 +60,19 @@ inputField.addEventListener("input", function () {
         return;
     }
 
-    const matchedCharacters = characterData.filter(c => {
+    // Récupérer les groupes sélectionnés
+    const selectedGroups = Array.from(checkboxes)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
+
+    // Filtrer les personnages en fonction des groupes cochés
+    const filteredCharacters = characterData.filter(c => {
+        const group = getGroupByCharacter(c); // Trouver le groupe du personnage
+        return selectedGroups.includes(group); // Vérifier si le groupe du personnage est sélectionné
+    });
+
+    // Filtrer davantage les personnages selon la saisie dans le champ de recherche
+    const matchedCharacters = filteredCharacters.filter(c => {
         if (attemptedNames.has(c.name)) return false; // Exclure les personnages déjà proposés
         
         const englishName = c.name.toLowerCase();
@@ -73,6 +87,9 @@ inputField.addEventListener("input", function () {
             frenchSurnames.some(f => f.startsWith(query))
         );
     });
+
+    // Trier les personnages par nom avant de les afficher
+    matchedCharacters.sort((a, b) => a.name.localeCompare(b.name));
 
     if (matchedCharacters.length > 0) {
         suggestionsList.style.display = "block";
@@ -99,6 +116,7 @@ inputField.addEventListener("input", function () {
         validateButton.disabled = true;
     }
 });
+
 
 
 
@@ -414,3 +432,30 @@ function getInfoByDebut(debut) {
     return null; // Retourne null si le jeu n'est pas trouvé
 }
 
+
+// Récupère la liste des checkboxes et ajoute un écouteur d'événement
+const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']");
+checkboxes.forEach(checkbox => checkbox.addEventListener("change", filterCharacters));
+
+// Fonction pour filtrer les personnages en fonction des groupes cochés
+function filterCharacters() {
+    const selectedGroups = Array.from(checkboxes)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
+
+    // Filtrer les personnages en fonction du groupe sélectionné
+    const filteredCharacters = characterData.filter(character => {
+        const group = getGroupByCharacter(character);
+        return selectedGroups.includes(group);
+    });
+
+    //console.log("Filtered characters:", filteredCharacters);
+    
+    // Mettre à jour `targetCharacter` en sélectionnant un personnage du filtre
+    if (filteredCharacters.length > 0) {
+        targetCharacter = filteredCharacters[Math.floor(Math.random() * filteredCharacters.length)];
+        console.log("New target character:", targetCharacter.name);
+    } else {
+        console.warn("No character available with selected filters!");
+    }
+}
