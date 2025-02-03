@@ -45,9 +45,10 @@ function createHistoryTable() {
 }
 createHistoryTable()
 
+
 // Fonction pour filtrer et afficher les suggestions
 inputField.addEventListener("input", function () {
-    const query = this.value.toLowerCase();
+    const query = this.value.toLowerCase().trim();
     suggestionsList.innerHTML = "";
     selectedIndex = -1;
 
@@ -58,11 +59,19 @@ inputField.addEventListener("input", function () {
     }
 
     const matchedCharacters = characterData.filter(c => {
+        if (attemptedNames.has(c.name)) return false; // Exclure les personnages déjà proposés
+        
         const englishName = c.name.toLowerCase();
+        const englishSurname = englishName.split(" ").pop(); // Récupère le nom de famille
         const frenchNames = (c.french || []).map(f => f.toLowerCase());
+        const frenchSurnames = frenchNames.map(f => f.split(" ").pop());
 
-        // Retourne vrai si le début du nom anglais ou un nom français correspond à la recherche
-        return englishName.startsWith(query) || frenchNames.some(f => f.startsWith(query));
+        return (
+            englishName.startsWith(query) ||
+            englishSurname.startsWith(query) ||
+            frenchNames.some(f => f.startsWith(query)) ||
+            frenchSurnames.some(f => f.startsWith(query))
+        );
     });
 
     if (matchedCharacters.length > 0) {
@@ -70,11 +79,17 @@ inputField.addEventListener("input", function () {
 
         matchedCharacters.forEach((character, index) => {
             const listItem = document.createElement("li");
-            listItem.textContent = character.name; // N'affiche que le nom anglais
             listItem.dataset.index = index;
 
+            let imageUrl = character.image?.[0]?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
+            
+            listItem.innerHTML = `
+                <img src="${imageUrl}" alt="${character.name}" width="30" height="30" class="suggestion-img">
+                <span>${character.name}</span>
+            `;
+            
             listItem.addEventListener("click", function () {
-                selectName(character.name); // Insère uniquement le nom anglais
+                selectName(character.name);
             });
 
             suggestionsList.appendChild(listItem);
@@ -106,7 +121,7 @@ inputField.addEventListener("keydown", function (event) {
 
         if (selectedIndex >= 0) {
             // Si un élément est sélectionné, on le sélectionne et met à jour la sélection
-            selectName(items[selectedIndex].textContent);
+            selectName(items[selectedIndex].textContent.trim());
             // Réinitialiser l'index sélectionné après avoir sélectionné un nom
             selectedIndex = -1; // Réinitialisation de la sélection
             updateSelection(items); // Mise à jour de la sélection (en réinitialisant l'état visuel)
@@ -193,7 +208,7 @@ function addToHistory(guessedCharacter, result) {
         <td><img src="${imageUrl}" alt="${guessedCharacter.name}" width="100"></td>
         ${compareInfo(guessedCharacter.name, targetCharacter.name)}
         ${compareInfo(guessedCharacter.status, targetCharacter.status)}
-        ${compareInfo(guessedCharacter.birthday, targetCharacter.birthday)}
+        ${compareBirthday(guessedCharacter.birthday, targetCharacter.birthday)}
         ${compareInfo(guessedCharacter.eyes, targetCharacter.eyes)}
         ${compareInfo(guessedCharacter.hair, targetCharacter.hair)}
         ${compareDebut(guessedCharacter.debut, targetCharacter.debut)}
@@ -217,6 +232,62 @@ function compareInfo(guess, target) {
     const isCorrect = guess === target;
     return `<td class="${isCorrect ? 'correct' : 'incorrect'}">${guess}</td>`;
 }
+
+// Fonction de comparaison des dates de naissances
+function compareBirthday(guessBirthday, targetBirthday) {
+    if (!guessBirthday || guessBirthday === "N/A") {
+        guessBirthday = "Unknown";
+    }
+    if (!targetBirthday || targetBirthday === "N/A") {
+        targetBirthday = "Unknown";
+    }
+
+    // Si les deux dates sont exactement les mêmes
+    if (guessBirthday === targetBirthday) {
+        return `<td class="correct">${guessBirthday}</td>`;
+    }
+
+    let colorClass = "incorrect";
+    let arrowHint = "";
+
+    // Convertir les siècles en années approximatives
+    function parseYear(yearStr) {
+        if (yearStr.includes("19th")) return [1800];
+        if (yearStr.includes("20th")) return [1900];
+        if (yearStr.includes("21st")) return [2000];
+
+        let years = yearStr.split("-").map(y => parseInt(y.trim())); // Toujours un tableau
+        return years.length > 1 ? years : [years[0]]; // Si une seule année, on la met dans un tableau
+    }
+
+    let guessedYears = guessBirthday !== "Unknown" ? parseYear(guessBirthday) : [];
+    let targetYears = targetBirthday !== "Unknown" ? parseYear(targetBirthday) : [];
+
+    // Si l'un des deux est "Unknown", pas de comparaison ni de flèche
+    if (guessBirthday === "Unknown" || targetBirthday === "Unknown") {
+        return `<td class="${colorClass}">${guessBirthday}</td>`;
+    }
+
+    // Vérifier si au moins une des années devinées correspond
+    if (targetYears.some(year => guessedYears.includes(year))) {
+        colorClass = "partial";
+    } else {
+        // Vérifier si la date devinée est plus grande ou plus petite
+        let minGuessed = Math.min(...guessedYears);
+        let minTarget = Math.min(...targetYears);
+
+        if (minGuessed < minTarget) {
+            arrowHint = "⬆️"; // Trop ancien
+        } else {
+            arrowHint = "⬇️"; // Trop récent
+        }
+    }
+
+    return `<td class="${colorClass}">${guessBirthday} ${arrowHint}</td>`;
+}
+
+
+
 
 // Fonction de comparaison des débuts
 function compareDebut(guessDebut, targetDebut) {
