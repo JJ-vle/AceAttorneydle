@@ -3,19 +3,7 @@ let characterData = []; // Stocke les personnages
 let selectedIndex = -1;
 let attemptedNames = new Set(); // Stocke les noms déjà proposés
 
-// Charger les données JSON et initialiser le personnage cible
-fetch("resources/data/aceattorneychars.json")
-    .then(response => response.json())
-    .then(data => {
-        characterData = data;
-        filterCharacters();
-        targetCharacter = data[Math.floor(Math.random() * data.length)];
-        //targetCharacter = data.find(character => character.name === "Yanni Yogi");
-        console.log("Character to find :", targetCharacter.name);
-        
-        //console.log("Unique debuts:", getUniqueDebuts());
-    })
-    .catch(error => console.error("JSON loading error :", error));
+//////////////////
 
 const inputField = document.getElementById("guessInput");
 const suggestionsList = document.getElementById("suggestions");
@@ -174,6 +162,12 @@ function selectName(name) {
 validateButton.addEventListener("click", validateGuess);
 
 function validateGuess() {
+    if (!targetCharacter) {
+        feedback.textContent = "⚠️ The game is still loading. Please wait...";
+        feedback.className = "error";
+        return;
+    }
+
     const guessName = inputField.value.trim();
     if (attemptedNames.has(guessName)) {
         feedback.textContent = "⚠️ This character is already tried !";
@@ -432,7 +426,6 @@ function getInfoByDebut(debut) {
     return null; // Retourne null si le jeu n'est pas trouvé
 }
 
-
 // Récupère la liste des checkboxes et ajoute un écouteur d'événement
 const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']");
 checkboxes.forEach(checkbox => checkbox.addEventListener("change", filterCharacters));
@@ -443,19 +436,40 @@ function filterCharacters() {
         .filter(checkbox => checkbox.checked)
         .map(checkbox => checkbox.value);
 
+    //console.log("📌 Groups :", selectedGroups);
+    //console.log("📌 Data :", characterData.length, "characters available.");
+
     // Filtrer les personnages en fonction du groupe sélectionné
-    const filteredCharacters = characterData.filter(character => {
+    const filtered = characterData.filter(character => {
         const group = getGroupByCharacter(character);
         return selectedGroups.includes(group);
     });
 
-    //console.log("Filtered characters:", filteredCharacters);
-    
-    // Mettre à jour `targetCharacter` en sélectionnant un personnage du filtre
-    if (filteredCharacters.length > 0) {
-        targetCharacter = filteredCharacters[Math.floor(Math.random() * filteredCharacters.length)];
-        console.log("New target character:", targetCharacter.name);
-    } else {
-        console.warn("No character available with selected filters!");
-    }
+    //console.log("📌 Filter :", filtered.length, "characters found.");
+
+    return filtered;
 }
+
+
+// Charger les données JSON et initialiser le personnage cible
+fetch("resources/data/aceattorneychars.json")
+    .then(response => response.json())
+    .then(data => {
+        characterData = data;
+
+        console.log("✅ Data loaded :", characterData.length, "characters.");
+
+        let filteredData = filterCharacters();
+
+
+        if (filteredData.length > 0) {
+            targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
+            //targetCharacter = data.find(character => character.name === "Yanni Yogi");
+            console.log("Character to find :", targetCharacter.name);
+        } else {
+            console.warn("No characters available after filtering!");
+        }
+        
+        //console.log("Unique debuts:", getUniqueDebuts());
+    })
+    .catch(error => console.error("JSON loading error :", error));
