@@ -1,3 +1,4 @@
+
 body { 
     font-family: Arial, sans-serif; 
     text-align: center; 
@@ -139,4 +140,42 @@ img {
 #groupFilters button {
     margin: 10px auto 0;
     display: block;
+}
+
+
+.hint {
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+    cursor: not-allowed;
+}
+
+.hint-icon {
+    width: 50px;
+    height: 50px;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.hint-icon.active {
+    opacity: 1;
+    cursor: pointer;
+}
+
+#hint-details {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+#defensebar {
+    text-align: center; /* Centre l'image dans la div */
+}
+
+#defensebar img {
+    width: 50%; /* Agrandit l'image à 300% de sa taille d'origine */
+    height: auto; /* Conserve les proportions de l'image */
+    max-width: none; /* Empêche l'image de se limiter à la taille de son conteneur */
+    display: inline-block; /* Assure que l'image se comporte bien comme un élément en ligne */
 }

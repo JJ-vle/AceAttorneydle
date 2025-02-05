@@ -9,10 +9,8 @@
 <body>
 
     <header>
-        <img src="resources/AceAttorneydleLogo.png" alt="AceAttorneydle Logo" id="logo">
+        <img src="resources/img/AceAttorneydleLogo.png" alt="AceAttorneydle Logo" id="logo">
     </header>
-
-    <p>Enter the name of the character you think you've found :</p>
 
     <div id="groupFilters">
         <label><input type="checkbox" value="Ace Attorney" checked> Ace Attorney Main Serie</label>
@@ -21,7 +19,29 @@
         <!--<label><input type="checkbox" value="Other"> Other</label>-->
         <button id="updateFilters"> Update filters </button>
     </div>
+
+    <div id="hints">
+        <div class="hint" id="hint-game">
+            <img src="resources/img/icons/realization.png" class="hint-icon disabled" alt="Game">
+            <p>Game</p>
+        </div>
+        <div class="hint" id="hint-occupation">
+            <img src="resources/img/icons/screenshake.png" class="hint-icon disabled" alt="Occupation">
+            <p>Occupation</p>
+        </div>
+        <div class="hint" id="hint-figure">
+            <img src="resources/img/icons/pair_button.png" class="hint-icon disabled" alt="Figure">
+            <p>Figure</p>
+        </div>
+    </div>
     
+    <div id="hint-details"></div>
+    
+    <div id="defensebar">
+        <img src="resources/img/icons/defensebar/defensebar10.png" alt="Figure">
+    </div>
+
+    <p>Enter the name of the character you think you've found :</p>
 
     <input type="text" id="guessInput" placeholder="Enter a name..." autocomplete="off" />
     <ul id="suggestions"></ul>

@@ -2,6 +2,9 @@ let targetCharacter = null;
 let characterData = []; // Stocke les personnages
 let selectedIndex = -1;
 let attemptedNames = new Set(); // Stocke les noms déjà proposés
+let selectedGroups; //Groupes sélectionnés et validés
+let numTries=0; // Nombre d'essais
+let hints = {};
 
 //////////////////
 
@@ -36,9 +39,6 @@ function createHistoryTable() {
 createHistoryTable()
 
 
-let selectedGroups;
-
-// Fonction pour filtrer et afficher les suggestions
 // Fonction pour filtrer et afficher les suggestions
 inputField.addEventListener("input", function () {
     const query = this.value.toLowerCase().trim();
@@ -105,9 +105,6 @@ inputField.addEventListener("input", function () {
     }
 });
 
-
-
-
 // Gérer les flèches clavier et validation avec Entrée
 inputField.addEventListener("keydown", function (event) {
     const items = suggestionsList.getElementsByTagName("li");
@@ -139,7 +136,6 @@ inputField.addEventListener("keydown", function (event) {
 
     updateSelection(items);
 });
-
 
 // Mise à jour de la sélection visuelle
 function updateSelection(items) {
@@ -194,7 +190,9 @@ function validateGuess() {
         feedback.textContent = "❌ wrong answer, try again !";
         feedback.className = "error";
     }
-
+    numTries++;
+    verifyTries();
+    //console.log(numTries);
     inputField.value = "";
     validateButton.disabled = true;
 }
@@ -205,10 +203,6 @@ function addToHistory(guessedCharacter, result) {
     const historyBody = document.getElementById("historyBody");
 
     //historyItem.innerHTML = result ? "🎉" : "❌";
-
-    /*let imageUrl = guessedCharacter.image && guessedCharacter.image.length > 0 
-        ? guessedCharacter.image[0].split(".png")[0] + ".png" 
-        : "";*/
     
     let imageUrl = "";
     if (guessedCharacter.image && guessedCharacter.image.length > 0) {
@@ -229,7 +223,6 @@ function addToHistory(guessedCharacter, result) {
 
     historyBody.prepend(newRow); // Ajoute en haut du tableau
 }
-
 
 // Comparer deux valeurs et appliquer la couleur correspondante
 function compareInfo(guess, target) {
@@ -429,7 +422,7 @@ const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox
 //checkboxes.forEach(checkbox => checkbox.addEventListener("change", filterCharacters));
 
 const updateButton = document.querySelector("#updateFilters");
-updateButton.addEventListener("click", filterCharacters);
+updateButton.addEventListener("click", selectCharacterToFind);
 
 // Fonction pour filtrer les personnages en fonction des groupes cochés
 function filterCharacters() {
@@ -451,7 +444,6 @@ function filterCharacters() {
     return filtered;
 }
 
-
 // Charger les données JSON et initialiser le personnage cible
 fetch("resources/data/merged_characters.json")
     .then(response => response.json())
@@ -460,17 +452,134 @@ fetch("resources/data/merged_characters.json")
 
         console.log("✅ Data loaded :", characterData.length, "characters.");
 
-        let filteredData = filterCharacters();
-
-
-        if (filteredData.length > 0) {
-            targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
-            //targetCharacter = data.find(character => character.name === "Yanni Yogi");
-            console.log("Character to find :", targetCharacter.name);
-        } else {
-            console.warn("No characters available after filtering!");
-        }
+        selectCharacterToFind();
         
         //console.log("Unique debuts:", getUniqueDebuts());
     })
     .catch(error => console.error("JSON loading error :", error));
+
+function selectCharacterToFind(){
+
+    // Fonction pour filtrer les personnages
+    function isValidCharacter(character) {
+        const attributes = [
+            character.name,
+            character.status,
+            character.gender,
+            character.birthday,
+            character.eyes,
+            character.hair,
+            character.debut
+        ];
+
+        // Filtrer les valeurs valides (excluant "N/A", "Unknown", "Unknow", null)
+        const validAttributes = attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow");
+
+        // Garder seulement les personnages ayant au moins 4 attributs valides
+        return validAttributes.length >= 4;
+    }
+
+    // Filtrer les personnages
+    characterData = characterData.filter(isValidCharacter);
+    //console.log("✅ Validated data :", characterData.length, "characters after filtering.");
+
+    let filteredData = filterCharacters();
+    if (filteredData.length > 0) {
+        targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
+        //targetCharacter = data.find(character => character.name === "Yanni Yogi");
+
+        hints = {
+            game: { icon: document.querySelector("#hint-game .hint-icon"), text: getInfoByDebut(targetCharacter.debut).game },
+            occupation: { icon: document.querySelector("#hint-occupation .hint-icon"), text: targetCharacter.occupation },
+            figure: { icon: document.querySelector("#hint-figure .hint-icon"), image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
+        };
+
+        console.log("Character to find :", targetCharacter.name);
+    } else {
+        console.warn("No characters available after filtering!");
+    }
+}
+
+const hintDetails = document.getElementById("hint-details");
+
+function unlockHint(hint) {
+    hints[hint].icon.classList.add("active");
+    hints[hint].icon.classList.remove("disabled");
+    hints[hint].icon.style.cursor = "pointer";
+    hints[hint].icon.addEventListener("click", function () {
+        clearHints();
+        if(hints[hint].text){
+           addHint(hints[hint].text);
+        }
+        if(hints[hint].image){
+            addHintImage(hints[hint].image);
+        }
+    });
+}
+
+function clearHints() {
+    hintDetails.innerHTML = '';
+}
+
+function addHint(text) {
+    const hintElement = document.createElement("p");
+    hintElement.textContent = text;
+    hintDetails.appendChild(hintElement);
+}
+function addHintImage(imgSrc) {
+    const hintElement = document.createElement("img");
+    hintElement.src = imgSrc;
+    hintElement.alt = "Silhouette du personnage";
+    
+    // Applique un filtre noir complet
+    hintElement.style.filter = "brightness(0)";
+    hintElement.style.height = "auto";
+    hintElement.style.display = "block";
+    hintElement.style.margin = "10px auto"; // Centre l'image
+
+    hintDetails.appendChild(hintElement);
+}
+
+function hintChecker(){
+    if(numTries == 3){
+        unlockHint("game");
+    }
+    if(numTries == 8){
+        unlockHint("occupation")
+    }
+    if(numTries == 15){
+        unlockHint("figure");
+    }
+}
+
+function verifyTries(){
+    hintChecker();
+
+    // Vérifie si numTries est un multiple de 2
+    if(numTries % 2 === 0){
+        // Calcul du niveau de défense (10 - numTries / 2)
+        var defenseLevel = 10 - (numTries / 2);
+
+        // Si le niveau est plus petit que 1, on le fixe à 1 (tu peux ajuster cela selon tes préférences)
+        if(defenseLevel < 0) {
+            defenseLevel = 0;
+            gameOver();
+        }
+
+        // Vide la div defensebar
+        document.getElementById("defensebar").innerHTML = "";
+
+        // Crée l'image avec le bon niveau de défense
+        var img = document.createElement("img");
+        img.src = "resources/img/icons/defensebar/defensebar" + defenseLevel + ".png";
+        img.alt = "Defensebar Image";
+
+        // Ajoute l'image à la div
+        document.getElementById("defensebar").appendChild(img);
+    }
+}
+
+
+function gameOver(){
+    console.log("GAME OVER");
+}
