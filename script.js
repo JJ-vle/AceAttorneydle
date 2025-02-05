@@ -170,7 +170,7 @@ function validateGuess() {
 
     const guessName = inputField.value.trim();
     if (attemptedNames.has(guessName)) {
-        feedback.textContent = "⚠️ This character is already tried !";
+        feedback.textContent = "⚠️ This character has already been guessed !";
         feedback.className = "error";
         return;
     }
@@ -191,7 +191,7 @@ function validateGuess() {
         feedback.className = "success";
     } else {
         addToHistory(guessedCharacter, false);
-        feedback.textContent = "❌ wrong awnser, try again !";
+        feedback.textContent = "❌ wrong answer, try again !";
         feedback.className = "error";
     }
 
