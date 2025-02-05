@@ -83,7 +83,8 @@
         ],
         "debut": "The Captive Turnabout",
         "name": "Ally",
-        "url": "https://aceattorney.fandom.com/wiki/Ally"
+        "url": "https://aceattorney.fandom.com/wiki/Ally",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -102,7 +103,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Quinby_Altamont",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/2/2e/Alamont.png/revision/latest?cb=20210818025137",
-        "age": "38"
+        "age": "38",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -159,7 +161,8 @@
         "french": null,
         "debut": null,
         "name": "John Henry Anderson",
-        "url": "https://aceattorney.fandom.com/wiki/John_Henry_Anderson"
+        "url": "https://aceattorney.fandom.com/wiki/John_Henry_Anderson",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -180,7 +183,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Pees%27lubn_Andistan%27dhin",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/4/46/Potdinoshot.png/revision/latest?cb=20241009215623",
-        "age": "36"
+        "age": "36",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -227,7 +231,8 @@
         "url": "https://aceattorney.fandom.com/wiki/A%27nohn_Ihmus_(TBD)",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/c/ca/Provisionalmugshot.png/revision/latest?cb=20241009220653",
-        "age": "46"
+        "age": "46",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -248,7 +253,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Candice_Arme",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/3/38/Hozumi_Kaku_mugshot.png/revision/latest?cb=20241009011706",
-        "age": "27"
+        "age": "27",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -292,7 +298,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Odie_Asman",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/c/cf/Menningen.png/revision/latest?cb=20210818023423",
-        "age": "47"
+        "age": "47",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -308,7 +315,8 @@
         "french": null,
         "debut": "The Return of the Great Departed Soul",
         "name": "Genshin Asogi",
-        "url": "https://aceattorney.fandom.com/wiki/Genshin_Asogi"
+        "url": "https://aceattorney.fandom.com/wiki/Genshin_Asogi",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -332,7 +340,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Kazuma_Asogi",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/5/5c/Asougi_Mugshot_2.png/revision/latest?cb=20210818024731",
-        "age": "24"
+        "age": "24",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -350,7 +359,8 @@
         ],
         "debut": "Turnabout Revolution",
         "name": "Abraham Atishon",
-        "url": "https://aceattorney.fandom.com/wiki/Abraham_Atishon"
+        "url": "https://aceattorney.fandom.com/wiki/Abraham_Atishon",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -371,7 +381,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Paul_Atishon",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/2/2a/Kiyokimug.png/revision/latest?cb=20241009221219",
-        "age": "25"
+        "age": "25",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -412,7 +423,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Taketsuchi_Auchi",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/7/7b/Auchi2.png/revision/latest?cb=20210818024722",
-        "age": "52"
+        "age": "52",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -430,7 +442,8 @@
         ],
         "debut": "The Captive Turnabout",
         "name": "Azea",
-        "url": "https://aceattorney.fandom.com/wiki/Azea"
+        "url": "https://aceattorney.fandom.com/wiki/Azea",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -470,7 +483,8 @@
         "french": null,
         "debut": null,
         "name": "Balmung (hound)",
-        "url": "https://aceattorney.fandom.com/wiki/Balmung_(hound)"
+        "url": "https://aceattorney.fandom.com/wiki/Balmung_(hound)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -508,7 +522,8 @@
         "french": null,
         "debut": "The Resolve of Ryunosuke Naruhodo",
         "name": "Lady Baskerville",
-        "url": "https://aceattorney.fandom.com/wiki/Lady_Baskerville"
+        "url": "https://aceattorney.fandom.com/wiki/Lady_Baskerville",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -550,7 +565,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Patricia_Beate",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/9/90/Rola_O%27Malley_mugshot.png/revision/latest?cb=20210818023041",
-        "age": "21"
+        "age": "21",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -569,7 +585,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Roly_Beate",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/e/e1/Patrick_O%27Malley_mugshot.png/revision/latest?cb=20210818023233",
-        "age": "23"
+        "age": "23",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -614,7 +631,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Beppo",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/f/fa/Beppo_mugshot.png/revision/latest?cb=20210818024627",
-        "age": "62"
+        "age": "62",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -697,7 +715,8 @@
         "french": null,
         "debut": "Rise from the Ashes",
         "name": "Billy",
-        "url": "https://aceattorney.fandom.com/wiki/Billy"
+        "url": "https://aceattorney.fandom.com/wiki/Billy",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -718,7 +737,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Aura_Blackquill",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/b/b5/KaguyaMugshot.png/revision/latest?cb=20241009013315",
-        "age": "37"
+        "age": "37",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -740,7 +760,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Simon_Blackquill",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/6/6c/Simonnewhot.PNG/revision/latest?cb=20241009014431",
-        "age": "29"
+        "age": "29",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -754,9 +775,10 @@
         "eyes": "Unknown",
         "hair": "Black",
         "french": null,
-        "debut": "The Adventure of the Unbreakable Speckled Band   The Adventure of the Unspeakable Story",
+        "debut": "The Adventure of the Unspeakable Story",
         "name": "Vilen Borshevik",
-        "url": "https://aceattorney.fandom.com/wiki/Vilen_Borshevik"
+        "url": "https://aceattorney.fandom.com/wiki/Vilen_Borshevik",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -798,7 +820,8 @@
         "french": null,
         "debut": "Recipe for Turnabout",
         "name": "Gutsen Brawn",
-        "url": "https://aceattorney.fandom.com/wiki/Gutsen_Brawn"
+        "url": "https://aceattorney.fandom.com/wiki/Gutsen_Brawn",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -818,7 +841,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Jezaille_Brett",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/3/34/Jezail_Brett_mugshot.png/revision/latest?cb=20210818023743",
-        "age": "25"
+        "age": "25",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -826,7 +850,7 @@
         ],
         "occupation": [
             "Freelance journalist",
-            "Certified public notary[1]"
+            "Certified public notary"
         ],
         "birthday": "1990",
         "status": "Alive",
@@ -862,7 +886,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Sasha_Buckler",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/4/4c/S72Fud0.png/revision/latest?cb=20241009222727",
-        "age": "22"
+        "age": "22",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -884,7 +909,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Archie_Buff",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/c/c5/Fumi.PNG/revision/latest?cb=20241009221212",
-        "age": "64"
+        "age": "64",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -906,7 +932,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Sergeant_Buff",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/a/a9/Sanagi.png/revision/latest?cb=20241009221226",
-        "age": "12"
+        "age": "12",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1048,7 +1075,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Barry_Caidin",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/d/d9/Henrybarricade.png/revision/latest?cb=20210818023958",
-        "age": "51"
+        "age": "51",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1064,7 +1092,8 @@
         "french": null,
         "debut": "The Magical Turnabout",
         "name": "Cameraman (The Magical Turnabout)",
-        "url": "https://aceattorney.fandom.com/wiki/Cameraman_(The_Magical_Turnabout)"
+        "url": "https://aceattorney.fandom.com/wiki/Cameraman_(The_Magical_Turnabout)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1082,7 +1111,8 @@
         ],
         "debut": "Turnabout Airlines",
         "name": "Captain",
-        "url": "https://aceattorney.fandom.com/wiki/Captain"
+        "url": "https://aceattorney.fandom.com/wiki/Captain",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1125,7 +1155,8 @@
         ],
         "debut": "Turnabout Sisters",
         "name": "Charley",
-        "url": "https://aceattorney.fandom.com/wiki/Charley"
+        "url": "https://aceattorney.fandom.com/wiki/Charley",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1143,7 +1174,8 @@
         ],
         "debut": "Turnabout Goodbyes",
         "name": "Chief",
-        "url": "https://aceattorney.fandom.com/wiki/Chief"
+        "url": "https://aceattorney.fandom.com/wiki/Chief",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1159,7 +1191,8 @@
         "french": null,
         "debut": "The Return of the Great Departed Soul",
         "name": "King Christian VIII",
-        "url": "https://aceattorney.fandom.com/wiki/King_Christian_VIII"
+        "url": "https://aceattorney.fandom.com/wiki/King_Christian_VIII",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1180,7 +1213,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Clonco",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/f/f7/PontaMugshot.png/revision/latest?cb=20241009013325",
-        "age": "?"
+        "age": "?",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1233,7 +1267,7 @@
         ],
         "occupation": [
             "Serviceman",
-            "[1]",
+            "",
             "Cosmos Space Center Director",
             "Cosmos Space Center Assistant Director"
         ],
@@ -1249,7 +1283,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Yuri_Cosmos",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/b/b6/X4Rt2ph.png/revision/latest?cb=20241009013254",
-        "age": "62"
+        "age": "62",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1270,7 +1305,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Constance_Courte",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/d/da/Masayo_Michiba_mugshot.PNG/revision/latest?cb=20241009012835",
-        "age": "47"
+        "age": "47",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1291,7 +1327,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Herman_Crab",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/5/5e/GakuMugshot.png/revision/latest?cb=20241009222757",
-        "age": "40"
+        "age": "40",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1336,7 +1373,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Athena_Cykes",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/0/03/Athena_Cykes_AJ_Trilogy_SOJ_Mugshot.png/revision/latest?cb=20240420205046",
-        "age": "19"
+        "age": "19",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1357,7 +1395,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Metis_Cykes",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/9/9f/MariMugshot.png/revision/latest?cb=20241009013541",
-        "age": "deceased"
+        "age": "deceased",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1373,7 +1412,8 @@
         "french": null,
         "debut": "The Adventure of the Unbreakable Speckled Band",
         "name": "Darka",
-        "url": "https://aceattorney.fandom.com/wiki/Darka"
+        "url": "https://aceattorney.fandom.com/wiki/Darka",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1408,7 +1448,8 @@
         "french": null,
         "debut": null,
         "name": "Charles Darwin",
-        "url": "https://aceattorney.fandom.com/wiki/Charles_Darwin"
+        "url": "https://aceattorney.fandom.com/wiki/Charles_Darwin",
+        "gender": "Unknow"
     },
     {
         "image": null,
@@ -1420,7 +1461,8 @@
         "french": null,
         "debut": null,
         "name": "William Rutter Dawes",
-        "url": "https://aceattorney.fandom.com/wiki/William_Rutter_Dawes"
+        "url": "https://aceattorney.fandom.com/wiki/William_Rutter_Dawes",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1441,7 +1483,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Betty_de_Famme",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/4/4a/Kiki.png/revision/latest?cb=20241009220319",
-        "age": "19"
+        "age": "19",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1462,7 +1505,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Bonny",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/1/1b/Bonnymugshot.png/revision/latest?cb=20241009220311",
-        "age": "19"
+        "age": "19",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1511,7 +1555,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Peppino_de_Rossi",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/6/66/Redheadleague2.png/revision/latest?cb=20210818023116",
-        "age": "25"
+        "age": "25",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1531,7 +1576,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Fabien_de_Rousseau",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/a/ae/Redheadleague1.png/revision/latest?cb=20210818023125",
-        "age": "26"
+        "age": "26",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1598,7 +1644,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Norma_DePlume",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/b/b5/UratoriMugshot.png/revision/latest?cb=20241009222750",
-        "age": "36"
+        "age": "36",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1620,7 +1667,8 @@
         ],
         "debut": "The Kidnapped Turnabout",
         "name": "Colin Devorae",
-        "url": "https://aceattorney.fandom.com/wiki/Colin_Devorae"
+        "url": "https://aceattorney.fandom.com/wiki/Colin_Devorae",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1642,7 +1690,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Enoch_Drebber",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/8/89/Drebber.png/revision/latest?cb=20210818024358",
-        "age": "35"
+        "age": "35",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1658,7 +1707,7 @@
         "french": [
             "Henri Hunter"
         ],
-        "debut": "Turnabout Goodbyes   Turnabout Legacy",
+        "debut": "Turnabout Legacy",
         "name": "Gregory Edgeworth",
         "url": "https://aceattorney.fandom.com/wiki/Gregory_Edgeworth",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney",
@@ -1748,7 +1797,7 @@
             "Actor"
         ],
         "birthday": "1996-1997",
-        "status": "Incarcerated [1]",
+        "status": "Incarcerated ",
         "eyes": "Dark gray",
         "hair": "Brown",
         "french": [
@@ -1772,7 +1821,8 @@
         "french": null,
         "debut": null,
         "name": "Edward Everett",
-        "url": "https://aceattorney.fandom.com/wiki/Edward_Everett"
+        "url": "https://aceattorney.fandom.com/wiki/Edward_Everett",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1792,7 +1842,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Bruce_Fairplay",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/8/8c/Oscar_Fairplay_mugshot.png/revision/latest?cb=20210818023252",
-        "age": "34"
+        "age": "34",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -1929,6 +1980,8 @@
         "debut": "Turnabout for the Ages",
         "name": "Amelie Fenn",
         "url": "https://aceattorney.fandom.com/wiki/Amelie_Fenn"
+        ,
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2091,7 +2144,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Pearl_Fey",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/7/7f/Pearlnewshot.png/revision/latest?cb=20241009014159",
-        "age": "18"
+        "age": "18",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2113,7 +2167,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Phineas_Filch",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/e/e0/FilchMugshot.png/revision/latest?cb=20241009012340",
-        "age": "50"
+        "age": "50",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2129,7 +2184,8 @@
         "french": null,
         "debut": "The Return of the Great Departed Soul",
         "name": "King Frederick VI",
-        "url": "https://aceattorney.fandom.com/wiki/King_Frederick_VI"
+        "url": "https://aceattorney.fandom.com/wiki/King_Frederick_VI",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2174,7 +2230,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Bobby_Fulbright",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/7/7a/FulbrightMugshot.png/revision/latest?cb=20241009012542",
-        "age": "33"
+        "age": "33",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2193,7 +2250,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Lay_D._Furst",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/0/0e/Adam_Ladyfirst_mugshot.png/revision/latest?cb=20210818025011",
-        "age": "21"
+        "age": "21",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2212,7 +2270,8 @@
         ],
         "debut": "Turnabout Big Top",
         "name": "Max Galactica",
-        "url": "https://aceattorney.fandom.com/wiki/Max_Galactica"
+        "url": "https://aceattorney.fandom.com/wiki/Max_Galactica",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2255,7 +2314,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Maid",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/0/02/Joan_Garrideb_mugshot.png/revision/latest?cb=20210818023734",
-        "age": "38"
+        "age": "38" ,
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2276,7 +2336,8 @@
         "url": "https://aceattorney.fandom.com/wiki/John_Garrideb",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/a/a8/John_Garrideb_mugshot.png/revision/latest?cb=20210818023710",
-        "age": "46"
+        "age": "46",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2370,7 +2431,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Dumas_Gloomsbury",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/d/de/Gloomsbury_Mugshot.png/revision/latest?cb=20241009223531",
-        "age": "25"
+        "age": "25",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2386,9 +2448,9 @@
         "eyes": "Unknown",
         "hair": "White",
         "french": [
-            "Diego ArmandoGodot"
+            "Diego Armando", "Godot"
         ],
-        "debut": "The Stolen Turnabout Turnabout Beginnings",
+        "debut": "The Stolen Turnabout",
         "name": "Godot",
         "url": "https://aceattorney.fandom.com/wiki/Godot",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Trials_and_Tribulations",
@@ -2436,7 +2498,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Maria_Gorey",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/9/92/Maria.png/revision/latest?cb=20210818023542",
-        "age": "19"
+        "age": "19",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2452,7 +2515,8 @@
         "french": null,
         "debut": "The Return of the Great Departed Soul",
         "name": "Gotts",
-        "url": "https://aceattorney.fandom.com/wiki/Gotts"
+        "url": "https://aceattorney.fandom.com/wiki/Gotts",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2515,7 +2579,7 @@
             "Zachary Grimoire",
             "Enzo Gomez"
         ],
-        "debut": "Turnabout Trump   Turnabout Succession",
+        "debut": "Turnabout Trump",
         "name": "Zak Gramarye",
         "url": "https://aceattorney.fandom.com/wiki/Shadi_Enigmar",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Apollo_Justice:_Ace_Attorney",
@@ -2540,7 +2604,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Eggert_Benedict",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/6/6a/Robert_Crogley_mugshot.png/revision/latest?cb=20210818023109",
-        "age": "27"
+        "age": "27",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2559,7 +2624,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Olive_Green",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/0/0d/Viridian_Green_mugshot.png/revision/latest?cb=20210818022159",
-        "age": "20"
+        "age": "20",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2578,7 +2644,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Tobias_Gregson",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/9/95/Tobias_Gregson_mugshot.png/revision/latest?cb=20210818022452",
-        "age": "45"
+        "age": "45",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2597,7 +2664,8 @@
         ],
         "debut": "Reunion, and Turnabout",
         "name": "Turner Grey",
-        "url": "https://aceattorney.fandom.com/wiki/Turner_Grey"
+        "url": "https://aceattorney.fandom.com/wiki/Turner_Grey",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2679,7 +2747,8 @@
         "french": null,
         "debut": null,
         "name": "Fredrick Gye",
-        "url": "https://aceattorney.fandom.com/wiki/Fredrick_Gye"
+        "url": "https://aceattorney.fandom.com/wiki/Fredrick_Gye",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2766,7 +2835,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Albert_Harebrayne",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/1/13/Dobinbough.png/revision/latest?cb=20210818024404",
-        "age": "33"
+        "age": "33",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2854,6 +2924,8 @@
         "debut": "The Captive Turnabout",
         "name": "Helmut",
         "url": "https://aceattorney.fandom.com/wiki/Helmut"
+        ,
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2892,9 +2964,10 @@
             "Sashoff",
             "Chambouseux"
         ],
-        "debut": "Reunion, and Turnabout   Turnabout Corner",
+        "debut": "Reunion, and Turnabout",
         "name": "Hickfield",
-        "url": "https://aceattorney.fandom.com/wiki/Hickfield"
+        "url": "https://aceattorney.fandom.com/wiki/Hickfield",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2932,7 +3005,8 @@
         "french": null,
         "debut": "The Foreign Turnabout",
         "name": "Holy Mother",
-        "url": "https://aceattorney.fandom.com/wiki/Holy_Mother"
+        "url": "https://aceattorney.fandom.com/wiki/Holy_Mother",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2953,7 +3027,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Satoru_Hosonaga",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/c/c8/Hosonagaturtle.png/revision/latest?cb=20210818023831",
-        "age": "30"
+        "age": "30",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2969,7 +3044,8 @@
         "french": null,
         "debut": "The Monstrous Turnabout",
         "name": "Howlin' Wolf",
-        "url": "https://aceattorney.fandom.com/wiki/Howlin%27_Wolf"
+        "url": "https://aceattorney.fandom.com/wiki/Howlin%27_Wolf",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -2987,7 +3063,8 @@
         ],
         "debut": "Turnabout Airlines",
         "name": "Ugo Hughes",
-        "url": "https://aceattorney.fandom.com/wiki/Ugo_Hughes"
+        "url": "https://aceattorney.fandom.com/wiki/Ugo_Hughes",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3008,7 +3085,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Beh%27leeb_Inmee",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/a/a7/Saaramug.png/revision/latest?cb=20241009220707",
-        "age": "31"
+        "age": "31",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3026,7 +3104,8 @@
         ],
         "debut": "Turnabout Revolution",
         "name": "Faitah Inmee",
-        "url": "https://aceattorney.fandom.com/wiki/Faitah_Inmee"
+        "url": "https://aceattorney.fandom.com/wiki/Faitah_Inmee",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3048,7 +3127,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Tahrust_Inmee",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/c/c3/Malmelshot.PNG/revision/latest?cb=20241009220715",
-        "age": "42"
+        "age": "42",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3082,7 +3162,7 @@
             "Literature student at Ivy University"
         ],
         "birthday": "1993-1994",
-        "status": "Arrested [1]",
+        "status": "Arrested ",
         "eyes": "Brown",
         "hair": "Black",
         "french": [
@@ -3110,7 +3190,8 @@
         "french": null,
         "debut": "Twisted Karma and His Last Bow",
         "name": "Jabez",
-        "url": "https://aceattorney.fandom.com/wiki/Jabez"
+        "url": "https://aceattorney.fandom.com/wiki/Jabez",
+        "gender": "Unknow"
     },
     {
         "image": null,
@@ -3122,7 +3203,8 @@
         "french": null,
         "debut": null,
         "name": "Jane the Ripper",
-        "url": "https://aceattorney.fandom.com/wiki/Jane_the_Ripper"
+        "url": "https://aceattorney.fandom.com/wiki/Jane_the_Ripper",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3140,7 +3222,8 @@
         ],
         "debut": "Turnabout Goodbyes",
         "name": "Polly Jenkins",
-        "url": "https://aceattorney.fandom.com/wiki/Polly_Jenkins"
+        "url": "https://aceattorney.fandom.com/wiki/Polly_Jenkins",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3161,7 +3244,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Seishiro_Jigoku",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/c/cf/Japanjudge.png/revision/latest?cb=20210818023924",
-        "age": "43"
+        "age": "43",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3177,7 +3261,8 @@
         "french": null,
         "debut": "The Return of the Great Departed Soul",
         "name": "John Clay",
-        "url": "https://aceattorney.fandom.com/wiki/John_Clay"
+        "url": "https://aceattorney.fandom.com/wiki/John_Clay",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3186,7 +3271,7 @@
         "occupation": [
             "Judge"
         ],
-        "birthday": "1971 or earlier[1][2]",
+        "birthday": "1971 or earlier",
         "status": "Alive",
         "eyes": "Brown",
         "hair": "Bald, with gray beard",
@@ -3195,7 +3280,8 @@
         ],
         "debut": "The First Turnabout",
         "name": "Judge",
-        "url": "https://aceattorney.fandom.com/wiki/Judge"
+        "url": "https://aceattorney.fandom.com/wiki/Judge",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3211,7 +3297,8 @@
         "french": null,
         "debut": "The Adventure of the Runaway Room",
         "name": "Judge (British Empire)",
-        "url": "https://aceattorney.fandom.com/wiki/Judge_(British_Empire)"
+        "url": "https://aceattorney.fandom.com/wiki/Judge_(British_Empire)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3227,7 +3314,8 @@
         "french": null,
         "debut": "The Foreign Turnabout",
         "name": "Judge (Khura'in)",
-        "url": "https://aceattorney.fandom.com/wiki/Judge_(Khura%27in)"
+        "url": "https://aceattorney.fandom.com/wiki/Judge_(Khura%27in)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3236,7 +3324,7 @@
         "occupation": [
             "Judge"
         ],
-        "birthday": "1971 or earlier[1]",
+        "birthday": "1971 or earlier",
         "status": "Alive",
         "eyes": "Brown",
         "hair": "Blond",
@@ -3245,7 +3333,8 @@
         ],
         "debut": "The Stolen Turnabout",
         "name": "Judge (younger brother)",
-        "url": "https://aceattorney.fandom.com/wiki/Judge_(younger_brother)"
+        "url": "https://aceattorney.fandom.com/wiki/Judge_(younger_brother)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3261,7 +3350,8 @@
         "french": null,
         "debut": "Turnabout Storyteller",
         "name": "Jugemu",
-        "url": "https://aceattorney.fandom.com/wiki/Jugemu"
+        "url": "https://aceattorney.fandom.com/wiki/Jugemu",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3278,7 +3368,8 @@
         "french": null,
         "debut": "The Adventure of the Runaway Room",
         "name": "Juror 1 (banker)",
-        "url": "https://aceattorney.fandom.com/wiki/Juror_1_(banker)"
+        "url": "https://aceattorney.fandom.com/wiki/Juror_1_(banker)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3294,7 +3385,8 @@
         "french": null,
         "debut": "The Return of the Great Departed Soul",
         "name": "Juror 1 (middle-aged man)",
-        "url": "https://aceattorney.fandom.com/wiki/Juror_1_(middle-aged_man)"
+        "url": "https://aceattorney.fandom.com/wiki/Juror_1_(middle-aged_man)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3311,7 +3403,8 @@
         "french": null,
         "debut": "The Adventure of the Runaway Room",
         "name": "Juror 2 (maid)",
-        "url": "https://aceattorney.fandom.com/wiki/Juror_2_(maid)"
+        "url": "https://aceattorney.fandom.com/wiki/Juror_2_(maid)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3327,7 +3420,8 @@
         "french": null,
         "debut": "The Adventure of the Clouded Kokoro",
         "name": "Juror 2 (young woman)",
-        "url": "https://aceattorney.fandom.com/wiki/Juror_2_(young_woman)"
+        "url": "https://aceattorney.fandom.com/wiki/Juror_2_(young_woman)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3344,7 +3438,8 @@
         "french": null,
         "debut": "The Adventure of the Runaway Room",
         "name": "Juror 3 (barber)",
-        "url": "https://aceattorney.fandom.com/wiki/Juror_3_(barber)"
+        "url": "https://aceattorney.fandom.com/wiki/Juror_3_(barber)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3361,7 +3456,8 @@
         "french": null,
         "debut": "The Return of the Great Departed Soul",
         "name": "Juror 3 (magician)",
-        "url": "https://aceattorney.fandom.com/wiki/Juror_3_(magician)"
+        "url": "https://aceattorney.fandom.com/wiki/Juror_3_(magician)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3377,7 +3473,8 @@
         "french": null,
         "debut": "The Adventure of the Unspeakable Story",
         "name": "Juror 3 (stereoscope fan)",
-        "url": "https://aceattorney.fandom.com/wiki/Juror_3_(stereoscope_fan)"
+        "url": "https://aceattorney.fandom.com/wiki/Juror_3_(stereoscope_fan)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3393,7 +3490,8 @@
         "french": null,
         "debut": "The Adventure of the Clouded Kokoro",
         "name": "Juror 3 (young man)",
-        "url": "https://aceattorney.fandom.com/wiki/Juror_3_(young_man)"
+        "url": "https://aceattorney.fandom.com/wiki/Juror_3_(young_man)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3410,7 +3508,8 @@
         "french": null,
         "debut": "The Return of the Great Departed Soul",
         "name": "Juror 4 (scientist)",
-        "url": "https://aceattorney.fandom.com/wiki/Juror_4_(scientist)"
+        "url": "https://aceattorney.fandom.com/wiki/Juror_4_(scientist)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3427,7 +3526,8 @@
         "french": null,
         "debut": "The Adventure of the Runaway Room",
         "name": "Juror 4 (typewritist)",
-        "url": "https://aceattorney.fandom.com/wiki/Juror_4_(typewritist)"
+        "url": "https://aceattorney.fandom.com/wiki/Juror_4_(typewritist)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3445,7 +3545,8 @@
         "french": null,
         "debut": "The Adventure of the Runaway Room",
         "name": "Juror 5 (guild master)",
-        "url": "https://aceattorney.fandom.com/wiki/Juror_5_(guild_master)"
+        "url": "https://aceattorney.fandom.com/wiki/Juror_5_(guild_master)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3462,7 +3563,8 @@
         "french": null,
         "debut": "The Adventure of the Clouded Kokoro",
         "name": "Juror 5 (laborer)",
-        "url": "https://aceattorney.fandom.com/wiki/Juror_5_(laborer)"
+        "url": "https://aceattorney.fandom.com/wiki/Juror_5_(laborer)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3478,7 +3580,8 @@
         "french": null,
         "debut": "The Return of the Great Departed Soul",
         "name": "Juror 5 (young girl)",
-        "url": "https://aceattorney.fandom.com/wiki/Juror_5_(young_girl)"
+        "url": "https://aceattorney.fandom.com/wiki/Juror_5_(young_girl)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3496,7 +3599,8 @@
         "french": null,
         "debut": "The Adventure of the Clouded Kokoro",
         "name": "Juror 6 (elderly man)",
-        "url": "https://aceattorney.fandom.com/wiki/Juror_6_(elderly_man)"
+        "url": "https://aceattorney.fandom.com/wiki/Juror_6_(elderly_man)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3512,7 +3616,8 @@
         "french": null,
         "debut": "The Adventure of the Runaway Room",
         "name": "Juror 6 (elderly woman)",
-        "url": "https://aceattorney.fandom.com/wiki/Juror_6_(elderly_woman)"
+        "url": "https://aceattorney.fandom.com/wiki/Juror_6_(elderly_woman)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3528,7 +3633,8 @@
         "french": null,
         "debut": "The Return of the Great Departed Soul",
         "name": "Juror 6 (policeman)",
-        "url": "https://aceattorney.fandom.com/wiki/Juror_6_(policeman)"
+        "url": "https://aceattorney.fandom.com/wiki/Juror_6_(policeman)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3571,9 +3677,10 @@
         "french": [
             "Jove Justice"
         ],
-        "debut": "Turnabout Succession   Turnabout Revolution",
+        "debut": "Turnabout Succession",
         "name": "Jove Justice",
-        "url": "https://aceattorney.fandom.com/wiki/Jove_Justice"
+        "url": "https://aceattorney.fandom.com/wiki/Jove_Justice",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3610,7 +3717,8 @@
         "french": null,
         "debut": "The Rite of Turnabout",
         "name": "Lady Kee'ra",
-        "url": "https://aceattorney.fandom.com/wiki/Lady_Kee%27ra"
+        "url": "https://aceattorney.fandom.com/wiki/Lady_Kee%27ra",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3632,12 +3740,13 @@
             "Amara Sigatar Khura'in",
             "Nonna"
         ],
-        "debut": "The Foreign Turnabout  Turnabout Revolution",
+        "debut": "The Foreign Turnabout",
         "name": "Amara Sigatar Khura'in",
         "url": "https://aceattorney.fandom.com/wiki/Amara_Sigatar_Khura%27in",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/8/8f/Amarashot.png/revision/latest?cb=20241009221256",
-        "age": "44"
+        "age": "44",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3661,7 +3770,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Ga%27ran_Sigatar_Khura%27in",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/9/96/Thegoodqueenshot.png/revision/latest?cb=20241009220933",
-        "age": "43"
+        "age": "43",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3682,7 +3792,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Inga_Karkhuul_Khura%27in",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/0/08/Ingashot.png/revision/latest?cb=20241009220941",
-        "age": "46"
+        "age": "46",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3705,7 +3816,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Rayfa_Padma_Khura%27in",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/8/80/Leifa_mugshot.png/revision/latest?cb=20241009215611",
-        "age": "14"
+        "age": "14",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3815,7 +3927,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Kyurio_Korekuta",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/4/46/Sanmon_Sonohigurashi_mugshot.png/revision/latest?cb=20210818022817",
-        "age": "67"
+        "age": "67",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3831,7 +3944,8 @@
         "french": null,
         "debut": "The Monstrous Turnabout",
         "name": "Azuki Kozo",
-        "url": "https://aceattorney.fandom.com/wiki/Azuki_Kozo"
+        "url": "https://aceattorney.fandom.com/wiki/Azuki_Kozo",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3877,7 +3991,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Rex_Kyubi",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/1/13/KyuubiMugshot.png/revision/latest?cb=20241009012313",
-        "age": "46"
+        "age": "46",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3898,7 +4013,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Florent_L%27Belle",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/1/12/XZUvQ8p_%281%29.png/revision/latest?cb=20241009012326",
-        "age": "33"
+        "age": "33",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3962,7 +4078,8 @@
         ],
         "debut": "Turnabout Revolution",
         "name": "Lah'kee",
-        "url": "https://aceattorney.fandom.com/wiki/Lah%27kee"
+        "url": "https://aceattorney.fandom.com/wiki/Lah%27kee",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -3982,7 +4099,7 @@
             "Thalassa Grimoire",
             "Lamiroir"
         ],
-        "debut": "Turnabout Serenade   Turnabout Succession",
+        "debut": "Turnabout Serenade",
         "name": "Lamiroir",
         "url": "https://aceattorney.fandom.com/wiki/Lamiroir",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Apollo_Justice:_Ace_Attorney",
@@ -4000,7 +4117,8 @@
         "french": null,
         "debut": null,
         "name": "Lang Zi",
-        "url": "https://aceattorney.fandom.com/wiki/Lang_Zi"
+        "url": "https://aceattorney.fandom.com/wiki/Lang_Zi",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4016,7 +4134,8 @@
         "french": null,
         "debut": "Turnabout for the Ages",
         "name": "Da-Long Lang",
-        "url": "https://aceattorney.fandom.com/wiki/Da-Long_Lang"
+        "url": "https://aceattorney.fandom.com/wiki/Da-Long_Lang",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4025,7 +4144,7 @@
         "occupation": [
             "Interpol investigator"
         ],
-        "birthday": "1991-2",
+        "birthday": "1991-1992",
         "status": "Alive",
         "eyes": "Brown",
         "hair": "Light brown",
@@ -4056,7 +4175,8 @@
         ],
         "debut": "Turnabout Big Top",
         "name": "Léon",
-        "url": "https://aceattorney.fandom.com/wiki/L%C3%A9on"
+        "url": "https://aceattorney.fandom.com/wiki/L%C3%A9on",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4077,7 +4197,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Gina_Lestrade",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/c/c3/Gina_DGS2_Mugshot.png/revision/latest?cb=20210818024203",
-        "age": "18"
+        "age": "18",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4096,7 +4217,8 @@
         ],
         "debut": "Turnabout Serenade",
         "name": "Romein LeTouse",
-        "url": "https://aceattorney.fandom.com/wiki/Romein_LeTouse"
+        "url": "https://aceattorney.fandom.com/wiki/Romein_LeTouse",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4137,7 +4259,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Balthazar_Lune",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/e/e8/Rumba.png/revision/latest?cb=20210818023031",
-        "age": "42"
+        "age": "42",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4155,7 +4278,8 @@
         ],
         "debut": "Phoenix Wright: Ace Attorney - Trials and Tribulations closing credits",
         "name": "Adam Mada",
-        "url": "https://aceattorney.fandom.com/wiki/Adam_Mada"
+        "url": "https://aceattorney.fandom.com/wiki/Adam_Mada",
+        "gender": "Unknow"
     },
     {
         "image": null,
@@ -4169,7 +4293,8 @@
         "french": null,
         "debut": "In the Bailey",
         "name": "Madam Rosie",
-        "url": "https://aceattorney.fandom.com/wiki/Madam_Rosie"
+        "url": "https://aceattorney.fandom.com/wiki/Madam_Rosie",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4187,7 +4312,8 @@
         ],
         "debut": "Turnabout Samurai",
         "name": "Sal Manella",
-        "url": "https://aceattorney.fandom.com/wiki/Sal_Manella"
+        "url": "https://aceattorney.fandom.com/wiki/Sal_Manella",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4227,7 +4353,8 @@
         ],
         "debut": "Turnabout Samurai",
         "name": "Manuel",
-        "url": "https://aceattorney.fandom.com/wiki/Manuel"
+        "url": "https://aceattorney.fandom.com/wiki/Manuel",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4316,7 +4443,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Magnus_McGilded",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/f/f8/Cosney_Megundal_mugshot.png/revision/latest?cb=20210818024636",
-        "age": "48"
+        "age": "48",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4338,7 +4466,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Aristotle_Means",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/d/dd/M4ekl1u.png/revision/latest?cb=20241009012825",
-        "age": "45"
+        "age": "45",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4407,7 +4536,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Rei_Membami",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/1/18/Haori.png/revision/latest?cb=20210818024057",
-        "age": "16"
+        "age": "16",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4426,7 +4556,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Raiten_Menimemo",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/8/84/Mamemomi.png/revision/latest?cb=20210818023549",
-        "age": "38"
+        "age": "38",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4467,7 +4598,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Adron_B._Metermann",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/6/6f/Decago.png/revision/latest?cb=20210818024527",
-        "age": "23"
+        "age": "23",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4483,7 +4615,8 @@
         "french": null,
         "debut": "The Kidnapped Turnabout",
         "name": "MiB",
-        "url": "https://aceattorney.fandom.com/wiki/MiB"
+        "url": "https://aceattorney.fandom.com/wiki/MiB",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4499,7 +4632,8 @@
         "french": null,
         "debut": null,
         "name": "Ayame Mikotoba",
-        "url": "https://aceattorney.fandom.com/wiki/Ayame_Mikotoba"
+        "url": "https://aceattorney.fandom.com/wiki/Ayame_Mikotoba",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4520,7 +4654,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Susato_Mikotoba",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/8/80/Susato_Mikotoba_mugshot.png/revision/latest?cb=20210818022549",
-        "age": "16"
+        "age": "16",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4541,7 +4676,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Yujin_Mikotoba",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/c/cb/Yujin_Mikotoba_%28Japan%29_GAA2_Mugshot.png/revision/latest?cb=20210818021750",
-        "age": "43"
+        "age": "43",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4558,7 +4694,8 @@
         "french": null,
         "debut": "The Adventure of the Runaway Room",
         "name": "Mason Milverton",
-        "url": "https://aceattorney.fandom.com/wiki/Mason_Milverton"
+        "url": "https://aceattorney.fandom.com/wiki/Mason_Milverton",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4668,7 +4805,8 @@
         ],
         "debut": "Turnabout Goodbyes",
         "name": "Missile",
-        "url": "https://aceattorney.fandom.com/wiki/Missile"
+        "url": "https://aceattorney.fandom.com/wiki/Missile",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4686,7 +4824,8 @@
         ],
         "debut": "The Magical Turnabout",
         "name": "Manov Mistree",
-        "url": "https://aceattorney.fandom.com/wiki/Manov_Mistree"
+        "url": "https://aceattorney.fandom.com/wiki/Manov_Mistree",
+        "gender": "Unknow"
     },
     {
         "image": null,
@@ -4698,7 +4837,8 @@
         "french": null,
         "debut": null,
         "name": "Maria Mitchell",
-        "url": "https://aceattorney.fandom.com/wiki/Maria_Mitchell"
+        "url": "https://aceattorney.fandom.com/wiki/Maria_Mitchell",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4740,7 +4880,8 @@
         ],
         "debut": "Turnabout Big Top",
         "name": "Money",
-        "url": "https://aceattorney.fandom.com/wiki/Money"
+        "url": "https://aceattorney.fandom.com/wiki/Money",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4757,7 +4898,8 @@
         "french": null,
         "debut": "The Adventure of the Great Departure",
         "name": "Ryunosuke Naruhodo",
-        "url": "https://aceattorney.fandom.com/wiki/Ryunosuke_Naruhodo"
+        "url": "https://aceattorney.fandom.com/wiki/Ryunosuke_Naruhodo",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4778,7 +4920,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Soseki_Natsume",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/2/27/Soseki2.png/revision/latest?cb=20210818022628",
-        "age": "33"
+        "age": "33",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4800,7 +4943,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Robin_Newman",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/b/b9/ChishioBoyMugshot.png/revision/latest?cb=20241009012910",
-        "age": "18"
+        "age": "18",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4823,7 +4967,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Pierce_Nichody",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/2/29/Kazaharu.png/revision/latest?cb=20241009223548",
-        "age": "26"
+        "age": "26",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4841,7 +4986,8 @@
         ],
         "debut": "Turnabout Samurai",
         "name": "Penny Nichols",
-        "url": "https://aceattorney.fandom.com/wiki/Penny_Nichols"
+        "url": "https://aceattorney.fandom.com/wiki/Penny_Nichols",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4877,7 +5023,8 @@
         "french": null,
         "debut": "The Adventure of the Great Departure",
         "name": "Aido Nosa",
-        "url": "https://aceattorney.fandom.com/wiki/Aido_Nosa"
+        "url": "https://aceattorney.fandom.com/wiki/Aido_Nosa",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4896,7 +5043,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Iyesa_Nosa",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/a/a4/Taizou_Uzukumaru_mugshot.png/revision/latest?cb=20210818022533",
-        "age": "38"
+        "age": "38",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4914,7 +5062,8 @@
         ],
         "debut": "Turnabout Ablaze",
         "name": "Ka-Shi Nou",
-        "url": "https://aceattorney.fandom.com/wiki/Ka-Shi_Nou"
+        "url": "https://aceattorney.fandom.com/wiki/Ka-Shi_Nou",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4936,7 +5085,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Hugh_O%27Conner",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/9/9d/ReiMugshot.png/revision/latest?cb=20241009012859",
-        "age": "25"
+        "age": "25",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -4959,7 +5109,8 @@
         ],
         "debut": "Turnabout Samurai",
         "name": "Wendy Oldbag",
-        "url": "https://aceattorney.fandom.com/wiki/Wendy_Oldbag"
+        "url": "https://aceattorney.fandom.com/wiki/Wendy_Oldbag",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5000,7 +5151,8 @@
         "french": null,
         "debut": "The Return of the Great Departed Soul",
         "name": "Ottermole",
-        "url": "https://aceattorney.fandom.com/wiki/Ottermole"
+        "url": "https://aceattorney.fandom.com/wiki/Ottermole",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5063,7 +5215,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Grimesby_Roylott",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/c/c2/Dgs-015-roylott.png/revision/latest?cb=20210818024518",
-        "age": "15"
+        "age": "15",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5086,7 +5239,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Gaspen_Payne",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/e/e7/Paynenewshot.png/revision/latest?cb=20241009015154",
-        "age": "56"
+        "age": "56",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5123,15 +5277,16 @@
             "Detective"
         ],
         "birthday": "Unknown",
-        "status": "Incarcerated[1]",
+        "status": "Incarcerated",
         "eyes": "Unknown",
         "hair": "Unknown",
         "french": [
             "Fantôme"
         ],
-        "debut": "The Monstrous Turnabout   The Cosmic Turnabout",
+        "debut": "The Cosmic Turnabout",
         "name": "Phantom",
-        "url": "https://aceattorney.fandom.com/wiki/Phantom"
+        "url": "https://aceattorney.fandom.com/wiki/Phantom",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5147,7 +5302,8 @@
         "french": null,
         "debut": "The Adventure of the Unbreakable Speckled Band",
         "name": "Pirozhko",
-        "url": "https://aceattorney.fandom.com/wiki/Pirozhko"
+        "url": "https://aceattorney.fandom.com/wiki/Pirozhko",
+        "gender": "Unknow"
     },
     {
         "image": null,
@@ -5159,7 +5315,8 @@
         "french": null,
         "debut": null,
         "name": "Madame Pluyette",
-        "url": "https://aceattorney.fandom.com/wiki/Madame_Pluyette"
+        "url": "https://aceattorney.fandom.com/wiki/Madame_Pluyette",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5177,7 +5334,8 @@
         ],
         "debut": "Turnabout Goodbyes",
         "name": "Polly",
-        "url": "https://aceattorney.fandom.com/wiki/Polly"
+        "url": "https://aceattorney.fandom.com/wiki/Polly",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5198,7 +5356,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Ponco",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/5/5a/PonkoMugshot.png/revision/latest?cb=20241009013304",
-        "age": "?"
+        "age": "?",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5261,7 +5420,8 @@
         "french": null,
         "debut": "The Monstrous Turnabout",
         "name": "Pretty Boy Vampire",
-        "url": "https://aceattorney.fandom.com/wiki/Pretty_Boy_Vampire"
+        "url": "https://aceattorney.fandom.com/wiki/Pretty_Boy_Vampire",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5301,7 +5461,8 @@
         ],
         "debut": "Turnabout Big Top",
         "name": "Regent",
-        "url": "https://aceattorney.fandom.com/wiki/Regent"
+        "url": "https://aceattorney.fandom.com/wiki/Regent",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5347,7 +5508,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Mr._Retinz",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/d/d8/Rogerretinz.png/revision/latest?cb=20241009220326",
-        "age": "35"
+        "age": "35",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5368,7 +5530,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Rifle",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/d/d9/PenguinMugshot.png/revision/latest?cb=20241009222820",
-        "age": "?"
+        "age": "?",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5389,7 +5552,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Marlon_Rimes",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/e/e3/IkuyaMugshot.png/revision/latest?cb=20241009222734",
-        "age": "21"
+        "age": "21",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5434,7 +5598,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Paht_Rohl",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/c/cf/Mima.png/revision/latest?cb=20241009215604",
-        "age": "32"
+        "age": "32",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5475,7 +5640,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Duncan_Ross",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/e/e9/Duncan.png/revision/latest?cb=20210818024353",
-        "age": "21"
+        "age": "21",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5500,7 +5666,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Dhurke_Sahdmadhi",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/5/58/Drukshot.png/revision/latest?cb=20241009221204",
-        "age": "45"
+        "age": "45",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5524,7 +5691,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Nahyuta_Sahdmadhi",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/f/f6/NayutaMug.png/revision/latest?cb=20241009220304",
-        "age": "25"
+        "age": "25",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5615,7 +5783,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Myriam_Scuttlebutt",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/8/89/BggGgee.png/revision/latest?cb=20241009012939",
-        "age": "17"
+        "age": "17",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5632,7 +5801,8 @@
         "french": null,
         "debut": "The Memoirs of the Clouded Kokoro",
         "name": "Selden",
-        "url": "https://aceattorney.fandom.com/wiki/Selden"
+        "url": "https://aceattorney.fandom.com/wiki/Selden",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5650,7 +5820,8 @@
         ],
         "debut": "The Foreign Turnabout",
         "name": "Shah'do",
-        "url": "https://aceattorney.fandom.com/wiki/Shah%27do"
+        "url": "https://aceattorney.fandom.com/wiki/Shah%27do",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5666,7 +5837,8 @@
         "french": null,
         "debut": "The Adventure of the Clouded Kokoro",
         "name": "William Shakespeare",
-        "url": "https://aceattorney.fandom.com/wiki/William_Shakespeare"
+        "url": "https://aceattorney.fandom.com/wiki/William_Shakespeare",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5686,7 +5858,8 @@
         "url": "https://aceattorney.fandom.com/wiki/William_Shamspeare",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/1/12/Petenshy.png/revision/latest?cb=20210818023244",
-        "age": "31"
+        "age": "31",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5709,7 +5882,7 @@
         "french": [
             "Anise Terrie"
         ],
-        "debut": "The Kidnapped Turnabout   Turnabout Reminiscence",
+        "debut": "The Kidnapped Turnabout",
         "name": "Shih-na",
         "url": "https://aceattorney.fandom.com/wiki/Shih-na",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Ace_Attorney_Investigations:_Miles_Edgeworth",
@@ -5733,7 +5906,8 @@
         ],
         "debut": "Turnabout Revolution",
         "name": "Ives Shineto",
-        "url": "https://aceattorney.fandom.com/wiki/Ives_Shineto"
+        "url": "https://aceattorney.fandom.com/wiki/Ives_Shineto",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5754,7 +5928,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Jack_Shipley",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/5/55/X4G83ak.png/revision/latest?cb=20241009222741",
-        "age": "57"
+        "age": "57",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5772,7 +5947,8 @@
         ],
         "debut": "Turnabout Reclaimed",
         "name": "Ora Shipley the First",
-        "url": "https://aceattorney.fandom.com/wiki/Ora_Shipley_the_First"
+        "url": "https://aceattorney.fandom.com/wiki/Ora_Shipley_the_First",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5790,7 +5966,8 @@
         ],
         "debut": "Turnabout Reclaimed",
         "name": "Orla Shipley",
-        "url": "https://aceattorney.fandom.com/wiki/Orla_Shipley"
+        "url": "https://aceattorney.fandom.com/wiki/Orla_Shipley",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5808,7 +5985,8 @@
         ],
         "debut": "Farewell, My Turnabout",
         "name": "Shoe",
-        "url": "https://aceattorney.fandom.com/wiki/Shoe"
+        "url": "https://aceattorney.fandom.com/wiki/Shoe",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5822,12 +6000,13 @@
         "eyes": "Green",
         "hair": "Platinum blond",
         "french": null,
-        "debut": "The Monstrous Turnabout   The Adventure of the Unbreakable Speckled Band",
+        "debut": "The Adventure of the Unbreakable Speckled Band",
         "name": "Herlock Sholmes",
         "url": "https://aceattorney.fandom.com/wiki/Herlock_Sholmes",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/b/bd/Herlock_Sholmes_mugshot.png/revision/latest?cb=20210818022714",
-        "age": "34"
+        "age": "34",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5845,7 +6024,8 @@
         ],
         "debut": "Turnabout Legacy",
         "name": "Ian Sideman",
-        "url": "https://aceattorney.fandom.com/wiki/Ian_Sideman"
+        "url": "https://aceattorney.fandom.com/wiki/Ian_Sideman",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5864,7 +6044,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Courtney_Sithe",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/a/a2/Sithe.png/revision/latest?cb=20210818022634",
-        "age": "39"
+        "age": "39",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5883,7 +6064,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Nash_Skulkin",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/e/e0/Nemmy_Tinpillar_mugshot.png/revision/latest?cb=20210818023330",
-        "age": "26"
+        "age": "26",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5902,7 +6084,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Ringo_Skulkin",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/d/d7/Tully_Tinpillar_mugshot.png/revision/latest?cb=20210818022336",
-        "age": "27"
+        "age": "27",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5942,7 +6125,7 @@
             "Head prosecutor"
         ],
         "birthday": "1987-1988",
-        "status": "Arrested[1]",
+        "status": "Arrested",
         "eyes": "Teal",
         "hair": "Light brown",
         "french": [
@@ -5972,7 +6155,8 @@
         ],
         "debut": "Turnabout Reclaimed",
         "name": "Sniper",
-        "url": "https://aceattorney.fandom.com/wiki/Sniper"
+        "url": "https://aceattorney.fandom.com/wiki/Sniper",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -5988,7 +6172,8 @@
         "french": null,
         "debut": "Turnabout Corner",
         "name": "Spoon",
-        "url": "https://aceattorney.fandom.com/wiki/Spoon"
+        "url": "https://aceattorney.fandom.com/wiki/Spoon",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6009,7 +6194,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Selena_Sprocket",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/e/ee/Hikari.png/revision/latest?cb=20241009223555",
-        "age": "25"
+        "age": "25",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6031,7 +6217,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Sorin_Sprocket",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/6/65/Raitoshot.png/revision/latest?cb=20241009223538",
-        "age": "24"
+        "age": "24",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6053,7 +6240,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Solomon_Starbuck",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/b/bc/Taiyou_Hoshinari_mugshot.png/revision/latest?cb=20241009013235",
-        "age": "33"
+        "age": "33",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6066,7 +6254,7 @@
         ],
         "birthday": "1986",
         "status": "Alive",
-        "eyes": "Gray, with light gray-colored contact lens in right eye[1]",
+        "eyes": "Gray, with light gray-colored contact lens in right eye",
         "hair": "Dirty blonde",
         "french": [
             "Angélique Starr"
@@ -6141,7 +6329,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Bif_Strogenov",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/4/42/Mitrov_Stroganov_mugshot.png/revision/latest?cb=20210818023408",
-        "age": "37"
+        "age": "37",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6157,7 +6346,8 @@
         "french": null,
         "debut": "The Resolve of Ryunosuke Naruhodo",
         "name": "Tchikin Strogenov",
-        "url": "https://aceattorney.fandom.com/wiki/Tchikin_Strogenov"
+        "url": "https://aceattorney.fandom.com/wiki/Tchikin_Strogenov",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6177,7 +6367,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Mael_Stronghart",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/2/2f/Hart_Vortex_mugshot.png/revision/latest?cb=20210818024047",
-        "age": "53"
+        "age": "53",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6186,7 +6377,7 @@
         "occupation": [
             "Animal trainer"
         ],
-        "birthday": "2004[1]",
+        "birthday": "2004",
         "status": "Deceased",
         "eyes": "Blue",
         "hair": "Dark blue",
@@ -6198,7 +6389,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Azura_Summers",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/0/0f/SuzumiMugshot.png/revision/latest?cb=20241009222826",
-        "age": "Deceased"
+        "age": "Deceased",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6238,7 +6430,8 @@
         ],
         "debut": "The Monstrous Turnabout",
         "name": "Taka",
-        "url": "https://aceattorney.fandom.com/wiki/Taka"
+        "url": "https://aceattorney.fandom.com/wiki/Taka",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6278,7 +6471,8 @@
         ],
         "debut": "The Captive Turnabout",
         "name": "Teddy",
-        "url": "https://aceattorney.fandom.com/wiki/Teddy"
+        "url": "https://aceattorney.fandom.com/wiki/Teddy",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6322,7 +6516,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Damian_Tenma",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/8/8f/DeemonMugshot.png/revision/latest?cb=20241009012118",
-        "age": "45"
+        "age": "45",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6343,7 +6538,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Jinxie_Tenma",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/3/3d/Jinxie_SOJ_HD_Mugshot.png/revision/latest?cb=20241009224509",
-        "age": "16"
+        "age": "16",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6365,7 +6561,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Clay_Terran",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/8/84/Clay_Mugshot.png/revision/latest?cb=20241009013224",
-        "age": "23"
+        "age": "23",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6448,7 +6645,8 @@
         "french": null,
         "debut": "The Return of the Great Departed Soul",
         "name": "Toby",
-        "url": "https://aceattorney.fandom.com/wiki/Toby"
+        "url": "https://aceattorney.fandom.com/wiki/Toby",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6470,7 +6668,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Ted_Tonate",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/6/67/Ted_Tonate_mugshot.png/revision/latest?cb=20241009011719",
-        "age": "42"
+        "age": "42",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6492,7 +6691,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Geiru_Toneido",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/0/00/Puukoshot.PNG/revision/latest?cb=20241009221055",
-        "age": "34"
+        "age": "34",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6513,7 +6713,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Taifu_Toneido",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/a/a5/Rakugomaster.png/revision/latest?cb=20241009221038",
-        "age": "70"
+        "age": "70",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6537,7 +6738,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Uendo_Toneido",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/e/ee/Bifuushot.PNG/revision/latest?cb=20241009221102",
-        "age": "28"
+        "age": "28",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6553,7 +6755,8 @@
         "french": null,
         "debut": "Turnabout Storyteller",
         "name": "Uendo Toneido (former)",
-        "url": "https://aceattorney.fandom.com/wiki/Uendo_Toneido_(former)"
+        "url": "https://aceattorney.fandom.com/wiki/Uendo_Toneido_(former)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6572,7 +6775,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Esmeralda_Tusspells",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/6/6c/Connete.png/revision/latest?cb=20210818024619",
-        "age": "26"
+        "age": "26",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6588,7 +6792,8 @@
         "french": null,
         "debut": "The Monstrous Turnabout",
         "name": "Timothy Twilight",
-        "url": "https://aceattorney.fandom.com/wiki/Timothy_Twilight"
+        "url": "https://aceattorney.fandom.com/wiki/Timothy_Twilight",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6610,7 +6815,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Ahlbi_Ur%27gaid",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/e/e0/Bokuto_Mugshot.png/revision/latest?cb=20241009215553",
-        "age": "9"
+        "age": "9",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6630,7 +6836,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Barok_van_Zieks",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/5/55/Barok_van_Zieks_mugshot.png/revision/latest?cb=20210818024704",
-        "age": "33"
+        "age": "33",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6646,7 +6853,8 @@
         "french": null,
         "debut": "The Return of the Great Departed Soul",
         "name": "Klint van Zieks",
-        "url": "https://aceattorney.fandom.com/wiki/Klint_van_Zieks"
+        "url": "https://aceattorney.fandom.com/wiki/Klint_van_Zieks",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6687,7 +6895,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Venus",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/d/dc/Venus.png/revision/latest?cb=20210818022248",
-        "age": "??"
+        "age": "??",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6703,7 +6912,8 @@
         "french": null,
         "debut": "The Resolve of Ryunosuke Naruhodo",
         "name": "Queen Victoria",
-        "url": "https://aceattorney.fandom.com/wiki/Queen_Victoria"
+        "url": "https://aceattorney.fandom.com/wiki/Queen_Victoria",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6724,7 +6934,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Daley_Vigil",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/1/13/Everydaymittlemont.png/revision/latest?cb=20210818024305",
-        "age": "40"
+        "age": "40",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6743,7 +6954,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Evie_Vigil",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/a/ae/Anna.png/revision/latest?cb=20210818024748",
-        "age": "36"
+        "age": "36",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6775,7 +6987,7 @@
         "occupation": [
             "International prosecutor"
         ],
-        "birthday": "1951-2",
+        "birthday": "1951-1952",
         "status": "Deceased",
         "eyes": "Grey",
         "hair": "Grey",
@@ -6804,7 +7016,8 @@
         "french": null,
         "debut": "The Return of the Great Departed Soul",
         "name": "Wilhelm Gottsreich Sigismond von Ormstein",
-        "url": "https://aceattorney.fandom.com/wiki/Wilhelm_Gottsreich_Sigismond_von_Ormstein"
+        "url": "https://aceattorney.fandom.com/wiki/Wilhelm_Gottsreich_Sigismond_von_Ormstein",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6820,7 +7033,8 @@
         "french": null,
         "debut": "The Adventure of the Clouded Kokoro",
         "name": "Wagahai",
-        "url": "https://aceattorney.fandom.com/wiki/Wagahai"
+        "url": "https://aceattorney.fandom.com/wiki/Wagahai",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6857,7 +7071,8 @@
         "french": null,
         "debut": "Turnabout Trigger",
         "name": "Di-Jun Wang (body double)",
-        "url": "https://aceattorney.fandom.com/wiki/Di-Jun_Wang_(body_double)"
+        "url": "https://aceattorney.fandom.com/wiki/Di-Jun_Wang_(body_double)",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6901,7 +7116,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Bucky_Whet",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/f/f2/Susurumug.PNG/revision/latest?cb=20241009221049",
-        "age": "20"
+        "age": "20",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6941,7 +7157,8 @@
         ],
         "debut": "Turnabout Countdown",
         "name": "Widget",
-        "url": "https://aceattorney.fandom.com/wiki/Widget"
+        "url": "https://aceattorney.fandom.com/wiki/Widget",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6962,7 +7179,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Iris_Wilson",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/c/c1/Iris_Watson_mugshot.png/revision/latest?cb=20210818023853",
-        "age": "10"
+        "age": "10",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6980,7 +7198,8 @@
         "french": null,
         "debut": "The Adventure of the Great Departure",
         "name": "John Wilson",
-        "url": "https://aceattorney.fandom.com/wiki/John_Wilson"
+        "url": "https://aceattorney.fandom.com/wiki/John_Wilson",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -6999,7 +7218,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Pop_Windibank",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/e/e6/Hutch_Windibank_mugshot.png/revision/latest?cb=20210818023858",
-        "age": "48"
+        "age": "48",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -7066,7 +7286,8 @@
         ],
         "debut": "Turnabout Big Top",
         "name": "Benjamin Woodman",
-        "url": "https://aceattorney.fandom.com/wiki/Benjamin_Woodman"
+        "url": "https://aceattorney.fandom.com/wiki/Benjamin_Woodman",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -7090,7 +7311,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Juniper_Woods",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/c/c6/Juniper_Woods_mugshot.PNG/revision/latest?cb=20241009011657",
-        "age": "18"
+        "age": "18",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -7139,7 +7361,8 @@
         "eyes": "Blue",
         "hair": "Brown",
         "french": [
-            "Vérité Wright Vérité Enigmar"
+            "Vérité Wright",
+            "Vérité Enigmar"
         ],
         "debut": "Turnabout Trump",
         "name": "Trucy Wright",
@@ -7168,7 +7391,8 @@
         "url": "https://aceattorney.fandom.com/wiki/Ellen_Wyatt",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/0/06/Ellen_Mugshot.png/revision/latest?cb=20241009223524",
-        "age": "21"
+        "age": "21",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -7186,7 +7410,8 @@
         ],
         "debut": "Turnabout Reminiscence",
         "name": "Cece Yew",
-        "url": "https://aceattorney.fandom.com/wiki/Cece_Yew"
+        "url": "https://aceattorney.fandom.com/wiki/Cece_Yew",
+        "gender": "Unknow"
     },
     {
         "image": [
@@ -7234,6 +7459,7 @@
         "url": "https://aceattorney.fandom.com/wiki/Puhray_Zeh%27lot",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/6/61/Myoumug.png/revision/latest?cb=20241009220646",
-        "age": "21"
+        "age": "21",
+        "gender": "Unknow"
     }
 ]
