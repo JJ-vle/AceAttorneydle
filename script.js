@@ -21,6 +21,7 @@ function createHistoryTable() {
                         <th>Photo</th>
                         <th>Name</th>
                         <th>Status</th>
+                        <th>Gender</th>
                         <th>Birth year</th>
                         <th>Eyes color</th>
                         <th>Hair color</th>
@@ -35,6 +36,8 @@ function createHistoryTable() {
 createHistoryTable()
 
 
+let selectedGroups;
+
 // Fonction pour filtrer et afficher les suggestions
 // Fonction pour filtrer et afficher les suggestions
 inputField.addEventListener("input", function () {
@@ -47,11 +50,6 @@ inputField.addEventListener("input", function () {
         validateButton.disabled = true;
         return;
     }
-
-    // Récupérer les groupes sélectionnés
-    const selectedGroups = Array.from(checkboxes)
-        .filter(checkbox => checkbox.checked)
-        .map(checkbox => checkbox.value);
 
     // Filtrer les personnages en fonction des groupes cochés
     const filteredCharacters = characterData.filter(c => {
@@ -86,7 +84,9 @@ inputField.addEventListener("input", function () {
             const listItem = document.createElement("li");
             listItem.dataset.index = index;
 
-            let imageUrl = character.image?.[0]?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
+            let mugshotUrl = character.mugshot?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
+            let imageUrl = mugshotUrl || character.image?.[0]?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
+            //let imageUrl = character.image?.[0]?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
             
             listItem.innerHTML = `
                 <img src="${imageUrl}" alt="${character.name}" width="30" height="30" class="suggestion-img">
@@ -220,6 +220,7 @@ function addToHistory(guessedCharacter, result) {
         <td><img src="${imageUrl}" alt="${guessedCharacter.name}" width="100"></td>
         ${compareInfo(guessedCharacter.name, targetCharacter.name)}
         ${compareInfo(guessedCharacter.status, targetCharacter.status)}
+        ${compareInfo(guessedCharacter.gender, targetCharacter.gender)}
         ${compareBirthday(guessedCharacter.birthday, targetCharacter.birthday)}
         ${compareInfo(guessedCharacter.eyes, targetCharacter.eyes)}
         ${compareInfo(guessedCharacter.hair, targetCharacter.hair)}
@@ -297,9 +298,6 @@ function compareBirthday(guessBirthday, targetBirthday) {
 
     return `<td class="${colorClass}">${guessBirthday} ${arrowHint}</td>`;
 }
-
-
-
 
 // Fonction de comparaison des débuts
 function compareDebut(guessDebut, targetDebut) {
@@ -428,11 +426,14 @@ function getInfoByDebut(debut) {
 
 // Récupère la liste des checkboxes et ajoute un écouteur d'événement
 const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']");
-checkboxes.forEach(checkbox => checkbox.addEventListener("change", filterCharacters));
+//checkboxes.forEach(checkbox => checkbox.addEventListener("change", filterCharacters));
+
+const updateButton = document.querySelector("#updateFilters");
+updateButton.addEventListener("click", filterCharacters);
 
 // Fonction pour filtrer les personnages en fonction des groupes cochés
 function filterCharacters() {
-    const selectedGroups = Array.from(checkboxes)
+    selectedGroups = Array.from(checkboxes)
         .filter(checkbox => checkbox.checked)
         .map(checkbox => checkbox.value);
 
@@ -452,7 +453,7 @@ function filterCharacters() {
 
 
 // Charger les données JSON et initialiser le personnage cible
-fetch("resources/data/aceattorneychars.json")
+fetch("resources/data/merged_characters.json")
     .then(response => response.json())
     .then(data => {
         characterData = data;

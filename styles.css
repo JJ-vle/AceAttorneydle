@@ -46,6 +46,7 @@ body {
     background: #ddd; 
 }
 
+/**************************************************/
 
 #history {
     margin-top: 20px;
@@ -133,4 +134,9 @@ img {
     margin-right: 15px;
     margin-bottom: 5px;
     display: inline-block;
+}
+
+#groupFilters button {
+    margin: 10px auto 0;
+    display: block;
 }
