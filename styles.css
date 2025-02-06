@@ -1,4 +1,11 @@
+/* Réinitialisation des bordures pour des éléments spécifiques */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+/* Corps de la page */
 body { 
     font-family: Arial, sans-serif; 
     text-align: center; 
@@ -6,24 +13,116 @@ body {
     background-color: #f4f4f4;
 }
 
-.hidden { 
-    display: none; 
+/* Logo dans l'en-tête */
+#logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 30%;
+    height: auto;
 }
 
-#feedback { 
-    font-size: 20px; 
-    font-weight: bold; 
-    margin-top: 10px; 
+/* Conteneur pour les filtres */
+#groupFilters {
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    padding: 10px;
+    border: 2px solid #328CBD;
+    border-radius: 10px;
+    background-color: #F6F6F6;
 }
 
-.success { 
-    color: green; 
+#groupFilters label {
+    font-size: 16px;
+    color: #328CBD;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    display: inline-block;
 }
 
-.error { 
-    color: red; 
+#groupFilters button {
+    padding: 10px;
+    background-color: #328CBD;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px auto 0;
+    display: block;
 }
 
+#groupFilters button:hover {
+    background-color: #28799D;
+}
+
+/* Section des indices */
+#hints {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.hint {
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+    cursor: not-allowed;
+}
+
+.hint p {
+    color: #328CBD;
+}
+
+.hint-icon {
+    width: 50px;
+    height: 50px;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.hint-icon.active {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.hint-icon.disabled {
+    opacity: 0.5;
+}
+
+/* Détails des indices */
+#hint-details {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #F6F6F6;
+    border: 1px solid #328CBD;
+    border-radius: 10px;
+}
+
+/* Barre de défense (image) */
+#defensebar {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#defensebar img {
+    width: 50%; /* Agrandit l'image à 50% de sa taille d'origine */
+    height: auto;
+    max-width: none;
+    display: inline-block;
+}
+
+/* Entrée de texte pour la devinette */
+#guessInput {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #328CBD;
+    border-radius: 5px;
+    margin: 20px auto;
+    display: block;
+    font-size: 16px;
+}
+
+/* Suggestions de texte */
 #suggestions {
     list-style: none;
     padding: 0;
@@ -47,10 +146,50 @@ body {
     background: #ddd; 
 }
 
-/**************************************************/
+/* Bouton de validation */
+#validateButton {
+    padding: 10px;
+    background-color: #328CBD;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+}
 
+#validateButton:disabled {
+    background-color: #A9A9A9;
+    cursor: not-allowed;
+}
+
+#validateButton:hover:enabled {
+    background-color: #28799D;
+}
+
+/* Retour d'information sur la devinette */
+#feedback {
+    font-size: 20px; 
+    font-weight: bold; 
+    margin-top: 10px; 
+    color: #328CBD;
+}
+
+.success { 
+    color: green; 
+}
+
+.error { 
+    color: red; 
+}
+
+/* Historique des tests */
 #history {
     margin-top: 20px;
+    padding: 10px;
+    background-color: #F6F6F6;
+    border: 1px solid #328CBD;
+    border-radius: 10px;
 }
 
 .history-item {
@@ -97,7 +236,7 @@ body {
     color: black;
 }
 
-
+/* Tableaux */
 table {
     table-layout: fixed;
     width: 100%;
@@ -111,71 +250,15 @@ th, td {
     text-align: center;
     padding: 8px;
     border: 1px solid #ddd;
-    max-width: 150px; /* Ajuste selon tes besoins */
+    max-width: 150px;
 }
 
+/* Images */
 img {
     max-width: 100px;
     height: auto;
 }
 
-#logo {
-    display: block;
-    margin: 0 auto;
-    max-width: 30%;
-    height: auto;
-}
-
-#groupFilters {
-    margin-top: 20px; 
-    margin-bottom: 20px; 
-}
-
-#groupFilters label {
-    margin-right: 15px;
-    margin-bottom: 5px;
-    display: inline-block;
-}
-
-#groupFilters button {
-    margin: 10px auto 0;
-    display: block;
-}
-
-
-.hint {
-    display: inline-block;
-    text-align: center;
-    margin: 10px;
-    cursor: not-allowed;
-}
-
-.hint-icon {
-    width: 50px;
-    height: 50px;
-    opacity: 0.5;
-    transition: opacity 0.3s;
-}
-
-.hint-icon.active {
-    opacity: 1;
-    cursor: pointer;
-}
-
-#hint-details {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-
-#defensebar {
-    text-align: center; /* Centre l'image dans la div */
-}
-
-#defensebar img {
-    width: 50%; /* Agrandit l'image à 300% de sa taille d'origine */
-    height: auto; /* Conserve les proportions de l'image */
-    max-width: none; /* Empêche l'image de se limiter à la taille de son conteneur */
-    display: inline-block; /* Assure que l'image se comporte bien comme un élément en ligne */
+.hidden { 
+    display: none; 
 }
