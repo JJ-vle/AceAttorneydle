@@ -224,16 +224,41 @@ body {
 .correct {
     background-color: #8fda92;
     color: black;
+    position: relative;
 }
 
 .incorrect {
     background-color: #e57373;
     color: black;
+    position: relative;
 }
 
 .partial {
     background-color: #f4c539;
     color: black;
+    position: relative;
+}
+
+.lower::after,
+.bigger::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+}
+
+.lower::after {
+    background-image: url('resources/img/icons/arrow/down.png');
+}
+
+.bigger::after {
+    background-image: url('resources/img/icons/arrow/up.png');
 }
 
 /* Tableaux */

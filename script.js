@@ -283,13 +283,13 @@ function compareBirthday(guessBirthday, targetBirthday) {
         let minTarget = Math.min(...targetYears);
 
         if (minGuessed < minTarget) {
-            arrowHint = "⬆️"; // Trop ancien
+            arrowHint = "bigger"; // Trop ancien
         } else {
-            arrowHint = "⬇️"; // Trop récent
+            arrowHint = "lower"; // Trop récent
         }
     }
 
-    return `<td class="${colorClass}">${guessBirthday} ${arrowHint}</td>`;
+    return `<td class="${colorClass}  ${arrowHint}">${guessBirthday}</td>`;
 }
 
 // Fonction de comparaison des débuts
@@ -338,9 +338,9 @@ function compareDebut(guessDebut, targetDebut) {
 
             // Vérifier si c'est avant ou après dans le même jeu
             if (guessIndex < targetIndex) {
-                arrowHint = "⬆️"; // Flèche vers le haut si c'est avant
+                arrowHint = "bigger"; // Flèche vers le haut si c'est avant
             } else if (guessIndex > targetIndex) {
-                arrowHint = "⬇️"; // Flèche vers le bas si c'est après
+                arrowHint = "lower"; // Flèche vers le bas si c'est après
             }
         } else {
             // Si les deux débuts sont dans des jeux différents, vérifier l'ordre des jeux
@@ -350,13 +350,13 @@ function compareDebut(guessDebut, targetDebut) {
 
             // Vérifier si c'est avant ou après selon l'ordre des jeux
             if (guessGameIndex < targetGameIndex) {
-                arrowHint = "⬆️"; // Flèche vers le haut si le jeu deviné est avant
+                arrowHint = "bigger"; // Flèche vers le haut si le jeu deviné est avant
             } else if (guessGameIndex > targetGameIndex) {
-                arrowHint = "⬇️"; // Flèche vers le bas si le jeu deviné est après
+                arrowHint = "lower"; // Flèche vers le bas si le jeu deviné est après
             }
         }
 
-        return `<td class=${colorclass}>${guessDebut} ${arrowHint}</td>`; // Affiche le résultat avec la flèche
+        return `<td class="${colorclass} ${arrowHint}">${guessDebut}</td>`; // Affiche le résultat avec la flèche
     }
 
     // Si ce n'est pas le même groupe, alors rouge (incorrect)
