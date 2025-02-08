@@ -261,6 +261,8 @@ function compareBirthday(guessBirthday, targetBirthday) {
         if (yearStr.includes("19th")) return [1800];
         if (yearStr.includes("20th")) return [1900];
         if (yearStr.includes("21st")) return [2000];
+        if (yearStr.includes("7th")) return [600];
+        if (yearStr.includes("17th")) return [1600];
 
         let years = yearStr.split("-").map(y => parseInt(y.trim())); // Toujours un tableau
         return years.length > 1 ? years : [years[0]]; // Si une seule année, on la met dans un tableau
@@ -462,6 +464,14 @@ function selectCharacterToFind(){
 
     // Fonction pour filtrer les personnages
     function isValidCharacter(character) {
+
+        if (!character.image || character.image === "N/A" || character.image === "Unknown" || character.image === "Unknow") {
+            return false;
+        }
+        if (character.exception){
+            return true;
+        }
+
         const attributes = [
             character.name,
             character.status,
