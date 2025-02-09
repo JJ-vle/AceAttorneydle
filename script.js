@@ -447,7 +447,7 @@ function filterCharacters() {
 }
 
 // Charger les données JSON et initialiser le personnage cible
-fetch("resources/data/merged_characters.json")
+fetch("resources/data/aceattorneychars.json")
     .then(response => response.json())
     .then(data => {
         characterData = data;
