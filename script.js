@@ -291,7 +291,7 @@ function compareBirthday(guessBirthday, targetBirthday) {
         }
     }
 
-    return `<td class="${colorClass}  ${arrowHint}">${guessBirthday}</td>`;
+    return `<td class="${colorClass} ${arrowHint}">${guessBirthday}</td>`;
 }
 
 // Fonction de comparaison des débuts

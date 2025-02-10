@@ -254,11 +254,11 @@ body {
 }
 
 .lower::after {
-    background-image: url('resources/img/icons/arrow/down.png');
+    background-image: url('../resources/img/icons/arrow/down.png');
 }
 
 .bigger::after {
-    background-image: url('resources/img/icons/arrow/up.png');
+    background-image: url('../resources/img/icons/arrow/up.png');
 }
 
 /* Tableaux */
