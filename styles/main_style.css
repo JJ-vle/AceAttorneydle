@@ -1,0 +1,94 @@
+@font-face {
+    font-family: 'Cassia';
+    src: url('../resources/fonts/Cassia.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    color: white;
+    font-family: 'Cassia', serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: yop;
+    height: 100vh;
+    position: relative;
+    overflow: hidden; /* Prevents scrolling issues */
+}
+
+/* Background Layer */
+.background-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../resources/img/court.webp') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(8px); /* Blurs only this div */
+    z-index: -1; /* Sends it behind content */
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+#logo {
+    max-width: 700px;
+    height: auto;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 100%; /* Ensure buttons align properly */
+}
+
+button {
+    font-family: 'Cassia', serif;
+    font-size: 38px; /* Bigger text */
+    color: white;
+    border: 3px solid rgb(255, 255, 255);
+    padding: 20px 0; /* Vertical padding */
+    margin: 5;
+    width: 300px; /* Fixed width for uniform size */
+    cursor: pointer;
+    box-shadow: 3px 3px 0px black;
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+    text-align: center;
+}
+
+/* Apply Halftone Pattern */
+button.halftone {
+    background-image: 
+        radial-gradient(circle at center, #2781b2 0.25rem, transparent 0), /* Dots with transparent middle */
+        radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0); /* Color gradient */
+    background-size: 1.3rem 1.3rem; /* Dot size */
+    background-position: 0 0, 0.65rem 0.65rem; /* Adjust dot positioning */
+    background-blend-mode: normal; /* No blending, just stacking layers */
+    position: relative; /* Ensure the button is layered correctly */
+}
+
+
+button:hover {
+    box-shadow: 0 0 0 6px #ffc31d; 
+}
+
+button:active {
+    transform: scale(0.95);
+    box-shadow: 1px 1px 0px black;
+}
+
+a {
+    text-decoration: none;
+    width: 100%; /* Ensure buttons align properly */
+    display: flex;
+    justify-content: center;
+}
+
