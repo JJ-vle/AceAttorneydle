@@ -1,9 +1,23 @@
+.background-blur {
+    position: fixed; /* Le fond reste fixe pendant le défilement */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../resources/img/wright_law_office.png') no-repeat center center;
+    background-size: cover;
+    filter: blur(8px); /* Applique un flou */
+    z-index: -1; /* Met le fond derrière le contenu */
+}
+
+
 /* Réinitialisation des bordures pour des éléments spécifiques */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 
 /* Corps de la page */
 body { 
@@ -55,18 +69,85 @@ body {
 }
 
 /* Section des indices */
+/*
 #hints {
     display: flex;
     justify-content: space-around;
     margin: 20px;
 }
+*/
+
+#hints {
+    background-color: white; /* Fond blanc */
+    padding: 20px;
+    position: relative;
+    border: 5px solid #328CBD; /* Bordure plus fine */
+    outline: 5px solid white; /* Bordure blanche interne */
+    
+    max-width: 600px; /* Limite la largeur */
+    width: fit-content; /* S'ajuste au contenu sans dépasser max-width */
+    margin: 0 auto; /* Centre le bloc */
+}
+
+
+/* Coins bleus */
+#hints::before,
+#hints::after,
+#hints .corner-top-right,
+#hints .corner-bottom-left {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 7px solid #328CBD; /* Coins bleus */
+    margin: 5px; /* Espace vide entre les coins et les bordures */
+}
+
+/* Coin supérieur gauche */
+#hints::before {
+    top: -25px;
+    left: -25px;
+    border-right: none;
+    border-bottom: none;
+}
+
+/* Coin supérieur droit */
+#hints .corner-top-right {
+    top: -25px;
+    right: -25px;
+    border-left: none;
+    border-bottom: none;
+}
+
+/* Coin inférieur gauche */
+#hints .corner-bottom-left {
+    bottom: -25px;
+    left: -25px;
+    border-right: none;
+    border-top: none;
+}
+
+/* Coin inférieur droit */
+#hints::after {
+    bottom: -25px;
+    right: -25px;
+    border-left: none;
+    border-top: none;
+}
+
+
 
 .hint {
     display: inline-block;
     text-align: center;
     margin: 10px;
     cursor: not-allowed;
+    width: 150px;  /* Ajuste la largeur au contenu */
+    max-width: 150px;  /* Empêche que ce soit trop large */
+    padding: 5px;  /* Ajoute un peu d'espace pour éviter que le texte touche les bords */
+    word-wrap: break-word;  /* Permet au texte de passer à la ligne si besoin */
 }
+
 
 .hint p {
     color: #328CBD;
@@ -88,15 +169,88 @@ body {
     opacity: 0.5;
 }
 
-/* Détails des indices */
+
+/* Cache le cadre par défaut */
 #hint-details {
-    margin-top: 20px;
+    display: none; /* Caché par défaut */
+    width: 100%;
+    max-width: 500px;
+    /*border-radius: 10px;*/
+    overflow: hidden;
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);*/
+    margin: 20px auto;
+    border: 3px solid #2781b2; /* Bordure bleue */
+    background-color: white;
+}
+
+/* Style de l'en-tête */
+#hint-details-header {
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    background-image: 
+        radial-gradient(circle at center, #2781b2 0.25rem, transparent 0),
+        radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0);
+    background-size: 1.3rem 1.3rem;
+    background-position: 0 0, 0.65rem 0.65rem;
+    background-blend-mode: normal;
+    border-bottom: 3px solid #2781b2;
+}
+
+/* Style du contenu */
+#hint-details-content {
+    background-color: white;
+    padding: 15px;
+    font-size: 1rem;
+    color: #333;
+    min-height: 50px;
+}
+
+/* Style des images */
+.hint-image {
+    filter: brightness(0);
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+
+/* Détails des indices */
+
+#a-def {
+    width: 100%; /* Prend toute la largeur */
+    min-height: 100px; /* Hauteur minimale */
+    margin: 20px auto; 
     font-size: 18px;
     font-weight: bold;
-    background-color: #F6F6F6;
-    border: 1px solid #328CBD;
-    border-radius: 10px;
+    color: #F6F6F6;
+    text-align: center;
+    border-top: 5px solid #F6F6F6; /* Bordure du haut plus fine */
+    border-bottom: 10px solid #F6F6F6; /* Bordure du bas plus épaisse */
+    border-radius: 0; /* Pas de bordures arrondies sur les côtés */
+
+    background-image: 
+        radial-gradient(circle at center, #212839 0.25rem, transparent 0),
+        radial-gradient(circle at center, #212839 0.25rem, #081021 0);
+    background-size: 1.3rem 1.3rem;
+    background-position: 0 0, 0.65rem 0.65rem;
+    background-blend-mode: normal;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden; /* Caché par défaut */
 }
+
+/* Afficher uniquement si la div contient du texte */
+#a-def:not(:empty) {
+    visibility: visible;
+}
+
 
 /* Barre de défense (image) */
 #defensebar {

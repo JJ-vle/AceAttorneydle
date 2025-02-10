@@ -499,9 +499,9 @@ function selectCharacterToFind(){
         //targetCharacter = data.find(character => character.name === "Yanni Yogi");
 
         hints = {
-            game: { icon: document.querySelector("#hint-game .hint-icon"), text: getInfoByDebut(targetCharacter.debut).game },
-            occupation: { icon: document.querySelector("#hint-occupation .hint-icon"), text: targetCharacter.occupation },
-            figure: { icon: document.querySelector("#hint-figure .hint-icon"), image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
+            game: { icon: document.querySelector("#hint-game .hint-icon"), title: "Game", text: getInfoByDebut(targetCharacter.debut).game },
+            occupation: { icon: document.querySelector("#hint-occupation .hint-icon"), title: "Occupation", text: targetCharacter.occupation },
+            figure: { icon: document.querySelector("#hint-figure .hint-icon"), title: "Figure", image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
         };
 
         console.log("Character to find :", targetCharacter.name);
@@ -511,60 +511,122 @@ function selectCharacterToFind(){
 }
 
 const hintDetails = document.getElementById("hint-details");
+const hintHeader = document.getElementById("hint-details-header");
+const hintContent = document.getElementById("hint-details-content");
+
+// Fonction pour afficher le cadre avec un titre spécifique
+function showHintContainer(title) {
+    hintDetails.style.display = "block"; // Affiche le cadre
+    hintHeader.textContent = title || "Hint"; // Définit le titre avec la valeur donnée
+}
+
+// Fonction pour ajouter un texte
+function addHint(title, text) {
+    if (!text) return;
+    showHintContainer(title);
+
+    const hintElement = document.createElement("p");
+    hintElement.textContent = text;
+    hintContent.appendChild(hintElement);
+}
+
+// Fonction pour ajouter une image
+function addHintImage(title, imgSrc) {
+    if (!imgSrc) return;
+    showHintContainer(title);
+
+    const hintElement = document.createElement("img");
+    hintElement.src = imgSrc;
+    hintElement.alt = "Figure";
+    hintElement.classList.add("hint-image");
+
+    hintContent.appendChild(hintElement);
+}
+
+// Fonction pour vider les hints et cacher le cadre si vide
+function clearHints() {
+    hintContent.innerHTML = "";
+    hintDetails.style.display = "none"; // Cache le cadre si plus de contenu
+}
+
+
+// Variable pour suivre le hint actuellement affiché
+let currentHint = null;
 
 function unlockHint(hint) {
     hints[hint].icon.classList.add("active");
     hints[hint].icon.classList.remove("disabled");
     hints[hint].icon.style.cursor = "pointer";
+
+    // On enlève tous les anciens écouteurs pour éviter la duplication
+    hints[hint].icon.removeEventListener("click", toggleHint);
     hints[hint].icon.addEventListener("click", function () {
-        clearHints();
-        if(hints[hint].text){
-           addHint(hints[hint].text);
-        }
-        if(hints[hint].image){
-            addHintImage(hints[hint].image);
-        }
+        toggleHint(hint);
     });
 }
 
-function clearHints() {
-    hintDetails.innerHTML = '';
+function toggleHint(hint) {
+    // Si on clique sur le même hint, on le cache
+    if (currentHint === hint) {
+        clearHints();
+        currentHint = null;
+    } else {
+        // Sinon, on change le hint affiché
+        clearHints();
+        if (hints[hint].text) {
+            addHint(hints[hint].title, hints[hint].text);
+        }
+        if (hints[hint].image) {
+            addHintImage(hints[hint].title, hints[hint].image);
+        }
+        currentHint = hint; // Met à jour le hint affiché
+    }
 }
 
-function addHint(text) {
-    const hintElement = document.createElement("p");
-    hintElement.textContent = text;
-    hintDetails.appendChild(hintElement);
-}
-function addHintImage(imgSrc) {
-    const hintElement = document.createElement("img");
-    hintElement.src = imgSrc;
-    hintElement.alt = "Silhouette du personnage";
-    
-    // Applique un filtre noir complet
-    hintElement.style.filter = "brightness(0)";
-    hintElement.style.height = "auto";
-    hintElement.style.display = "block";
-    hintElement.style.margin = "10px auto"; // Centre l'image
 
-    hintDetails.appendChild(hintElement);
+
+
+
+
+const hintCounts = {
+    game: { tries: 3, element: document.querySelector("#hint-game .hint-count") },
+    occupation: { tries: 8, element: document.querySelector("#hint-occupation .hint-count") },
+    figure: { tries: 15, element: document.querySelector("#hint-figure .hint-count") }
+};
+
+
+// Fonction pour mettre à jour les "hint-counts"
+function updateHintCounts() {
+    for (let key in hintCounts) {
+        let remainingTries = hintCounts[key].tries - numTries;
+        if (remainingTries > 0) {
+            hintCounts[key].element.textContent = `in ${remainingTries} tries`;
+        } else {
+            hintCounts[key].element.textContent = "Unlocked!";
+        }
+    }
 }
 
-function hintChecker(){
-    if(numTries == 3){
+
+function hintChecker() {
+    if (numTries === 3) {
         unlockHint("game");
     }
-    if(numTries == 8){
-        unlockHint("occupation")
+    if (numTries === 8) {
+        unlockHint("occupation");
     }
-    if(numTries == 15){
+    if (numTries === 15) {
         unlockHint("figure");
     }
+    updateHintCounts(); // Met à jour l'affichage des essais restants
 }
+
+// Initialisation des textes au début de la partie
+updateHintCounts();
 
 function verifyTries(){
     hintChecker();
-
+/*
     // Vérifie si numTries est un multiple de 2
     if(numTries % 2 === 0){
         // Calcul du niveau de défense (10 - numTries / 2)
@@ -586,7 +648,7 @@ function verifyTries(){
 
         // Ajoute l'image à la div
         document.getElementById("defensebar").appendChild(img);
-    }
+    }*/
 }
 
 
