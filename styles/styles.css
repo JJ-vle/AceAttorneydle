@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Cassia';
+    src: url('../resources/fonts/Cassia.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 /* Réinitialisation des bordures pour des éléments spécifiques */
 * {
     margin: 0;
@@ -7,7 +15,7 @@
 
 /* Corps de la page */
 body { 
-    font-family: Arial, sans-serif; 
+    font-family: 'Cassia', serif;
     text-align: center; 
     padding: 20px; 
     background-color: #f4f4f4;
@@ -105,7 +113,7 @@ body {
 }
 
 #defensebar img {
-    width: 50%; /* Agrandit l'image à 50% de sa taille d'origine */
+    width: 20%; /* Agrandit l'image à 50% de sa taille d'origine */
     height: auto;
     max-width: none;
     display: inline-block;
@@ -260,7 +268,6 @@ body {
 .bigger::after {
     background-image: url('resources/img/icons/arrow/up.png');
 }
-
 /* Tableaux */
 table {
     table-layout: fixed;

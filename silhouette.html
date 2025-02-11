@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ace Attorneydle</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+    <header>
+        <a href="main_page.html">
+            <img src="resources/img/AceAttorneydleLogo.png" alt="AceAttorneydle Logo" id="logo">
+        </a>
+    </header>
+
+    <div id="groupFilters">
+        <label><input type="checkbox" value="Ace Attorney" checked> Ace Attorney Main Serie</label>
+        <label><input type="checkbox" value="Investigation" > Investigation</label>
+        <label><input type="checkbox" value="The Great Ace Attorney" > The Great Ace Attorney</label>
+        <!--<label><input type="checkbox" value="Other"> Other</label>-->
+        <button id="updateFilters"> Update filters </button>
+    </div>
+    
+    <div id="defensebar">
+        <img src="resources/img/icons/defensebar/defensebar10.png" alt="Figure">
+    </div>
+
+    <div id="silhouette"></div>
+
+    <p>Enter the name of the character you think you've found :</p>
+
+    <input type="text" id="guessInput" placeholder="Enter a name..." autocomplete="off" />
+    <ul id="suggestions"></ul>
+    <button id="validateButton" disabled>Valider</button>
+
+    <p id="feedback"></p>
+
+    <!--<h2>History of tests :</h2>-->
+    <div id="history"></div>
+        
+    <script src="silhouette.js"></script>
+
+</body>
+</html>
