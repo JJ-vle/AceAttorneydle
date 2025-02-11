@@ -4,12 +4,19 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('../resources/img/wright_law_office.png') no-repeat center center;
-    background-size: cover;
     filter: blur(8px); /* Applique un flou */
     z-index: -1; /* Met le fond derrière le contenu */
 }
 
+#office{
+    background: url('../resources/img/wright_law_office.png') no-repeat center center;
+    background-size: cover;
+}
+
+#detention{
+    background: url('../resources/img/detention.jpg') no-repeat center center;
+    background-size: cover;
+}
 
 @font-face {
     font-family: 'Cassia';
