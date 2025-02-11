@@ -1,3 +1,16 @@
+.background-blur {
+    position: fixed; /* Le fond reste fixe pendant le défilement */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../resources/img/wright_law_office.png') no-repeat center center;
+    background-size: cover;
+    filter: blur(8px); /* Applique un flou */
+    z-index: -1; /* Met le fond derrière le contenu */
+}
+
+
 @font-face {
     font-family: 'Cassia';
     src: url('../resources/fonts/Cassia.ttf') format('truetype');
@@ -13,12 +26,17 @@
     box-sizing: border-box;
 }
 
+
 /* Corps de la page */
 body { 
     font-family: 'Cassia', serif;
     text-align: center; 
     padding: 20px; 
     background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column; /* Aligne les éléments verticalement */
+    align-items: center; /* Centre les éléments horizontalement */
+    gap: 40px; /* Espace de 20px entre chaque élément */
 }
 
 /* Logo dans l'en-tête */
@@ -29,52 +47,156 @@ body {
     height: auto;
 }
 
+
+/******************************************************************************************/
+
+
 /* Conteneur pour les filtres */
 #groupFilters {
-    margin-top: 20px; 
-    margin-bottom: 20px; 
-    padding: 10px;
-    border: 2px solid #328CBD;
-    border-radius: 10px;
-    background-color: #F6F6F6;
+    margin: 20px auto; /* Centre la div horizontalement et ajoute de l'espace en haut et en bas */
+    padding: 20px;
+    border: 5px solid white; /* Bordure blanche */
+    border-radius: 10px; /* Coins arrondis */
+    max-width: 600px;
+    background-image: 
+        radial-gradient(circle at center, #2781b2 0.25rem, transparent 0), /* Points avec un centre transparent */
+        radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0); /* Dégradé de couleur */
+    background-size: 1.3rem 1.3rem; /* Taille des points */
+    background-position: 0 0, 0.65rem 0.65rem; /* Positionnement des points */
+    background-blend-mode: normal; /* Pas de mélange, superposition des couches */
+    position: relative; /* Assure un positionnement correct */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
+/* Cacher les checkboxes */
+#groupFilters input[type="checkbox"] {
+    display: none; /* Cache les checkboxes */
+}
+
+/* Style des labels */
 #groupFilters label {
     font-size: 16px;
-    color: #328CBD;
+    color: white; /* Texte en blanc */
     margin-right: 15px;
-    margin-bottom: 5px;
+    margin-bottom: 15px; /* Espacement entre les éléments */
     display: inline-block;
+    font-weight: bold; /* Texte en gras */
+    cursor: pointer; /* Curseur pointer pour indiquer que c'est cliquable */
+    padding: 10px; /* Ajoute un peu de padding pour un meilleur espacement */
+    transition: color 0.3s ease; /* Transition fluide pour la couleur */
 }
 
+/* Changement de couleur des labels lorsque la checkbox est cochée */
+#groupFilters label:has(input[type="checkbox"]:checked) {
+    color: #ffc31d;
+    font-weight: bold; /* Texte en gras */
+    text-decoration: underline; /* Texte souligné */
+}
+
+/* Style du bouton */
 #groupFilters button {
-    padding: 10px;
-    background-color: #328CBD;
+    padding: 10px 20px;
+    background-color: #28799D;
     color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    margin: 10px auto 0;
+    margin: 20px auto 0; /* Espacement avec les éléments au-dessus */
     display: block;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Transition fluide */
+    border: 2px solid white;
 }
 
 #groupFilters button:hover {
-    background-color: #28799D;
+    box-shadow: 0 0 0 6px #ffc31d; 
 }
 
+#groupFilters button:disabled {
+    background-color: #A9A9A9;
+    cursor: not-allowed;
+}
+
+
 /* Section des indices */
+/*
 #hints {
     display: flex;
     justify-content: space-around;
     margin: 20px;
 }
+*/
+
+#hints {
+    background-color: white; /* Fond blanc */
+    padding: 20px;
+    position: relative;
+    border: 5px solid #328CBD; /* Bordure plus fine */
+    outline: 5px solid white; /* Bordure blanche interne */
+    
+    max-width: 600px; /* Limite la largeur */
+    width: fit-content; /* S'ajuste au contenu sans dépasser max-width */
+    margin: 0 auto; /* Centre le bloc */
+}
+
+
+/* Coins bleus */
+#hints::before,
+#hints::after,
+#hints .corner-top-right,
+#hints .corner-bottom-left {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 7px solid #328CBD; /* Coins bleus */
+    margin: 5px; /* Espace vide entre les coins et les bordures */
+}
+
+/* Coin supérieur gauche */
+#hints::before {
+    top: -25px;
+    left: -25px;
+    border-right: none;
+    border-bottom: none;
+}
+
+/* Coin supérieur droit */
+#hints .corner-top-right {
+    top: -25px;
+    right: -25px;
+    border-left: none;
+    border-bottom: none;
+}
+
+/* Coin inférieur gauche */
+#hints .corner-bottom-left {
+    bottom: -25px;
+    left: -25px;
+    border-right: none;
+    border-top: none;
+}
+
+/* Coin inférieur droit */
+#hints::after {
+    bottom: -25px;
+    right: -25px;
+    border-left: none;
+    border-top: none;
+}
+
+
 
 .hint {
     display: inline-block;
     text-align: center;
     margin: 10px;
     cursor: not-allowed;
+    width: 150px;  /* Ajuste la largeur au contenu */
+    max-width: 150px;  /* Empêche que ce soit trop large */
+    padding: 5px;  /* Ajoute un peu d'espace pour éviter que le texte touche les bords */
+    word-wrap: break-word;  /* Permet au texte de passer à la ligne si besoin */
 }
+
 
 .hint p {
     color: #328CBD;
@@ -96,15 +218,88 @@ body {
     opacity: 0.5;
 }
 
-/* Détails des indices */
+
+/* Cache le cadre par défaut */
 #hint-details {
-    margin-top: 20px;
+    display: none; /* Caché par défaut */
+    width: 100%;
+    max-width: 500px;
+    /*border-radius: 10px;*/
+    overflow: hidden;
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);*/
+    margin: 20px auto;
+    border: 3px solid #2781b2; /* Bordure bleue */
+    background-color: white;
+}
+
+/* Style de l'en-tête */
+#hint-details-header {
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    background-image: 
+        radial-gradient(circle at center, #2781b2 0.25rem, transparent 0),
+        radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0);
+    background-size: 1.3rem 1.3rem;
+    background-position: 0 0, 0.65rem 0.65rem;
+    background-blend-mode: normal;
+    border-bottom: 3px solid #2781b2;
+}
+
+/* Style du contenu */
+#hint-details-content {
+    background-color: white;
+    padding: 15px;
+    font-size: 1rem;
+    color: #333;
+    min-height: 50px;
+}
+
+/* Style des images */
+.hint-image {
+    filter: brightness(0);
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+
+/* Détails des indices */
+
+#a-def {
+    width: 100%; /* Prend toute la largeur */
+    min-height: 100px; /* Hauteur minimale */
+    margin: 20px auto; 
     font-size: 18px;
     font-weight: bold;
-    background-color: #F6F6F6;
-    border: 1px solid #328CBD;
-    border-radius: 10px;
+    color: #F6F6F6;
+    text-align: center;
+    border-top: 5px solid #F6F6F6; /* Bordure du haut plus fine */
+    border-bottom: 10px solid #F6F6F6; /* Bordure du bas plus épaisse */
+    border-radius: 0; /* Pas de bordures arrondies sur les côtés */
+
+    background-image: 
+        radial-gradient(circle at center, #212839 0.25rem, transparent 0),
+        radial-gradient(circle at center, #212839 0.25rem, #081021 0);
+    background-size: 1.3rem 1.3rem;
+    background-position: 0 0, 0.65rem 0.65rem;
+    background-blend-mode: normal;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden; /* Caché par défaut */
 }
+
+/* Afficher uniquement si la div contient du texte */
+#a-def:not(:empty) {
+    visibility: visible;
+}
+
 
 /* Barre de défense (image) */
 #defensebar {
@@ -119,51 +314,44 @@ body {
     display: inline-block;
 }
 
+/*******************/
+
+
+/* Conteneur principal de la guessbar */
+#guessbar {
+    position: relative; /* Permet de positionner les suggestions par rapport à ce conteneur */
+    width: 450px; /* Largeur initiale plus grande */
+    margin: 0 auto; /* Centrer la guessbar */
+}
+
+/* Conteneur pour l'input et le bouton */
+#guessbarinputs {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espace entre les éléments */
+    width: 100%; /* Prend toute la largeur du parent */
+    transition: width 0.5s ease; /* Animation fluide pour la largeur */
+}
+
 /* Entrée de texte pour la devinette */
 #guessInput {
-    width: 80%;
+    flex-grow: 1; /* Prend tout l'espace disponible */
     padding: 10px;
     border: 1px solid #328CBD;
     border-radius: 5px;
-    margin: 20px auto;
-    display: block;
     font-size: 16px;
-}
-
-/* Suggestions de texte */
-#suggestions {
-    list-style: none;
-    padding: 0;
-    width: 50%;
-    margin: 5px auto;
-    border: 1px solid #ddd;
-    background: white;
-    max-height: 150px;
-    overflow-y: auto;
-    display: none; /* Caché par défaut */
-}
-
-#suggestions li {
-    padding: 8px;
-    cursor: pointer;
-    border-bottom: 1px solid #eee;
-}
-
-#suggestions li:hover, 
-#suggestions li.selected { 
-    background: #ddd; 
 }
 
 /* Bouton de validation */
 #validateButton {
-    padding: 10px;
+    padding: 10px 20px;
     background-color: #328CBD;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    display: block;
-    margin: 20px auto;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 #validateButton:disabled {
@@ -174,6 +362,57 @@ body {
 #validateButton:hover:enabled {
     background-color: #28799D;
 }
+
+/* Liste des suggestions */
+#suggestions {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Supprime la marge par défaut */
+    width: 100%; /* Même largeur que #guessbarinputs */
+    border: 1px solid #ddd;
+    background: white;
+    max-height: 250px; /* Hauteur maximale plus grande */
+    overflow-y: auto;
+    display: none; /* Caché par défaut */
+    position: absolute; /* Position absolue pour superposer */
+    top: 100%; /* Positionne la liste juste en dessous de #guessbarinputs */
+    left: 0;
+    z-index: 1000; /* Assure que la liste est au-dessus des autres éléments */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour un effet de superposition */
+}
+
+/* Éléments de la liste des suggestions */
+#suggestions li {
+    padding: 15px; /* Padding plus grand pour plus d'espace */
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    font-size: 18px; /* Taille de police plus grande */
+    height: 50px; /* Hauteur fixe pour chaque élément */
+    display: flex;
+    align-items: center; /* Centre le texte verticalement */
+    text-align: left; /* Alignement du texte à gauche */
+    gap: 15px; /* Espace entre l'image et le texte */
+}
+
+/* Style de l'image dans les suggestions */
+#suggestions li img {
+    width: 30px; /* Taille de l'image */
+    height: 30px; /* Taille de l'image */
+}
+
+#suggestions li:hover, 
+#suggestions li.selected { 
+    background-image: 
+        radial-gradient(circle at center, #2781b2 0.25rem, transparent 0), /* Dots with transparent middle */
+        radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0); /* Color gradient */
+    background-size: 1.3rem 1.3rem; /* Dot size */
+    background-position: 0 0, 0.65rem 0.65rem; /* Adjust dot positioning */
+    background-blend-mode: normal; /* No blending, just stacking layers */
+    position: relative; /* Ensure the button is layered correctly */
+    color: white;
+}
+
+/*******************/
 
 /* Retour d'information sur la devinette */
 #feedback {
@@ -262,11 +501,11 @@ body {
 }
 
 .lower::after {
-    background-image: url('resources/img/icons/arrow/down.png');
+    background-image: url('../resources/img/icons/arrow/down.png');
 }
 
 .bigger::after {
-    background-image: url('resources/img/icons/arrow/up.png');
+    background-image: url('../resources/img/icons/arrow/up.png');
 }
 /* Tableaux */
 table {

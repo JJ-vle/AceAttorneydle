@@ -8,6 +8,8 @@
 </head>
 <body>
 
+    <div class="background-blur"></div>
+
     <header>
         <a href="main_page.html">
             <img src="resources/img/AceAttorneydleLogo.png" alt="AceAttorneydle Logo" id="logo">
@@ -16,39 +18,52 @@
 
     <div id="groupFilters">
         <label><input type="checkbox" value="Ace Attorney" checked> Ace Attorney Main Serie</label>
-        <label><input type="checkbox" value="Investigation" > Investigation</label>
-        <label><input type="checkbox" value="The Great Ace Attorney" > The Great Ace Attorney</label>
+        <label><input type="checkbox" value="Investigation"> Investigation</label>
+        <label><input type="checkbox" value="The Great Ace Attorney"> The Great Ace Attorney</label>
         <!--<label><input type="checkbox" value="Other"> Other</label>-->
-        <button id="updateFilters"> Update filters </button>
+        <button id="updateFilters">Update filters</button>
     </div>
 
     <div id="hints">
         <div class="hint" id="hint-game">
-            <img src="resources/img/icons/realization.png" class="hint-icon disabled" alt="Game">
+            <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Game">
             <p>Game</p>
+            <p class="hint-count">in X try</p>
         </div>
         <div class="hint" id="hint-occupation">
-            <img src="resources/img/icons/screenshake.png" class="hint-icon disabled" alt="Occupation">
+            <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Occupation">
             <p>Occupation</p>
+            <p class="hint-count">in X try</p>
         </div>
         <div class="hint" id="hint-figure">
-            <img src="resources/img/icons/pair_button.png" class="hint-icon disabled" alt="Figure">
+            <img src="resources/img/icons/Black_Psyche-Lock.png" class="hint-icon disabled" alt="Figure">
             <p>Figure</p>
+            <p class="hint-count">in X try</p>
+        </div>
+        <div id="hint-details">
+            <div id="hint-details-header"></div>
+
+            <div id="hint-details-content"></div>
         </div>
     </div>
     
-    <div id="hint-details"></div>
     
+    <!--
     <div id="defensebar">
         <img src="resources/img/icons/defensebar/defensebar10.png" alt="Figure">
     </div>
+    -->
 
-    <p>Enter the name of the character you think you've found :</p>
-
-    <input type="text" id="guessInput" placeholder="Enter a name..." autocomplete="off" />
-    <ul id="suggestions"></ul>
-    <button id="validateButton" disabled>Valider</button>
-
+    <!--
+    <div id="a-def"></div>
+    -->
+    <div id="guessbar">
+        <div id="guessbarinputs">
+            <input type="text" id="guessInput" placeholder="Enter a name..." autocomplete="off" />
+            <button id="validateButton" disabled>Valider</button>
+        </div>
+        <ul id="suggestions"></ul>
+    </div>
     <p id="feedback"></p>
 
     <!--<h2>History of tests :</h2>-->
