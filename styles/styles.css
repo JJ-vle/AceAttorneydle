@@ -308,19 +308,6 @@ body {
 }
 
 
-/* Barre de défense (image) */
-#defensebar {
-    text-align: center;
-    margin: 20px 0;
-}
-
-#defensebar img {
-    width: 20%; /* Agrandit l'image à 50% de sa taille d'origine */
-    height: auto;
-    max-width: none;
-    display: inline-block;
-}
-
 /*******************/
 
 

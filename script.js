@@ -626,7 +626,7 @@ updateHintCounts();
 
 function verifyTries(){
     hintChecker();
-/*
+
     // Vérifie si numTries est un multiple de 2
     if(numTries % 2 === 0){
         // Calcul du niveau de défense (10 - numTries / 2)
@@ -648,7 +648,7 @@ function verifyTries(){
 
         // Ajoute l'image à la div
         document.getElementById("defensebar").appendChild(img);
-    }*/
+    }
 }
 
 

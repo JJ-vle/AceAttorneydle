@@ -1,0 +1,16 @@
+/* Barre de défense (image) */
+#defensebar {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    text-align: center;
+    margin: 0;
+    z-index: 1000; /* S'assure qu'elle reste au-dessus des autres éléments */
+}
+
+#defensebar img {
+    width: 80%;
+    height: auto;
+    max-width: none;
+    display: inline-block;
+}
