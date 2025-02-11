@@ -176,6 +176,7 @@ function validateGuess() {
 
     if (guessName.toLowerCase() === targetCharacter.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
+        silhouetteImg.children[0].style.filter = ""
         feedback.textContent = "🎉 Congratulation ! You found " + targetCharacter.name + " !";
         feedback.className = "success";
     } else {
@@ -340,8 +341,6 @@ function selectCharacterToFind(){
     let filteredData = filterCharacters();
     if (filteredData.length > 0) {
         targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
-        //targetCharacter = data.find(character => character.name === "Yanni Yogi");
-
 
         imageProcessing(targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") )
         console.log("Character to find :", targetCharacter.name);
@@ -358,7 +357,7 @@ function imageProcessing(imgSrc) {
     // Applique un filtre noir complet
     imgElement.style.filter = "brightness(0)";
     imgElement.style.height = "auto";
-    imgElement.style.maxWidth = "100px";
+    imgElement.style.maxWidth = "1500px";
     imgElement.style.display = "block";
     imgElement.style.margin = "10px auto"; // Centre l'image
 
