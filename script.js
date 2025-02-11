@@ -211,7 +211,7 @@ function addToHistory(guessedCharacter, result) {
 
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
-        <td><img src="${imageUrl}" alt="${guessedCharacter.name}" width="100"></td>
+        <td class="tableimage"><img src="${imageUrl}" alt="${guessedCharacter.name}" width="100"></td>
         ${compareInfo(guessedCharacter.name, targetCharacter.name)}
         ${compareInfo(guessedCharacter.status, targetCharacter.status)}
         ${compareInfo(guessedCharacter.gender, targetCharacter.gender)}

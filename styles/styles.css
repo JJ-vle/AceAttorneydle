@@ -423,43 +423,88 @@ body {
     color: red; 
 }
 
-/* Historique des tests */
+
+
+
+
+
 #history {
     margin-top: 20px;
     padding: 10px;
-    background-color: #F6F6F6;
-    border: 1px solid #328CBD;
-    border-radius: 10px;
+    border: none; /* Suppression de la bordure bleue */
 }
 
+/* Style des éléments historiques */
 .history-item {
     border: 1px solid #ddd;
     padding: 10px;
     margin: 10px 0;
-    background: white;
 }
 
-.history-item p {
-    margin: 5px 0;
-}
-
+/* Style du tableau */
 .history-table {
     width: 100%;
-    border-collapse: collapse;
+    max-width: 900px;
+    border-collapse: separate;
+    border-spacing: 5px; /* Espacement entre les cellules */
     margin-top: 10px;
-    border: 2px solid black;
 }
 
-.history-table th, .history-table td {
-    border: 1px solid black;
-    padding: 8px;
+/* Style des cellules */
+.history-table td {
+    border: 2px solid white;
+    padding: 5px; /* Ajout d'un léger padding sauf pour les images */
     text-align: center;
+    width: 100px;
+    height: 100px;
+    max-height: 100px;
+    position: relative;
+    overflow: hidden;
 }
 
+/* En-têtes de colonnes */
 .history-table th {
-    background-color: #f4f4f4;
+    padding: 5px;
+    max-height: 10px;
     font-weight: bold;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: #2781b26f; /* Réduire l'opacité du fond */
+    color: white;
+    border-bottom: 4px solid #2781b2; /* Bordure uniquement en bas */
+    margin-bottom: 500px; /* Réduire l'espace entre la bordure et la première ligne */
 }
+
+
+/* Style des images dans les cellules */
+.history-table td img {
+    width: 100%; /* L'image prend toute la largeur de la case */
+    height: auto;
+    max-height: none; /* Permet d'éviter que l'image soit limitée en hauteur */
+    display: block;
+    position: absolute;
+    top: 0; /* Focalisation sur le haut de l'image */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.tableimage{
+    background-image: 
+        radial-gradient(circle at center, #2781b2 0.25rem, transparent 0), /* Dots with transparent middle */
+        radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0); /* Color gradient */
+    background-size: 1.3rem 1.3rem; /* Dot size */
+    background-position: 0 0, 0.65rem 0.65rem; /* Adjust dot positioning */
+    background-blend-mode: normal; /* No blending, just stacking layers */
+    position: relative; /* Ensure the button is layered correctly */
+    color: white;
+}
+
+
+
+
+
 
 .correct {
     background-color: #8fda92;
@@ -506,7 +551,7 @@ table {
     width: 100%;
     border-collapse: collapse;
 }
-
+/*
 th, td {
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -515,7 +560,7 @@ th, td {
     padding: 8px;
     border: 1px solid #ddd;
     max-width: 150px;
-}
+}*/
 
 /* Images */
 img {
