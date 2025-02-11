@@ -716,7 +716,8 @@
         "debut": "Rise from the Ashes",
         "name": "Billy",
         "url": "https://aceattorney.fandom.com/wiki/Billy",
-        "gender": "None"
+        "gender": "None",
+        "exception": "unusable-silouhette"
     },
     {
         "image": [
@@ -821,7 +822,8 @@
         "debut": "Recipe for Turnabout",
         "name": "Gutsen Brawn",
         "url": "https://aceattorney.fandom.com/wiki/Gutsen_Brawn",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": [
@@ -1093,7 +1095,8 @@
         "debut": "The Magical Turnabout",
         "name": "Cameraman (The Magical Turnabout)",
         "url": "https://aceattorney.fandom.com/wiki/Cameraman_(The_Magical_Turnabout)",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": [
@@ -1156,7 +1159,8 @@
         "debut": "Turnabout Sisters",
         "name": "Charley",
         "url": "https://aceattorney.fandom.com/wiki/Charley",
-        "gender": "None"
+        "gender": "None",
+        "exception": "unusable-silouhette"
     },
     {
         "image": [
@@ -3006,7 +3010,8 @@
         "debut": "The Foreign Turnabout",
         "name": "Holy Mother",
         "url": "https://aceattorney.fandom.com/wiki/Holy_Mother",
-        "gender": "Female"
+        "gender": "Female",
+        "exception": "unusable-silouhette"
     },
     {
         "image": [
@@ -3045,7 +3050,8 @@
         "debut": "The Monstrous Turnabout",
         "name": "Howlin' Wolf",
         "url": "https://aceattorney.fandom.com/wiki/Howlin%27_Wolf",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": [
@@ -3128,7 +3134,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Spirit_of_Justice",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/c/c3/Malmelshot.PNG/revision/latest?cb=20241009220715",
         "age": "42",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silouhette"
     },
     {
         "image": [
@@ -3351,7 +3358,8 @@
         "debut": "Turnabout Storyteller",
         "name": "Jugemu",
         "url": "https://aceattorney.fandom.com/wiki/Jugemu",
-        "gender": "None"
+        "gender": "None",
+        "exception": "unusable-silouhette"
     },
     {
         "image": [
@@ -3718,7 +3726,8 @@
         "debut": "The Rite of Turnabout",
         "name": "Lady Kee'ra",
         "url": "https://aceattorney.fandom.com/wiki/Lady_Kee%27ra",
-        "gender": "Female"
+        "gender": "Female",
+        "exception": "unusable-silouhette"
     },
     {
         "image": [
@@ -3945,7 +3954,8 @@
         "debut": "The Monstrous Turnabout",
         "name": "Azuki Kozo",
         "url": "https://aceattorney.fandom.com/wiki/Azuki_Kozo",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": [
@@ -4079,7 +4089,8 @@
         "debut": "Turnabout Revolution",
         "name": "Lah'kee",
         "url": "https://aceattorney.fandom.com/wiki/Lah%27kee",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silouhette"
     },
     {
         "image": [
@@ -4354,7 +4365,8 @@
         "debut": "Turnabout Samurai",
         "name": "Manuel",
         "url": "https://aceattorney.fandom.com/wiki/Manuel",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silouhette"
     },
     {
         "image": [
@@ -4579,7 +4591,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Apollo_Justice:_Ace_Attorney",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/f/fa/Pal.png/revision/latest?cb=20160121014941",
         "age": "46",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silouhette"
     },
     {
         "image": [
@@ -5287,7 +5300,8 @@
         "name": "Phantom",
         "url": "https://aceattorney.fandom.com/wiki/Phantom",
         "gender": "Unknow",
-        "exception" : true
+        "bypass" : true,
+        "exception": "unusable-silouhette"
     },
     {
         "image": [
@@ -5422,7 +5436,8 @@
         "debut": "The Monstrous Turnabout",
         "name": "Pretty Boy Vampire",
         "url": "https://aceattorney.fandom.com/wiki/Pretty_Boy_Vampire",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": [
@@ -5532,7 +5547,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/d/d9/PenguinMugshot.png/revision/latest?cb=20241009222820",
         "age": "?",
-        "gender": "None"
+        "gender": "None",
+        "exception": "unusable-silouhette"
     },
     {
         "image": [
@@ -5908,7 +5924,8 @@
         "debut": "Turnabout Revolution",
         "name": "Ives Shineto",
         "url": "https://aceattorney.fandom.com/wiki/Ives_Shineto",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": [
@@ -5949,7 +5966,8 @@
         "debut": "Turnabout Reclaimed",
         "name": "Ora Shipley the First",
         "url": "https://aceattorney.fandom.com/wiki/Ora_Shipley_the_First",
-        "gender": "None"
+        "gender": "None",
+        "exception": "unusable-silouhette"
     },
     {
         "image": [
@@ -6157,7 +6175,8 @@
         "debut": "Turnabout Reclaimed",
         "name": "Sniper",
         "url": "https://aceattorney.fandom.com/wiki/Sniper",
-        "gender": "None"
+        "gender": "None",
+        "exception": "unusable-silouhette"
     },
     {
         "image": [
@@ -6174,7 +6193,8 @@
         "debut": "Turnabout Corner",
         "name": "Spoon",
         "url": "https://aceattorney.fandom.com/wiki/Spoon",
-        "gender": "None"
+        "gender": "None",
+        "exception": "unusable-silouhette"
     },
     {
         "image": [
@@ -6760,7 +6780,8 @@
         "debut": "Turnabout Storyteller",
         "name": "Uendo Toneido (former)",
         "url": "https://aceattorney.fandom.com/wiki/Uendo_Toneido_(former)",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": [
@@ -6797,7 +6818,8 @@
         "debut": "The Monstrous Turnabout",
         "name": "Timothy Twilight",
         "url": "https://aceattorney.fandom.com/wiki/Timothy_Twilight",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": [
@@ -7162,7 +7184,8 @@
         "debut": "Turnabout Countdown",
         "name": "Widget",
         "url": "https://aceattorney.fandom.com/wiki/Widget",
-        "gender": "None"
+        "gender": "None",
+        "exception": "unusable-silouhette"
     },
     {
         "image": [
