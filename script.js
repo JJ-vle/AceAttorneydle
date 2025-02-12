@@ -13,6 +13,7 @@ const suggestionsList = document.getElementById("suggestions");
 const validateButton = document.getElementById("validateButton");
 const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
+const guessbarDiv = document.getElementById("guessbar");
 
 // Assurer la création du tableau dès le début
 function createHistoryTable() {
@@ -21,8 +22,7 @@ function createHistoryTable() {
             <table id="historyTable" class="history-table">
                 <thead>
                     <tr>
-                        <th>Photo</th>
-                        <th>Name</th>
+                        <th>Character</th>
                         <th>Status</th>
                         <th>Gender</th>
                         <th>Birth year</th>
@@ -185,6 +185,7 @@ function validateGuess() {
         addToHistory(guessedCharacter, true);
         feedback.textContent = "🎉 Congratulation ! You found " + targetCharacter.name + " !";
         feedback.className = "success";
+        guessbarDiv.innerHTML="";
     } else {
         addToHistory(guessedCharacter, false);
         feedback.textContent = "❌ wrong answer, try again !";
@@ -211,8 +212,12 @@ function addToHistory(guessedCharacter, result) {
 
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
-        <td class="tableimage"><img src="${imageUrl}" alt="${guessedCharacter.name}" width="100"></td>
-        ${compareInfo(guessedCharacter.name, targetCharacter.name)}
+        <td class="photo-name-cell">
+            <div class="photo-name-container">
+                <img src="${imageUrl}" alt="${guessedCharacter.name}" class="history-photo">
+                <span class="name-on-hover">${guessedCharacter.name}</span>
+            </div>
+        </td>
         ${compareInfo(guessedCharacter.status, targetCharacter.status)}
         ${compareInfo(guessedCharacter.gender, targetCharacter.gender)}
         ${compareBirthday(guessedCharacter.birthday, targetCharacter.birthday)}
@@ -507,6 +512,7 @@ function selectCharacterToFind(){
         console.log("Character to find :", targetCharacter.name);
     } else {
         console.warn("No characters available after filtering!");
+        selectCharacterToFind();
     }
 }
 

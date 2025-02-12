@@ -3718,7 +3718,7 @@
         "occupation": [
             "Protector of Khura'in"
         ],
-        "birthday": null,
+        "birthday": "7th century CE",
         "status": "Deceased",
         "eyes": "Unknown",
         "hair": "Unknown",
@@ -4833,7 +4833,8 @@
         "eyes": "Gray",
         "hair": "Black",
         "french": [
-            "Lenny Mattik"
+            "Lenny Mattik",
+            "Joker"
         ],
         "debut": "The Magical Turnabout",
         "name": "Manov Mistree",
