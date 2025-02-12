@@ -503,7 +503,54 @@ body {
 
 
 
+/* Container for the photo and name */
+.photo-name-cell {
+    width: 150px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    background-image: 
+        radial-gradient(circle at center, #2781b2 0.25rem, transparent 0), /* Dots with transparent middle */
+        radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0); /* Color gradient */
+    background-size: 1.3rem 1.3rem; /* Dot size */
+    background-position: 0 0, 0.65rem 0.65rem; /* Adjust dot positioning */
+    background-blend-mode: normal; /* No blending, just stacking layers */
+    position: relative; /* Ensure the button is layered correctly */
+    color: white;
+}
 
+.photo-name-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Style for the photo */
+.history-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the photo fits nicely */
+    display: block;
+}
+
+/* Style for the name (hidden by default) */
+.name-on-hover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #338ebfc4; /* Semi-transparent background */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease; /* Smooth transition */
+    pointer-events: none; /* Ensures the name doesn't interfere with hovering */
+}
+
+/* Show the name on hover */
+.photo-name-container:hover .name-on-hover {
+    opacity: 1;
+}
 
 
 .correct {
