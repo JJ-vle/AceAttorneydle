@@ -615,11 +615,11 @@ function hintChecker() {
     }
     if (numTries === 8) {
         unlockHint("occupation");
-        document.querySelector("#hint-game img").src = "resources/img/icons/Psyche-Lock-Broken.png"
+        document.querySelector("#hint-occupation img").src = "resources/img/icons/Psyche-Lock-Broken.png"
     }
     if (numTries === 15) {
         unlockHint("figure");
-        document.querySelector("#hint-game img").src = "resources/img/icons/Black_Psyche-Lock-Broken.png"
+        document.querySelector("#hint-figure img").src = "resources/img/icons/Black_Psyche-Lock-Broken.png"
     }
     updateHintCounts(); // Met à jour l'affichage des essais restants
 }
