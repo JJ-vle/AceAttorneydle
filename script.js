@@ -633,30 +633,26 @@ updateHintCounts();
 
 function verifyTries(){
     hintChecker();
+    var defenseLevel = 15 - numTries;
 
-    // Vérifie si numTries est un multiple de 2
-    if(numTries % 2 === 0){
-        // Calcul du niveau de défense (10 - numTries / 2)
-        var defenseLevel = 10 - (numTries / 2);
-
-        // Si le niveau est plus petit que 1, on le fixe à 1 (tu peux ajuster cela selon tes préférences)
-        if(defenseLevel < 0) {
-            defenseLevel = 0;
-            gameOver();
-        }
-
-        // Vide la div defensebar
-        document.getElementById("defensebar").innerHTML = "";
-
-        // Crée l'image avec le bon niveau de défense
-        var img = document.createElement("img");
-        img.src = "resources/img/icons/defensebar/defensebar" + defenseLevel + ".png";
-        img.alt = "Defensebar Image";
-
-        // Ajoute l'image à la div
-        document.getElementById("defensebar").appendChild(img);
+    // Si le niveau est plus petit que 1, on le fixe à 1 (tu peux ajuster cela selon tes préférences)
+    if(defenseLevel < 0) {
+        defenseLevel = 0;
+        gameOver();
     }
+
+    // Vide la div defensebar
+    document.getElementById("defensebar").innerHTML = "";
+
+    // Crée l'image avec le bon niveau de défense
+    var img = document.createElement("img");
+    img.src = "resources/img/icons/defensebar/defensebar" + defenseLevel + ".png";
+    img.alt = "Defensebar Image";
+
+    // Ajoute l'image à la div
+    document.getElementById("defensebar").appendChild(img);
 }
+
 
 
 function gameOver(){
