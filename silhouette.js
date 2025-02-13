@@ -20,8 +20,7 @@ function createHistoryTable() {
             <table id="historyTable" class="history-table">
                 <thead>
                     <tr>
-                        <th>Photo</th>
-                        <th>Name</th>
+                        <th>Character</th>
                     </tr>
                 </thead>
                 <tbody id="historyBody"></tbody>
@@ -196,8 +195,6 @@ function addToHistory(guessedCharacter, result) {
     createHistoryTable(); // Assure que le tableau est bien créé
     const historyBody = document.getElementById("historyBody");
 
-    //historyItem.innerHTML = result ? "🎉" : "❌";
-    
     let imageUrl = "";
     if (guessedCharacter.image && guessedCharacter.image.length > 0) {
         imageUrl = guessedCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
@@ -205,15 +202,19 @@ function addToHistory(guessedCharacter, result) {
 
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
-        <td><img src="${imageUrl}" alt="${guessedCharacter.name}" width="100"></td>
-        ${compareInfo(guessedCharacter.name, targetCharacter.name)}
+        <td class="single-cell-oneth ${compareInfoClass(guessedCharacter.name, targetCharacter.name)}" >
+            <div class="image-container-oneth">
+                <img src="${imageUrl}" alt="${guessedCharacter.name}" class="centered-image-oneth">
+            </div>
+            <div class="name-below-oneth">${guessedCharacter.name}</div>
+        </td>
     `;
 
     historyBody.prepend(newRow); // Ajoute en haut du tableau
 }
 
 // Comparer deux valeurs et appliquer la couleur correspondante
-function compareInfo(guess, target) {
+function compareInfoClass(guess, target) {
     // Remplacer les valeurs nulles ou non définies par "Unknown"
     if (!guess || guess === "N/A") {
         guess = "Unknown";
@@ -224,7 +225,7 @@ function compareInfo(guess, target) {
 
     // Comparer les valeurs et appliquer la couleur correspondante
     const isCorrect = guess === target;
-    return `<td class="${isCorrect ? 'correct' : 'incorrect'}">${guess}</td>`;
+    return isCorrect ? 'correct' : 'incorrect';
 }
 
 
@@ -310,7 +311,7 @@ function selectCharacterToFind(){
     // Fonction pour filtrer les personnages
     function isValidCharacter(character) {
 
-        if (!character.image  || character.exception == "unusable" || character.image === "N/A" || character.image === "Unknown" || character.image === "Unknow") {
+        if (!character.image  || character.exception == "unusable" || character.exception == "unusable-silhouette" || character.image === "N/A" || character.image === "Unknown" || character.image === "Unknow") {
             return false;
         }
         if (character.bypass){
@@ -346,6 +347,7 @@ function selectCharacterToFind(){
         console.log("Character to find :", targetCharacter.name);
     } else {
         console.warn("No characters available after filtering!");
+        //selectCharacterToFind();
     }
 }
 

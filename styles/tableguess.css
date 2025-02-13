@@ -1,0 +1,125 @@
+
+
+#history {
+    margin-top: 20px;
+    padding: 10px;
+    border: none; /* Suppression de la bordure bleue */
+}
+
+/* Style des éléments historiques */
+.history-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Style du tableau */
+.history-table {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: separate;
+    border-spacing: 5px; /* Espacement entre les cellules */
+    margin-top: 10px;
+}
+
+/* Style des cellules */
+.history-table td {
+    border: 2px solid white;
+    padding: 5px; /* Ajout d'un léger padding sauf pour les images */
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    max-height: 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* En-têtes de colonnes */
+.history-table th {
+    padding: 5px;
+    max-height: 10px;
+    font-weight: bold;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: #2781b26f; /* Réduire l'opacité du fond */
+    color: white;
+    border-bottom: 4px solid #2781b2; /* Bordure uniquement en bas */
+    margin-bottom: 500px; /* Réduire l'espace entre la bordure et la première ligne */
+}
+
+
+/* Style des images dans les cellules */
+.history-table td img {
+    width: 100%; /* L'image prend toute la largeur de la case */
+    height: auto;
+    max-height: none; /* Permet d'éviter que l'image soit limitée en hauteur */
+    display: block;
+    position: absolute;
+    top: 0; /* Focalisation sur le haut de l'image */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.tableimage{
+    background-image: 
+        radial-gradient(circle at center, #2781b2 0.25rem, transparent 0), /* Dots with transparent middle */
+        radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0); /* Color gradient */
+    background-size: 1.3rem 1.3rem; /* Dot size */
+    background-position: 0 0, 0.65rem 0.65rem; /* Adjust dot positioning */
+    background-blend-mode: normal; /* No blending, just stacking layers */
+    position: relative; /* Ensure the button is layered correctly */
+    color: white;
+}
+
+
+
+/* Container for the photo and name */
+.photo-name-cell {
+    width: 150px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    background-image: 
+        radial-gradient(circle at center, #2781b2 0.25rem, transparent 0), /* Dots with transparent middle */
+        radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0); /* Color gradient */
+    background-size: 1.3rem 1.3rem; /* Dot size */
+    background-position: 0 0, 0.65rem 0.65rem; /* Adjust dot positioning */
+    background-blend-mode: normal; /* No blending, just stacking layers */
+    position: relative; /* Ensure the button is layered correctly */
+    color: white;
+}
+
+.photo-name-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Style for the photo */
+.history-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the photo fits nicely */
+    display: block;
+}
+
+/* Style for the name (hidden by default) */
+.name-on-hover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #338ebfc4; /* Semi-transparent background */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease; /* Smooth transition */
+    pointer-events: none; /* Ensures the name doesn't interfere with hovering */
+}
+
+/* Show the name on hover */
+.photo-name-container:hover .name-on-hover {
+    opacity: 1;
+}

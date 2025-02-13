@@ -1,0 +1,88 @@
+/* Nouvelle classe pour la cellule unique */
+.single-cell-oneth {
+    width: auto; /* La cellule s'adapte à la largeur de la colonne */
+    height: auto; /* La hauteur s'adapte au contenu */
+    border: 2px solid white; /* Bordure blanche */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; /* Espace intérieur */
+    box-sizing: border-box; /* Inclut le padding dans les dimensions */
+}
+
+/* Conteneur pour l'image */
+.image-container-oneth {
+    width: 100px; /* Largeur fixe pour le cadre de l'image */
+    height: 100px; /* Hauteur fixe pour le cadre de l'image */
+    overflow: hidden; /* Cache les parties de l'image qui dépassent */
+    display: flex;
+    align-items: flex-start; /* Aligne le contenu sur le haut */
+    justify-content: center;
+    background-image: 
+        radial-gradient(circle at center, #2781b2 0.25rem, transparent 0), /* Dots with transparent middle */
+        radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0); /* Color gradient */
+    background-size: 1.3rem 1.3rem; /* Dot size */
+    background-position: 0 0, 0.65rem 0.65rem; /* Adjust dot positioning */
+    background-blend-mode: normal; /* No blending, just stacking layers */
+    position: relative; /* Ensure the button is layered correctly */
+    color: white;
+    border: 2px solid white; /* Bordure blanche pour le cadre de l'image */
+    border-radius: 5px; /* Coins arrondis pour le cadre */
+}
+
+/* Style de l'image directement dans le conteneur */
+.image-container-oneth img {
+    width: 100%; /* L'image prend toute la largeur du conteneur */
+    height: auto; /* La hauteur s'adapte pour conserver l'aspect ratio */
+    object-position: top; /* Aligne l'image sur le haut */
+}
+
+/* Style de l'image centrée */
+.centered-image-oneth {
+    width: 100%; /* L'image prend toute la largeur du conteneur */
+    height: 100%; /* L'image prend toute la hauteur du conteneur */
+    object-fit: cover; /* Assure que l'image couvre tout l'espace sans déformation */
+}
+
+/* Style du nom en dessous de l'image */
+.name-below-oneth {
+    margin-top: 10px; /* Espace entre l'image et le nom */
+    font-size: 14px;
+    color: black; /* Texte en blanc */
+    text-align: center;
+    font-weight: bold;
+    word-wrap: break-word; /* Permet au texte de passer à la ligne si nécessaire */
+    max-width: 100%; /* Empêche le texte de dépasser */
+}
+
+/* Ajustement du tableau */
+.history-table {
+    width: 100%;
+    max-width: 600px; /* Largeur maximale du tableau */
+    border-collapse: separate;
+    border-spacing: 5px; /* Espacement entre les cellules */
+    margin-top: 10px;
+}
+
+.history-table td {
+    border: 2px solid white;
+    padding: 5px; /* Ajout d'un léger padding */
+    text-align: center;
+    vertical-align: middle; /* Centre le contenu verticalement */
+}
+
+/* En-têtes de colonnes */
+.history-table th {
+    display: none; 
+    padding: 5px;
+    max-height: 10px;
+    font-weight: bold;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: #2781b26f; /* Réduire l'opacité du fond */
+    color: white;
+    border-bottom: 4px solid #2781b2; /* Bordure uniquement en bas */
+    margin-bottom: 500px; /* Réduire l'espace entre la bordure et la première ligne */
+}
