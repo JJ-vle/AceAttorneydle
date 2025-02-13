@@ -277,15 +277,15 @@ body {
 /* Détails des indices */
 
 #a-def {
-    width: 100%; /* Prend toute la largeur */
+    width: 50%; /* Prend toute la largeur */
     min-height: 100px; /* Hauteur minimale */
     margin: 20px auto; 
+    padding: 20px;
     font-size: 18px;
     font-weight: bold;
     color: #F6F6F6;
     text-align: center;
-    border-top: 5px solid #F6F6F6; /* Bordure du haut plus fine */
-    border-bottom: 10px solid #F6F6F6; /* Bordure du bas plus épaisse */
+    border: 5px solid #F6F6F6; /* Bordure du haut plus fine */
     border-radius: 0; /* Pas de bordures arrondies sur les côtés */
 
     background-image: 

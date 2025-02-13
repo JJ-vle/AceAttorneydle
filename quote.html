@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ace Attorneydle</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/defensebar.css">
+    <link rel="stylesheet" href="styles/tableunique.css">
+</head>
+<body>
+
+    <div class="background-blur" id="detention"></div>
+
+    <header>
+        <a href="main_page.html">
+            <img src="resources/img/AceAttorneydleLogo.png" alt="AceAttorneydle Logo" id="logo">
+        </a>
+    </header>
+
+    <div id="hints">
+        <div class="hint" id="hint-game">
+            <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Game">
+            <p>Game</p>
+            <p class="hint-count">in X try</p>
+        </div>
+        <div class="hint" id="hint-occupation">
+            <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Occupation">
+            <p>Occupation</p>
+            <p class="hint-count">in X try</p>
+        </div>
+        <div class="hint" id="hint-figure">
+            <img src="resources/img/icons/Black_Psyche-Lock.png" class="hint-icon disabled" alt="Figure">
+            <p>Figure</p>
+            <p class="hint-count">in X try</p>
+        </div>
+        <div id="hint-details">
+            <div id="hint-details-header"></div>
+
+            <div id="hint-details-content"></div>
+        </div>
+    </div>
+    
+    <div id="defensebar">
+        <img src="resources/img/icons/defensebar/defensebar15.png" alt="Figure">
+    </div>
+
+    <div id="a-def" >
+        <p id="quote"></p>
+    </div>
+
+    <p>Enter the name of the character you think you've found :</p>
+    <div id="guessbar">
+        <div id="guessbarinputs">
+            <input type="text" id="guessInput" placeholder="Enter a name..." autocomplete="off" />
+            <button id="validateButton" disabled>Valider</button>
+        </div>
+        <ul id="suggestions"></ul>
+    </div>
+    <p id="feedback"></p>
+    <!--<h2>History of tests :</h2>-->
+    <div id="history"></div>
+        
+    <script src="quote.js"></script>
+
+</body>
+</html>
