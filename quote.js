@@ -200,19 +200,19 @@ function addToHistory(guessedCharacter, result) {
 
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
-        <td class="photo-name-cell">
-            <div class="photo-name-container">
-                <img src="${imageUrl}" alt="${guessedCharacter.name}" class="history-photo">
+        <td class="single-cell-oneth ${compareInfoClass(guessedCharacter.name, targetCharacter.name)}" >
+            <div class="image-container-oneth">
+                <img src="${imageUrl}" alt="${guessedCharacter.name}" class="centered-image-oneth">
             </div>
+            <div class="name-below-oneth">${guessedCharacter.name}</div>
         </td>
-        ${compareInfo(guessedCharacter.name, targetCharacter.name)}
     `;
 
     historyBody.prepend(newRow); // Ajoute en haut du tableau
 }
 
 // Comparer deux valeurs et appliquer la couleur correspondante
-function compareInfo(guess, target) {
+function compareInfoClass(guess, target) {
     // Remplacer les valeurs nulles ou non définies par "Unknown"
     if (!guess || guess === "N/A") {
         guess = "Unknown";
@@ -223,7 +223,7 @@ function compareInfo(guess, target) {
 
     // Comparer les valeurs et appliquer la couleur correspondante
     const isCorrect = guess === target;
-    return `<td class="${isCorrect ? 'correct' : 'incorrect'}">${guess}</td>`;
+    return isCorrect ? 'correct' : 'incorrect';
 }
 
 //============ LOGIQUE DE SELECTION DE LA QUOTE =============//
