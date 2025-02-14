@@ -1,4 +1,4 @@
-//script.js
+//guess.js
 
 // Importer la fonction depuis un autre fichier
 import { setValidateGuessFunction } from './guessbar.js';

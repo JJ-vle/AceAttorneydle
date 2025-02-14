@@ -1,13 +1,18 @@
+//silhouette.js
+
+// Importer la fonction depuis un autre fichier
+import { setValidateGuessFunction, getGroupByCharacter } from './guessbar.js';
+import { characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames } from './data.js';
+
 let targetCharacter = null;
-let characterData = []; // Stocke les personnages
-let selectedIndex = -1;
-let attemptedNames = new Set(); // Stocke les noms déjà proposés
-let selectedGroups; //Groupes sélectionnés et validés
 let numTries=0; // Nombre d'essais
+
+// Variable locale pour stocker les données filtrées
+let filteredCharacterData = [];
+
 //////////////////
 
 const inputField = document.getElementById("guessInput");
-const suggestionsList = document.getElementById("suggestions");
 const validateButton = document.getElementById("validateButton");
 const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
@@ -29,125 +34,6 @@ function createHistoryTable() {
     }
 }
 createHistoryTable()
-
-
-// Fonction pour filtrer et afficher les suggestions
-inputField.addEventListener("input", function () {
-    const query = this.value.toLowerCase().trim();
-    suggestionsList.innerHTML = "";
-    selectedIndex = -1;
-
-    if (query.length === 0) {
-        suggestionsList.style.display = "none";
-        validateButton.disabled = true;
-        return;
-    }
-
-    // Filtrer les personnages en fonction des groupes cochés
-    const filteredCharacters = characterData.filter(c => {
-        const group = getGroupByCharacter(c); // Trouver le groupe du personnage
-        return selectedGroups.includes(group); // Vérifier si le groupe du personnage est sélectionné
-    });
-
-    // Filtrer davantage les personnages selon la saisie dans le champ de recherche
-    const matchedCharacters = filteredCharacters.filter(c => {
-        if (attemptedNames.has(c.name)) return false; // Exclure les personnages déjà proposés
-        
-        const englishName = c.name.toLowerCase();
-        const englishSurname = englishName.split(" ").pop(); // Récupère le nom de famille
-        const frenchNames = (c.french || []).map(f => f.toLowerCase());
-        const frenchSurnames = frenchNames.map(f => f.split(" ").pop());
-
-        return (
-            englishName.startsWith(query) ||
-            englishSurname.startsWith(query) ||
-            frenchNames.some(f => f.startsWith(query)) ||
-            frenchSurnames.some(f => f.startsWith(query))
-        );
-    });
-
-    // Trier les personnages par nom avant de les afficher
-    matchedCharacters.sort((a, b) => a.name.localeCompare(b.name));
-
-    if (matchedCharacters.length > 0) {
-        suggestionsList.style.display = "block";
-
-        matchedCharacters.forEach((character, index) => {
-            const listItem = document.createElement("li");
-            listItem.dataset.index = index;
-
-            let mugshotUrl = character.mugshot?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
-            let imageUrl = mugshotUrl || character.image?.[0]?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
-            //let imageUrl = character.image?.[0]?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
-            
-            listItem.innerHTML = `
-                <img src="${imageUrl}" alt="${character.name}" width="30" height="30" class="suggestion-img">
-                <span>${character.name}</span>
-            `;
-            
-            listItem.addEventListener("click", function () {
-                selectName(character.name);
-            });
-
-            suggestionsList.appendChild(listItem);
-        });
-    } else {
-        suggestionsList.style.display = "none";
-        validateButton.disabled = true;
-    }
-});
-
-// Gérer les flèches clavier et validation avec Entrée
-inputField.addEventListener("keydown", function (event) {
-    const items = suggestionsList.getElementsByTagName("li");
-
-    if (event.key === "ArrowDown") {
-        event.preventDefault();
-        if (selectedIndex < items.length - 1) {
-            selectedIndex++;
-        }
-    } else if (event.key === "ArrowUp") {
-        event.preventDefault();
-        if (selectedIndex > 0) {
-            selectedIndex--;
-        }
-    } else if (event.key === "Enter") {
-        event.preventDefault();
-
-        if (selectedIndex >= 0) {
-            // Si un élément est sélectionné, on le sélectionne et met à jour la sélection
-            selectName(items[selectedIndex].textContent.trim());
-            // Réinitialiser l'index sélectionné après avoir sélectionné un nom
-            selectedIndex = -1; // Réinitialisation de la sélection
-            updateSelection(items); // Mise à jour de la sélection (en réinitialisant l'état visuel)
-        } else {
-            // Si aucun élément n'est sélectionné, on appelle validateGuess
-            validateGuess();
-        }
-    }
-
-    updateSelection(items);
-});
-
-// Mise à jour de la sélection visuelle
-function updateSelection(items) {
-    for (let i = 0; i < items.length; i++) {
-        items[i].classList.remove("selected");
-    }
-    if (selectedIndex >= 0) {
-        items[selectedIndex].classList.add("selected");
-    }
-}
-
-// Sélection d'un nom et fermeture de la liste
-function selectName(name) {
-    inputField.value = name;
-    suggestionsList.style.display = "none";
-    validateButton.disabled = false;
-}
-
-// Valider la réponse
-validateButton.addEventListener("click", validateGuess);
 
 function validateGuess() {
     if (!targetCharacter) {
@@ -228,43 +114,6 @@ function compareInfoClass(guess, target) {
     return isCorrect ? 'correct' : 'incorrect';
 }
 
-
-// Charger le fichier JSON contenant les informations des débuts
-let turnaboutGames = {};
-
-fetch("resources/data/turnabouts.json")
-    .then(response => response.json())
-    .then(data => {
-        turnaboutGames = data;
-    })
-    .catch(error => console.error("Erreur de chargement du fichier turnabout.json :", error));
-
-// Fonction pour récupérer le groupe de chaque personnage
-function getGroupByCharacter(character) {
-    for (let group in turnaboutGames) {
-        for (let game in turnaboutGames[group]) {
-            if (turnaboutGames[group][game].includes(character.debut)) {
-                return group;
-            }
-        }
-    }
-    return null;
-}
-
-// Fonction pour récupérer le jeu d'un début d'affaire
-function getInfoByDebut(debut) {
-    // Parcours chaque groupe
-    for (let group in turnaboutGames) {
-        // Parcours chaque jeu dans le groupe
-        for (let game in turnaboutGames[group]) {
-            if (turnaboutGames[group][game].includes(debut)) {
-                return { game: game, group: group }; // Retourne le jeu et son groupe
-            }
-        }
-    }
-    return null; // Retourne null si le jeu n'est pas trouvé
-}
-
 // Récupère la liste des checkboxes et ajoute un écouteur d'événement
 const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']");
 //checkboxes.forEach(checkbox => checkbox.addEventListener("change", filterCharacters));
@@ -272,39 +121,24 @@ const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox
 const updateButton = document.querySelector("#updateFilters");
 updateButton.addEventListener("click", selectCharacterToFind);
 
+
 // Fonction pour filtrer les personnages en fonction des groupes cochés
 function filterCharacters() {
-    selectedGroups = Array.from(checkboxes)
+    const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']"); // Assurez-vous que cette ligne existe
+    const newSelectedGroups = Array.from(checkboxes)
         .filter(checkbox => checkbox.checked)
         .map(checkbox => checkbox.value);
 
-    //console.log("📌 Groups :", selectedGroups);
-    //console.log("📌 Data :", characterData.length, "characters available.");
+    setSelectedGroups(newSelectedGroups); // Mettre à jour selectedGroups via la fonction setSelectedGroups
 
     // Filtrer les personnages en fonction du groupe sélectionné
-    const filtered = characterData.filter(character => {
+    const filtered = filteredCharacterData.filter(character => {
         const group = getGroupByCharacter(character);
-        return selectedGroups.includes(group);
+        return newSelectedGroups.includes(group);
     });
-
-    //console.log("📌 Filter :", filtered.length, "characters found.");
 
     return filtered;
 }
-
-// Charger les données JSON et initialiser le personnage cible
-fetch("resources/data/aceattorneychars.json")
-    .then(response => response.json())
-    .then(data => {
-        characterData = data;
-
-        console.log("✅ Data loaded :", characterData.length, "characters.");
-
-        selectCharacterToFind();
-        
-        //console.log("Unique debuts:", getUniqueDebuts());
-    })
-    .catch(error => console.error("JSON loading error :", error));
 
 function selectCharacterToFind(){
 
@@ -336,7 +170,7 @@ function selectCharacterToFind(){
     }
 
     // Filtrer les personnages
-    characterData = characterData.filter(isValidCharacter);
+    filteredCharacterData = characterData.filter(isValidCharacter); 
     //console.log("✅ Validated data :", characterData.length, "characters after filtering.");
 
     let filteredData = filterCharacters();
@@ -389,8 +223,11 @@ function verifyTries(){
     document.getElementById("defensebar").appendChild(img);
 }
 
-
-
 function gameOver(){
     console.log("GAME OVER");
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    setValidateGuessFunction(validateGuess);
+    setSelectCharacterToFindFunction(selectCharacterToFind);
+});

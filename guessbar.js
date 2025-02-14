@@ -130,7 +130,7 @@ export function selectName(name) {
 }
 
 // Fonction pour récupérer le groupe d'un personnage
-function getGroupByCharacter(character) {
+export function getGroupByCharacter(character) {
     for (let group in turnaboutGames) {
         for (let game in turnaboutGames[group]) {
             if (turnaboutGames[group][game].includes(character.debut)) {
