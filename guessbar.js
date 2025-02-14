@@ -1,9 +1,29 @@
-// handleInput.js
-import { turnaboutGames, inputField, suggestionsList, validateButton } from './script.js';
-
+// guessbar.js
+import { turnaboutGames, characterData, selectedGroups, attemptedNames } from './data.js';
 
 let selectedIndex = -1;
+let validateGuessFunction = null;
 
+export const inputField = document.getElementById("guessInput");
+export const suggestionsList = document.getElementById("suggestions");
+export const validateButton = document.getElementById("validateButton");
+
+//////////////////// EVENTLISTENERS
+
+// Ajouter l'écouteur d'événement en utilisant la fonction importée
+inputField.addEventListener("input", function () {
+    handleInput(this.value, characterData, selectedGroups, attemptedNames, validateButton, selectName);
+});
+// Gérer les flèches clavier et validation avec Entrée
+inputField.addEventListener("keydown", function (event) {
+    handleKeyboard(event);
+});
+// Valider la réponse
+validateButton.addEventListener("click", function () {
+    if (validateGuessFunction) {
+        validateGuessFunction();
+    }
+});
 
 ////////////////// FONCTIONS
 
@@ -11,7 +31,6 @@ let selectedIndex = -1;
 export function handleInput(query, characterData, selectedGroups, attemptedNames) {
     query = query.toLowerCase().trim();
     suggestionsList.innerHTML = "";
-    let selectedIndex = -1;
 
     if (query.length === 0) {
         suggestionsList.style.display = "none";
@@ -72,7 +91,7 @@ export function handleInput(query, characterData, selectedGroups, attemptedNames
     }
 }
 
-export function handleKeyboard(event, validateGuess){
+export function handleKeyboard(event){
     const items = suggestionsList.getElementsByTagName("li");
 
     if (event.key === "ArrowDown") {
@@ -96,7 +115,7 @@ export function handleKeyboard(event, validateGuess){
             updateSelection(items); // Mise à jour de la sélection (en réinitialisant l'état visuel)
         } else {
             // Si aucun élément n'est sélectionné, on appelle validateGuess
-            validateGuess();
+            validateGuessFunction();
         }
     }
 
@@ -130,4 +149,9 @@ function updateSelection(items) {
     if (selectedIndex >= 0) {
         items[selectedIndex].classList.add("selected");
     }
+}
+
+// Fonction pour définir validateGuess depuis l'extérieur
+export function setValidateGuessFunction(func) {
+    validateGuessFunction = func;
 }

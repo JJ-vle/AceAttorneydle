@@ -1,22 +1,22 @@
+//script.js
 
 // Importer la fonction depuis un autre fichier
-import { handleInput, handleKeyboard, selectName } from './guessbar.js';
+import { setValidateGuessFunction } from './guessbar.js';
+import { turnaboutGames, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames } from './data.js';
 
 let targetCharacter = null;
-let characterData = []; // Stocke les personnages
-let attemptedNames = new Set(); // Stocke les noms déjà proposés
-let selectedGroups; //Groupes sélectionnés et validés
 let numTries=0; // Nombre d'essais
 let hints = {};
 
+// Variable locale pour stocker les données filtrées
+let filteredCharacterData = [];
+
 //////////////////
 
-export const inputField = document.getElementById("guessInput");
-export const suggestionsList = document.getElementById("suggestions");
-export const validateButton = document.getElementById("validateButton");
 const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
 const guessbarDiv = document.getElementById("guessbar");
+const inputField = document.getElementById("guessInput");
 
 // Assurer la création du tableau dès le début
 function createHistoryTable() {
@@ -40,19 +40,6 @@ function createHistoryTable() {
     }
 }
 createHistoryTable()
-
-//////////////////// EVENTLISTENERS
-
-// Ajouter l'écouteur d'événement en utilisant la fonction importée
-inputField.addEventListener("input", function () {
-    handleInput(this.value, characterData, selectedGroups, attemptedNames, validateButton, selectName);
-});
-// Gérer les flèches clavier et validation avec Entrée
-inputField.addEventListener("keydown", function (event) {
-    handleKeyboard(event, validateGuess);
-});
-// Valider la réponse
-validateButton.addEventListener("click", validateGuess);
 
 
 function validateGuess() {
@@ -91,10 +78,56 @@ function validateGuess() {
     }
     numTries++;
     verifyTries();
-    //console.log(numTries);
     inputField.value = "";
     validateButton.disabled = true;
 }
+
+function selectCharacterToFind() {
+    // Fonction pour filtrer les personnages
+    function isValidCharacter(character) {
+        if (!character.image || character.exception == "unusable" || character.image === "N/A" || character.image === "Unknown" || character.image === "Unknow") {
+            return false;
+        }
+        if (character.bypass) {
+            return true;
+        }
+
+        const attributes = [
+            character.name,
+            character.status,
+            character.gender,
+            character.birthday,
+            character.eyes,
+            character.hair,
+            character.debut
+        ];
+
+        // Filtrer les valeurs valides (excluant "N/A", "Unknown", "Unknow", null)
+        const validAttributes = attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow");
+
+        // Garder seulement les personnages ayant au moins 4 attributs valides
+        return validAttributes.length >= 4;
+    }
+
+    // Filtrer les personnages
+    filteredCharacterData = characterData.filter(isValidCharacter); // Utilisez la variable locale
+    console.log("✅ Validated data :", filteredCharacterData.length, "characters after filtering.");
+
+    let filteredData = filterCharacters();
+    if (filteredData.length > 0) {
+        targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
+        hints = {
+            game: { icon: document.querySelector("#hint-game .hint-icon"), title: "Game", text: getInfoByDebut(targetCharacter.debut).game },
+            occupation: { icon: document.querySelector("#hint-occupation .hint-icon"), title: "Occupation", text: targetCharacter.occupation },
+            figure: { icon: document.querySelector("#hint-figure .hint-icon"), title: "Figure", image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
+        };
+
+        console.log("Character to find :", targetCharacter.name);
+    } else {
+        console.warn("No characters available after filtering!");
+    }
+}
+
 
 // Ajouter un essai sous forme de nouvelle ligne dans le tableau existant
 function addToHistory(guessedCharacter, result) {
@@ -286,15 +319,6 @@ function getUniqueDebuts() {
     return Array.from(debutsSet);
 }
 
-// Charger le fichier JSON contenant les informations des débuts
-export let turnaboutGames = {};
-
-fetch("resources/data/turnabouts.json")
-    .then(response => response.json())
-    .then(data => {
-        turnaboutGames = data;
-    })
-    .catch(error => console.error("Erreur de chargement du fichier turnabout.json :", error));
 
 // Fonction pour récupérer le groupe de chaque personnage
 function getGroupByCharacter(character) {
@@ -331,88 +355,22 @@ updateButton.addEventListener("click", selectCharacterToFind);
 
 // Fonction pour filtrer les personnages en fonction des groupes cochés
 function filterCharacters() {
-    selectedGroups = Array.from(checkboxes)
+    const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']"); // Assurez-vous que cette ligne existe
+    const newSelectedGroups = Array.from(checkboxes)
         .filter(checkbox => checkbox.checked)
         .map(checkbox => checkbox.value);
 
-    //console.log("📌 Groups :", selectedGroups);
-    //console.log("📌 Data :", characterData.length, "characters available.");
+    setSelectedGroups(newSelectedGroups); // Mettre à jour selectedGroups via la fonction setSelectedGroups
 
     // Filtrer les personnages en fonction du groupe sélectionné
-    const filtered = characterData.filter(character => {
+    const filtered = filteredCharacterData.filter(character => {
         const group = getGroupByCharacter(character);
-        return selectedGroups.includes(group);
+        return newSelectedGroups.includes(group);
     });
-
-    //console.log("📌 Filter :", filtered.length, "characters found.");
 
     return filtered;
 }
 
-// Charger les données JSON et initialiser le personnage cible
-fetch("resources/data/aceattorneychars.json")
-    .then(response => response.json())
-    .then(data => {
-        characterData = data;
-
-        console.log("✅ Data loaded :", characterData.length, "characters.");
-
-        selectCharacterToFind();
-        
-        //console.log("Unique debuts:", getUniqueDebuts());
-    })
-    .catch(error => console.error("JSON loading error :", error));
-
-function selectCharacterToFind(){
-
-    // Fonction pour filtrer les personnages
-    function isValidCharacter(character) {
-
-        if (!character.image  || character.exception == "unusable" || character.image === "N/A" || character.image === "Unknown" || character.image === "Unknow") {
-            return false;
-        }
-        if (character.bypass){
-            return true;
-        }
-
-        const attributes = [
-            character.name,
-            character.status,
-            character.gender,
-            character.birthday,
-            character.eyes,
-            character.hair,
-            character.debut
-        ];
-
-        // Filtrer les valeurs valides (excluant "N/A", "Unknown", "Unknow", null)
-        const validAttributes = attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow");
-
-        // Garder seulement les personnages ayant au moins 4 attributs valides
-        return validAttributes.length >= 4;
-    }
-
-    // Filtrer les personnages
-    characterData = characterData.filter(isValidCharacter);
-    //console.log("✅ Validated data :", characterData.length, "characters after filtering.");
-
-    let filteredData = filterCharacters();
-    if (filteredData.length > 0) {
-        targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
-        //targetCharacter = data.find(character => character.name === "Yanni Yogi");
-
-        hints = {
-            game: { icon: document.querySelector("#hint-game .hint-icon"), title: "Game", text: getInfoByDebut(targetCharacter.debut).game },
-            occupation: { icon: document.querySelector("#hint-occupation .hint-icon"), title: "Occupation", text: targetCharacter.occupation },
-            figure: { icon: document.querySelector("#hint-figure .hint-icon"), title: "Figure", image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
-        };
-
-        console.log("Character to find :", targetCharacter.name);
-    } else {
-        console.warn("No characters available after filtering!");
-        //selectCharacterToFind();
-    }
-}
 
 const hintDetails = document.getElementById("hint-details");
 const hintHeader = document.getElementById("hint-details-header");
@@ -562,3 +520,14 @@ function verifyTries(){
 function gameOver(){
     console.log("GAME OVER");
 }
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    setValidateGuessFunction(validateGuess);
+    setSelectCharacterToFindFunction(selectCharacterToFind);
+});
+
+
+
+
