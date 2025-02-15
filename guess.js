@@ -2,11 +2,11 @@
 
 // Importer la fonction depuis un autre fichier
 import { setValidateGuessFunction } from './guessbar.js';
-import { turnaboutGames, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames } from './data.js';
+import { turnaboutGames, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getInfoByDebut, getGroupByCharacter } from './data.js';
+import { setHints } from './hint.js';
+import { incrementNumTries, verifyTries } from './life.js';
 
 let targetCharacter = null;
-let numTries=0; // Nombre d'essais
-let hints = {};
 
 // Variable locale pour stocker les données filtrées
 let filteredCharacterData = [];
@@ -17,6 +17,8 @@ const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
 const guessbarDiv = document.getElementById("guessbar");
 const inputField = document.getElementById("guessInput");
+
+//////////// HISTORY
 
 // Assurer la création du tableau dès le début
 function createHistoryTable() {
@@ -41,6 +43,38 @@ function createHistoryTable() {
 }
 createHistoryTable()
 
+// Ajouter un essai sous forme de nouvelle ligne dans le tableau existant
+function addToHistory(guessedCharacter, result) {
+    createHistoryTable(); // Assure que le tableau est bien créé
+    const historyBody = document.getElementById("historyBody");
+
+    //historyItem.innerHTML = result ? "🎉" : "❌";
+    
+    let imageUrl = "";
+    if (guessedCharacter.image && guessedCharacter.image.length > 0) {
+        imageUrl = guessedCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
+    }
+
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
+        <td class="photo-name-cell">
+            <div class="photo-name-container">
+                <img src="${imageUrl}" alt="${guessedCharacter.name}" class="history-photo">
+                <span class="name-on-hover">${guessedCharacter.name}</span>
+            </div>
+        </td>
+        ${compareInfo(guessedCharacter.status, targetCharacter.status)}
+        ${compareInfo(guessedCharacter.gender, targetCharacter.gender)}
+        ${compareBirthday(guessedCharacter.birthday, targetCharacter.birthday)}
+        ${compareInfo(guessedCharacter.eyes, targetCharacter.eyes)}
+        ${compareInfo(guessedCharacter.hair, targetCharacter.hair)}
+        ${compareDebut(guessedCharacter.debut, targetCharacter.debut)}
+    `;
+
+    historyBody.prepend(newRow); // Ajoute en haut du tableau
+}
+
+//////////// FUNCTIONS
 
 function validateGuess() {
     if (!targetCharacter) {
@@ -76,7 +110,7 @@ function validateGuess() {
         feedback.textContent = "❌ wrong answer, try again !";
         feedback.className = "error";
     }
-    numTries++;
+    incrementNumTries();
     verifyTries();
     inputField.value = "";
     validateButton.disabled = true;
@@ -121,6 +155,7 @@ function selectCharacterToFind() {
             occupation: { icon: document.querySelector("#hint-occupation .hint-icon"), title: "Occupation", text: targetCharacter.occupation },
             figure: { icon: document.querySelector("#hint-figure .hint-icon"), title: "Figure", image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
         };
+        setHints(hints);
 
         console.log("Character to find :", targetCharacter.name);
     } else {
@@ -128,37 +163,7 @@ function selectCharacterToFind() {
     }
 }
 
-
-// Ajouter un essai sous forme de nouvelle ligne dans le tableau existant
-function addToHistory(guessedCharacter, result) {
-    createHistoryTable(); // Assure que le tableau est bien créé
-    const historyBody = document.getElementById("historyBody");
-
-    //historyItem.innerHTML = result ? "🎉" : "❌";
-    
-    let imageUrl = "";
-    if (guessedCharacter.image && guessedCharacter.image.length > 0) {
-        imageUrl = guessedCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
-    }
-
-    const newRow = document.createElement("tr");
-    newRow.innerHTML = `
-        <td class="photo-name-cell">
-            <div class="photo-name-container">
-                <img src="${imageUrl}" alt="${guessedCharacter.name}" class="history-photo">
-                <span class="name-on-hover">${guessedCharacter.name}</span>
-            </div>
-        </td>
-        ${compareInfo(guessedCharacter.status, targetCharacter.status)}
-        ${compareInfo(guessedCharacter.gender, targetCharacter.gender)}
-        ${compareBirthday(guessedCharacter.birthday, targetCharacter.birthday)}
-        ${compareInfo(guessedCharacter.eyes, targetCharacter.eyes)}
-        ${compareInfo(guessedCharacter.hair, targetCharacter.hair)}
-        ${compareDebut(guessedCharacter.debut, targetCharacter.debut)}
-    `;
-
-    historyBody.prepend(newRow); // Ajoute en haut du tableau
-}
+//////////// COMPARE FUNCTIONS
 
 // Comparer deux valeurs et appliquer la couleur correspondante
 function compareInfo(guess, target) {
@@ -174,7 +179,6 @@ function compareInfo(guess, target) {
     const isCorrect = guess === target;
     return `<td class="${isCorrect ? 'correct' : 'incorrect'}">${guess}</td>`;
 }
-
 // Fonction de comparaison des dates de naissances
 function compareBirthday(guessBirthday, targetBirthday) {
     if (!guessBirthday || guessBirthday === "N/A") {
@@ -229,7 +233,6 @@ function compareBirthday(guessBirthday, targetBirthday) {
 
     return `<td class="${colorClass} ${arrowHint}">${guessBirthday}</td>`;
 }
-
 // Fonction de comparaison des débuts
 function compareDebut(guessDebut, targetDebut) {
     if (!guessDebut || guessDebut === "N/A") {
@@ -301,54 +304,10 @@ function compareDebut(guessDebut, targetDebut) {
     return `<td class=${colorclass}>${guessDebut}</td>`;
 }
 
-// Fonction pour récupérer tous les "debut" différents
-function getUniqueDebuts() {
-    if (!characterData || characterData.length === 0) {
-        console.log("No character data available.");
-        return [];
-    }
-
-    const debutsSet = new Set();
-
-    characterData.forEach(character => {
-        if (character.debut) {
-            debutsSet.add(character.debut);
-        }
-    });
-
-    return Array.from(debutsSet);
-}
-
-
-// Fonction pour récupérer le groupe de chaque personnage
-function getGroupByCharacter(character) {
-    for (let group in turnaboutGames) {
-        for (let game in turnaboutGames[group]) {
-            if (turnaboutGames[group][game].includes(character.debut)) {
-                return group;
-            }
-        }
-    }
-    return null;
-}
-
-// Fonction pour récupérer le jeu d'un début d'affaire
-function getInfoByDebut(debut) {
-    // Parcours chaque groupe
-    for (let group in turnaboutGames) {
-        // Parcours chaque jeu dans le groupe
-        for (let game in turnaboutGames[group]) {
-            if (turnaboutGames[group][game].includes(debut)) {
-                return { game: game, group: group }; // Retourne le jeu et son groupe
-            }
-        }
-    }
-    return null; // Retourne null si le jeu n'est pas trouvé
-}
+//////////// FILTERS
 
 // Récupère la liste des checkboxes et ajoute un écouteur d'événement
 const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']");
-//checkboxes.forEach(checkbox => checkbox.addEventListener("change", filterCharacters));
 
 const updateButton = document.querySelector("#updateFilters");
 updateButton.addEventListener("click", selectCharacterToFind);
@@ -371,163 +330,10 @@ function filterCharacters() {
     return filtered;
 }
 
-
-const hintDetails = document.getElementById("hint-details");
-const hintHeader = document.getElementById("hint-details-header");
-const hintContent = document.getElementById("hint-details-content");
-
-// Fonction pour afficher le cadre avec un titre spécifique
-function showHintContainer(title) {
-    hintDetails.style.display = "block"; // Affiche le cadre
-    hintHeader.textContent = title || "Hint"; // Définit le titre avec la valeur donnée
-}
-
-// Fonction pour ajouter un texte
-function addHint(title, text) {
-    if (!text) return;
-    showHintContainer(title);
-
-    const hintElement = document.createElement("p");
-    hintElement.textContent = text;
-    hintContent.appendChild(hintElement);
-}
-
-// Fonction pour ajouter une image
-function addHintImage(title, imgSrc) {
-    if (!imgSrc) return;
-    showHintContainer(title);
-
-    const hintElement = document.createElement("img");
-    hintElement.src = imgSrc;
-    hintElement.alt = "Figure";
-    hintElement.classList.add("hint-image");
-
-    hintContent.appendChild(hintElement);
-}
-
-// Fonction pour vider les hints et cacher le cadre si vide
-function clearHints() {
-    hintContent.innerHTML = "";
-    hintDetails.style.display = "none"; // Cache le cadre si plus de contenu
-}
-
-
-// Variable pour suivre le hint actuellement affiché
-let currentHint = null;
-
-function unlockHint(hint) {
-    hints[hint].icon.classList.add("active");
-    hints[hint].icon.classList.remove("disabled");
-    hints[hint].icon.style.cursor = "pointer";
-
-    // On enlève tous les anciens écouteurs pour éviter la duplication
-    hints[hint].icon.removeEventListener("click", toggleHint);
-    hints[hint].icon.addEventListener("click", function () {
-        toggleHint(hint);
-    });
-}
-
-function toggleHint(hint) {
-    // Si on clique sur le même hint, on le cache
-    if (currentHint === hint) {
-        clearHints();
-        currentHint = null;
-    } else {
-        // Sinon, on change le hint affiché
-        clearHints();
-        if (hints[hint].text) {
-            addHint(hints[hint].title, hints[hint].text);
-        }
-        if (hints[hint].image) {
-            addHintImage(hints[hint].title, hints[hint].image);
-        }
-        currentHint = hint; // Met à jour le hint affiché
-    }
-}
-
-
-
-
-
-
-const hintCounts = {
-    game: { tries: 3, element: document.querySelector("#hint-game .hint-count"), icon: document.querySelector("#hint-game .hint-icon") },
-    occupation: { tries: 8, element: document.querySelector("#hint-occupation .hint-count"), icon: document.querySelector("#hint-occupation .hint-icon") },
-    figure: { tries: 15, element: document.querySelector("#hint-figure .hint-count"), icon: document.querySelector("#hint-figure .hint-icon") }
-};
-
-
-
-// Fonction pour mettre à jour les "hint-counts"
-function updateHintCounts() {
-    for (let key in hintCounts) {
-        let remainingTries = hintCounts[key].tries - numTries;
-        if (remainingTries > 0) {
-            hintCounts[key].element.textContent = `in ${remainingTries} tries`;
-        } else {
-            hintCounts[key].element.textContent = "Unlocked!";
-        }
-    }
-}
-
-
-function hintChecker() {
-    if (numTries === 3) {
-        unlockHint("game");
-        //document.querySelector("#hint-game img").src = "resources/img/icons/Psyche-Lock-Broken.png"
-        hintCounts.game.icon.src = "resources/img/icons/Psyche-Lock-Broken.png";
-    }
-    if (numTries === 8) {
-        unlockHint("occupation");
-        //document.querySelector("#hint-game img").src = "resources/img/icons/Psyche-Lock-Broken.png"
-        hintCounts.occupation.icon.src = "resources/img/icons/Psyche-Lock-Broken.png";
-    }
-    if (numTries === 15) {
-        unlockHint("figure");
-        //document.querySelector("#hint-game img").src = "resources/img/icons/Black_Psyche-Lock-Broken.png"
-        hintCounts.figure.icon.src = "resources/img/icons/Black_Psyche-Lock-Broken.png";
-    }
-    updateHintCounts(); // Met à jour l'affichage des essais restants
-}
-
-// Initialisation des textes au début de la partie
-updateHintCounts();
-
-function verifyTries(){
-    hintChecker();
-    var defenseLevel = 15 - numTries;
-
-    // Si le niveau est plus petit que 1, on le fixe à 1 (tu peux ajuster cela selon tes préférences)
-    if(defenseLevel < 0) {
-        defenseLevel = 0;
-        gameOver();
-    }
-
-    // Vide la div defensebar
-    document.getElementById("defensebar").innerHTML = "";
-
-    // Crée l'image avec le bon niveau de défense
-    var img = document.createElement("img");
-    img.src = "resources/img/icons/defensebar/defensebar" + defenseLevel + ".png";
-    img.alt = "Defensebar Image";
-
-    // Ajoute l'image à la div
-    document.getElementById("defensebar").appendChild(img);
-}
-
-
-
-function gameOver(){
-    console.log("GAME OVER");
-}
-
-
+//////////// DOMCONTENTLOADED
 
 document.addEventListener("DOMContentLoaded", function () {
     setValidateGuessFunction(validateGuess);
     setSelectCharacterToFindFunction(selectCharacterToFind);
 });
-
-
-
 

@@ -1,11 +1,11 @@
 //silhouette.js
 
 // Importer la fonction depuis un autre fichier
-import { setValidateGuessFunction, getGroupByCharacter } from './guessbar.js';
-import { characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames } from './data.js';
+import { setValidateGuessFunction } from './guessbar.js';
+import { characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter } from './data.js';
+import { incrementNumTries, verifyTries } from './life.js';
 
 let targetCharacter = null;
-let numTries=0; // Nombre d'essais
 
 // Variable locale pour stocker les données filtrées
 let filteredCharacterData = [];
@@ -69,7 +69,7 @@ function validateGuess() {
         feedback.textContent = "❌ wrong answer, try again !";
         feedback.className = "error";
     }
-    numTries++;
+    incrementNumTries;
     verifyTries();
     //console.log(numTries);
     inputField.value = "";
@@ -200,7 +200,7 @@ function imageProcessing(imgSrc) {
     silhouetteImg.innerHTML = ''
     silhouetteImg.appendChild(imgElement);
 }
-
+/*
 function verifyTries(){
     // Calcul du niveau de défense (10 - numTries / 2)
     var defenseLevel = 15 - numTries;
@@ -221,7 +221,7 @@ function verifyTries(){
 
     // Ajoute l'image à la div
     document.getElementById("defensebar").appendChild(img);
-}
+}*/
 
 function gameOver(){
     console.log("GAME OVER");

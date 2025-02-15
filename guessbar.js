@@ -1,8 +1,12 @@
 // guessbar.js
-import { turnaboutGames, characterData, selectedGroups, attemptedNames } from './data.js';
+
+import { characterData, selectedGroups, attemptedNames, getGroupByCharacter } from './data.js';
 
 let selectedIndex = -1;
 let validateGuessFunction = null;
+export function setValidateGuessFunction(func) {
+    validateGuessFunction = func;
+}
 
 export const inputField = document.getElementById("guessInput");
 export const suggestionsList = document.getElementById("suggestions");
@@ -129,18 +133,6 @@ export function selectName(name) {
     validateButton.disabled = false;
 }
 
-// Fonction pour récupérer le groupe d'un personnage
-export function getGroupByCharacter(character) {
-    for (let group in turnaboutGames) {
-        for (let game in turnaboutGames[group]) {
-            if (turnaboutGames[group][game].includes(character.debut)) {
-                return group;
-            }
-        }
-    }
-    return null;
-}
-
 // Mise à jour de la sélection visuelle
 function updateSelection(items) {
     for (let i = 0; i < items.length; i++) {
@@ -149,9 +141,4 @@ function updateSelection(items) {
     if (selectedIndex >= 0) {
         items[selectedIndex].classList.add("selected");
     }
-}
-
-// Fonction pour définir validateGuess depuis l'extérieur
-export function setValidateGuessFunction(func) {
-    validateGuessFunction = func;
 }
