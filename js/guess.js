@@ -1,10 +1,10 @@
 //guess.js
 
 // Importer la fonction depuis un autre fichier
-import { setValidateGuessFunction } from './guessbar.js';
-import { turnaboutGames, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getInfoByDebut, getGroupByCharacter } from './data.js';
-import { setHints } from './hint.js';
-import { incrementNumTries, verifyTries } from './life.js';
+import { setValidateGuessFunction } from './common/guessbar.js';
+import { turnaboutGames, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getInfoByDebut, getGroupByCharacter } from './common/data.js';
+import { setHints } from './common/hint.js';
+import { incrementNumTries, verifyTries } from './common/life.js';
 
 let targetCharacter = null;
 

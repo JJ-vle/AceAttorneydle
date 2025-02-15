@@ -1,9 +1,9 @@
 //silhouette.js
 
 // Importer la fonction depuis un autre fichier
-import { setValidateGuessFunction } from './guessbar.js';
-import { characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter } from './data.js';
-import { incrementNumTries, verifyTries } from './life.js';
+import { setValidateGuessFunction } from './common/guessbar.js';
+import { characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter } from './common/data.js';
+import { incrementNumTries, verifyTries } from './common/life.js';
 
 let targetCharacter = null;
 
