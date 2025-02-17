@@ -2,14 +2,11 @@
 
 // Importer la fonction depuis un autre fichier
 import { setValidateGuessFunction } from './common/guessbar.js';
-import { turnaboutGames, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getInfoByDebut, getGroupByCharacter } from './common/data.js';
+import { turnaboutGames, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getInfoByDebut, getGroupByCharacter, setGameMode } from './common/data.js';
 import { setHints } from './common/hint.js';
 import { incrementNumTries, verifyTries } from './common/life.js';
 
 let targetCharacter = null;
-
-// Variable locale pour stocker les données filtrées
-let filteredCharacterData = [];
 
 //////////////////
 
@@ -117,36 +114,6 @@ function validateGuess() {
 }
 
 function selectCharacterToFind() {
-    // Fonction pour filtrer les personnages
-    function isValidCharacter(character) {
-        if (!character.image || character.exception == "unusable" || character.image === "N/A" || character.image === "Unknown" || character.image === "Unknow") {
-            return false;
-        }
-        if (character.bypass) {
-            return true;
-        }
-
-        const attributes = [
-            character.name,
-            character.status,
-            character.gender,
-            character.birthday,
-            character.eyes,
-            character.hair,
-            character.debut
-        ];
-
-        // Filtrer les valeurs valides (excluant "N/A", "Unknown", "Unknow", null)
-        const validAttributes = attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow");
-
-        // Garder seulement les personnages ayant au moins 4 attributs valides
-        return validAttributes.length >= 4;
-    }
-
-    // Filtrer les personnages
-    filteredCharacterData = characterData.filter(isValidCharacter); // Utilisez la variable locale
-    console.log("✅ Validated data :", filteredCharacterData.length, "characters after filtering.");
-
     let filteredData = filterCharacters();
     if (filteredData.length > 0) {
         targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
@@ -322,7 +289,7 @@ function filterCharacters() {
     setSelectedGroups(newSelectedGroups); // Mettre à jour selectedGroups via la fonction setSelectedGroups
 
     // Filtrer les personnages en fonction du groupe sélectionné
-    const filtered = filteredCharacterData.filter(character => {
+    const filtered = characterData.filter(character => {
         const group = getGroupByCharacter(character);
         return newSelectedGroups.includes(group);
     });
@@ -333,6 +300,7 @@ function filterCharacters() {
 //////////// DOMCONTENTLOADED
 
 document.addEventListener("DOMContentLoaded", function () {
+    setGameMode("classic");
     setValidateGuessFunction(validateGuess);
     setSelectCharacterToFindFunction(selectCharacterToFind);
 });

@@ -2,13 +2,10 @@
 
 // Importer la fonction depuis un autre fichier
 import { setValidateGuessFunction } from './common/guessbar.js';
-import { characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter } from './common/data.js';
+import { characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, setGameMode } from './common/data.js';
 import { incrementNumTries, verifyTries } from './common/life.js';
 
 let targetCharacter = null;
-
-// Variable locale pour stocker les données filtrées
-let filteredCharacterData = [];
 
 //////////////////
 
@@ -132,7 +129,7 @@ function filterCharacters() {
     setSelectedGroups(newSelectedGroups); // Mettre à jour selectedGroups via la fonction setSelectedGroups
 
     // Filtrer les personnages en fonction du groupe sélectionné
-    const filtered = filteredCharacterData.filter(character => {
+    const filtered = characterData.filter(character => {
         const group = getGroupByCharacter(character);
         return newSelectedGroups.includes(group);
     });
@@ -141,38 +138,6 @@ function filterCharacters() {
 }
 
 function selectCharacterToFind(){
-
-    // Fonction pour filtrer les personnages
-    function isValidCharacter(character) {
-
-        if (!character.image  || character.exception == "unusable" || character.exception == "unusable-silhouette" || character.image === "N/A" || character.image === "Unknown" || character.image === "Unknow") {
-            return false;
-        }
-        if (character.bypass){
-            return true;
-        }
-
-        const attributes = [
-            character.name,
-            character.status,
-            character.gender,
-            character.birthday,
-            character.eyes,
-            character.hair,
-            character.debut
-        ];
-
-        // Filtrer les valeurs valides (excluant "N/A", "Unknown", "Unknow", null)
-        const validAttributes = attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow");
-
-        // Garder seulement les personnages ayant au moins 4 attributs valides
-        return validAttributes.length >= 4;
-    }
-
-    // Filtrer les personnages
-    filteredCharacterData = characterData.filter(isValidCharacter); 
-    //console.log("✅ Validated data :", characterData.length, "characters after filtering.");
-
     let filteredData = filterCharacters();
     if (filteredData.length > 0) {
         targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
@@ -200,34 +165,9 @@ function imageProcessing(imgSrc) {
     silhouetteImg.innerHTML = ''
     silhouetteImg.appendChild(imgElement);
 }
-/*
-function verifyTries(){
-    // Calcul du niveau de défense (10 - numTries / 2)
-    var defenseLevel = 15 - numTries;
-
-    // Si le niveau est plus petit que 1, on le fixe à 1 (tu peux ajuster cela selon tes préférences)
-    if(defenseLevel < 0) {
-        defenseLevel = 0;
-        gameOver();
-    }
-
-    // Vide la div defensebar
-    document.getElementById("defensebar").innerHTML = "";
-
-    // Crée l'image avec le bon niveau de défense
-    var img = document.createElement("img");
-    img.src = "resources/img/icons/defensebar/defensebar" + defenseLevel + ".png";
-    img.alt = "Defensebar Image";
-
-    // Ajoute l'image à la div
-    document.getElementById("defensebar").appendChild(img);
-}*/
-
-function gameOver(){
-    console.log("GAME OVER");
-}
 
 document.addEventListener("DOMContentLoaded", function () {
+    setGameMode("silhouette");
     setValidateGuessFunction(validateGuess);
     setSelectCharacterToFindFunction(selectCharacterToFind);
 });

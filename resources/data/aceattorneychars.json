@@ -65,7 +65,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Ace_Attorney_Investigations_2:_Prosecutor%27s_Gambit",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/3/36/Photojournalist.png/revision/latest?cb=20160121015120",
         "age": "dead",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -84,7 +85,8 @@
         "debut": "The Captive Turnabout",
         "name": "Ally",
         "url": "https://aceattorney.fandom.com/wiki/Ally",
-        "gender": "None"
+        "gender": "None",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -299,7 +301,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/c/cf/Menningen.png/revision/latest?cb=20210818023423",
         "age": "47",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -360,7 +363,8 @@
         "debut": "Turnabout Revolution",
         "name": "Abraham Atishon",
         "url": "https://aceattorney.fandom.com/wiki/Abraham_Atishon",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": [
@@ -443,7 +447,8 @@
         "debut": "The Captive Turnabout",
         "name": "Azea",
         "url": "https://aceattorney.fandom.com/wiki/Azea",
-        "gender": "None"
+        "gender": "None",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -523,7 +528,8 @@
         "debut": "The Resolve of Ryunosuke Naruhodo",
         "name": "Lady Baskerville",
         "url": "https://aceattorney.fandom.com/wiki/Lady_Baskerville",
-        "gender": "Female"
+        "gender": "Female",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -1078,7 +1084,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/d/d9/Henrybarricade.png/revision/latest?cb=20210818023958",
         "age": "51",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -1115,7 +1122,8 @@
         "debut": "Turnabout Airlines",
         "name": "Captain",
         "url": "https://aceattorney.fandom.com/wiki/Captain",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -1196,7 +1204,8 @@
         "debut": "The Return of the Great Departed Soul",
         "name": "King Christian VIII",
         "url": "https://aceattorney.fandom.com/wiki/King_Christian_VIII",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": [
@@ -1241,7 +1250,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Ace_Attorney_Investigations:_Miles_Edgeworth",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/9/9b/Manny_mugshot_%28HD%29.png/revision/latest?cb=20210620030646",
         "age": "31",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -1416,7 +1426,8 @@
         "debut": "The Adventure of the Unbreakable Speckled Band",
         "name": "Darka",
         "url": "https://aceattorney.fandom.com/wiki/Darka",
-        "gender": "Female"
+        "gender": "Female",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -1465,7 +1476,8 @@
         "debut": null,
         "name": "William Rutter Dawes",
         "url": "https://aceattorney.fandom.com/wiki/William_Rutter_Dawes",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": [
@@ -1559,7 +1571,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/6/66/Redheadleague2.png/revision/latest?cb=20210818023116",
         "age": "25",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -1580,7 +1593,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/a/ae/Redheadleague1.png/revision/latest?cb=20210818023125",
         "age": "26",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -1671,7 +1685,8 @@
         "debut": "The Kidnapped Turnabout",
         "name": "Colin Devorae",
         "url": "https://aceattorney.fandom.com/wiki/Colin_Devorae",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -1892,7 +1907,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Ace_Attorney_Investigations:_Miles_Edgeworth",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/7/71/Byrnepor.png/revision/latest?cb=20171230173615",
         "age": "40",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -2188,7 +2204,8 @@
         "debut": "The Return of the Great Departed Soul",
         "name": "King Frederick VI",
         "url": "https://aceattorney.fandom.com/wiki/King_Frederick_VI",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": [
@@ -2212,7 +2229,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Ace_Attorney_Investigations_2:_Prosecutor%27s_Gambit",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/c/c1/Hoquet_hd.jpeg/revision/latest?cb=20210314231130",
         "age": "38",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -2919,7 +2937,7 @@
             "Assassin's guide dog"
         ],
         "birthday": "Before Dec. 2000",
-        "status": "Incarcerated with owner",
+        "status": "Incarcerated",
         "eyes": "Brown",
         "hair": "Black",
         "french": [
@@ -3070,7 +3088,8 @@
         "debut": "Turnabout Airlines",
         "name": "Ugo Hughes",
         "url": "https://aceattorney.fandom.com/wiki/Ugo_Hughes",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -3111,7 +3130,8 @@
         "debut": "Turnabout Revolution",
         "name": "Faitah Inmee",
         "url": "https://aceattorney.fandom.com/wiki/Faitah_Inmee",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -3198,7 +3218,8 @@
         "debut": "Twisted Karma and His Last Bow",
         "name": "Jabez",
         "url": "https://aceattorney.fandom.com/wiki/Jabez",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": null,
@@ -3269,7 +3290,8 @@
         "debut": "The Return of the Great Departed Soul",
         "name": "John Clay",
         "url": "https://aceattorney.fandom.com/wiki/John_Clay",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -3377,7 +3399,8 @@
         "debut": "The Adventure of the Runaway Room",
         "name": "Juror 1 (banker)",
         "url": "https://aceattorney.fandom.com/wiki/Juror_1_(banker)",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -3412,7 +3435,8 @@
         "debut": "The Adventure of the Runaway Room",
         "name": "Juror 2 (maid)",
         "url": "https://aceattorney.fandom.com/wiki/Juror_2_(maid)",
-        "gender": "Female"
+        "gender": "Female",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -3447,7 +3471,8 @@
         "debut": "The Adventure of the Runaway Room",
         "name": "Juror 3 (barber)",
         "url": "https://aceattorney.fandom.com/wiki/Juror_3_(barber)",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -3535,7 +3560,8 @@
         "debut": "The Adventure of the Runaway Room",
         "name": "Juror 4 (typewritist)",
         "url": "https://aceattorney.fandom.com/wiki/Juror_4_(typewritist)",
-        "gender": "Female"
+        "gender": "Female",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -3554,7 +3580,8 @@
         "debut": "The Adventure of the Runaway Room",
         "name": "Juror 5 (guild master)",
         "url": "https://aceattorney.fandom.com/wiki/Juror_5_(guild_master)",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -3625,7 +3652,8 @@
         "debut": "The Adventure of the Runaway Room",
         "name": "Juror 6 (elderly woman)",
         "url": "https://aceattorney.fandom.com/wiki/Juror_6_(elderly_woman)",
-        "gender": "Female"
+        "gender": "Female",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -4146,7 +4174,8 @@
         "debut": "Turnabout for the Ages",
         "name": "Da-Long Lang",
         "url": "https://aceattorney.fandom.com/wiki/Da-Long_Lang",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -4271,7 +4300,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/e/e8/Rumba.png/revision/latest?cb=20210818023031",
         "age": "42",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -4346,7 +4376,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Ace_Attorney_Investigations:_Miles_Edgeworth",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/b/b5/Item3051_l.png/revision/latest?cb=20171227023148",
         "age": "53",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -5077,7 +5108,8 @@
         "debut": "Turnabout Ablaze",
         "name": "Ka-Shi Nou",
         "url": "https://aceattorney.fandom.com/wiki/Ka-Shi_Nou",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -5319,7 +5351,8 @@
         "debut": "The Adventure of the Unbreakable Speckled Band",
         "name": "Pirozhko",
         "url": "https://aceattorney.fandom.com/wiki/Pirozhko",
-        "gender": "None"
+        "gender": "None",
+        "exception": "unusable-silhouette"
     },
     {
         "image": null,
@@ -5502,7 +5535,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Ace_Attorney_Investigations:_Miles_Edgeworth",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/1/17/Mackrelpor.png/revision/latest?cb=20171230173701",
         "age": "32",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -5594,7 +5628,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Ace_Attorney_Investigations_2:_Prosecutor%27s_Gambit",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/6/6a/Kagome_Profile.png/revision/latest?cb=20160121011736",
         "age": "33",
-        "gender": "Female"
+        "gender": "Female",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -5639,7 +5674,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Ace_Attorney_Investigations_2:_Prosecutor%27s_Gambit",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/6/6b/RookeHD.png/revision/latest?cb=20241008235854",
         "age": "35",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -5659,7 +5695,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/e/e9/Duncan.png/revision/latest?cb=20210818024353",
         "age": "21",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -5820,7 +5857,8 @@
         "debut": "The Memoirs of the Clouded Kokoro",
         "name": "Selden",
         "url": "https://aceattorney.fandom.com/wiki/Selden",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -5856,7 +5894,8 @@
         "debut": "The Adventure of the Clouded Kokoro",
         "name": "William Shakespeare",
         "url": "https://aceattorney.fandom.com/wiki/William_Shakespeare",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": [
@@ -6045,7 +6084,8 @@
         "debut": "Turnabout Legacy",
         "name": "Ian Sideman",
         "url": "https://aceattorney.fandom.com/wiki/Ian_Sideman",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": [
@@ -6105,7 +6145,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/d/d7/Tully_Tinpillar_mugshot.png/revision/latest?cb=20210818022336",
         "age": "27",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -6422,7 +6463,7 @@
             "Pharmacology student at Ivy University"
         ],
         "birthday": "1992",
-        "status": "Deceased; electrocuted via power line",
+        "status": "Deceased",
         "eyes": "Brown",
         "hair": "Reddish-orange",
         "french": [
@@ -6494,7 +6535,8 @@
         "debut": "The Captive Turnabout",
         "name": "Teddy",
         "url": "https://aceattorney.fandom.com/wiki/Teddy",
-        "gender": "None"
+        "gender": "None",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -6923,7 +6965,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/d/dc/Venus.png/revision/latest?cb=20210818022248",
         "age": "??",
-        "gender": "Female"
+        "gender": "Female",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -6940,7 +6983,8 @@
         "debut": "The Resolve of Ryunosuke Naruhodo",
         "name": "Queen Victoria",
         "url": "https://aceattorney.fandom.com/wiki/Queen_Victoria",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": [
@@ -6962,7 +7006,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney_2:_Resolve",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/1/13/Everydaymittlemont.png/revision/latest?cb=20210818024305",
         "age": "40",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable"
     },
     {
         "image": [
@@ -7044,7 +7089,8 @@
         "debut": "The Return of the Great Departed Soul",
         "name": "Wilhelm Gottsreich Sigismond von Ormstein",
         "url": "https://aceattorney.fandom.com/wiki/Wilhelm_Gottsreich_Sigismond_von_Ormstein",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
@@ -7247,7 +7293,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_The_Great_Ace_Attorney:_Adventures",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/e/e6/Hutch_Windibank_mugshot.png/revision/latest?cb=20210818023858",
         "age": "48",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [

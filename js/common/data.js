@@ -4,6 +4,12 @@
 export let attemptedNames = new Set();
 // Charger le fichier JSON contenant les informations des débuts
 export let turnaboutGames = {};
+// Mode de jeu
+export let gameMode;
+
+export function setGameMode(gm) {
+    gameMode = gm;
+}
 
 //////////// LOAD TURNABOUTS
 
@@ -66,13 +72,48 @@ export let characterData = [];
 fetch("resources/data/aceattorneychars.json")
     .then(response => response.json())
     .then(data => {
-        characterData = data; // Réaffectation de characterData avec les données chargées
+        //characterData = data; // Réaffectation de characterData avec les données chargées
 
-        console.log("✅ Data loaded :", characterData.length, "characters.");
+        console.log("✅ Data loaded :", data.length, "characters.");
+    
+        characterData = data.filter(isValidCharacter); // Utilisez la variable locale
+
+        console.log("✅ Validated data :", characterData.length, "characters after filtering.");
 
         selectCharacterToFindFunction();
     })
     .catch(error => console.error("JSON loading error :", error));
+
+// Fonction pour filtrer les personnages
+function isValidCharacter(character) {
+
+    if (!character.image || character.exception == "unusable" || character.image === "N/A" || character.image === "Unknown" || character.image === "Unknow") {
+        return false;
+    }
+    if(gameMode == "silhouette" && character.exception == "unusable-silhouette"){
+        return false;
+    }
+    if (character.bypass) {
+        return true;
+    }
+
+    const attributes = [
+        character.name,
+        character.status,
+        character.gender,
+        character.birthday,
+        character.eyes,
+        character.hair,
+        character.debut
+    ];
+
+    // Filtrer les valeurs valides (excluant "N/A", "Unknown", "Unknow", null)
+    const validAttributes = attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow");
+
+    // Garder seulement les personnages ayant au moins 4 attributs valides
+    return validAttributes.length >= 4;
+}
+
 
 let selectCharacterToFindFunction = null;
 
