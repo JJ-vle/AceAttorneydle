@@ -114,7 +114,7 @@ function selectCharacterToFind() {
     }
 
     let hints = {
-        game: { icon: document.querySelector("#hint-game .hint-icon"), title: "Game", text: targetCharacter.debut },
+        game: { icon: document.querySelector("#hint-game .hint-icon"), title: "Game", text: targetQuote.source },
         occupation: { icon: document.querySelector("#hint-occupation .hint-icon"), title: "Occupation", text: targetCharacter.occupation },
         figure: { icon: document.querySelector("#hint-figure .hint-icon"), title: "Figure", image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
     };
