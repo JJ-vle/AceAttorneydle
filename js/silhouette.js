@@ -66,9 +66,8 @@ function validateGuess() {
         feedback.textContent = "❌ wrong answer, try again !";
         feedback.className = "error";
     }
-    incrementNumTries;
+    incrementNumTries();
     verifyTries();
-    //console.log(numTries);
     inputField.value = "";
     validateButton.disabled = true;
 }

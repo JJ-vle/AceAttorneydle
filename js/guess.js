@@ -12,7 +12,6 @@ let targetCharacter = null;
 
 const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
-const guessbarDiv = document.getElementById("guessbar");
 const inputField = document.getElementById("guessInput");
 
 //////////// HISTORY
@@ -101,7 +100,6 @@ function validateGuess() {
         addToHistory(guessedCharacter, true);
         feedback.textContent = "🎉 Congratulation ! You found " + targetCharacter.name + " !";
         feedback.className = "success";
-        guessbarDiv.innerHTML="";
     } else {
         addToHistory(guessedCharacter, false);
         feedback.textContent = "❌ wrong answer, try again !";

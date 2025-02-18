@@ -2,7 +2,6 @@
 
 import { numTries, setHintChecker } from './life.js';
 
-
 let hints = {};
 
 export function setHints(newHints) {
@@ -87,8 +86,8 @@ function toggleHint(hint) {
 
 const hintCounts = {
     game: { tries: 3, element: document.querySelector("#hint-game .hint-count"), icon: document.querySelector("#hint-game .hint-icon") },
-    occupation: { tries: 8, element: document.querySelector("#hint-occupation .hint-count"), icon: document.querySelector("#hint-occupation .hint-icon") },
-    figure: { tries: 15, element: document.querySelector("#hint-figure .hint-count"), icon: document.querySelector("#hint-figure .hint-icon") }
+    occupation: { tries: 7, element: document.querySelector("#hint-occupation .hint-count"), icon: document.querySelector("#hint-occupation .hint-icon") },
+    figure: { tries: 12, element: document.querySelector("#hint-figure .hint-count"), icon: document.querySelector("#hint-figure .hint-icon") }
 };
 
 // Fonction pour mettre à jour les "hint-counts"

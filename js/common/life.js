@@ -1,12 +1,13 @@
 // life.js
 
 const defensebar = document.getElementById("defensebar");
+const guessbarDiv = document.getElementById("guessbar");
 
 //////////// TRIES
 
 export let numTries = 0; // Nombre d'essais
 
-export function incrementNumTries () {
+export function incrementNumTries(){
     numTries++;
 }
 
@@ -38,12 +39,20 @@ export function verifyTries(){
 
 let hintChecker = null;
 
-export function setHintChecker(newHintChecker) {
+export function setHintChecker(newHintChecker){
     hintChecker = newHintChecker;
 }
 
 //////////// GAMEOVER
 
-function gameOver(){
+function gameOver(result){
     console.log("GAME OVER");
+    guessbarDiv.innerHTML="";
+
+    if (result) {
+        //win
+    } else {
+        //lose
+    }
+
 }
