@@ -1,10 +1,11 @@
 //guess.js
 
-// Importer la fonction depuis un autre fichier
+// Importation des fichiers
 import { setValidateGuessFunction } from './common/guessbar.js';
-import { turnaboutGames, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getInfoByDebut, getGroupByCharacter, setGameMode } from './common/data.js';
+import { dataLoaded, turnaboutGames, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getInfoByDebut, getGroupByCharacter, setGameMode } from './common/data.js';
 import { setHints } from './common/hint.js';
 import { incrementNumTries, verifyTries } from './common/life.js';
+setGameMode("classic");
 
 let targetCharacter = null;
 
@@ -297,9 +298,19 @@ function filterCharacters() {
 
 //////////// DOMCONTENTLOADED
 
-document.addEventListener("DOMContentLoaded", function () {
-    setGameMode("classic");
+async function initGame() {
+    await dataLoaded; // Attendre que les fichiers JSON soient chargés
+    console.log("🚀 Les données sont prêtes, on peut commencer !");
+    console.log("Nombre de personnages chargés :", characterData.length);
+
     setValidateGuessFunction(validateGuess);
     setSelectCharacterToFindFunction(selectCharacterToFind);
+
+    selectCharacterToFind(); // Maintenant on peut l'exécuter
+}
+initGame();
+
+document.addEventListener("DOMContentLoaded", function () {
+
 });
 
