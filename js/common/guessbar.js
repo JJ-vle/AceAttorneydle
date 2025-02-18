@@ -85,6 +85,7 @@ export function handleInput(query, characterData, selectedGroups, attemptedNames
 
             listItem.addEventListener("click", function () {
                 selectName(character.name); // Appeler la fonction selectName passée en argument
+                validateGuessFunction();
             });
 
             suggestionsList.appendChild(listItem);
@@ -111,16 +112,13 @@ export function handleKeyboard(event){
     } else if (event.key === "Enter") {
         event.preventDefault();
 
-        if (selectedIndex >= 0) {
-            // Si un élément est sélectionné, on le sélectionne et met à jour la sélection
-            selectName(items[selectedIndex].textContent.trim());
-            // Réinitialiser l'index sélectionné après avoir sélectionné un nom
-            selectedIndex = -1; // Réinitialisation de la sélection
-            updateSelection(items); // Mise à jour de la sélection (en réinitialisant l'état visuel)
-        } else {
-            // Si aucun élément n'est sélectionné, on appelle validateGuess
-            validateGuessFunction();
+        if (selectedIndex < 0) {
+            selectedIndex = 0;
         }
+        selectName(items[selectedIndex].textContent.trim());
+        selectedIndex = -1; // Réinitialisation de la sélection
+        updateSelection(items)
+        validateGuessFunction();
     }
 
     updateSelection(items);
