@@ -52,7 +52,9 @@
             "Lord Chief Justice's Office",
             "Prison",
             "Sholmes's Suite",
-            "Garrideb house:Briar RoadMr Natsume's RoomLandlord Garrideb's Flat"
+            "Garrideb house: Briar Road", 
+            "Garrideb house: Mr Natsume's Room", 
+            "Garrideb house: Landlord Garrideb's Flat"
         ],
         "french": null,
         "victim": "Olive Green",
@@ -168,7 +170,8 @@
     },
     {
         "locations": [
-            "Lord Chief Justice's officeDefendants' antechamber"
+            "Lord Chief Justice's office", 
+            "Defendants' antechamber"
         ],
         "french": null,
         "victim": "Mason Milverton",
@@ -208,7 +211,9 @@
     },
     {
         "locations": [
-            "SS Burya:Kazuma's CabinMiss Pavlova's CabinFirst-class cabin passageway"
+            "SS Burya: Kazuma's Cabin ",
+            "SS Burya: Miss Pavlova's Cabin",
+            "SS Burya: First-class cabin passageway"
         ],
         "french": null,
         "victim": "Kazuma Asogi",
@@ -364,7 +369,16 @@
     },
     {
         "locations": [
-            "Wright & Co. Law OfficesHazakura TempleMain gateMain hallCourtyardDusky BridgeInner TempleGateTraining HallGardenDetention centerHeavenly HallDefendant Lobby No. 1Hotti Clinic"
+            "Wright & Co. Law Offices",
+            "Hazakura Temple : Main gate",
+            "Hazakura Temple : Main hall",
+            "Hazakura Temple : Courtyard",
+            "Dusky Bridge",
+            "Inner Temple : Gate",
+            "Inner Temple : Training Hall",
+            "Inner Temple : Garden",
+            "Heavenly Hall",
+            "Hotti Clinic"
         ],
         "french": "Le pont des volte-face",
         "victim": "Misty Fey",
@@ -372,14 +386,6 @@
         "name": "Bridge to the Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/Bridge_to_the_Turnabout",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
-            {
-                "name": "Magatama",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/b/b7/Maya%27s_Magatama.png/revision/latest/scale-to-width-down/268?cb=20240516184615"
-            },
             {
                 "name": "Oh! Cult! New Year's Issue",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/5/5f/Oh%21Cult%21_New_Year%27s_Issue.png/revision/latest/scale-to-width-down/268?cb=20240517222230"
@@ -464,7 +470,15 @@
     },
     {
         "locations": [
-            "Detention centerVisitor's roomCorridor Holding cellWarden's office Prison Workshop AWorkshop B Corridor Maximum securityYardRoom 1202"
+            "Detention center : Visitor's room",
+            "Detention center : Corridor Holding cell",
+            "Detention center : Warden's office",
+            "Prison : Workshop A",
+            "Prison : Workshop B",
+            "Prison : Corridor",
+            "Prison : Maximum security",
+            "Prison : Yard",
+            "Room 1202"
         ],
         "french": "Volte-face et détention",
         "victim": "Bronco Knight",
@@ -576,8 +590,12 @@
     },
     {
         "locations": [
-            "Cosmos Space Center:Space Center entranceBoarding Lounge 1Launch Pad 1 CorridorSpace MuseumRobotics labDistrict CourtDefendant Lobby No. 3Courtroom No. 4Wright Anything Agency",
-            "Detention center - visitor's room"
+            "Space Center entrance",
+            "Boarding Lounge 1",
+            "Launch Pad 1 Corridor",
+            "Space Museum",
+            "Robotics lab",
+            "Wright Anything Agency"
         ],
         "french": null,
         "victim": "Clay Terran",
@@ -585,10 +603,6 @@
         "name": "Death of Clay Terran",
         "url": "https://aceattorney.fandom.com/wiki/Death_of_Clay_Terran",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Terran's Autopsy Report",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fb/Autopsy_Report_HD.png/revision/latest/scale-to-width-down/268?cb=20240726200620"
@@ -676,10 +690,6 @@
         "url": "https://aceattorney.fandom.com/wiki/Death_of_Drew_Misham",
         "evidence": [
             {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
-            {
                 "name": "Magic Show Ticket",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/3/33/Magic_show_ticket.png/revision/latest/scale-to-width-down/268?cb=20240726014631"
             },
@@ -811,7 +821,14 @@
     },
     {
         "locations": [
-            "Wright & Co. Law OfficesDefendant Lobby No. 2Defendant Lobby No. 1Drew StudioVisitor's roomBorscht Bowl ClubSunshine ColiseumSolitary Cell 13"
+            "Wright & Co. Law Offices",
+            "Defendant Lobby No. 2",
+            "Defendant Lobby No. 1",
+            "Drew Studio",
+            "Visitor's room",
+            "Borscht Bowl Club",
+            "Sunshine Coliseum",
+            "Solitary Cell 13"
         ],
         "french": null,
         "victim": "Magnifi Gramarye",
@@ -820,10 +837,6 @@
         "url": "https://aceattorney.fandom.com/wiki/Death_of_Magnifi_Gramarye",
         "evidence": [
             {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
-            {
                 "name": "Magic Show Ticket",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/3/33/Magic_show_ticket.png/revision/latest/scale-to-width-down/268?cb=20240726014631"
             },
@@ -954,35 +967,20 @@
         ]
     },
     {
-        "locations": null,
-        "french": null,
-        "victim": "Gregory Edgeworth",
-        "cause": "Shot in the heart with a Pistol",
-        "name": "DL-6 Incident",
-        "url": "https://aceattorney.fandom.com/wiki/DL-6_Incident",
-        "evidence": [
-            {
-                "name": "DL-6 Case File",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/5/56/Autopsy_report.png/revision/latest/scale-to-width-down/268?cb=20240510202441"
-            },
-            {
-                "name": "DL-6 Incident Photo",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/0/04/DL-6_Incident_Photo.png/revision/latest/scale-to-width-down/268?cb=20240520211533"
-            },
-            {
-                "name": "DL-6 Bullet",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/1/14/Dl6bullet.png/revision/latest/scale-to-width-down/268?cb=20240510223233"
-            }
-        ]
-    },
-    {
         "locations": [
-            "Gatewater Imperial HotelViola HallHallwayEngarde's hotel roomCorrida's hotel roomHotel LobbyWright & Co. Law Offices",
-            "Detention center",
+            "Gatewater Imperial Hotel",
+            "Viola Hall",
+            "Hallway",
+            "Engarde's hotel room",
+            "Corrida's hotel room",
+            "Hotel Lobby",
+            "Wright & Co. Law Offices",
             "Criminal Affairs Department",
-            "Defendant lobby No. 3",
             "Hotti Clinic",
-            "Engarde MansionLiving roomPrivate loungeWine cellar"
+            "Engarde Mansion",
+            "Living room",
+            "Private lounge",
+            "Wine cellar"
         ],
         "french": "Adieu ma volte-face",
         "victim": "Juan Corrida",
@@ -990,14 +988,6 @@
         "name": "Farewell, My Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/Farewell,_My_Turnabout",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
-            {
-                "name": "Maya's Magatama",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/b/b7/Maya%27s_Magatama.png/revision/latest/scale-to-width-down/268?cb=20240516184615"
-            },
             {
                 "name": "The Nickel Samurai",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/c/c6/Generic_Photo.png/revision/latest/scale-to-width-down/268?cb=20240510211130"
@@ -1131,10 +1121,6 @@
         "url": "https://aceattorney.fandom.com/wiki/The_First_Turnabout",
         "evidence": [
             {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
-            {
                 "name": "Cindy's Autopsy Report",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/5/56/Autopsy_report.png/revision/latest/scale-to-width-down/268?cb=20240510202441"
             },
@@ -1161,10 +1147,6 @@
         "url": "https://aceattorney.fandom.com/wiki/The_Foreign_Turnabout",
         "evidence": [
             {
-                "name": "Attorney's badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
-            {
                 "name": "Song of Ceremony",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/8/8e/Song_of_Ceremony.png/revision/latest/scale-to-width-down/268?cb=20240804045334"
             },
@@ -1174,7 +1156,7 @@
             },
             {
                 "name": "Crime Photo",
-                "image": null
+                "image": "https://aceattorney.fandom.com/wiki/Crime_Photo_(Turnabout_Big_Top)?file=Generic_Photo.png"
             },
             {
                 "name": "Treasure Box",
@@ -1197,15 +1179,6 @@
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/1/1f/Dance_of_Devotion_Photo.png/revision/latest/scale-to-width-down/268?cb=20240804050141"
             }
         ]
-    },
-    {
-        "locations": null,
-        "french": null,
-        "victim": "Artie Frost",
-        "cause": "Blunt force trauma from a Salt Lamp",
-        "name": "IS-7 Incident",
-        "url": "https://aceattorney.fandom.com/wiki/IS-7_Incident",
-        "evidence": []
     },
     {
         "locations": [
@@ -1303,10 +1276,6 @@
         "url": "https://aceattorney.fandom.com/wiki/The_Lost_Turnabout",
         "evidence": [
             {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
-            {
                 "name": "Cell Phone",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/0/03/Cell_Phone.png/revision/latest/scale-to-width-down/268?cb=20240517192531"
             },
@@ -1347,9 +1316,11 @@
     {
         "locations": [
             "Wright Anything Agency",
-            "Penrose TheaterDressing roomStageUnderstageDetention center",
+            "Penrose Theater",
+            "Dressing room",
+            "Stage",
+            "Understage",
             "Take-2 TV",
-            "Defendant Lobby No. 3"
         ],
         "french": "La volte-face magique",
         "victim": "Manov Mistree",
@@ -1357,10 +1328,6 @@
         "name": "The Magical Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/The_Magical_Turnabout",
         "evidence": [
-            {
-                "name": "Attorney's badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Stage Diagram",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/2/23/Stage_Diagram.png/revision/latest/scale-to-width-down/268?cb=20240804050330"
@@ -1510,7 +1477,13 @@
     },
     {
         "locations": [
-            "Yokai LaneKyubi ManorKyubi Manor GardenKyubi Manor FoyerFox ChamberForbidden ChamberRelated: Tenma TownWright Anything AgencyDetention center visitor's roomDefendant Lobby No. 3"
+            "Yokai Lane",
+            "Kyubi Manor",
+            "Kyubi Manor Garden",
+            "Kyubi Manor Foyer",
+            "Fox Chamber",
+            "Forbidden Chamber",
+            "Wright Anything Agency"
         ],
         "french": "La volte-face monstrueuse",
         "victim": "Rex Kyubi",
@@ -1518,10 +1491,6 @@
         "name": "The Monstrous Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/The_Monstrous_Turnabout",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Yokai Legend Scroll",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/9/98/Yokai_Legend_Scroll.png/revision/latest/scale-to-width-down/268?cb=20240726203917"
@@ -1605,17 +1574,11 @@
         ]
     },
     {
-        "locations": null,
-        "french": "Volte-face en express",
-        "victim": "Benjamin Cashanova  Gale Gaelic",
-        "cause": "Gunshot wound to the chest from a pistol   Stab wound to the chest from a knife",
-        "name": "Northward, Turnabout Express",
-        "url": "https://aceattorney.fandom.com/wiki/Northward,_Turnabout_Express",
-        "evidence": []
-    },
-    {
         "locations": [
-            "Chief Justice's OfficeKlint van Zieks' mansionBarclay PrisonLowgate Cemetery"
+            "Chief Justice's Office",
+            "Klint van Zieks' mansion",
+            "Barclay Prison",
+            "Lowgate Cemetery"
         ],
         "french": null,
         "victim": "Three British nobles Chief JusticeKlint van Zieks",
@@ -1636,10 +1599,10 @@
     {
         "locations": [
             "Wright & Co. Law Offices",
-            "Detention center",
             "Criminal Affairs Department",
-            "Trés BienKitchenVitamin Square",
-            "Defendant lobby No. 1",
+            "Trés Bien",
+            "Kitchen",
+            "Vitamin Square",
             "Blue Screens, Inc.",
             "Tender Lender"
         ],
@@ -1649,14 +1612,6 @@
         "name": "Recipe for Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/Recipe_for_Turnabout",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
-            {
-                "name": "Maya's Magatama",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/b/b7/Maya%27s_Magatama.png/revision/latest/scale-to-width-down/268?cb=20240516184615"
-            },
             {
                 "name": "Magazine Clipping",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/9/9f/Magazine_Article.png/revision/latest/scale-to-width-down/268?cb=20240517212041"
@@ -1765,7 +1720,9 @@
     },
     {
         "locations": [
-            "Lime Street parkUnspecified London townhouseSholmes's Suite"
+            "Lime Street park",
+            "Unspecified London townhouse",
+            "Sholmes's Suite"
         ],
         "french": null,
         "victim": "Around 1000 people scammed, Daley Vigil kidnapped and bruised",
@@ -1972,8 +1929,12 @@
     {
         "locations": [
             "Wright & Co. Law Offices",
-            "Kurain VillageFey ManorMeditation RoomChanneling ChamberWinding WaySide RoomDetention center",
-            "Defendant lobby No. 3",
+            "Kurain Village",
+            "Fey Manor",
+            "Meditation Room",
+            "Channeling Chamber",
+            "Winding Way",
+            "Side Room",
             "Hotti Clinic",
             "Solitary Cell 13"
         ],
@@ -1983,10 +1944,6 @@
         "name": "Reunion, and Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/Reunion,_and_Turnabout",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Guidemap (Fey Manor)",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/c/c6/Generic_Photo.png/revision/latest/scale-to-width-down/268?cb=20240510211130"
@@ -2063,7 +2020,16 @@
     },
     {
         "locations": [
-            "Wright & Co. Law OfficesDetention centerProsecutor's officeUnderground parking lotHigh Prosecutor's OfficePolice departmentEntranceCriminal Affairs DepartmentGuard stationEvidence roomChief's officeDefendant Lobby No. 2"
+            "Wright & Co. Law Offices",
+            "Prosecutor's office",
+            "Underground parking lot",
+            "High Prosecutor's Office",
+            "Police department",
+            "Entrance",
+            "Criminal Affairs Department",
+            "Guard station",
+            "Evidence room",
+            "Chief's office"
         ],
         "french": "Phoenix renaît de ses cendres",
         "victim": "Bruce Goodman",
@@ -2071,10 +2037,6 @@
         "name": "Rise from the Ashes",
         "url": "https://aceattorney.fandom.com/wiki/Rise_from_the_Ashes",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Wallet",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/c/c7/Wallet.png/revision/latest/scale-to-width-down/268?cb=20240510222714"
@@ -2220,7 +2182,6 @@
     {
         "locations": [
             "Tehm'pul Temple",
-            "Detention center",
             "Bazaar",
             "Plaza of Devotion",
             "Inner Sanctum",
@@ -2233,10 +2194,6 @@
         "name": "The Rite of Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/The_Rite_of_Turnabout",
         "evidence": [
-            {
-                "name": "Attorney's badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Rites Guide",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/e/ed/Rites_Guide.png/revision/latest/scale-to-width-down/268?cb=20240806194624"
@@ -2349,87 +2306,12 @@
     },
     {
         "locations": [
-            "Criminal Affairs Department"
-        ],
-        "french": null,
-        "victim": "Edward Jones  Jason Knight  Edith Kirby  Rachael Moss  Jeb Bates  Neil Marshall",
-        "cause": "Car crash   Unknown    Impaled on a sword from a suit of armor",
-        "name": "SL-9 Incident",
-        "url": "https://aceattorney.fandom.com/wiki/SL-9_Incident",
-        "evidence": [
-            {
-                "name": "Neil's Autopsy Report",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/5/56/Autopsy_report.png/revision/latest/scale-to-width-down/268?cb=20240510202441"
-            },
-            {
-                "name": "Rubber Glove",
-                "image": null
-            },
-            {
-                "name": "Switchblade Knife",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/d/db/Broken_knife.png/revision/latest/scale-to-width-down/268?cb=20240513215000"
-            },
-            {
-                "name": "Unstable Jar",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/e/e0/Unstable_Jar_%28English_Trilogy%29_5.png/revision/latest/scale-to-width-down/268?cb=20240520212648"
-            }
-        ]
-    },
-    {
-        "locations": [
-            "Happy Family Home"
-        ],
-        "french": null,
-        "victim": "Di-Jun Wang   Alf Aldown",
-        "cause": "Stab wound   Blunt force trauma from blow to the head with a brick",
-        "name": "SS-5 Incident",
-        "url": "https://aceattorney.fandom.com/wiki/SS-5_Incident",
-        "evidence": [
-            {
-                "name": "SS-5 Incident Case File",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/7/7c/SS-5_Incident_Files.png/revision/latest?cb=20200806043625"
-            },
-            {
-                "name": "Mr. Aldown's Autopsy Report",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/3/39/Cameron%27s_Autopsy_report.png/revision/latest?cb=20200806045153"
-            },
-            {
-                "name": "Mr. Aldown's Final Call",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/0/00/Cameron%27s_Testimony_%282%29.png/revision/latest?cb=20200806045549"
-            },
-            {
-                "name": "Bloody Button",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/2/2e/Bloodstained_Button.png/revision/latest?cb=20200806045904"
-            },
-            {
-                "name": "Mr. Aldown's Photograph",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/7/7d/Cameron%27s_Photo.png/revision/latest?cb=20200806050305"
-            },
-            {
-                "name": "Fire",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/3/30/Fire.png/revision/latest?cb=20200806044735"
-            },
-            {
-                "name": "Victim's Shoes",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/a/a3/Victim%27s_Shoes_%282%29.png/revision/latest?cb=20200806053035"
-            },
-            {
-                "name": "Mysterious Blood Stain",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/6/61/Mysterious_Bloodstain-0.png/revision/latest?cb=20200806053946"
-            },
-            {
-                "name": "Child's Drawing",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/8/80/Child%27s_Drawing.png/revision/latest?cb=20200806055454"
-            }
-        ]
-    },
-    {
-        "locations": [
             "Wright & Co. Law Offices",
-            "Lordly TailorMain Exhibition HallBasement WarehouseDetention center",
+            "Lordly Tailor",
+            "Main Exhibition Hall",
+            "Basement Warehouse",
             "Mask☆DeMasque's Hideout",
             "Atmey Detective Agency",
-            "Defendant lobby No. 4"
         ],
         "french": "La volte-face volée",
         "victim": "Fey Clan",
@@ -2437,14 +2319,6 @@
         "name": "The Stolen Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/The_Stolen_Turnabout",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
-            {
-                "name": "Maya's Magatama",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/b/b7/Maya%27s_Magatama.png/revision/latest/scale-to-width-down/268?cb=20240516184615"
-            },
             {
                 "name": "Treasure Exhibit Poster",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/c/c6/Generic_Photo.png/revision/latest/scale-to-width-down/268?cb=20240510211130"
@@ -2671,8 +2545,12 @@
     },
     {
         "locations": [
-            "1st Floor1F Hallway1F Waiting Room3rd FloorLecture HallArt roomExternal areasOutdoor stageMaintenance areaDetention center - visitor's room",
-            "District Court - Defendant Lobby No. 3",
+            "1st Floor : Hallway",
+            "1st Floor : Waiting Room",
+            "3rd Floor : Lecture Hall",
+            "3rd Floor : Art room",
+            "Outdoor stage",
+            "Maintenance area",
             "Wright Anything Agency"
         ],
         "french": "Volte-face sur les bancs",
@@ -2681,10 +2559,6 @@
         "name": "Turnabout Academy",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Academy",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Arrow",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/4/41/Arrow.png/revision/latest/scale-to-width-down/268?cb=20240726205942"
@@ -2859,10 +2733,6 @@
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Beginnings",
         "evidence": [
             {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
-            {
                 "name": "Valerie's Autopsy Report",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/5/56/Autopsy_report.png/revision/latest/scale-to-width-down/268?cb=20240510202441"
             },
@@ -2899,8 +2769,14 @@
     {
         "locations": [
             "Wright & Co. Law Offices",
-            "Detention center",
-            "Berry Big CircusCircus EntranceLodging house plazaFirst floor, Moe's RoomThird floor, Acro's RoomBig TopRingmaster's roomCafeteriaDefendant Lobby No. 5"
+            "Berry Big Circus",
+            "Circus Entrance",
+            "Lodging house plaza",
+            "First floor, Moe's Room",
+            "Third floor, Acro's Room",
+            "Big Top",
+            "Ringmaster's room",
+            "Cafeteria",
         ],
         "french": "Volte-face circus",
         "victim": "Russell Berry",
@@ -2908,14 +2784,6 @@
         "name": "Turnabout Big Top",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Big_Top",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
-            {
-                "name": "Maya's Magatama",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/b/b7/Maya%27s_Magatama.png/revision/latest/scale-to-width-down/268?cb=20240516184615"
-            },
             {
                 "name": "Crime Photo",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/c/c6/Generic_Photo.png/revision/latest/scale-to-width-down/268?cb=20240510211130"
@@ -2992,7 +2860,11 @@
     },
     {
         "locations": [
-            "People Park areaMeraktis ClinicHickfield ClinicVisitor's roomDefendant Lobby No. 2"
+            "People Park area",
+            "Meraktis Clinic",
+            "Hickfield Clinic",
+            "Visitor's room",
+            "Defendant Lobby No. 2"
         ],
         "french": "Boulevard des Volte-face",
         "victim": "Phoenix Wright   Trucy Wright   Guy Eldoon   Pal Meraktis",
@@ -3000,10 +2872,6 @@
         "name": "Turnabout Corner",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Corner",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Map",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/1/14/People_Park_Map_HD.png/revision/latest/scale-to-width-down/268?cb=20240724054310"
@@ -3092,10 +2960,6 @@
         "name": "Turnabout Countdown",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Countdown",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Arme's Autopsy Report",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fb/Autopsy_Report_HD.png/revision/latest/scale-to-width-down/268?cb=20240726200620"
@@ -3287,8 +3151,12 @@
     {
         "locations": [
             "Wright Anything Agency",
-            "Detention center",
-            "Cosmos Space CenterSpace Center entranceBoarding Lounge 1Launch Pad 1 CorridorSpace MuseumRobotics lab"
+            "Cosmos Space Center",
+            "Space Center entrance",
+            "Boarding Lounge 1",
+            "Launch Pad 1 Corridor",
+            "Space Museum",
+            "Robotics lab"
         ],
         "french": "Demain est une autre volte-face",
         "victim": "Metis Cykes  Clay Terran",
@@ -3296,10 +3164,6 @@
         "name": "Turnabout for Tomorrow",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_for_Tomorrow",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Space Center Diagram",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/0/0d/Space_Center_Diagram.png/revision/latest/scale-to-width-down/268?cb=20240728210908"
@@ -3384,7 +3248,8 @@
     },
     {
         "locations": [
-            "Bigg BuildingCommittee chamber"
+            "Bigg Building",
+            "Committee chamber"
         ],
         "french": "Volte-face et rémission",
         "victim": "Rosie Ringer",
@@ -3497,9 +3362,15 @@
     {
         "locations": [
             "Wright & Co. Law Offices",
-            "Detention center",
-            "Gourd Lake Park EntrancePublic BeachWoodsBoat rental shopCaretaker's shackPolice departmentCriminal AffairsRecords RoomGrossberg Law Offices",
-            "Defendant lobby No. 2"
+            "Gourd Lake Park Entrance",
+            "Public Beach",
+            "Woods",
+            "Boat rental shop",
+            "Caretaker's shack",
+            "Police department",
+            "Criminal Affairs",
+            "Records Room",
+            "Grossberg Law Offices"
         ],
         "french": "Adieux et volte-face",
         "victim": "Robert Hammond",
@@ -3507,10 +3378,6 @@
         "name": "Turnabout Goodbyes",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Goodbyes",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Popper",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/a/aa/Poppers.png/revision/latest/scale-to-width-down/268?cb=20240510222540"
@@ -3609,10 +3476,6 @@
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Legacy",
         "evidence": [
             {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
-            {
                 "name": "Seal",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/5/55/GK2SignetCrest.png/revision/latest?cb=20180304011641"
             },
@@ -3693,10 +3556,6 @@
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Memories",
         "evidence": [
             {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
-            {
                 "name": "Doug's Autopsy Report",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/5/56/Autopsy_report.png/revision/latest/scale-to-width-down/268?cb=20240510202441"
             },
@@ -3741,8 +3600,11 @@
     {
         "locations": [
             "Wright Anything Agency",
-            "Shipshape AquariumEntrance Aqua TunnelOrca poolPub O' DangerStage ShowDefendant Lobby No. 3",
-            "Detention Center - Visitor's Room"
+            "Shipshape Aquarium",
+            "Entrance Aqua Tunnel",
+            "Orca pool",
+            "Pub O' Danger",
+            "Stage Show"
         ],
         "french": "Volte-face à la barre",
         "victim": "Jack Shipley",
@@ -3750,10 +3612,6 @@
         "name": "Turnabout Reclaimed",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Reclaimed",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Swashbuckler Flyer",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/9/95/Swashbuckler_Flyer.png/revision/latest/scale-to-width-down/268?cb=20240728213716"
@@ -3935,8 +3793,11 @@
     {
         "locations": [
             "Wright Anything Agency",
-            "Detention center",
-            "Kurain VillageDoctor's studyMt. MitamaCavesKurainese RuinsDefendant Lobby No. 3"
+            "Kurain Village",
+            "Doctor's study",
+            "Mt. Mitama",
+            "Caves",
+            "Kurainese Ruins"
         ],
         "french": "Volte-face et révolution",
         "victim": "Inga Karkhuul Khura'in  Amara Sigatar Khura'in",
@@ -3944,10 +3805,6 @@
         "name": "Turnabout Revolution",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Revolution",
         "evidence": [
-            {
-                "name": "Attorney's badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Founder's Orb",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/0/0e/Founder%27s_Orb.png/revision/latest/scale-to-width-down/268?cb=20240808021434"
@@ -4010,8 +3867,14 @@
         "locations": [
             "Wright & Co. Law Offices",
             "Phoenix Wright's bedroom",
-            "Detention center",
-            "Global StudiosMain GateStudio One entranceEmployee AreaDressing roomStudio OneStudio TwoTrailerDistrict CourtDefendant lobby No. 3Defendant Lobby No. 1"
+            "Global Studios",
+            "Main Gate",
+            "Studio One entrance",
+            "Employee Area",
+            "Dressing room",
+            "Studio One",
+            "Studio Two",
+            "Trailer"
         ],
         "french": "La volte-face du samouraï",
         "victim": "Jack Hammer",
@@ -4019,10 +3882,6 @@
         "name": "Turnabout Samurai",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Samurai",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Powers's Letter",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/0/02/Envelope.png/revision/latest/scale-to-width-down/268?cb=20240510202121"
@@ -4099,7 +3958,12 @@
     },
     {
         "locations": [
-            "Sunshine Coliseum:EntranceBackstage hallwayGavinners's dressing roomLamiroir's dressing roomStage Wright Anything Agency",
+            "Sunshine Coliseum : Entrance",
+            "Sunshine Coliseum : Backstage hallway",
+            "Gavinners's dressing room",
+            "Lamiroir's dressing room",
+            "Stage",
+            "Wright Anything Agency",
             "Visitor's room",
             "Prosecutor Gavin's office",
             "Hickfield Clinic",
@@ -4111,10 +3975,6 @@
         "name": "Turnabout Serenade",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Serenade",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Postcard",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/9/99/Generic_photo_%28AJ%29.png/revision/latest/scale-to-width-down/268?cb=20240724051636"
@@ -4200,10 +4060,8 @@
     {
         "locations": [
             "Fey & Co. Law Offices",
-            "Detention center",
             "Grossberg Law Offices",
             "Gatewater Hotel",
-            "Defendant Lobby No. 1",
             "Bluecorp"
         ],
         "french": "La volte-face des sœurs",
@@ -4212,10 +4070,6 @@
         "name": "Turnabout Sisters",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Sisters",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "The Thinker",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/2/2d/Thinker_Statue_HD.png/revision/latest/scale-to-width-down/268?cb=20240520203436"
@@ -4287,10 +4141,6 @@
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Storyteller",
         "evidence": [
             {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
-            {
                 "name": "Backstage Diagram",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/e/e6/Backstagedia.png/revision/latest/scale-to-width-down/268?cb=20240806202348"
             },
@@ -4327,9 +4177,10 @@
     {
         "locations": [
             "Wright Anything Agency",
-            "Detention Center",
             "Mooring dock",
-            "Flying ChapelReception hallHoldFoyer"
+            "Flying Chapel",
+            "Reception hall",
+            "HoldFoyer"
         ],
         "french": "Retour vers la volte-face",
         "victim": "Dumas Gloomsbury",
@@ -4337,10 +4188,6 @@
         "name": "Turnabout Time Traveler",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Time_Traveler",
         "evidence": [
-            {
-                "name": "Attorney's badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Ellen's Pendant",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/3/3d/Ellen%27s_Pendant.png/revision/latest/scale-to-width-down/268?cb=20240808023043"
@@ -4425,7 +4272,10 @@
     },
     {
         "locations": [
-            "Gourd Lake ParkLakeside stageSpectator areaPresidential plane"
+            "Gourd Lake Park",
+            "Lakeside stage",
+            "Spectator area",
+            "Presidential plane"
         ],
         "french": "Volte-face et point de mire",
         "victim": "Bastian Rook",
@@ -4505,10 +4355,6 @@
         "name": "Turnabout Trump",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Trump",
         "evidence": [
-            {
-                "name": "Attorney's Badge",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Aa5badge.png/revision/latest/scale-to-width-down/268?cb=20240804052354"
-            },
             {
                 "name": "Smith's Autopsy Report",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/6/63/AJ_Autopsy_Report.png/revision/latest/scale-to-width-down/268?cb=20240724051232"
@@ -4599,14 +4445,5 @@
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/5/50/AAIME_Note_left_by_Victim.png/revision/latest?cb=20160127193754"
             }
         ]
-    },
-    {
-        "locations": null,
-        "french": null,
-        "victim": "Metis Cykes",
-        "cause": "Stabbed by a katana",
-        "name": "UR-1 Incident",
-        "url": "https://aceattorney.fandom.com/wiki/UR-1_Incident",
-        "evidence": []
     }
 ]
