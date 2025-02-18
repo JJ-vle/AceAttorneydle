@@ -1,9 +1,12 @@
 let targetCharacter = null;
 let characterData = []; // Stocke les personnages
+let quoteData = [];
 let selectedIndex = -1;
 let attemptedNames = new Set(); // Stocke les noms déjà proposés
 let selectedGroups; //Groupes sélectionnés et validés
 let numTries=0; // Nombre d'essais
+let hints = {};
+
 //////////////////
 
 const inputField = document.getElementById("guessInput");
@@ -11,7 +14,7 @@ const suggestionsList = document.getElementById("suggestions");
 const validateButton = document.getElementById("validateButton");
 const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
-const silhouetteImg = document.getElementById("silhouette");
+const guessbarDiv = document.getElementById("guessbar");
 
 // Assurer la création du tableau dès le début
 function createHistoryTable() {
@@ -30,7 +33,6 @@ function createHistoryTable() {
 }
 createHistoryTable()
 
-
 // Fonction pour filtrer et afficher les suggestions
 inputField.addEventListener("input", function () {
     const query = this.value.toLowerCase().trim();
@@ -43,14 +45,8 @@ inputField.addEventListener("input", function () {
         return;
     }
 
-    // Filtrer les personnages en fonction des groupes cochés
-    const filteredCharacters = characterData.filter(c => {
-        const group = getGroupByCharacter(c); // Trouver le groupe du personnage
-        return selectedGroups.includes(group); // Vérifier si le groupe du personnage est sélectionné
-    });
-
     // Filtrer davantage les personnages selon la saisie dans le champ de recherche
-    const matchedCharacters = filteredCharacters.filter(c => {
+    const matchedCharacters = characterData.filter(c => {
         if (attemptedNames.has(c.name)) return false; // Exclure les personnages déjà proposés
         
         const englishName = c.name.toLowerCase();
@@ -175,9 +171,9 @@ function validateGuess() {
 
     if (guessName.toLowerCase() === targetCharacter.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
-        silhouetteImg.children[0].style.filter = ""
         feedback.textContent = "🎉 Congratulation ! You found " + targetCharacter.name + " !";
         feedback.className = "success";
+        guessbarDiv.innerHTML="";
     } else {
         addToHistory(guessedCharacter, false);
         feedback.textContent = "❌ wrong answer, try again !";
@@ -195,6 +191,8 @@ function addToHistory(guessedCharacter, result) {
     createHistoryTable(); // Assure que le tableau est bien créé
     const historyBody = document.getElementById("historyBody");
 
+    //historyItem.innerHTML = result ? "🎉" : "❌";
+    
     let imageUrl = "";
     if (guessedCharacter.image && guessedCharacter.image.length > 0) {
         imageUrl = guessedCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
@@ -228,147 +226,198 @@ function compareInfoClass(guess, target) {
     return isCorrect ? 'correct' : 'incorrect';
 }
 
+//============ LOGIQUE DE SELECTION DE LA QUOTE =============//
 
-// Charger le fichier JSON contenant les informations des débuts
-let turnaboutGames = {};
-
-fetch("resources/data/turnabouts.json")
-    .then(response => response.json())
-    .then(data => {
-        turnaboutGames = data;
-    })
-    .catch(error => console.error("Erreur de chargement du fichier turnabout.json :", error));
-
-// Fonction pour récupérer le groupe de chaque personnage
-function getGroupByCharacter(character) {
-    for (let group in turnaboutGames) {
-        for (let game in turnaboutGames[group]) {
-            if (turnaboutGames[group][game].includes(character.debut)) {
-                return group;
-            }
-        }
-    }
-    return null;
+// Function to load JSON data
+function loadJSON(url) {
+    return fetch(url).then(response => response.json());
 }
 
-// Fonction pour récupérer le jeu d'un début d'affaire
-function getInfoByDebut(debut) {
-    // Parcours chaque groupe
-    for (let group in turnaboutGames) {
-        // Parcours chaque jeu dans le groupe
-        for (let game in turnaboutGames[group]) {
-            if (turnaboutGames[group][game].includes(debut)) {
-                return { game: game, group: group }; // Retourne le jeu et son groupe
-            }
-        }
-    }
-    return null; // Retourne null si le jeu n'est pas trouvé
-}
+// Load both JSON files in parallel
+Promise.all([
+    loadJSON("resources/data/aceattorneychars.json"),
+    loadJSON("resources/data/quotes.json")
+])
+.then(([charData, qData]) => {
+    characterData = charData;
+    quoteData = qData;
 
-// Récupère la liste des checkboxes et ajoute un écouteur d'événement
-const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']");
-//checkboxes.forEach(checkbox => checkbox.addEventListener("change", filterCharacters));
+    console.log("✅ All data loaded:", characterData.length, "characters and", quoteData.length, "quotes.");
 
-const updateButton = document.querySelector("#updateFilters");
-updateButton.addEventListener("click", selectCharacterToFind);
+    selectCharacterToFind(); // Now we can safely call the function
+})
+.catch(error => console.error("JSON loading error:", error));
 
-// Fonction pour filtrer les personnages en fonction des groupes cochés
-function filterCharacters() {
-    selectedGroups = Array.from(checkboxes)
-        .filter(checkbox => checkbox.checked)
-        .map(checkbox => checkbox.value);
-
-    //console.log("📌 Groups :", selectedGroups);
-    //console.log("📌 Data :", characterData.length, "characters available.");
-
-    // Filtrer les personnages en fonction du groupe sélectionné
-    const filtered = characterData.filter(character => {
-        const group = getGroupByCharacter(character);
-        return selectedGroups.includes(group);
-    });
-
-    //console.log("📌 Filter :", filtered.length, "characters found.");
-
-    return filtered;
-}
-
-// Charger les données JSON et initialiser le personnage cible
-fetch("resources/data/aceattorneychars.json")
-    .then(response => response.json())
-    .then(data => {
-        characterData = data;
-
-        console.log("✅ Data loaded :", characterData.length, "characters.");
-
-        selectCharacterToFind();
-        
-        //console.log("Unique debuts:", getUniqueDebuts());
-    })
-    .catch(error => console.error("JSON loading error :", error));
-
-function selectCharacterToFind(){
-
-    // Fonction pour filtrer les personnages
-    function isValidCharacter(character) {
-
-        if (!character.image  || character.exception == "unusable" || character.exception == "unusable-silhouette" || character.image === "N/A" || character.image === "Unknown" || character.image === "Unknow") {
+function selectCharacterToFind() {
+    // Function to validate quotes
+    function isValidQuote(quote) {
+        if (!quote.speaker || !quote.quote || !quote.source || !quote.speaker_url) {
             return false;
         }
-        if (character.bypass){
+        if (quote.bypass) {
             return true;
         }
 
-        const attributes = [
-            character.name,
-            character.status,
-            character.gender,
-            character.birthday,
-            character.eyes,
-            character.hair,
-            character.debut
-        ];
-
-        // Filtrer les valeurs valides (excluant "N/A", "Unknown", "Unknow", null)
+        const attributes = [quote.speaker, quote.quote, quote.source, quote.speaker_url];
         const validAttributes = attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow");
 
-        // Garder seulement les personnages ayant au moins 4 attributs valides
-        return validAttributes.length >= 4;
+        return validAttributes.length >= 3;
     }
 
-    // Filtrer les personnages
-    characterData = characterData.filter(isValidCharacter);
-    //console.log("✅ Validated data :", characterData.length, "characters after filtering.");
+    // Filter valid quotes
+    let validQuotes = quoteData.filter(isValidQuote);
+    if (validQuotes.length === 0) {
+        console.error("No valid quotes found!");
+        return;
+    }
 
-    let filteredData = filterCharacters();
-    if (filteredData.length > 0) {
-        targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
+    // Select a random quote
+    let targetQuote = validQuotes[Math.floor(Math.random() * validQuotes.length)];
 
-        imageProcessing(targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") )
-        console.log("Character to find :", targetCharacter.name);
+    // Find the matching character by speaker_url
+    characterData.forEach((char) => {
+        if(char.name == targetQuote.speaker){
+            targetCharacter = char
+        }   
+    })
+
+    hints = {
+        game: { icon: document.querySelector("#hint-game .hint-icon"), title: "Game", text: targetQuote.source},
+        occupation: { icon: document.querySelector("#hint-occupation .hint-icon"), title: "Occupation", text: targetCharacter.occupation },
+        figure: { icon: document.querySelector("#hint-figure .hint-icon"), title: "Figure", image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
+    };
+
+    displayQuote(targetQuote)
+    console.log("Character to find (quote) :", targetQuote.speaker);
+}
+
+function displayQuote(quote){
+    document.getElementById("quote").innerText = quote.quote
+}
+
+const hintDetails = document.getElementById("hint-details");
+const hintHeader = document.getElementById("hint-details-header");
+const hintContent = document.getElementById("hint-details-content");
+
+// Fonction pour afficher le cadre avec un titre spécifique
+function showHintContainer(title) {
+    hintDetails.style.display = "block"; // Affiche le cadre
+    hintHeader.textContent = title || "Hint"; // Définit le titre avec la valeur donnée
+}
+
+// Fonction pour ajouter un texte
+function addHint(title, text) {
+    if (!text) return;
+    showHintContainer(title);
+
+    const hintElement = document.createElement("p");
+    hintElement.textContent = text;
+    hintContent.appendChild(hintElement);
+}
+
+// Fonction pour ajouter une image
+function addHintImage(title, imgSrc) {
+    if (!imgSrc) return;
+    showHintContainer(title);
+
+    const hintElement = document.createElement("img");
+    hintElement.src = imgSrc;
+    hintElement.alt = "Figure";
+    hintElement.classList.add("hint-image");
+
+    hintContent.appendChild(hintElement);
+}
+
+// Fonction pour vider les hints et cacher le cadre si vide
+function clearHints() {
+    hintContent.innerHTML = "";
+    hintDetails.style.display = "none"; // Cache le cadre si plus de contenu
+}
+
+
+// Variable pour suivre le hint actuellement affiché
+let currentHint = null;
+
+function unlockHint(hint) {
+    hints[hint].icon.classList.add("active");
+    hints[hint].icon.classList.remove("disabled");
+    hints[hint].icon.style.cursor = "pointer";
+
+    // On enlève tous les anciens écouteurs pour éviter la duplication
+    hints[hint].icon.removeEventListener("click", toggleHint);
+    hints[hint].icon.addEventListener("click", function () {
+        toggleHint(hint);
+    });
+}
+
+function toggleHint(hint) {
+    // Si on clique sur le même hint, on le cache
+    if (currentHint === hint) {
+        clearHints();
+        currentHint = null;
     } else {
-        console.warn("No characters available after filtering!");
-        //selectCharacterToFind();
+        // Sinon, on change le hint affiché
+        clearHints();
+        if (hints[hint].text) {
+            addHint(hints[hint].title, hints[hint].text);
+        }
+        if (hints[hint].image) {
+            addHintImage(hints[hint].title, hints[hint].image);
+        }
+        currentHint = hint; // Met à jour le hint affiché
     }
 }
 
-function imageProcessing(imgSrc) {
-    const imgElement = document.createElement("img");
-    imgElement.src = imgSrc;
-    imgElement.alt = "Silhouette du personnage";
-    
-    // Applique un filtre noir complet
-    imgElement.style.filter = "brightness(0)";
-    imgElement.style.height = "auto";
-    imgElement.style.maxWidth = "1500px";
-    imgElement.style.display = "block";
-    imgElement.style.margin = "10px auto"; // Centre l'image
 
-    silhouetteImg.innerHTML = ''
-    silhouetteImg.appendChild(imgElement);
+
+
+
+
+const hintCounts = {
+    game: { tries: 3, element: document.querySelector("#hint-game .hint-count"), icon: document.querySelector("#hint-game .hint-icon") },
+    occupation: { tries: 8, element: document.querySelector("#hint-occupation .hint-count"), icon: document.querySelector("#hint-occupation .hint-icon") },
+    figure: { tries: 15, element: document.querySelector("#hint-figure .hint-count"), icon: document.querySelector("#hint-figure .hint-icon") }
+};
+
+
+
+// Fonction pour mettre à jour les "hint-counts"
+function updateHintCounts() {
+    for (let key in hintCounts) {
+        let remainingTries = hintCounts[key].tries - numTries;
+        if (remainingTries > 0) {
+            hintCounts[key].element.textContent = `in ${remainingTries} tries`;
+        } else {
+            hintCounts[key].element.textContent = "Unlocked!";
+        }
+    }
 }
+
+
+function hintChecker() {
+    if (numTries === 3) {
+        unlockHint("game");
+        //document.querySelector("#hint-game img").src = "resources/img/icons/Psyche-Lock-Broken.png"
+        hintCounts.game.icon.src = "resources/img/icons/Psyche-Lock-Broken.png";
+    }
+    if (numTries === 8) {
+        unlockHint("occupation");
+        //document.querySelector("#hint-game img").src = "resources/img/icons/Psyche-Lock-Broken.png"
+        hintCounts.occupation.icon.src = "resources/img/icons/Psyche-Lock-Broken.png";
+    }
+    if (numTries === 15) {
+        unlockHint("figure");
+        //document.querySelector("#hint-game img").src = "resources/img/icons/Black_Psyche-Lock-Broken.png"
+        hintCounts.figure.icon.src = "resources/img/icons/Black_Psyche-Lock-Broken.png";
+    }
+    updateHintCounts(); // Met à jour l'affichage des essais restants
+}
+
+// Initialisation des textes au début de la partie
+updateHintCounts();
 
 function verifyTries(){
-    // Calcul du niveau de défense (10 - numTries / 2)
+    hintChecker();
     var defenseLevel = 15 - numTries;
 
     // Si le niveau est plus petit que 1, on le fixe à 1 (tu peux ajuster cela selon tes préférences)
@@ -388,8 +437,6 @@ function verifyTries(){
     // Ajoute l'image à la div
     document.getElementById("defensebar").appendChild(img);
 }
-
-
 
 function gameOver(){
     console.log("GAME OVER");
