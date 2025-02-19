@@ -8,6 +8,8 @@ export let turnaboutGames = {};
 export let characterData = [];
 // JSON des citations
 export let quoteData = [];
+// JSON des citations
+export let casesData = [];
 // Mode de jeu
 export let gameMode;
 
@@ -29,15 +31,21 @@ export let dataLoaded = Promise.all([
         console.log("✅ turnabouts.json chargé");
     }).catch(error => console.error("Erreur de chargement de turnabout.json :", error)),
 
+    loadJSON("resources/data/aceattorneychars.json").then(data => {
+        characterData = data.filter(isValidCharacter); // Filtrage des personnages valides
+        console.log("✅ aceattorneychars.json chargé :", characterData.length, "personnages valides.");
+    }).catch(error => console.error("Erreur de chargement de aceattorneychars.json :", error)),
+
     loadJSON("resources/data/quotes.json").then(data => {
         quoteData = data;
         console.log("✅ quotes.json chargé");
     }).catch(error => console.error("Erreur de chargement de quotes.json :", error)),
 
-    loadJSON("resources/data/aceattorneychars.json").then(data => {
-        characterData = data.filter(isValidCharacter); // Filtrage des personnages valides
-        console.log("✅ aceattorneychars.json chargé :", characterData.length, "personnages valides.");
-    }).catch(error => console.error("Erreur de chargement de aceattorneychars.json :", error))
+    loadJSON("resources/data/cases.json").then(data => {
+        casesData = data;
+        console.log("✅ cases.json chargé");
+    }).catch(error => console.error("Erreur de chargement de cases.json :", error)),
+
 ])
 .then(() => {
     console.log("🎯 Tous les fichiers JSON sont chargés !");
@@ -61,15 +69,21 @@ export function getInfoByDebut(debut) {
 }
 // Fonction pour récupérer le groupe d'un personnage
 export function getGroupByCharacter(character) {
+    return getGroupByTurnabout(character.debut);
+}
+
+// Fonction pour récupérer le groupe d'un personnage
+export function getGroupByTurnabout(turnabout) {
     for (let group in turnaboutGames) {
         for (let game in turnaboutGames[group]) {
-            if (turnaboutGames[group][game].includes(character.debut)) {
+            if (turnaboutGames[group][game].includes(turnabout)) {
                 return group;
             }
         }
     }
     return null;
 }
+
 // Fonction pour récupérer tous les "debut" différents
 function getUniqueDebuts() {
     if (!characterData || characterData.length === 0) {
