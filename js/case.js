@@ -104,21 +104,13 @@ function selectCaseToFind() {
     }
 
     let hints = {
-        cause: { icon: document.querySelector("#hint-cause .hint-icon"), title: "Death cause", text: targetCase.cause },
-        victim: { icon: document.querySelector("#hint-victim .hint-icon"), title: "Victim", text: targetCase.victim },
-        //image: { icon: document.querySelector("#hint-figure .hint-icon"), title: "Image", image: targetCase.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
-        image: { icon: document.querySelector("#hint-image .hint-icon"), title: "Image", text: targetCase.name }
+        cause: { title: "Death cause", tries: 3, icon: document.querySelector("#hint-cause .hint-icon"), element: document.querySelector("#hint-cause .hint-count"),  text: targetCase.cause },
+        victim: { title: "Victim", tries: 7, icon: document.querySelector("#hint-victim .hint-icon"), element: document.querySelector("#hint-victim .hint-count"), text: targetCase.victim },
+        //image: { title: "Image", tries: 12, icon: document.querySelector("#hint-image .hint-icon"), element: document.querySelector("#hint-image .hint-count"), image: targetCase.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
+        image: { title: "Image", tries: 12, icon: document.querySelector("#hint-image .hint-icon"), element: document.querySelector("#hint-image .hint-count"), text: targetCase.name }
     };
-    
-    const hintCounts = {
-        game: { tries: 3, element: document.querySelector("#hint-game .hint-count"), icon: document.querySelector("#hint-game .hint-icon") },
-        occupation: { tries: 7, element: document.querySelector("#hint-occupation .hint-count"), icon: document.querySelector("#hint-occupation .hint-icon") },
-        figure: { tries: 12, element: document.querySelector("#hint-figure .hint-count"), icon: document.querySelector("#hint-figure .hint-icon") }
-    };
-    
 
     setHints(hints);
-    setHintsCounts(hintCounts);
     displayEvidence();
     console.log("✅ Character to find (quote):", targetCase.name);
 }

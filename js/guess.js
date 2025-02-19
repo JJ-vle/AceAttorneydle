@@ -124,6 +124,7 @@ function selectCharacterToFind() {
         setHints(hints);
 
         console.log("Character to find :", targetCharacter.name);
+        //console.log(hints);
     } else {
         console.warn("No characters available after filtering!");
     }

@@ -28,6 +28,7 @@ function addHint(title, text) {
     const hintElement = document.createElement("p");
     hintElement.textContent = text;
     hintContent.appendChild(hintElement);
+    
 }
 
 // Fonction pour ajouter une image
@@ -62,9 +63,8 @@ function unlockHint(hint) {
 
     // On enlève tous les anciens écouteurs pour éviter la duplication
     hints[hint].icon.removeEventListener("click", toggleHint);
-    hints[hint].icon.addEventListener("click", function () {
-        toggleHint(hint);
-    });
+    hints[hint].icon.addEventListener("click", toggleHint.bind(null, hint));
+    
 }
 
 function toggleHint(hint) {
@@ -77,11 +77,9 @@ function toggleHint(hint) {
         clearHints();
         if (hints[hint].text) {
             addHint(hints[hint].title, hints[hint].text);
-            console.log("yihiiii");
         }
         if (hints[hint].image) {
             addHintImage(hints[hint].title, hints[hint].image);
-            console.log ("yahooooooooooooooo");
         }
         currentHint = hint; // Met à jour le hint affiché
     }
@@ -89,12 +87,7 @@ function toggleHint(hint) {
 
 //////////// HINTS COUNTS
 
-// Fonction pour mettre à jour les "hint-counts"
-function updateHintCounts() {
-
-}
-
-function hintChecker(numTries) {
+function hintChecker() {
     let lockedKeys = Object.values(hints).filter(hint => hint.tries - numTries > 0).length;
 
     for (let key in hints) {
@@ -102,7 +95,7 @@ function hintChecker(numTries) {
         
         if (remainingTries > 0) {
             hints[key].element.textContent = `in ${remainingTries} tries`;
-        } else {
+        } else if (remainingTries == 0){
             hints[key].element.textContent = "Unlocked!";
             unlockHint(key);
         }
@@ -121,5 +114,5 @@ function hintChecker(numTries) {
 document.addEventListener("DOMContentLoaded", function () {
     setHintChecker(hintChecker);
     // Initialisation des textes au début de la partie
-    hintChecker(0);
+    hintChecker();
 });
