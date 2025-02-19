@@ -32,7 +32,10 @@ function addHint(title, text) {
 
 // Fonction pour ajouter une image
 function addHintImage(title, imgSrc) {
-    if (!imgSrc) return;
+    if (!imgSrc){
+        console.log("pipciaaca");
+        return;
+    }
     showHintContainer(title);
 
     const hintElement = document.createElement("img");
@@ -74,9 +77,11 @@ function toggleHint(hint) {
         clearHints();
         if (hints[hint].text) {
             addHint(hints[hint].title, hints[hint].text);
+            console.log("yihiiii");
         }
         if (hints[hint].image) {
             addHintImage(hints[hint].title, hints[hint].image);
+            console.log ("yahooooooooooooooo");
         }
         currentHint = hint; // Met à jour le hint affiché
     }
@@ -84,48 +89,37 @@ function toggleHint(hint) {
 
 //////////// HINTS COUNTS
 
-const hintCounts = {
-    game: { tries: 3, element: document.querySelector("#hint-game .hint-count"), icon: document.querySelector("#hint-game .hint-icon") },
-    occupation: { tries: 7, element: document.querySelector("#hint-occupation .hint-count"), icon: document.querySelector("#hint-occupation .hint-icon") },
-    figure: { tries: 12, element: document.querySelector("#hint-figure .hint-count"), icon: document.querySelector("#hint-figure .hint-icon") }
-};
-
 // Fonction pour mettre à jour les "hint-counts"
 function updateHintCounts() {
-    for (let key in hintCounts) {
-        let remainingTries = hintCounts[key].tries - numTries;
+
+}
+
+function hintChecker(numTries) {
+    let lockedKeys = Object.values(hints).filter(hint => hint.tries - numTries > 0).length;
+
+    for (let key in hints) {
+        let remainingTries = hints[key].tries - numTries;
+        
         if (remainingTries > 0) {
-            hintCounts[key].element.textContent = `in ${remainingTries} tries`;
+            hints[key].element.textContent = `in ${remainingTries} tries`;
         } else {
-            hintCounts[key].element.textContent = "Unlocked!";
+            hints[key].element.textContent = "Unlocked!";
+            unlockHint(key);
+        }
+
+        if (numTries === hints[key].tries) {
+            hints[key].icon.src = (lockedKeys === 0) 
+                ? "resources/img/icons/Black_Psyche-Lock-Broken.png" 
+                : "resources/img/icons/Psyche-Lock-Broken.png";
         }
     }
 }
 
-function hintChecker(numTries) {
-    if (numTries === hintCounts["game"].tries) {
-        unlockHint("game");
-        //document.querySelector("#hint-game img").src = "resources/img/icons/Psyche-Lock-Broken.png"
-        hintCounts.game.icon.src = "resources/img/icons/Psyche-Lock-Broken.png";
-    }
-    if (numTries === hintCounts["occupation"].tries) {
-        unlockHint("occupation");
-        //document.querySelector("#hint-game img").src = "resources/img/icons/Psyche-Lock-Broken.png"
-        hintCounts.occupation.icon.src = "resources/img/icons/Psyche-Lock-Broken.png";
-    }
-    if (numTries === hintCounts["figure"].tries) {
-        unlockHint("figure");
-        //document.querySelector("#hint-game img").src = "resources/img/icons/Black_Psyche-Lock-Broken.png"
-        hintCounts.figure.icon.src = "resources/img/icons/Black_Psyche-Lock-Broken.png";
-    }
-    updateHintCounts(); // Met à jour l'affichage des essais restants
-}
-
-// Initialisation des textes au début de la partie
-updateHintCounts();
 
 //////////// DOMCONTENTLOADED
 
 document.addEventListener("DOMContentLoaded", function () {
     setHintChecker(hintChecker);
+    // Initialisation des textes au début de la partie
+    hintChecker(0);
 });

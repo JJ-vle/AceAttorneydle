@@ -2,7 +2,7 @@
 
 // Importation des fichiers
 import { setValidateGuessFunction } from './common/guessbar.js';
-import { dataLoaded, casesData, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, setGameMode } from './common/data.js';
+import { dataLoaded, casesData, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByTurnabout, setGameMode } from './common/data.js';
 import { setHints } from './common/hint.js';
 import { incrementNumTries, verifyTries } from './common/life.js';
 setGameMode("case");
@@ -38,24 +38,24 @@ function createHistoryTable() {
 createHistoryTable()
 
 // Ajouter un essai sous forme de nouvelle ligne dans le tableau existant
-function addToHistory(guessedCharacter, result) {
+function addToHistory(guessedCase, result) {
     createHistoryTable(); // Assure que le tableau est bien créé
     const historyBody = document.getElementById("historyBody");
 
     //historyItem.innerHTML = result ? "🎉" : "❌";
     
     let imageUrl = "";
-    if (guessedCharacter.image && guessedCharacter.image.length > 0) {
-        imageUrl = guessedCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
+    if (guessedCase.image && guessedCase.image.length > 0) {
+        imageUrl = guessedCase.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
     }
 
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
-        <td class="single-cell-oneth ${compareInfoClass(guessedCharacter.name, targetCharacter.name)}" >
+        <td class="single-cell-oneth ${compareInfoClass(guessedCase.name, targetCase.name)}" >
             <div class="image-container-oneth">
-                <img src="${imageUrl}" alt="${guessedCharacter.name}" class="centered-image-oneth">
+                <img src="${imageUrl}" alt="${guessedCase.name}" class="centered-image-oneth">
             </div>
-            <div class="name-below-oneth">${guessedCharacter.name}</div>
+            <div class="name-below-oneth">${guessedCase.name}</div>
         </td>
     `;
 
@@ -64,95 +64,95 @@ function addToHistory(guessedCharacter, result) {
 
 ////////////////// FUNCTIONS
 
-function selectCharacterToFind() {
+function selectCaseToFind() {
     if (!casesData || casesData.length === 0 || !characterData || characterData.length === 0) {
         console.error("Data not loaded yet!");
         return;
     }
 
     // Appliquer les filtres aux personnages
-    let filteredCharacters = filterCharacters();
-    if (filteredCharacters.length === 0) {
+    let filteredCases = filterCases();
+    if (filteredCases.length === 0) {
         console.warn("No characters available after filtering!");
         return;
     }
 
-    function isValidQuote(quote) {
-        if (!quote.speaker || !quote.quote || !quote.source || !quote.speaker_url) {
+    function isValidCase(turnabout) {
+        if (!turnabout.name || !turnabout.evidence) {
             return false;
         }
-        if (quote.bypass) {
+        if (turnabout.bypass) {
             return true;
         }
 
-        const attributes = [quote.speaker, quote.quote, quote.source, quote.speaker_url];
+        const attributes = [turnabout.name, turnabout.image, turnabout.evidence, turnabout.victim, turnabout.cause];
         return attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow").length >= 3;
     }
-/*
-    let validQuotes = quoteData.filter(isValidQuote);
-    if (validQuotes.length === 0) {
+
+    let validCases = casesData.filter(isValidCase);
+    if (validCases.length === 0) {
         console.error("No valid quotes found!");
         return;
-    }*/
-
-    let maxAttempts = validQuotes.length; // Évite une boucle infinie
-
-    while (maxAttempts > 0) {
-        targetQuote = validQuotes[Math.floor(Math.random() * validQuotes.length)];
-        targetCharacter = filteredCharacters.find(char => char.name === targetQuote.speaker);
-
-        if (targetCharacter) break; // On sort si un personnage valide est trouvé
-
-        //console.warn("No character found or not in the right category for:", targetQuote.speaker, "- Retrying...");
-        maxAttempts--;
     }
 
-    if (!targetCharacter) {
+    targetCase = validCases[Math.floor(Math.random() * validCases.length)];
+
+
+    if (!targetCase) {
         console.error("❌ Aucune citation valide n'a un personnage correspondant dans les personnages filtrés !");
         return;
     }
 
     let hints = {
-        game: { icon: document.querySelector("#hint-game .hint-icon"), title: "Game", text: targetQuote.source },
-        occupation: { icon: document.querySelector("#hint-occupation .hint-icon"), title: "Occupation", text: targetCharacter.occupation },
-        figure: { icon: document.querySelector("#hint-figure .hint-icon"), title: "Figure", image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
+        cause: { icon: document.querySelector("#hint-cause .hint-icon"), title: "Death cause", text: targetCase.cause },
+        victim: { icon: document.querySelector("#hint-victim .hint-icon"), title: "Victim", text: targetCase.victim },
+        //image: { icon: document.querySelector("#hint-figure .hint-icon"), title: "Image", image: targetCase.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
+        image: { icon: document.querySelector("#hint-image .hint-icon"), title: "Image", text: targetCase.name }
     };
+    
+    const hintCounts = {
+        game: { tries: 3, element: document.querySelector("#hint-game .hint-count"), icon: document.querySelector("#hint-game .hint-icon") },
+        occupation: { tries: 7, element: document.querySelector("#hint-occupation .hint-count"), icon: document.querySelector("#hint-occupation .hint-icon") },
+        figure: { tries: 12, element: document.querySelector("#hint-figure .hint-count"), icon: document.querySelector("#hint-figure .hint-icon") }
+    };
+    
 
     setHints(hints);
-    displayQuote(targetQuote);
-    console.log("✅ Character to find (quote):", targetQuote.speaker);
+    setHintsCounts(hintCounts);
+    displayEvidence();
+    console.log("✅ Character to find (quote):", targetCase.name);
 }
 
 function validateGuess() {
-    /*if (!targetCharacter) {
+    if (!targetCase) {
         feedback.textContent = "⚠️ The game is still loading. Please wait...";
         feedback.className = "error";
         return;
-    }*/
+    }
 
-    const guessName = inputField.value.trim();
-    if (attemptedNames.has(guessName)) {
+    const guessCase = inputField.value.trim();
+    if (attemptedNames.has(guessCase)) {
         feedback.textContent = "⚠️ This character has already been guessed !";
         feedback.className = "error";
         return;
     }
 
-    const guessedCharacter = characterData.find(c => c.name.toLowerCase() === guessName.toLowerCase());
+    const guessedCase = casesData.find(c => c.name.toLowerCase() === guessCase.toLowerCase());
 
-    if (!guessedCharacter) {
+    if (!guessedCase) {
         feedback.textContent = "⚠️ Unknown character.";
         feedback.className = "error";
         return;
     }
 
-    attemptedNames.add(guessName);
+    attemptedNames.add(guessCase);
 
-    if (guessName.toLowerCase() === targetCharacter.name.toLowerCase()) {
-        addToHistory(guessedCharacter, true);
-        feedback.textContent = "🎉 Congratulation ! You found " + targetCharacter.name + " !";
+    if (guessCase.toLowerCase() === targetCase.name.toLowerCase()) {
+        addToHistory(guessedCase, true);
+        feedback.textContent = "🎉 Congratulation ! You found " + targetCase.name + " !";
         feedback.className = "success";
     } else {
-        addToHistory(guessedCharacter, false);
+        addToHistory(guessedCase, false);
         feedback.textContent = "❌ wrong answer, try again !";
         feedback.className = "error";
     }
@@ -162,8 +162,8 @@ function validateGuess() {
     validateButton.disabled = true;
 }
 
-function displayQuote(quote){
-    document.getElementById("quote").innerText = quote.quote
+function displayEvidence(){
+    console.log(targetCase.evidence);
 }
 
 ////////////////// COMPARE FUNCTION
@@ -189,10 +189,10 @@ function compareInfoClass(guess, target) {
 const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']");
 
 const updateButton = document.querySelector("#updateFilters");
-updateButton.addEventListener("click", selectCharacterToFind);
+updateButton.addEventListener("click", selectCaseToFind);
 
 // Fonction pour filtrer les personnages en fonction des groupes cochés
-function filterCharacters() {
+function filterCases() {
     const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']"); // Assurez-vous que cette ligne existe
     const newSelectedGroups = Array.from(checkboxes)
         .filter(checkbox => checkbox.checked)
@@ -201,10 +201,12 @@ function filterCharacters() {
     setSelectedGroups(newSelectedGroups); // Mettre à jour selectedGroups via la fonction setSelectedGroups
 
     // Filtrer les personnages en fonction du groupe sélectionné
-    const filtered = characterData.filter(character => {
-        const group = getGroupByCharacter(character);
+    const filtered = casesData.filter(turnabout => {
+        const group = getGroupByTurnabout(turnabout.name);
         return newSelectedGroups.includes(group);
     });
+
+    
 
     return filtered;
 }
@@ -215,12 +217,11 @@ async function initGame() {
     await dataLoaded; // Attendre que les fichiers JSON soient chargés
     console.log("🚀 Les données sont prêtes, on peut commencer !");
     console.log("Nombre de turnabouts chargées :", casesData.length);
-    console.log("Nombre de personnages chargés :", characterData.length);
 
     setValidateGuessFunction(validateGuess);
-    setSelectCharacterToFindFunction(selectCharacterToFind);
+    setSelectCharacterToFindFunction(selectCaseToFind);
 
-    selectCharacterToFind(); // Maintenant on peut l'exécuter
+    selectCaseToFind(); // Maintenant on peut l'exécuter
 }
 initGame();
 
