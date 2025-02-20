@@ -4,6 +4,12 @@
 export let attemptedNames = new Set();
 // Charger le fichier JSON contenant les informations des débuts
 export let turnaboutGames = {};
+// JSON des personnages
+export let characterData = [];
+// JSON des citations
+export let quoteData = [];
+// JSON des citations
+export let casesData = [];
 // Mode de jeu
 export let gameMode;
 
@@ -13,12 +19,38 @@ export function setGameMode(gm) {
 
 //////////// LOAD TURNABOUTS
 
-fetch("resources/data/turnabouts.json")
-    .then(response => response.json())
-    .then(data => {
+// Fonction pour charger un fichier JSON et retourner une Promise
+function loadJSON(url) {
+    return fetch(url).then(response => response.json());
+}
+
+// Créer une Promise qui attend le chargement des trois fichiers JSON
+export let dataLoaded = Promise.all([
+    loadJSON("resources/data/turnabouts.json").then(data => {
         turnaboutGames = data;
-    })
-    .catch(error => console.error("Erreur de chargement du fichier turnabout.json :", error));
+        console.log("✅ turnabouts.json chargé");
+    }).catch(error => console.error("Erreur de chargement de turnabout.json :", error)),
+
+    loadJSON("resources/data/aceattorneychars.json").then(data => {
+        characterData = data.filter(isValidCharacter); // Filtrage des personnages valides
+        console.log("✅ aceattorneychars.json chargé :", characterData.length, "personnages valides.");
+    }).catch(error => console.error("Erreur de chargement de aceattorneychars.json :", error)),
+
+    loadJSON("resources/data/quotes.json").then(data => {
+        quoteData = data;
+        console.log("✅ quotes.json chargé");
+    }).catch(error => console.error("Erreur de chargement de quotes.json :", error)),
+
+    loadJSON("resources/data/cases.json").then(data => {
+        casesData = data;
+        console.log("✅ cases.json chargé");
+    }).catch(error => console.error("Erreur de chargement de cases.json :", error)),
+
+])
+.then(() => {
+    console.log("🎯 Tous les fichiers JSON sont chargés !");
+    document.dispatchEvent(new Event("dataLoaded")); // Déclenche un événement global
+});
 
 //////////// GET INFORMATIONS
 
@@ -37,15 +69,21 @@ export function getInfoByDebut(debut) {
 }
 // Fonction pour récupérer le groupe d'un personnage
 export function getGroupByCharacter(character) {
+    return getGroupByTurnabout(character.debut);
+}
+
+// Fonction pour récupérer le groupe d'un personnage
+export function getGroupByTurnabout(turnabout) {
     for (let group in turnaboutGames) {
         for (let game in turnaboutGames[group]) {
-            if (turnaboutGames[group][game].includes(character.debut)) {
+            if (turnaboutGames[group][game].includes(turnabout)) {
                 return group;
             }
         }
     }
     return null;
 }
+
 // Fonction pour récupérer tous les "debut" différents
 function getUniqueDebuts() {
     if (!characterData || characterData.length === 0) {
@@ -65,24 +103,6 @@ function getUniqueDebuts() {
 }
 
 //////////// LOAD CHARACTERS
-
-export let characterData = [];
-
-// Charger les données JSON et initialiser le personnage cible
-fetch("resources/data/aceattorneychars.json")
-    .then(response => response.json())
-    .then(data => {
-        //characterData = data; // Réaffectation de characterData avec les données chargées
-
-        console.log("✅ Data loaded :", data.length, "characters.");
-    
-        characterData = data.filter(isValidCharacter); // Utilisez la variable locale
-
-        console.log("✅ Validated data :", characterData.length, "characters after filtering.");
-
-        selectCharacterToFindFunction();
-    })
-    .catch(error => console.error("JSON loading error :", error));
 
 // Fonction pour filtrer les personnages
 function isValidCharacter(character) {
@@ -114,7 +134,6 @@ function isValidCharacter(character) {
     return validAttributes.length >= 4;
 }
 
-
 let selectCharacterToFindFunction = null;
 
 // Fonction pour définir validateGuess depuis l'extérieur
@@ -124,7 +143,7 @@ export function setSelectCharacterToFindFunction(func) {
 
 //////////// SELECTED GROUPS
 
-export let selectedGroups = [];
+export let selectedGroups = ["Ace Attorney"];
 
 export function setSelectedGroups(newSelectedGroups) {
     selectedGroups = newSelectedGroups;

@@ -1,10 +1,11 @@
 //guess.js
 
-// Importer la fonction depuis un autre fichier
+// Importation des fichiers
 import { setValidateGuessFunction } from './common/guessbar.js';
-import { turnaboutGames, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getInfoByDebut, getGroupByCharacter, setGameMode } from './common/data.js';
+import { dataLoaded, turnaboutGames, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getInfoByDebut, getGroupByCharacter, setGameMode } from './common/data.js';
 import { setHints } from './common/hint.js';
 import { incrementNumTries, verifyTries } from './common/life.js';
+setGameMode("classic");
 
 let targetCharacter = null;
 
@@ -116,13 +117,14 @@ function selectCharacterToFind() {
     if (filteredData.length > 0) {
         targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
         hints = {
-            game: { icon: document.querySelector("#hint-game .hint-icon"), title: "Game", text: getInfoByDebut(targetCharacter.debut).game },
-            occupation: { icon: document.querySelector("#hint-occupation .hint-icon"), title: "Occupation", text: targetCharacter.occupation },
-            figure: { icon: document.querySelector("#hint-figure .hint-icon"), title: "Figure", image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
+            game: { title: "Game", tries: 3, icon: document.querySelector("#hint-game .hint-icon"), element: document.querySelector("#hint-game .hint-count"), text: getInfoByDebut(targetCharacter.debut).game },
+            occupation: { title: "Occupation", tries: 7, icon: document.querySelector("#hint-occupation .hint-icon"), element: document.querySelector("#hint-occupation .hint-count"), text: targetCharacter.occupation },
+            figure: { title: "Figure", tries: 12, icon: document.querySelector("#hint-figure .hint-icon"), element: document.querySelector("#hint-figure .hint-count"), image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
         };
         setHints(hints);
 
         console.log("Character to find :", targetCharacter.name);
+        //console.log(hints);
     } else {
         console.warn("No characters available after filtering!");
     }
@@ -297,9 +299,19 @@ function filterCharacters() {
 
 //////////// DOMCONTENTLOADED
 
-document.addEventListener("DOMContentLoaded", function () {
-    setGameMode("classic");
+async function initGame() {
+    await dataLoaded; // Attendre que les fichiers JSON soient chargés
+    console.log("🚀 Les données sont prêtes, on peut commencer !");
+    console.log("Nombre de personnages chargés :", characterData.length);
+
     setValidateGuessFunction(validateGuess);
     setSelectCharacterToFindFunction(selectCharacterToFind);
+
+    selectCharacterToFind(); // Maintenant on peut l'exécuter
+}
+initGame();
+
+document.addEventListener("DOMContentLoaded", function () {
+
 });
 

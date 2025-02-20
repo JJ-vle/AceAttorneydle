@@ -1,6 +1,6 @@
 // guessbar.js
 
-import { characterData, selectedGroups, attemptedNames, getGroupByCharacter } from './data.js';
+import { characterData, casesData, selectedGroups, attemptedNames, getGroupByCharacter, getGroupByTurnabout, gameMode } from './data.js';
 
 let selectedIndex = -1;
 let validateGuessFunction = null;
@@ -16,7 +16,7 @@ export const validateButton = document.getElementById("validateButton");
 
 // Ajouter l'écouteur d'événement en utilisant la fonction importée
 inputField.addEventListener("input", function () {
-    handleInput(this.value, characterData, selectedGroups, attemptedNames, validateButton, selectName);
+    handleInput(this.value, validateButton, selectName);
 });
 // Gérer les flèches clavier et validation avec Entrée
 inputField.addEventListener("keydown", function (event) {
@@ -32,7 +32,7 @@ validateButton.addEventListener("click", function () {
 ////////////////// FONCTIONS
 
 // Fonction pour filtrer et afficher les suggestions
-export function handleInput(query, characterData, selectedGroups, attemptedNames) {
+export function handleInput(query) {
     query = query.toLowerCase().trim();
     suggestionsList.innerHTML = "";
 
@@ -42,36 +42,24 @@ export function handleInput(query, characterData, selectedGroups, attemptedNames
         return;
     }
 
-    // Filtrer les personnages en fonction des groupes cochés
-    const filteredCharacters = characterData.filter(c => {
-        const group = getGroupByCharacter(c); // Supposons que cette fonction est définie ailleurs
+    const dataToUse = gameMode === "case" ? casesData : characterData;
+
+    const filteredItems = dataToUse.filter(c => {
+        const group = gameMode === "case" ? getGroupByTurnabout(c.name) : getGroupByCharacter(c);; 
         return selectedGroups.includes(group);
     });
 
-    // Filtrer davantage les personnages selon la saisie dans le champ de recherche
-    const matchedCharacters = filteredCharacters.filter(c => {
-        if (attemptedNames.has(c.name)) return false;
+    
+    const matchedItems = gameMode === "case" ? searchMatchedCases(filteredItems, query) : searchMatchedCharacters(filteredItems, query);
 
-        const englishName = c.name.toLowerCase();
-        const englishSurname = englishName.split(" ").pop();
-        const frenchNames = (c.french || []).map(f => f.toLowerCase());
-        const frenchSurnames = frenchNames.map(f => f.split(" ").pop());
-
-        return (
-            englishName.startsWith(query) ||
-            englishSurname.startsWith(query) ||
-            frenchNames.some(f => f.startsWith(query)) ||
-            frenchSurnames.some(f => f.startsWith(query))
-        );
-    });
 
     // Trier les personnages par nom avant de les afficher
-    matchedCharacters.sort((a, b) => a.name.localeCompare(b.name));
+    matchedItems.sort((a, b) => a.name.localeCompare(b.name));
 
-    if (matchedCharacters.length > 0) {
+    if (matchedItems.length > 0) {
         suggestionsList.style.display = "block";
 
-        matchedCharacters.forEach((character, index) => {
+        matchedItems.forEach((character, index) => {
             const listItem = document.createElement("li");
             listItem.dataset.index = index;
 
@@ -122,6 +110,42 @@ export function handleKeyboard(event){
     }
 
     updateSelection(items);
+}
+
+function searchMatchedCharacters(filteredItems, query){
+    // Filtrer davantage les personnages selon la saisie dans le champ de recherche
+    return filteredItems.filter(c => {
+        if (attemptedNames.has(c.name)) return false;
+
+        const englishName = c.name.toLowerCase();
+        const englishSurname = englishName.split(" ").pop();
+        const frenchNames = (c.french || []).map(f => f.toLowerCase());
+        const frenchSurnames = frenchNames.map(f => f.split(" ").pop());
+
+        return (
+            englishName.startsWith(query) ||
+            englishSurname.startsWith(query) ||
+            frenchNames.some(f => f.startsWith(query)) ||
+            frenchSurnames.some(f => f.startsWith(query))
+        );
+    });
+}
+function searchMatchedCases(filteredItems, query){
+    return filteredItems.filter(c => {
+        if (attemptedNames.has(c.name)) return false;
+
+        const englishName = c.name.toLowerCase();
+        const englishSurname = englishName.split(" ").pop();
+        const frenchNames = c.name.toLowerCase();
+        const frenchSurnames = englishName.split(" ").pop();
+
+        return (
+            englishName.startsWith(query) ||
+            englishSurname.startsWith(query) ||
+            frenchNames.startsWith(query) ||
+            frenchSurnames.startsWith(query)
+        );
+    });
 }
 
 // Sélection d'un nom et fermeture de la liste

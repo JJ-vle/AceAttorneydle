@@ -2,8 +2,9 @@
 
 // Importer la fonction depuis un autre fichier
 import { setValidateGuessFunction } from './common/guessbar.js';
-import { characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, setGameMode } from './common/data.js';
+import { dataLoaded, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, setGameMode } from './common/data.js';
 import { incrementNumTries, verifyTries } from './common/life.js';
+setGameMode("silhouette");
 
 let targetCharacter = null;
 
@@ -165,8 +166,20 @@ function imageProcessing(imgSrc) {
     silhouetteImg.appendChild(imgElement);
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    setGameMode("silhouette");
+//////////// DOMCONTENTLOADED
+
+async function initGame() {
+    await dataLoaded; // Attendre que les fichiers JSON soient chargés
+    console.log("🚀 Les données sont prêtes, on peut commencer !");
+    console.log("Nombre de personnages chargés :", characterData.length);
+
     setValidateGuessFunction(validateGuess);
     setSelectCharacterToFindFunction(selectCharacterToFind);
+
+    selectCharacterToFind(); // Maintenant on peut l'exécuter
+}
+initGame();
+
+document.addEventListener("DOMContentLoaded", function () {
+
 });
