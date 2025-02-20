@@ -2,7 +2,7 @@
 
 // Importation des fichiers
 import { setValidateGuessFunction } from './common/guessbar.js';
-import { dataLoaded, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, setGameMode, quoteData } from './common/data.js';
+import { dataLoaded, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, getInfoByDebut, setGameMode, quoteData } from './common/data.js';
 import { setHints } from './common/hint.js';
 import { incrementNumTries, verifyTries } from './common/life.js';
 setGameMode("quote");
@@ -114,7 +114,7 @@ function selectCharacterToFind() {
     }
 
     hints = {
-        game: { title: "Game", tries: 3, icon: document.querySelector("#hint-game .hint-icon"), element: document.querySelector("#hint-game .hint-count"), text: getInfoByDebut(targetCharacter.debut).game },
+        game: { title: "Case", tries: 3, icon: document.querySelector("#hint-case .hint-icon"), element: document.querySelector("#hint-case .hint-count"), text: targetQuote.source /*getInfoByDebut(targetCharacter.debut).game*/ },
         occupation: { title: "Occupation", tries: 7, icon: document.querySelector("#hint-occupation .hint-icon"), element: document.querySelector("#hint-occupation .hint-count"), text: targetCharacter.occupation },
         figure: { title: "Figure", tries: 12, icon: document.querySelector("#hint-figure .hint-icon"), element: document.querySelector("#hint-figure .hint-count"), image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
     };
