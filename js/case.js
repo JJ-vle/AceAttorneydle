@@ -17,6 +17,7 @@ const inputField = document.getElementById("guessInput");
 const validateButton = document.getElementById("validateButton");
 const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
+const evidenceContainer = document.getElementById("evidenceContainer");
 
 ////////////////// HISTORY
 
@@ -150,13 +151,54 @@ function validateGuess() {
     }
     incrementNumTries();
     verifyTries();
+    revealNextEvidence()
     inputField.value = "";
     validateButton.disabled = true;
 }
 
-function displayEvidence(){
-    console.log(targetCase.evidence);
+////////////////// EVIDENCE DISPLAY
+
+let currentEvidenceIndex = 0;
+const maxEvidence = 15; // Nombre maximum d'éléments affichables
+
+function createEvidenceDiv(evidence) {
+    if (document.querySelectorAll(".evidence-item").length >= maxEvidence) return;
+
+    const div = document.createElement("div");
+    div.classList.add("evidence-item");
+    
+    const img = document.createElement("img");
+    img.src = "/resources/img/icons/hiddenEvidence.png"; // Image cachée par défaut
+    img.dataset.revealSrc = evidence.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, ""); // Stocke l'image réelle
+    img.classList.add("evidence-image");
+    
+    const name = document.createElement("p");
+    name.textContent = evidence.name;
+    name.style.display = "none"; // Cache le nom au début
+    
+    div.appendChild(img);
+    div.appendChild(name);
+    evidenceContainer.appendChild(div);
 }
+
+function displayEvidence() {
+    const caseEvidence = targetCase.evidence.slice(0, maxEvidence); // Limite aux 15 premiers éléments
+    caseEvidence.forEach(createEvidenceDiv);
+}
+
+function revealNextEvidence() {
+    const evidenceItems = document.querySelectorAll(".evidence-item");
+    if (currentEvidenceIndex < Math.min(evidenceItems.length, maxEvidence)) {
+        const img = evidenceItems[currentEvidenceIndex].querySelector(".evidence-image");
+        const name = evidenceItems[currentEvidenceIndex].querySelector("p");
+        
+        img.src = img.dataset.revealSrc; // Affiche la vraie image
+        name.style.display = "block"; // Affiche le nom de la preuve
+        
+        currentEvidenceIndex++;
+    }
+}
+
 
 ////////////////// COMPARE FUNCTION
 
@@ -214,6 +256,8 @@ async function initGame() {
     setSelectCharacterToFindFunction(selectCaseToFind);
 
     selectCaseToFind(); // Maintenant on peut l'exécuter
+    displayEvidence(); // Charge les preuves masquées
+    revealNextEvidence() 
 }
 initGame();
 
