@@ -1,5 +1,6 @@
 [
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/4/4e/Episode1.png/revision/latest/scale-to-width-down/268?cb=20210816151339",
         "locations": [
             "Supreme Court of Judicature"
         ],
@@ -48,13 +49,15 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/e/ee/AoCK_Card.png/revision/latest/scale-to-width-down/268?cb=20210816151257",
         "locations": [
             "Lord Chief Justice's Office",
-            "Prison",
+            "Prison (London)",
             "Sholmes's Suite",
-            "Garrideb house: Briar Road", 
-            "Garrideb house: Mr Natsume's Room", 
-            "Garrideb house: Landlord Garrideb's Flat"
+            "Garrideb house",
+            "Briar Road",
+            "Mr Natsume's Room",
+            "Landlord Garrideb's Flat"
         ],
         "french": null,
         "victim": "Olive Green",
@@ -117,9 +120,8 @@
         ]
     },
     {
-        "locations": [
-            "Defendants' Antechamber 5"
-        ],
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/4/45/AoGD_Title_Card.png/revision/latest/scale-to-width-down/268?cb=20210816151206",
+        "locations": [],
         "french": null,
         "victim": "John Wilson",
         "cause": "Asphyxiation caused by curare",
@@ -169,8 +171,9 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/9/9d/AoRR_Card.png/revision/latest/scale-to-width-down/268?cb=20210816151106",
         "locations": [
-            "Lord Chief Justice's office", 
+            "Lord Chief Justice's office",
             "Defendants' antechamber"
         ],
         "french": null,
@@ -210,10 +213,12 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/6/66/AoUB_Card.png/revision/latest/scale-to-width-down/268?cb=20210816151156",
         "locations": [
-            "SS Burya: Kazuma's Cabin ",
-            "SS Burya: Miss Pavlova's Cabin",
-            "SS Burya: First-class cabin passageway"
+            "SSBurya",
+            "Kazuma's Cabin",
+            "Miss Pavlova's Cabin",
+            "First-class cabin passageway"
         ],
         "french": null,
         "victim": "Kazuma Asogi",
@@ -264,19 +269,20 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/6/62/AoUS_Card.png/revision/latest/scale-to-width-down/268?cb=20210816151310",
         "locations": [
             "Naruhodo's Legal Consultancy",
             "Sholmes's Suite",
             "Baker Street",
             "Windibank's Pawnbrokery",
-            "Prison",
+            "Prison (London)",
             "St. Synner's Hospital",
             "Lord Chief Justice's Office",
             "Windibank's Storeroom",
             "Old Bailey"
         ],
         "french": null,
-        "victim": "Pop Windibank  Herlock Sholmes   Magnus McGilded",
+        "victim": "Pop Windibank / Herlock Sholmes / Magnus McGilded",
         "cause": "Gunshot to the back   Stabbed in the stomach by shrapnel from exploding test tube   Immolation",
         "name": "The Adventure of the Unspeakable Story",
         "url": "https://aceattorney.fandom.com/wiki/The_Adventure_of_the_Unspeakable_Story",
@@ -368,15 +374,17 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/7/78/AA3Case5artA.png/revision/latest/scale-to-width-down/268?cb=20240516031343",
         "locations": [
             "Wright & Co. Law Offices",
-            "Hazakura Temple : Main gate",
-            "Hazakura Temple : Main hall",
-            "Hazakura Temple : Courtyard",
+            "Hazakura Temple",
+            "Main gate",
+            "Main hall",
+            "Courtyard",
             "Dusky Bridge",
-            "Inner Temple : Gate",
-            "Inner Temple : Training Hall",
-            "Inner Temple : Garden",
+            "Inner Temple",
+            "Training Hall",
+            "Garden",
             "Heavenly Hall",
             "Hotti Clinic"
         ],
@@ -469,15 +477,17 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/2/22/The_Captive_Turnabout_Cover.png/revision/latest/scale-to-width-down/268?cb=20240909021908",
         "locations": [
-            "Detention center : Visitor's room",
-            "Detention center : Corridor Holding cell",
-            "Detention center : Warden's office",
-            "Prison : Workshop A",
-            "Prison : Workshop B",
-            "Prison : Corridor",
-            "Prison : Maximum security",
-            "Prison : Yard",
+            "Corridor (detention center)",
+            "Holding cell",
+            "Warden's office",
+            "Prison (Los Angeles)",
+            "Workshop A",
+            "Workshop B",
+            "Corridor (prison)",
+            "Maximum security",
+            "Yard",
             "Room 1202"
         ],
         "french": "Volte-face et détention",
@@ -589,6 +599,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/3/3c/Astronaut_escape.png/revision/latest/scale-to-width-down/268?cb=20240809025343",
         "locations": [
             "Space Center entrance",
             "Boarding Lounge 1",
@@ -674,12 +685,13 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/c/c1/Vera_serving_coffee.png/revision/latest/scale-to-width-down/268?cb=20230527162012",
         "locations": [
             "Wright Anything Agency",
             "Visitor's room",
             "Drew Studio",
             "Sunshine Coliseum",
-            "Defendant lobby No. 6",
+            "Defendant lobby",
             "Jurists' chambers",
             "Hickfield Clinic"
         ],
@@ -820,6 +832,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/1/1d/MagnifiDead.png/revision/latest/scale-to-width-down/268?cb=20180314025842",
         "locations": [
             "Wright & Co. Law Offices",
             "Defendant Lobby No. 2",
@@ -967,6 +980,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/8/84/Title1_3.png/revision/latest/scale-to-width-down/268?cb=20240516030120",
         "locations": [
             "Gatewater Imperial Hotel",
             "Viola Hall",
@@ -976,6 +990,7 @@
             "Hotel Lobby",
             "Wright & Co. Law Offices",
             "Criminal Affairs Department",
+            "Defendant lobby",
             "Hotti Clinic",
             "Engarde Mansion",
             "Living room",
@@ -1111,6 +1126,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/a/ad/Case1art.png/revision/latest/scale-to-width-down/268?cb=20241222045916",
         "locations": [
             "Defendant Lobby No. 2"
         ],
@@ -1139,7 +1155,8 @@
         ]
     },
     {
-        "locations": null,
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/f/f3/Turnabout_Foreigner.png/revision/latest/scale-to-width-down/268?cb=20240507201254",
+        "locations": [],
         "french": "La volte-face étrangère",
         "victim": "Paht Rohl",
         "cause": "Blunt force trauma via a dahmalan  to the head",
@@ -1156,7 +1173,7 @@
             },
             {
                 "name": "Crime Photo",
-                "image": "https://aceattorney.fandom.com/wiki/Crime_Photo_(Turnabout_Big_Top)?file=Generic_Photo.png"
+                "image": null
             },
             {
                 "name": "Treasure Box",
@@ -1181,6 +1198,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/a/a6/The_Kidnapped_Turnabout_%28Case_3_Title_Card%29.png/revision/latest/scale-to-width-down/267?cb=20241014235727",
         "locations": [
             "Isolation Room",
             "Wild, Wild West",
@@ -1190,7 +1208,7 @@
             "Haunted house"
         ],
         "french": "Volte-face et ravissement",
-        "victim": "Lance Amano   Colin Devorae",
+        "victim": "Lance Amano / Colin Devorae",
         "cause": "Gunshot wound from a revolver",
         "name": "The Kidnapped Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/The_Kidnapped_Turnabout",
@@ -1266,6 +1284,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/6/6f/Nick.png/revision/latest/scale-to-width-down/268?cb=20240516025321",
         "locations": [
             "Defendant Lobby No. 1"
         ],
@@ -1314,6 +1333,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/2/25/The_Magical_Turnabout.png/revision/latest/scale-to-width-down/268?cb=20240507201325",
         "locations": [
             "Wright Anything Agency",
             "Penrose Theater",
@@ -1395,20 +1415,20 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/5/56/DGS2episode2.png/revision/latest/scale-to-width-down/268?cb=20210816151357",
         "locations": [
             "Naruhodo's Legal Consultancy",
             "Sholmes's Suite",
             "St. Bartholomew Hospital",
-            "Ground Floor",
+            "Ground Floor (Garrideb's Flats)",
             "Briar Road",
             "Landlord Garrideb's Flat",
-            "Prison",
-            "Holding Cell No. 9",
+            "Prison (London)",
             "Old Bailey",
             "Mr Natsume's Room"
         ],
         "french": null,
-        "victim": "William Shamspeare   Duncan Ross",
+        "victim": "William Shamspeare / Duncan Ross",
         "cause": "Asphyxiation via natural gas",
         "name": "The Memoirs of the Clouded Kokoro",
         "url": "https://aceattorney.fandom.com/wiki/The_Memoirs_of_the_Clouded_Kokoro",
@@ -1476,6 +1496,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/f/fd/Turnabout_Hyakkiyako.png/revision/latest/scale-to-width-down/268?cb=20240507200921",
         "locations": [
             "Yokai Lane",
             "Kyubi Manor",
@@ -1483,6 +1504,7 @@
             "Kyubi Manor Foyer",
             "Fox Chamber",
             "Forbidden Chamber",
+            "Tenma Town",
             "Wright Anything Agency"
         ],
         "french": "La volte-face monstrueuse",
@@ -1574,14 +1596,24 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/5/59/Gyakuten_Saiban_manga_VJump_2018.jpg/revision/latest/scale-to-width-down/268?cb=20181227094610",
+        "locations": [],
+        "french": "Volte-face en express",
+        "victim": "Benjamin Cashanova / Gale Gaelic",
+        "cause": "Gunshot wound to the chest from a pistol   Stab wound to the chest from a knife",
+        "name": "Northward, Turnabout Express",
+        "url": "https://aceattorney.fandom.com/wiki/Northward,_Turnabout_Express",
+        "evidence": []
+    },
+    {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/1/1f/Hound_of_the_Baskervilles.png/revision/latest/scale-to-width-down/268?cb=20210815215710",
         "locations": [
             "Chief Justice's Office",
-            "Klint van Zieks' mansion",
             "Barclay Prison",
             "Lowgate Cemetery"
         ],
         "french": null,
-        "victim": "Three British nobles Chief JusticeKlint van Zieks",
+        "victim": "Three British nobles / Chief Justice / Klint van Zieks",
         "cause": "Throats ripped apart by Balmung the hound Stabbed with a sword to the heart",
         "name": "Professor case",
         "url": "https://aceattorney.fandom.com/wiki/Professor_case",
@@ -1597,6 +1629,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/c/c0/AA3Case3art.png/revision/latest/scale-to-width-down/268?cb=20240516030755",
         "locations": [
             "Wright & Co. Law Offices",
             "Criminal Affairs Department",
@@ -1719,13 +1752,12 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/7/74/RedHeadedLeagueArticle_%28Close_up%29_TGAA2.png/revision/latest/scale-to-width-down/268?cb=20240508230104",
         "locations": [
-            "Lime Street park",
-            "Unspecified London townhouse",
             "Sholmes's Suite"
         ],
         "french": null,
-        "victim": "Around 1000 people scammed, Daley Vigil kidnapped and bruised",
+        "victim": "Around 1000 people scammed / Daley Vigil kidnapped and bruised",
         "cause": null,
         "name": "Red-Headed League",
         "url": "https://aceattorney.fandom.com/wiki/Red-Headed_League",
@@ -1825,18 +1857,13 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/9/9a/DGSepisode3.png/revision/latest/scale-to-width-down/268?cb=20210816151503",
         "locations": [
             "Sholmes's Suite",
             "Lord Chief Justice's Office",
-            "Prosecutor's Office",
             "Prison - Cell 11",
-            "Foot of the Crystal Tower",
-            "Experimentation Stage",
             "Madame Tusspells Museum of Waxworks",
-            "Naruhodo's Legal Consultancy",
-            "Forensics Laboratory",
-            "Enoch Drebber's Workshop",
-            "Enoch Drebber's Room"
+            "Naruhodo's Legal Consultancy"
         ],
         "french": null,
         "victim": "Odie Asman",
@@ -1927,6 +1954,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/b/b3/Title1_1.png/revision/latest/scale-to-width-down/268?cb=20240516025547",
         "locations": [
             "Wright & Co. Law Offices",
             "Kurain Village",
@@ -1947,10 +1975,6 @@
             {
                 "name": "Guidemap (Fey Manor)",
                 "image": "https://static.wikia.nocookie.net/aceattorney/images/c/c6/Generic_Photo.png/revision/latest/scale-to-width-down/268?cb=20240510211130"
-            },
-            {
-                "name": "Maya's Magatama",
-                "image": "https://static.wikia.nocookie.net/aceattorney/images/b/b7/Maya%27s_Magatama.png/revision/latest/scale-to-width-down/268?cb=20240516184615"
             },
             {
                 "name": "Newspaper Clipping 1",
@@ -2019,6 +2043,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/c/ce/Case5art.png/revision/latest/scale-to-width-down/268?cb=20240516025133",
         "locations": [
             "Wright & Co. Law Offices",
             "Prosecutor's office",
@@ -2180,6 +2205,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/8/83/Tritual.jpg/revision/latest/scale-to-width-down/268?cb=20240507201600",
         "locations": [
             "Tehm'pul Temple",
             "Bazaar",
@@ -2189,7 +2215,7 @@
             "Rebel hideout"
         ],
         "french": "La volte-face rituelle",
-        "victim": "Tahrust Inmee  Puhray Zeh'lot",
+        "victim": "Tahrust Inmee / Puhray Zeh'lot",
         "cause": "Blood loss due to a stab wound to the stomach  Spinal cord injury caused by stab wound to the back of neck",
         "name": "The Rite of Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/The_Rite_of_Turnabout",
@@ -2305,6 +2331,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/5/59/AA3Case2.png/revision/latest/scale-to-width-down/268?cb=20240516030607",
         "locations": [
             "Wright & Co. Law Offices",
             "Lordly Tailor",
@@ -2374,6 +2401,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/6/60/Turnabout_Ablaze_%28Case_5_Title_Card%29.png/revision/latest/scale-to-width-down/268?cb=20210411051136",
         "locations": [
             "Room 1202",
             "Theatrum Neutralis",
@@ -2384,7 +2412,7 @@
             "Defendant Lobby No. 2"
         ],
         "french": "Volte-face et embrasement",
-        "victim": "Manny Coachen  Ka-Shi Nou",
+        "victim": "Manny Coachen / Ka-Shi Nou",
         "cause": "Stab wound from a knife    Blunt force trauma to the head",
         "name": "Turnabout Ablaze",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Ablaze",
@@ -2544,11 +2572,12 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/2/2f/TurnaboutAcademy.png/revision/latest/scale-to-width-down/268?cb=20240507201012",
         "locations": [
-            "1st Floor : Hallway",
-            "1st Floor : Waiting Room",
-            "3rd Floor : Lecture Hall",
-            "3rd Floor : Art room",
+            "1F Hallway",
+            "1F Waiting Room",
+            "Lecture Hall",
+            "Art room",
             "Outdoor stage",
             "Maintenance area",
             "Wright Anything Agency"
@@ -2642,6 +2671,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/0/08/Turnabout_Airlines_%28Case_2_Title_Card%29.png/revision/latest/scale-to-width-down/267?cb=20241017225146",
         "locations": [
             "Lounge",
             "First Class",
@@ -2723,6 +2753,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/5/57/AA3Case4art.png/revision/latest/scale-to-width-down/268?cb=20240516031122",
         "locations": [
             "Defendant lobby No. 4"
         ],
@@ -2767,13 +2798,14 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/1/1f/Title1_2.png/revision/latest/scale-to-width-down/268?cb=20240516025847",
         "locations": [
             "Wright & Co. Law Offices",
             "Berry Big Circus",
             "Circus Entrance",
             "Lodging house plaza",
-            "First floor, Moe's Room",
-            "Third floor, Acro's Room",
+            "Moe's Room",
+            "Acro's Room",
             "Big Top",
             "Ringmaster's room",
             "Cafeteria"
@@ -2859,6 +2891,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/2/21/Turnabout_Corner.png/revision/latest/scale-to-width-down/268?cb=20240507181035",
         "locations": [
             "People Park area",
             "Meraktis Clinic",
@@ -2867,7 +2900,7 @@
             "Defendant Lobby No. 2"
         ],
         "french": "Boulevard des Volte-face",
-        "victim": "Phoenix Wright   Trucy Wright   Guy Eldoon   Pal Meraktis",
+        "victim": "Phoenix Wright / Trucy Wright / Guy Eldoon / Pal Meraktis",
         "cause": "Pistol shot to the right temple",
         "name": "Turnabout Corner",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Corner",
@@ -2951,11 +2984,12 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/0/00/TurnaboutCountdown.png/revision/latest/scale-to-width-down/268?cb=20240507200806",
         "locations": [
             "Defendant Lobby No. 5"
         ],
         "french": "Volte-face à rebours",
-        "victim": "Candice ArmeDistrict CourtApollo Justice",
+        "victim": "Candice Arme / District Court / Apollo Justice",
         "cause": "Struck with the HH-3000Explosion caused by a planted HH-3000 bombStruck with a piece of rubble",
         "name": "Turnabout Countdown",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Countdown",
@@ -2999,17 +3033,27 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/7/72/Turnabout_for_the_Ages_Case_Cover.png/revision/latest/scale-to-width-down/267?cb=20241015004739",
         "locations": [
             "Berry Big Circus",
+            "Big Top",
             "District Court",
+            "3rd Floor Lobby",
+            "Courtroom No. 3",
             "Garage",
             "Bigg Building",
+            "51st Floor Storeroom",
+            "Committee chamber",
+            "Empty Lot",
+            "Plaza",
+            "Viewing Platform",
             "Happy Family Home",
             "Prosecutor's Building",
+            "Room 1202",
             "Sunshine Coliseum"
         ],
         "french": "Volte-face et consécration",
-        "victim": "Di-Jun Wang   Shaun Fenn   Eustace Winner",
+        "victim": "Di-Jun Wang / Shaun Fenn / Eustace Winner",
         "cause": "Crushed to death by a hot air balloon",
         "name": "Turnabout for the Ages",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_for_the_Ages",
@@ -3149,6 +3193,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/b/b0/Turnabout_to_the_future.png/revision/latest/scale-to-width-down/268?cb=20240507201128",
         "locations": [
             "Wright Anything Agency",
             "Cosmos Space Center",
@@ -3159,7 +3204,7 @@
             "Robotics lab"
         ],
         "french": "Demain est une autre volte-face",
-        "victim": "Metis Cykes  Clay Terran",
+        "victim": "Metis Cykes / Clay Terran",
         "cause": "Stabbed in the heart with a katana   Stabbed in the chest with a utility knife",
         "name": "Turnabout for Tomorrow",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_for_Tomorrow",
@@ -3247,6 +3292,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/0/08/HDforgottenCOVER.png/revision/latest/scale-to-width-down/267?cb=20230111102817",
         "locations": [
             "Bigg Building",
             "Committee chamber"
@@ -3360,9 +3406,11 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/5/54/Case4art.png/revision/latest/scale-to-width-down/268?cb=20240516024832",
         "locations": [
             "Wright & Co. Law Offices",
-            "Gourd Lake Park Entrance",
+            "Gourd Lake Park",
+            "Entrance",
             "Public Beach",
             "Woods",
             "Boat rental shop",
@@ -3465,9 +3513,14 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/a/a6/HDinheritedCOVER.png/revision/latest/scale-to-width-down/267?cb=20230111102246",
         "locations": [
             "Visitor's Room",
-            "Contest Venue"
+            "Contest Venue",
+            "Delicia's Room",
+            "Frost's Room",
+            "Fountain room",
+            "Tangaroa's Room"
         ],
         "french": "Volte-face et ascendance",
         "victim": "Artie Frost",
@@ -3546,6 +3599,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/d/d8/YoungMia.png/revision/latest/scale-to-width-down/268?cb=20240516030344",
         "locations": [
             "Defendant lobby No. 3"
         ],
@@ -3598,10 +3652,12 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/a/a0/TurnaboutReclaimed.png/revision/latest/scale-to-width-down/268?cb=20240507201150",
         "locations": [
             "Wright Anything Agency",
             "Shipshape Aquarium",
-            "Entrance Aqua Tunnel",
+            "Entrance (Shipshape Aquarium)",
+            "Aqua Tunnel",
             "Orca pool",
             "Pub O' Danger",
             "Stage Show"
@@ -3703,15 +3759,16 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/6/63/TReminisceneHD.png/revision/latest/scale-to-width-down/268?cb=20210412060723",
         "locations": [
             "3rd Floor Lobby",
             "Courtroom No. 3",
-            "Hallway",
+            "Hallway (District Court)",
             "Defendant Lobby No. 2",
             "Defendant Lobby No. 1"
         ],
         "french": "Volte-face et réminiscences",
-        "victim": "Mack Rell  Byrne Faraday",
+        "victim": "Mack Rell / Byrne Faraday",
         "cause": "Gunshot and stabbing, respectively",
         "name": "Turnabout Reminiscence",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Reminiscence",
@@ -3791,16 +3848,14 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/2/24/Apollo_vs_Phoenix.png/revision/latest/scale-to-width-down/268?cb=20161130000625",
         "locations": [
             "Wright Anything Agency",
             "Kurain Village",
-            "Doctor's study",
-            "Mt. Mitama",
-            "Caves",
-            "Kurainese Ruins"
+            "Doctor's study"
         ],
         "french": "Volte-face et révolution",
-        "victim": "Inga Karkhuul Khura'in  Amara Sigatar Khura'in",
+        "victim": "Inga Karkhuul Khura'in / Amara Sigatar Khura'in",
         "cause": "Blood loss from a stab wound to the back",
         "name": "Turnabout Revolution",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Revolution",
@@ -3864,6 +3919,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/9/96/Case3art.png/revision/latest/scale-to-width-down/268?cb=20240516024559",
         "locations": [
             "Wright & Co. Law Offices",
             "Phoenix Wright's bedroom",
@@ -3957,12 +4013,14 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/8/8c/Turnabout_Serenade.png/revision/latest/scale-to-width-down/268?cb=20240507180416",
         "locations": [
-            "Sunshine Coliseum : Entrance",
-            "Sunshine Coliseum : Backstage hallway",
+            "Sunshine Coliseum",
+            "Entrance",
+            "Backstage hallway",
             "Gavinners's dressing room",
             "Lamiroir's dressing room",
-            "Stage",
+            "Stage (Sunshine Coliseum)",
             "Wright Anything Agency",
             "Visitor's room",
             "Prosecutor Gavin's office",
@@ -3970,7 +4028,7 @@
             "Defendant Lobby No. 2"
         ],
         "french": "Volte-face et Sérénade",
-        "victim": "Romein LeTouse Lamiroir",
+        "victim": "Romein LeTouse / Lamiroir",
         "cause": ".45 caliber handgun's bullet into the left shoulder",
         "name": "Turnabout Serenade",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Serenade",
@@ -4058,6 +4116,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/e/e0/Case2art.png/revision/latest/scale-to-width-down/268?cb=20240516024350",
         "locations": [
             "Fey & Co. Law Offices",
             "Grossberg Law Offices",
@@ -4129,6 +4188,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/5/58/Turnabouttheatre.png/revision/latest/scale-to-width-down/268?cb=20240507201717",
         "locations": [
             "Defendant Lobby No. 6",
             "Courtroom No. 4",
@@ -4175,12 +4235,14 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/0/0f/Turnabout_Time_Traveler.png/revision/latest/scale-to-width-down/268?cb=20240507201931",
         "locations": [
             "Wright Anything Agency",
             "Mooring dock",
             "Flying Chapel",
             "Reception hall",
-            "HoldFoyer"
+            "Hold",
+            "Foyer"
         ],
         "french": "Retour vers la volte-face",
         "victim": "Dumas Gloomsbury",
@@ -4271,6 +4333,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/5/5b/Turnabout_Trigger_Case_Cover.png/revision/latest/scale-to-width-down/267?cb=20241015010403",
         "locations": [
             "Gourd Lake Park",
             "Lakeside stage",
@@ -4346,8 +4409,9 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/9/98/Turnabout_Trump.png/revision/latest/scale-to-width-down/268?cb=20240507180131",
         "locations": [
-            "Defendant lobby No. 3"
+            "Defendant lobby"
         ],
         "french": "Atout et Volte-face",
         "victim": "Shadi Smith",
@@ -4398,6 +4462,7 @@
         ]
     },
     {
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/9/9c/Turnabout_Visitor_%28Case_1_Title_Card%29.png/revision/latest/scale-to-width-down/267?cb=20241017223803",
         "locations": [
             "Room 1202",
             "12th Floor Hallway"
