@@ -1,5 +1,9 @@
 // life.js
 
+import { setCookie, streaks } from './cookie.js';
+import { gameMode } from './data.js';
+
+
 const defensebar = document.getElementById("defensebar");
 const guessbarDiv = document.getElementById("guessbar");
 
@@ -20,7 +24,7 @@ export function verifyTries(){
     // Si le niveau est plus petit que 1, on le fixe à 1 (tu peux ajuster cela selon tes préférences)
     if(defenseLevel < 0) {
         defenseLevel = 0;
-        gameOver();
+        gameOver(false);
     }
 
     // Vide la div defensebar
@@ -44,15 +48,21 @@ export function setHintChecker(newHintChecker){
 }
 
 //////////// GAMEOVER
-
-function gameOver(result){
-    console.log("GAME OVER");
+export function gameOver(result){
     guessbarDiv.innerHTML="";
+    
+    let newStreak;
+
+    console.log(streaks[gameMode + "Streak"])
 
     if (result) {
-        //win
+        console.log("😁 win");
+        newStreak = parseInt(streaks[gameMode + "Streak"]) + 1;
     } else {
-        //lose
+        console.log("😢 lose");        
+        newStreak = 0;
     }
+
+    setCookie(gameMode + "Streak", newStreak);
 
 }

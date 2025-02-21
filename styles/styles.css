@@ -18,6 +18,16 @@
     background-size: cover;
 }
 
+#lobby{
+    background: url('../resources/img/lobby.png') no-repeat center center;
+    background-size: cover;
+}
+
+#police{
+    background: url('../resources/img/police.png') no-repeat center center;
+    background-size: cover;
+}
+
 @font-face {
     font-family: 'Cassia';
     src: url('../resources/fonts/Cassia.ttf') format('truetype');

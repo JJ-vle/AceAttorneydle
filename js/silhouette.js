@@ -3,7 +3,7 @@
 // Importer la fonction depuis un autre fichier
 import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, setGameMode } from './common/data.js';
-import { incrementNumTries, verifyTries } from './common/life.js';
+import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
 setGameMode("silhouette");
 
 let targetCharacter = null;
@@ -41,7 +41,7 @@ function validateGuess() {
     }
 
     const guessName = inputField.value.trim();
-    if (attemptedNames.has(guessName)) {
+    if (attemptedNames.includes(guessName)) {
         feedback.textContent = "⚠️ This character has already been guessed !";
         feedback.className = "error";
         return;
@@ -55,13 +55,15 @@ function validateGuess() {
         return;
     }
 
-    attemptedNames.add(guessName);
+    attemptedNames.push(guessName);
 
     if (guessName.toLowerCase() === targetCharacter.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
         silhouetteImg.children[0].style.filter = ""
         feedback.textContent = "🎉 Congratulation ! You found " + targetCharacter.name + " !";
         feedback.className = "success";
+
+        gameOver(true);
     } else {
         addToHistory(guessedCharacter, false);
         feedback.textContent = "❌ wrong answer, try again !";

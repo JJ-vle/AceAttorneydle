@@ -4,7 +4,7 @@
 import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, casesData, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByTurnabout, setGameMode } from './common/data.js';
 import { setHints } from './common/hint.js';
-import { incrementNumTries, verifyTries } from './common/life.js';
+import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
 setGameMode("case");
 
 //////////////////
@@ -124,7 +124,7 @@ function validateGuess() {
     }
 
     const guessCase = inputField.value.trim();
-    if (attemptedNames.has(guessCase)) {
+    if (attemptedNames.includes(guessCase)) {
         feedback.textContent = "⚠️ This character has already been guessed !";
         feedback.className = "error";
         return;
@@ -138,12 +138,14 @@ function validateGuess() {
         return;
     }
 
-    attemptedNames.add(guessCase);
+    attemptedNames.push(guessCase);
 
     if (guessCase.toLowerCase() === targetCase.name.toLowerCase()) {
         addToHistory(guessedCase, true);
         feedback.textContent = "🎉 Congratulation ! You found " + targetCase.name + " !";
         feedback.className = "success";
+        
+        gameOver(true);
     } else {
         addToHistory(guessedCase, false);
         feedback.textContent = "❌ wrong answer, try again !";

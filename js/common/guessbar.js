@@ -115,7 +115,7 @@ export function handleKeyboard(event){
 function searchMatchedCharacters(filteredItems, query){
     // Filtrer davantage les personnages selon la saisie dans le champ de recherche
     return filteredItems.filter(c => {
-        if (attemptedNames.has(c.name)) return false;
+        if (attemptedNames.includes(c.name)) return false;
 
         const englishName = c.name.toLowerCase();
         const englishSurname = englishName.split(" ").pop();
@@ -132,7 +132,7 @@ function searchMatchedCharacters(filteredItems, query){
 }
 function searchMatchedCases(filteredItems, query){
     return filteredItems.filter(c => {
-        if (attemptedNames.has(c.name)) return false;
+        if (attemptedNames.includes(c.name)) return false;
 
         const englishName = c.name.toLowerCase();
         const englishSurname = englishName.split(" ").pop();

@@ -1,7 +1,7 @@
 //data.js
 
 // Stocke les noms déjà proposés
-export let attemptedNames = new Set();
+export let attemptedNames = new Array();
 // Charger le fichier JSON contenant les informations des débuts
 export let turnaboutGames = {};
 // JSON des personnages

@@ -2,14 +2,19 @@
 
 // Importation des fichiers
 import { setValidateGuessFunction } from './common/guessbar.js';
-import { dataLoaded, turnaboutGames, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getInfoByDebut, getGroupByCharacter, setGameMode } from './common/data.js';
+import { dataLoaded, turnaboutGames, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getInfoByDebut, getGroupByCharacter, setGameMode} from './common/data.js';
 import { setHints } from './common/hint.js';
-import { incrementNumTries, verifyTries } from './common/life.js';
-setGameMode("classic");
+import { incrementNumTries, verifyTries, gameOver } from './common/life.js';
+import { readCookie, readJsonCookie, setCookie } from './common/cookie.js';
 
-let targetCharacter = null;
+setGameMode("guess");
+
+///////// FONCTION COOKIES /////////////
 
 //////////////////
+
+let targetCharacter = null;
+let guessesCookie = null;
 
 const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
@@ -73,15 +78,14 @@ function addToHistory(guessedCharacter, result) {
 
 //////////// FUNCTIONS
 
-function validateGuess() {
+function validateGuess(guessName=inputField.value.trim()) {
     if (!targetCharacter) {
         feedback.textContent = "⚠️ The game is still loading. Please wait...";
         feedback.className = "error";
         return;
     }
 
-    const guessName = inputField.value.trim();
-    if (attemptedNames.has(guessName)) {
+    if (attemptedNames.includes(guessName)) {
         feedback.textContent = "⚠️ This character has already been guessed !";
         feedback.className = "error";
         return;
@@ -95,12 +99,17 @@ function validateGuess() {
         return;
     }
 
-    attemptedNames.add(guessName);
+    attemptedNames.push(guessName);
+    //setCookie("attempts", encodeURIComponent(JSON.stringify(attemptedNames)));
+    //console.log(readJsonCookie("attempts"));
 
     if (guessName.toLowerCase() === targetCharacter.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
         feedback.textContent = "🎉 Congratulation ! You found " + targetCharacter.name + " !";
         feedback.className = "success";
+        
+        gameOver(true);
+
     } else {
         addToHistory(guessedCharacter, false);
         feedback.textContent = "❌ wrong answer, try again !";
@@ -113,9 +122,13 @@ function validateGuess() {
 }
 
 function selectCharacterToFind() {
+
     let filteredData = filterCharacters();
     if (filteredData.length > 0) {
+
         targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
+        //document.cookie = "targetCharacter=" + encodeURIComponent(JSON.stringify(targetCharacter));
+
         hints = {
             game: { title: "Game", tries: 3, icon: document.querySelector("#hint-game .hint-icon"), element: document.querySelector("#hint-game .hint-count"), text: getInfoByDebut(targetCharacter.debut).game },
             occupation: { title: "Occupation", tries: 7, icon: document.querySelector("#hint-occupation .hint-icon"), element: document.querySelector("#hint-occupation .hint-count"), text: targetCharacter.occupation },
@@ -128,6 +141,7 @@ function selectCharacterToFind() {
     } else {
         console.warn("No characters available after filtering!");
     }
+    
 }
 
 //////////// COMPARE FUNCTIONS
@@ -308,6 +322,15 @@ async function initGame() {
     setSelectCharacterToFindFunction(selectCharacterToFind);
 
     selectCharacterToFind(); // Maintenant on peut l'exécuter
+
+    /*
+    if(readCookie("attempts"));{
+        guessesCookie = readJsonCookie("attempts");
+        console.log(attemptedNames);
+    }
+    guessesCookie.forEach((attempt) => {
+        validateGuess(attempt);
+    })*/
 }
 initGame();
 
