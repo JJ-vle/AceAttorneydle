@@ -1,7 +1,7 @@
 // life.js
+import { removeValidateButtonListener, guessbarDiv } from './guessbar.js';
 
 const defensebar = document.getElementById("defensebar");
-const guessbarDiv = document.getElementById("guessbar");
 
 //////////// TRIES
 
@@ -48,6 +48,7 @@ export function setHintChecker(newHintChecker){
 function gameOver(result){
     console.log("GAME OVER");
     guessbarDiv.innerHTML="";
+    removeValidateButtonListener();
 
     if (result) {
         //win

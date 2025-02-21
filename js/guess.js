@@ -1,7 +1,7 @@
 //guess.js
 
 // Importation des fichiers
-import { setValidateGuessFunction } from './common/guessbar.js';
+import { setValidateGuessFunction, validateButton } from './common/guessbar.js';
 import { dataLoaded, turnaboutGames, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getInfoByDebut, getGroupByCharacter, setGameMode } from './common/data.js';
 import { setHints } from './common/hint.js';
 import { incrementNumTries, verifyTries } from './common/life.js';
@@ -109,7 +109,9 @@ function validateGuess() {
     incrementNumTries();
     verifyTries();
     inputField.value = "";
-    validateButton.disabled = true;
+    if (validateButton){
+        validateButton.disabled = true;
+    }
 }
 
 function selectCharacterToFind() {

@@ -8,6 +8,7 @@ export function setValidateGuessFunction(func) {
     validateGuessFunction = func;
 }
 
+export const guessbarDiv = document.getElementById("guessbar");
 export const inputField = document.getElementById("guessInput");
 export const suggestionsList = document.getElementById("suggestions");
 export const validateButton = document.getElementById("validateButton");
@@ -28,6 +29,11 @@ validateButton.addEventListener("click", function () {
         validateGuessFunction();
     }
 });
+export function removeValidateButtonListener() {
+    if (validateButton) {
+        validateButton.removeEventListener("click", validateGuessFunction);
+    }
+}
 
 ////////////////// FONCTIONS
 
@@ -38,7 +44,9 @@ export function handleInput(query) {
 
     if (query.length === 0) {
         suggestionsList.style.display = "none";
-        validateButton.disabled = true;
+        if (validateButton){
+            validateButton.disabled = true;
+        }
         return;
     }
 
@@ -89,7 +97,9 @@ export function handleInput(query) {
         });
     } else {
         suggestionsList.style.display = "none";
-        validateButton.disabled = true;
+        if (validateButton){
+            validateButton.disabled = true;
+        }
     }
 }
 
@@ -112,7 +122,7 @@ export function handleKeyboard(event){
         if (selectedIndex < 0) {
             selectedIndex = 0;
         }
-        if (items) {
+        if (items[selectedIndex]) {
             selectName(items[selectedIndex].textContent.trim());
             selectedIndex = -1; // Réinitialisation de la sélection
             updateSelection(items)
@@ -124,47 +134,60 @@ export function handleKeyboard(event){
     updateSelection(items);
 }
 
-function searchMatchedCharacters(filteredItems, query){
-    // Filtrer davantage les personnages selon la saisie dans le champ de recherche
+function searchMatchedCharacters(filteredItems, query) {
+    const queryParts = query.toLowerCase().split(" "); // Diviser la requête en plusieurs mots
+
     return filteredItems.filter(c => {
         if (attemptedNames.has(c.name)) return false;
 
-        const englishName = c.name.toLowerCase();
-        const englishSurname = englishName.split(" ").pop();
-        const frenchNames = (c.french || []).map(f => f.toLowerCase());
-        const frenchSurnames = frenchNames.map(f => f.split(" ").pop());
+        const englishNameParts = c.name.toLowerCase().split(" "); // Diviser le nom anglais en parties
+        const frenchNamesParts = (c.french || []).map(f => f.toLowerCase().split(" ")); // Diviser les noms français en parties
 
+        // Vérifier si tous les segments de la requête correspondent à une partie du nom
         return (
-            englishName.startsWith(query) ||
-            englishSurname.startsWith(query) ||
-            frenchNames.some(f => f.startsWith(query)) ||
-            frenchSurnames.some(f => f.startsWith(query))
+            // Vérification sur le nom anglais
+            queryParts.every(queryPart => 
+                englishNameParts.some(namePart => namePart.startsWith(queryPart))
+            ) ||
+            // Vérification sur le nom français
+            frenchNamesParts.some(frenchNameParts =>
+                queryParts.every(queryPart => 
+                    frenchNameParts.some(namePart => namePart.startsWith(queryPart))
+                )
+            )
         );
     });
 }
-function searchMatchedCases(filteredItems, query){
+
+function searchMatchedCases(filteredItems, query) {
+    const queryParts = query.toLowerCase().split(" ");
+
     return filteredItems.filter(c => {
         if (attemptedNames.has(c.name)) return false;
 
-        const englishName = c.name.toLowerCase();
-        const englishSurname = englishName.split(" ").pop();
-        const frenchNames = c.name.toLowerCase();
-        const frenchSurnames = englishName.split(" ").pop();
+        const englishNameParts = c.name.toLowerCase().split(" ");
+        const frenchNameParts = c.name.toLowerCase().split(" ");
 
+        // Vérifier si tous les segments de la requête correspondent à une partie du nom
         return (
-            englishName.startsWith(query) ||
-            englishSurname.startsWith(query) ||
-            frenchNames.startsWith(query) ||
-            frenchSurnames.startsWith(query)
+            queryParts.every(queryPart => 
+                englishNameParts.some(namePart => namePart.startsWith(queryPart))
+            ) ||
+            queryParts.every(queryPart => 
+                frenchNameParts.some(namePart => namePart.startsWith(queryPart))
+            )
         );
     });
 }
+
 
 // Sélection d'un nom et fermeture de la liste
 export function selectName(name) {
     inputField.value = name;
     suggestionsList.style.display = "none";
-    validateButton.disabled = false;
+    if (validateButton){
+        validateButton.disabled = true;
+    }
 }
 
 // Mise à jour de la sélection visuelle
@@ -172,7 +195,7 @@ function updateSelection(items) {
     for (let i = 0; i < items.length; i++) {
         items[i].classList.remove("selected");
     }
-    if (selectedIndex >= 0) {
+    if (selectedIndex >= 0 && items[selectedIndex]) {
         items[selectedIndex].classList.add("selected");
     }
 }

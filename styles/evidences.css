@@ -17,6 +17,7 @@
     background-blend-mode: normal;
     border: 2px solid white; /* Cadre blanc */
     align-items: stretch;
+    max-width: 800px; /* Ajustez en fonction du besoin */
 }
 
 /***************/
@@ -27,7 +28,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 120px;
+    width: calc(22% - 1.5%); /* 5 éléments par ligne */
+    max-width: 140px; /* Empêche qu’ils deviennent trop grands */
     padding: 10px;
     transition: all 0.3s ease-in-out;
     justify-content: space-between;
@@ -41,6 +43,13 @@
         transparent 6px, transparent 12px
     );
     border-image-slice: 10;
+}
+
+/* Pour forcer 3 lignes */
+@media (max-width: 500px) {
+    .evidence-item {
+        width: calc(100% / 3 - 10px); /* 3 éléments par ligne sur petits écrans */
+    }
 }
 
 /* Fond intérieur plus petit */
