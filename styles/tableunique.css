@@ -12,7 +12,8 @@
 }
 
 /* Conteneur pour l'image */
-.image-container-oneth {
+.image-container-oneth,
+.image-container-oneth-evidence {
     width: 100px; /* Largeur fixe pour le cadre de l'image */
     height: 100px; /* Hauteur fixe pour le cadre de l'image */
     overflow: hidden; /* Cache les parties de l'image qui dépassent */
@@ -37,6 +38,15 @@
     height: auto; /* La hauteur s'adapte pour conserver l'aspect ratio */
     object-position: top; /* Aligne l'image sur le haut */
 }
+
+/* Style de l'image directement dans le conteneur */
+.image-container-oneth-evidence img {
+    width: 100%; /* L'image prend toute la largeur du conteneur */
+    height: 100%; /* L'image prend toute la hauteur du conteneur */
+    object-fit: cover; /* Remplit le conteneur sans déformation */
+    object-position: center; /* Centre l'image dans le cadre */
+}
+
 
 /* Style de l'image centrée */
 .centered-image-oneth {

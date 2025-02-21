@@ -63,8 +63,17 @@ export function handleInput(query) {
             const listItem = document.createElement("li");
             listItem.dataset.index = index;
 
-            let mugshotUrl = character.mugshot?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
-            let imageUrl = mugshotUrl || character.image?.[0]?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
+            let imageUrl;
+            
+            
+            if (gameMode === "case") {
+                imageUrl = character.image?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
+            } else {
+                let mugshotUrl = character.mugshot?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
+                imageUrl = mugshotUrl || character.image?.[0]?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
+            }
+            
+
 
             listItem.innerHTML = `
                 <img src="${imageUrl}" alt="${character.name}" width="30" height="30" class="suggestion-img">
@@ -103,10 +112,13 @@ export function handleKeyboard(event){
         if (selectedIndex < 0) {
             selectedIndex = 0;
         }
-        selectName(items[selectedIndex].textContent.trim());
-        selectedIndex = -1; // Réinitialisation de la sélection
-        updateSelection(items)
-        validateGuessFunction();
+        if (items) {
+            selectName(items[selectedIndex].textContent.trim());
+            selectedIndex = -1; // Réinitialisation de la sélection
+            updateSelection(items)
+            validateGuessFunction();
+        }
+
     }
 
     updateSelection(items);

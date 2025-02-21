@@ -53,7 +53,7 @@ function addToHistory(guessedCase, result) {
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
         <td class="single-cell-oneth ${compareInfoClass(guessedCase.name, targetCase.name)}" >
-            <div class="image-container-oneth">
+            <div class="image-container-oneth-evidence">
                 <img src="${imageUrl}" alt="${guessedCase.name}" class="centered-image-oneth">
             </div>
             <div class="name-below-oneth">${guessedCase.name}</div>
@@ -90,7 +90,7 @@ function selectCaseToFind() {
         return attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow").length >= 3;
     }
 
-    let validCases = casesData.filter(isValidCase);
+    let validCases = filteredCases.filter(isValidCase);
     if (validCases.length === 0) {
         console.error("No valid quotes found!");
         return;
@@ -107,8 +107,8 @@ function selectCaseToFind() {
     let hints = {
         cause: { title: "Death cause", tries: 3, icon: document.querySelector("#hint-cause .hint-icon"), element: document.querySelector("#hint-cause .hint-count"),  text: targetCase.cause },
         victim: { title: "Victim", tries: 7, icon: document.querySelector("#hint-victim .hint-icon"), element: document.querySelector("#hint-victim .hint-count"), text: targetCase.victim },
-        //image: { title: "Image", tries: 12, icon: document.querySelector("#hint-image .hint-icon"), element: document.querySelector("#hint-image .hint-count"), image: targetCase.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
-        image: { title: "Image", tries: 12, icon: document.querySelector("#hint-image .hint-icon"), element: document.querySelector("#hint-image .hint-count"), text: targetCase.name }
+        image: { title: "Image", tries: 12, icon: document.querySelector("#hint-image .hint-icon"), element: document.querySelector("#hint-image .hint-count"), image: targetCase.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, ""), clear: true }
+        //image: { title: "Image", tries: 12, icon: document.querySelector("#hint-image .hint-icon"), element: document.querySelector("#hint-image .hint-count"), text: targetCase.name }
     };
 
     setHints(hints);
@@ -227,7 +227,6 @@ updateButton.addEventListener("click", selectCaseToFind);
 
 // Fonction pour filtrer les personnages en fonction des groupes cochés
 function filterCases() {
-    const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']"); // Assurez-vous que cette ligne existe
     const newSelectedGroups = Array.from(checkboxes)
         .filter(checkbox => checkbox.checked)
         .map(checkbox => checkbox.value);
@@ -239,8 +238,6 @@ function filterCases() {
         const group = getGroupByTurnabout(turnabout.name);
         return newSelectedGroups.includes(group);
     });
-
-    
 
     return filtered;
 }
