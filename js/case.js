@@ -17,7 +17,7 @@ const inputField = document.getElementById("guessInput");
 const validateButton = document.getElementById("validateButton");
 const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
-const evidenceContainer = document.getElementById("evidenceContainer");
+const evidenceContainer = document.getElementById("evidence-container");
 
 ////////////////// HISTORY
 
@@ -159,29 +159,54 @@ function validateGuess() {
 ////////////////// EVIDENCE DISPLAY
 
 let currentEvidenceIndex = 0;
-const maxEvidence = 15; // Nombre maximum d'éléments affichables
+let maxEvidence = 15; // Nombre maximum d'éléments affichables
 
 function createEvidenceDiv(evidence) {
     if (document.querySelectorAll(".evidence-item").length >= maxEvidence) return;
 
     const div = document.createElement("div");
     div.classList.add("evidence-item");
-    
+
+    // Création des coins avec des spans
+    const topLeft = document.createElement("span");
+    topLeft.classList.add("corner", "corner-top-left");
+
+    const topRight = document.createElement("span");
+    topRight.classList.add("corner", "corner-top-right");
+
+    const bottomLeft = document.createElement("span");
+    bottomLeft.classList.add("corner", "corner-bottom-left");
+
+    const bottomRight = document.createElement("span");
+    bottomRight.classList.add("corner", "corner-bottom-right");
+
+    // Création de l'image cachée par défaut
     const img = document.createElement("img");
     img.src = "/resources/img/icons/hiddenEvidence.png"; // Image cachée par défaut
     img.dataset.revealSrc = evidence.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, ""); // Stocke l'image réelle
     img.classList.add("evidence-image");
-    
+
+    // Création du texte (nom de la preuve)
     const name = document.createElement("p");
     name.textContent = evidence.name;
     name.style.display = "none"; // Cache le nom au début
-    
+
+    // Ajout des éléments au div principal
+    div.appendChild(topLeft);
+    div.appendChild(topRight);
+    div.appendChild(bottomLeft);
+    div.appendChild(bottomRight);
     div.appendChild(img);
     div.appendChild(name);
+
+    // Ajout au conteneur principal
     evidenceContainer.appendChild(div);
 }
 
 function displayEvidence() {
+    if (targetCase.evidence.length < maxEvidence) {
+        maxEvidence = targetCase.evidence.length;
+    }
     const caseEvidence = targetCase.evidence.slice(0, maxEvidence); // Limite aux 15 premiers éléments
     caseEvidence.forEach(createEvidenceDiv);
 }

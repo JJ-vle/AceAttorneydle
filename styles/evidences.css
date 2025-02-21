@@ -4,30 +4,146 @@
     gap: 10px; /* Espacement entre les éléments */
     justify-content: center; /* Centre les éléments horizontalement */
     align-items: flex-start; /* Aligne les éléments en haut */
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    background-image: 
+        radial-gradient(circle at center, #2781b2 0.25rem, transparent 0),
+        radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0);
+    background-size: 1.3rem 1.3rem;
+    background-position: 0 0, 0.65rem 0.65rem;
+    background-blend-mode: normal;
+    border: 2px solid white; /* Cadre blanc */
+    align-items: stretch;
 }
+
+/***************/
 
 .evidence-item {
+    position: relative;
     display: inline-flex;
-    flex-direction: column; /* Aligne l'image au-dessus du texte */
-    align-items: center; /* Centre les éléments */
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    width: 120px; /* Ajustez selon vos besoins */
+    width: 120px;
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+    justify-content: space-between;
+    border: 1px solid transparent;
+    border-radius: 0;
+
+    /* Bordure pointillée */
+    border-image-source: repeating-linear-gradient(
+        45deg, 
+        white 0px, white 6px, 
+        transparent 6px, transparent 12px
+    );
+    border-image-slice: 10;
 }
 
-.evidence-image {
-    width: 100px; /* Taille fixe pour les images */
-    height: auto;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+/* Fond intérieur plus petit */
+.evidence-item::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    background-color: rgba(51, 51, 51, 0.6); /* Fond plus visible */
+    z-index: 0; /* S'assure qu'il est sous le contenu mais au-dessus du fond */
+    border-radius: 5px; /* Facultatif : arrondir légèrement */
 }
 
-.evidence-image:hover {
-    transform: scale(1.1); /* Effet de zoom au survol */
+/* S'assure que le contenu reste au-dessus du fond */
+.evidence-item > * {
+    position: relative;
+    z-index: 1;
 }
 
-.evidence-item p {
-    margin-top: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
+
+
+/* Coins */
+.evidence-item .corner {
+    content: "";
+    position: absolute;
+    width: 16px; /* Largeur initiale des coins */
+    height: 16px; /* Hauteur initiale des coins */
+    border: 4px solid white; /* Bordure des coins */
+}
+
+/* Coin supérieur gauche */
+.evidence-item .corner-top-left {
+    top: -2px;  /* Positionné plus près du bord */
+    left: -2px; /* Positionné plus près du bord */
+    border-right: none;
+    border-bottom: none;
+}
+
+/* Coin supérieur droit */
+.evidence-item .corner-top-right {
+    top: -2px;  /* Positionné plus près du bord */
+    right: -2px; /* Positionné plus près du bord */
+    border-left: none;
+    border-bottom: none;
+}
+
+/* Coin inférieur gauche */
+.evidence-item .corner-bottom-left {
+    bottom: -2px; /* Positionné plus près du bord */
+    left: -2px;  /* Positionné plus près du bord */
+    border-right: none;
+    border-top: none;
+}
+
+/* Coin inférieur droit */
+.evidence-item .corner-bottom-right {
+    bottom: -2px; /* Positionné plus près du bord */
+    right: -2px; /* Positionné plus près du bord */
+    border-left: none;
+    border-top: none;
+}
+
+/* Agrandir le cadre au survol */
+.evidence-item:hover {
+    border: 2px solid #ffc31d; /* Ajoute une bordure colorée au survol */
+    transform: scale(1.05); /* Agrandit légèrement la div au survol */
+    padding: 12px; /* Augmente l'espace autour du contenu */
+}
+
+/* Agrandir les coins au survol */
+.evidence-item:hover .corner {
+    width: 24px; /* Augmente la largeur des coins */
+    height: 24px; /* Augmente la hauteur des coins */
+    border-width: 6px; /* Augmente la bordure des coins */
+}
+
+/* Coins deviennent jaunes au survol */
+.evidence-item:hover .corner {
+    border-color: #ffc31d;
+}
+
+/* Effet au survol spécifique pour le coin inférieur gauche */
+.evidence-item:hover .corner-bottom-left {
+    bottom: -4px;
+    left: -4px;
+}
+
+/* Effet au survol spécifique pour le coin inférieur droit */
+.evidence-item:hover .corner-bottom-right {
+    bottom: -4px;
+    right: -4px;
+}
+
+/* Effet au survol spécifique pour le coin superieur gauche */
+.evidence-item:hover .corner-top-left {
+    top: -4px;
+    left: -4px;
+}
+
+/* Effet au survol spécifique pour le coin superieur droit */
+.evidence-item:hover .corner-top-right {
+    top: -4px;
+    right: -4px;
 }
