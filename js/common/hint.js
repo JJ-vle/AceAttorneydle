@@ -32,7 +32,7 @@ function addHint(title, text) {
 }
 
 // Fonction pour ajouter une image
-function addHintImage(title, imgSrc) {
+function addHintImage(title, imgSrc, clear) {
     if (!imgSrc){
         console.log("pipciaaca");
         return;
@@ -42,7 +42,13 @@ function addHintImage(title, imgSrc) {
     const hintElement = document.createElement("img");
     hintElement.src = imgSrc;
     hintElement.alt = "Figure";
-    hintElement.classList.add("hint-image");
+    if (clear){
+        hintElement.classList.add("hint-image-clear");
+
+    }else {
+        hintElement.classList.add("hint-image");
+
+    }
 
     hintContent.appendChild(hintElement);
 }
@@ -79,7 +85,7 @@ function toggleHint(hint) {
             addHint(hints[hint].title, hints[hint].text);
         }
         if (hints[hint].image) {
-            addHintImage(hints[hint].title, hints[hint].image);
+            addHintImage(hints[hint].title, hints[hint].image, hints[hint].clear);
         }
         currentHint = hint; // Met à jour le hint affiché
     }

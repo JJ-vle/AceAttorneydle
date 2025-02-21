@@ -1,11 +1,11 @@
 // life.js
+import { removeValidateButtonListener, guessbarDiv } from './guessbar.js';
 
 import { setCookie, streaks } from './cookie.js';
 import { gameMode } from './data.js';
 
 
 const defensebar = document.getElementById("defensebar");
-const guessbarDiv = document.getElementById("guessbar");
 
 //////////// TRIES
 
@@ -50,6 +50,7 @@ export function setHintChecker(newHintChecker){
 //////////// GAMEOVER
 export function gameOver(result){
     guessbarDiv.innerHTML="";
+    removeValidateButtonListener();
     
     let newStreak;
 

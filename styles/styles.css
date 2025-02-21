@@ -283,6 +283,14 @@ body {
     margin: 10px auto;
 }
 
+.hint-image-clear {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
 
 /* Détails des indices */
 

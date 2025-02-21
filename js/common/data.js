@@ -85,21 +85,21 @@ export function getGroupByTurnabout(turnabout) {
 }
 
 // Fonction pour récupérer tous les "debut" différents
-function getUniqueDebuts() {
+function getUniqueInfo(key) {
     if (!characterData || characterData.length === 0) {
         console.log("No character data available.");
         return [];
     }
 
-    const debutsSet = new Set();
+    const set = new Set();
 
     characterData.forEach(character => {
-        if (character.debut) {
-            debutsSet.add(character.debut);
+        if (character[key]) {
+            set.add(character[key]);
         }
     });
 
-    return Array.from(debutsSet);
+    return Array.from(set);
 }
 
 //////////// LOAD CHARACTERS

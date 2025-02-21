@@ -17,7 +17,7 @@ const inputField = document.getElementById("guessInput");
 const validateButton = document.getElementById("validateButton");
 const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
-const evidenceContainer = document.getElementById("evidenceContainer");
+const evidenceContainer = document.getElementById("evidence-container");
 
 ////////////////// HISTORY
 
@@ -53,7 +53,7 @@ function addToHistory(guessedCase, result) {
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
         <td class="single-cell-oneth ${compareInfoClass(guessedCase.name, targetCase.name)}" >
-            <div class="image-container-oneth">
+            <div class="image-container-oneth-evidence">
                 <img src="${imageUrl}" alt="${guessedCase.name}" class="centered-image-oneth">
             </div>
             <div class="name-below-oneth">${guessedCase.name}</div>
@@ -90,7 +90,7 @@ function selectCaseToFind() {
         return attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow").length >= 3;
     }
 
-    let validCases = casesData.filter(isValidCase);
+    let validCases = filteredCases.filter(isValidCase);
     if (validCases.length === 0) {
         console.error("No valid quotes found!");
         return;
@@ -107,8 +107,8 @@ function selectCaseToFind() {
     let hints = {
         cause: { title: "Death cause", tries: 3, icon: document.querySelector("#hint-cause .hint-icon"), element: document.querySelector("#hint-cause .hint-count"),  text: targetCase.cause },
         victim: { title: "Victim", tries: 7, icon: document.querySelector("#hint-victim .hint-icon"), element: document.querySelector("#hint-victim .hint-count"), text: targetCase.victim },
-        //image: { title: "Image", tries: 12, icon: document.querySelector("#hint-image .hint-icon"), element: document.querySelector("#hint-image .hint-count"), image: targetCase.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
-        image: { title: "Image", tries: 12, icon: document.querySelector("#hint-image .hint-icon"), element: document.querySelector("#hint-image .hint-count"), text: targetCase.name }
+        image: { title: "Image", tries: 12, icon: document.querySelector("#hint-image .hint-icon"), element: document.querySelector("#hint-image .hint-count"), image: targetCase.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, ""), clear: true }
+        //image: { title: "Image", tries: 12, icon: document.querySelector("#hint-image .hint-icon"), element: document.querySelector("#hint-image .hint-count"), text: targetCase.name }
     };
 
     setHints(hints);
@@ -161,29 +161,54 @@ function validateGuess() {
 ////////////////// EVIDENCE DISPLAY
 
 let currentEvidenceIndex = 0;
-const maxEvidence = 15; // Nombre maximum d'éléments affichables
+let maxEvidence = 15; // Nombre maximum d'éléments affichables
 
 function createEvidenceDiv(evidence) {
     if (document.querySelectorAll(".evidence-item").length >= maxEvidence) return;
 
     const div = document.createElement("div");
     div.classList.add("evidence-item");
-    
+
+    // Création des coins avec des spans
+    const topLeft = document.createElement("span");
+    topLeft.classList.add("corner", "corner-top-left");
+
+    const topRight = document.createElement("span");
+    topRight.classList.add("corner", "corner-top-right");
+
+    const bottomLeft = document.createElement("span");
+    bottomLeft.classList.add("corner", "corner-bottom-left");
+
+    const bottomRight = document.createElement("span");
+    bottomRight.classList.add("corner", "corner-bottom-right");
+
+    // Création de l'image cachée par défaut
     const img = document.createElement("img");
     img.src = "/resources/img/icons/hiddenEvidence.png"; // Image cachée par défaut
     img.dataset.revealSrc = evidence.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, ""); // Stocke l'image réelle
     img.classList.add("evidence-image");
-    
+
+    // Création du texte (nom de la preuve)
     const name = document.createElement("p");
     name.textContent = evidence.name;
     name.style.display = "none"; // Cache le nom au début
-    
+
+    // Ajout des éléments au div principal
+    div.appendChild(topLeft);
+    div.appendChild(topRight);
+    div.appendChild(bottomLeft);
+    div.appendChild(bottomRight);
     div.appendChild(img);
     div.appendChild(name);
+
+    // Ajout au conteneur principal
     evidenceContainer.appendChild(div);
 }
 
 function displayEvidence() {
+    if (targetCase.evidence.length < maxEvidence) {
+        maxEvidence = targetCase.evidence.length;
+    }
     const caseEvidence = targetCase.evidence.slice(0, maxEvidence); // Limite aux 15 premiers éléments
     caseEvidence.forEach(createEvidenceDiv);
 }
@@ -229,7 +254,6 @@ updateButton.addEventListener("click", selectCaseToFind);
 
 // Fonction pour filtrer les personnages en fonction des groupes cochés
 function filterCases() {
-    const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']"); // Assurez-vous que cette ligne existe
     const newSelectedGroups = Array.from(checkboxes)
         .filter(checkbox => checkbox.checked)
         .map(checkbox => checkbox.value);
@@ -241,8 +265,6 @@ function filterCases() {
         const group = getGroupByTurnabout(turnabout.name);
         return newSelectedGroups.includes(group);
     });
-
-    
 
     return filtered;
 }
