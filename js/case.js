@@ -145,6 +145,7 @@ function validateGuess() {
         feedback.textContent = "🎉 Congratulation ! You found " + targetCase.name + " !";
         feedback.className = "success";
         
+        revealAllEvidence();
         gameOver(true);
     } else {
         addToHistory(guessedCase, false);
@@ -185,13 +186,13 @@ function createEvidenceDiv(evidence) {
     // Création de l'image cachée par défaut
     const img = document.createElement("img");
     img.src = "/resources/img/icons/hiddenEvidence.png"; // Image cachée par défaut
-    img.dataset.revealSrc = evidence.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, ""); // Stocke l'image réelle
+    img.dataset.revealSrc = evidence.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
     img.classList.add("evidence-image");
 
-    // Création du texte (nom de la preuve)
-    const name = document.createElement("p");
-    name.textContent = evidence.name;
-    name.style.display = "none"; // Cache le nom au début
+    // Création du titre (nom de la preuve)
+    const title = document.createElement("p");
+    title.textContent = evidence.name;
+    // Ne pas masquer le titre via style.display, le CSS s'en chargera
 
     // Ajout des éléments au div principal
     div.appendChild(topLeft);
@@ -199,7 +200,7 @@ function createEvidenceDiv(evidence) {
     div.appendChild(bottomLeft);
     div.appendChild(bottomRight);
     div.appendChild(img);
-    div.appendChild(name);
+    div.appendChild(title);
 
     // Ajout au conteneur principal
     evidenceContainer.appendChild(div);
@@ -216,16 +217,33 @@ function displayEvidence() {
 function revealNextEvidence() {
     const evidenceItems = document.querySelectorAll(".evidence-item");
     if (currentEvidenceIndex < Math.min(evidenceItems.length, maxEvidence)) {
-        const img = evidenceItems[currentEvidenceIndex].querySelector(".evidence-image");
-        const name = evidenceItems[currentEvidenceIndex].querySelector("p");
+        const div = evidenceItems[currentEvidenceIndex]; 
+        const img = div.querySelector(".evidence-image");
+        const name = div.querySelector("p");
         
         img.src = img.dataset.revealSrc; // Affiche la vraie image
-        name.style.display = "block"; // Affiche le nom de la preuve
-        
+        div.classList.add("revealed"); // Marque l'évidence comme révélée
+        name.style.display = "block"; // Permet au hover de fonctionner
+
         currentEvidenceIndex++;
     }
 }
 
+function revealAllEvidence() {
+    const evidenceItems = document.querySelectorAll(".evidence-item");
+
+    for (let i = currentEvidenceIndex; i < Math.min(evidenceItems.length, maxEvidence); i++) {
+        const div = evidenceItems[i];
+        const img = div.querySelector(".evidence-image");
+        const name = div.querySelector("p");
+
+        img.src = img.dataset.revealSrc;
+        div.classList.add("revealed"); // Marque l'évidence comme révélée
+        name.style.display = "block"; // Permet au hover de fonctionner
+    }
+
+    currentEvidenceIndex = maxEvidence;
+}
 
 ////////////////// COMPARE FUNCTION
 

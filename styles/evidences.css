@@ -1,9 +1,9 @@
 #evidence-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* Espacement entre les éléments */
-    justify-content: center; /* Centre les éléments horizontalement */
-    align-items: flex-start; /* Aligne les éléments en haut */
+    gap: 10px;
+    justify-content: center;
+    align-items: flex-start;
     padding: 15px;
     font-size: 1.2rem;
     font-weight: bold;
@@ -15,9 +15,8 @@
     background-size: 1.3rem 1.3rem;
     background-position: 0 0, 0.65rem 0.65rem;
     background-blend-mode: normal;
-    border: 2px solid white; /* Cadre blanc */
-    align-items: stretch;
-    max-width: 800px; /* Ajustez en fonction du besoin */
+    border: 2px solid white;
+    max-width: 800px;
 }
 
 /***************/
@@ -28,13 +27,14 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: calc(22% - 1.5%); /* 5 éléments par ligne */
-    max-width: 140px; /* Empêche qu’ils deviennent trop grands */
+    width: calc(22% - 1.5%);
+    max-width: 140px;
     padding: 10px;
-    transition: all 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     justify-content: space-between;
     border: 1px solid transparent;
     border-radius: 0;
+    will-change: transform;
 
     /* Bordure pointillée */
     border-image-source: repeating-linear-gradient(
@@ -119,6 +119,7 @@
     border: 2px solid #ffc31d; /* Ajoute une bordure colorée au survol */
     transform: scale(1.05); /* Agrandit légèrement la div au survol */
     padding: 12px; /* Augmente l'espace autour du contenu */
+    margin-bottom: -6px;
 }
 
 /* Agrandir les coins au survol */
@@ -155,4 +156,36 @@
 .evidence-item:hover .corner-top-right {
     top: -4px;
     right: -4px;
+}
+
+
+.evidence-item.revealed  p {
+    position: absolute;
+    bottom: 0;              /* Place le titre en bas de l'image ; tu peux aussi utiliser top: 0; selon l'effet souhaité */
+    left: 0;
+    right: 0;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.8);  /* Fond semi-transparent pour une bonne lisibilité */
+    color: white;
+    padding: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;              /* Le titre est caché par défaut */
+    transition: opacity 0.3s ease-in-out;
+    z-index: 2;              /* Assure que le titre est affiché par-dessus l'image */
+}
+
+.evidence-item:hover p {
+    opacity: 1;              /* Affiche le titre au survol */
+}
+
+/* Empêche l'affichage du nom avant révélation */
+.evidence-item p {
+    display: none; /* Caché par défaut */
+}
+
+/* Affiche le titre uniquement si l'élément est révélé */
+.evidence-item.revealed:hover p {
+    opacity: 1;
 }
