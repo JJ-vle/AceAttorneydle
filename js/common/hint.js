@@ -24,11 +24,20 @@ function showHintContainer(title) {
 function addHint(title, text) {
     if (!text) return;
     showHintContainer(title);
-
-    const hintElement = document.createElement("p");
-    hintElement.textContent = text;
-    hintContent.appendChild(hintElement);
     
+    if (Array.isArray(text) || text instanceof Set) {
+        const hintList = document.createElement("ul");
+        text.forEach(item => {
+            const listItem = document.createElement("li");
+            listItem.textContent = item;
+            hintList.appendChild(listItem);
+        });
+        hintContent.appendChild(hintList);
+    } else {
+        const hintElement = document.createElement("p");
+        hintElement.textContent = text;
+        hintContent.appendChild(hintElement);
+    }
 }
 
 // Fonction pour ajouter une image

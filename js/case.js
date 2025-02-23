@@ -105,8 +105,8 @@ function selectCaseToFind() {
     }
 
     let hints = {
-        cause: { title: "death cause", tries: 3, icon: document.querySelector("#hint-cause .hint-icon"), element: document.querySelector("#hint-cause .hint-count"),  text: targetCase.cause },
-        locations: { title: "locations", tries: 7, icon: document.querySelector("#hint-locations .hint-icon"), element: document.querySelector("#hint-locations .hint-count"), text: targetCase.locations },
+        cause: { title: "Death cause", tries: 3, icon: document.querySelector("#hint-cause .hint-icon"), element: document.querySelector("#hint-cause .hint-count"),  text: targetCase.cause },
+        locations: { title: "Locations", tries: 7, icon: document.querySelector("#hint-locations .hint-icon"), element: document.querySelector("#hint-locations .hint-count"), text: targetCase.locations },
         victim: { title: "Victim", tries: 12, icon: document.querySelector("#hint-victim .hint-icon"), element: document.querySelector("#hint-victim .hint-count"), text: targetCase.victim },
         //image: { title: "Image", tries: 12, icon: document.querySelector("#hint-image .hint-icon"), element: document.querySelector("#hint-image .hint-count"), image: targetCase.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, ""), clear: true }
         //image: { title: "Image", tries: 12, icon: document.querySelector("#hint-image .hint-icon"), element: document.querySelector("#hint-image .hint-count"), text: targetCase.name }
