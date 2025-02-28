@@ -4,6 +4,7 @@
 import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, characterDatas, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, setGameMode } from './common/data.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
+import { readCookie } from './common/cookie.js';
 setGameMode("silhouette");
 
 let targetCharacter = null;
@@ -170,6 +171,14 @@ function imageProcessing(imgSrc) {
     silhouetteImg.appendChild(imgElement);
 }
 
+function checkCorrectGroups(groups){
+
+    checkboxes.forEach(checkbox => {
+        // Check if the checkbox's value is in the provided list
+        checkbox.checked = groups.includes(checkbox.value);
+    });
+}
+
 //////////// DOMCONTENTLOADED
 
 async function initGame() {
@@ -182,6 +191,8 @@ async function initGame() {
         length += characterDatas[game].length
     });
     console.log("Nombre de personnages chargés :", length);
+
+    checkCorrectGroups(readCookie("filter"));
 
     setValidateGuessFunction(validateGuess);
     setSelectCharacterToFindFunction(selectCharacterToFind);

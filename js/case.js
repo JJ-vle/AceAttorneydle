@@ -5,6 +5,7 @@ import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, casesDatas, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByTurnabout, setGameMode } from './common/data.js';
 import { setHints } from './common/hint.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
+import { readCookie } from './common/cookie.js';
 setGameMode("case");
 
 //////////////////
@@ -291,6 +292,14 @@ function filterCases() {
     return filtered;
 }
 
+function checkCorrectGroups(groups){
+
+    checkboxes.forEach(checkbox => {
+        // Check if the checkbox's value is in the provided list
+        checkbox.checked = groups.includes(checkbox.value);
+    });
+}
+
 //////////// DOMCONTENTLOADED
 
 async function initGame() {
@@ -302,6 +311,8 @@ async function initGame() {
         length += casesDatas[game].length
     });
     console.log("Nombre de turnabouts chargés :", length);
+
+    checkCorrectGroups(readCookie("filter"));
 
     setValidateGuessFunction(validateGuess);
     setSelectCharacterToFindFunction(selectCaseToFind);

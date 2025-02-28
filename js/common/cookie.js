@@ -6,6 +6,13 @@ streaks.silhouetteStreak = setupStreakCookie("silhouetteStreak");
 streaks.quoteStreak = setupStreakCookie("quoteStreak");
 streaks.caseStreak = setupStreakCookie("caseStreak");
 
+if(readCookie("filter").length === 0){
+    setCookie("filter", ["Main"]);
+}else{
+    setCookie("filter", readCookie("filter"));
+}
+
+
 //console.log(streaks);
 
 function setupStreakCookie(name){

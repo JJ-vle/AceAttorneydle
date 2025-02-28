@@ -1,5 +1,7 @@
 //data.js
 
+import { setCookie } from './cookie.js';
+
 // Stocke les noms déjà proposés
 export let attemptedNames = new Array();
 // Charger le fichier JSON contenant les informations des débuts
@@ -155,6 +157,8 @@ export let selectedGroups = ["Main"];
 
 export function setSelectedGroups(newSelectedGroups) {
     selectedGroups = newSelectedGroups;
+    setCookie("filter", selectedGroups);
+    console.log("SELECTED GROUP : " + selectedGroups);
 }
 
 

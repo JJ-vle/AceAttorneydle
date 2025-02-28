@@ -5,6 +5,7 @@ import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, getInfoByDebut, setGameMode, quoteDatas, characterDatas } from './common/data.js';
 import { setHints } from './common/hint.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
+import { readCookie } from './common/cookie.js';
 setGameMode("quote");
 
 //////////////////
@@ -236,6 +237,14 @@ function filterQuotes(){
     return filtered;
 }
 
+function checkCorrectGroups(groups){
+
+    checkboxes.forEach(checkbox => {
+        // Check if the checkbox's value is in the provided list
+        checkbox.checked = groups.includes(checkbox.value);
+    });
+}
+
 //////////// DOMCONTENTLOADED
 
 async function initGame() {
@@ -256,6 +265,7 @@ async function initGame() {
     });
     console.log("Nombre de personnages chargés :", lengthChar);
 
+    checkCorrectGroups(readCookie("filter"));
 
     setValidateGuessFunction(validateGuess);
     setSelectCharacterToFindFunction(selectCharacterToFind);

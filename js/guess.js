@@ -5,7 +5,7 @@ import { setValidateGuessFunction, validateButton } from './common/guessbar.js';
 import { dataLoaded, turnaboutGames, characterDatas, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getInfoByDebut, getGroupByCharacter, setGameMode} from './common/data.js';
 import { setHints } from './common/hint.js';
 import { incrementNumTries, verifyTries, gameOver } from './common/life.js';
-import { readCookie, readJsonCookie, setCookie } from './common/cookie.js';
+import { readCookie } from './common/cookie.js';
 
 setGameMode("guess");
 
@@ -298,10 +298,11 @@ updateButton.addEventListener("click", selectCharacterToFind);
 
 // Fonction pour filtrer les personnages en fonction des groupes cochés
 function filterCharacters() {
-    const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']"); // Assurez-vous que cette ligne existe
     const newSelectedGroups = Array.from(checkboxes)
         .filter(checkbox => checkbox.checked)
         .map(checkbox => checkbox.value);
+
+    setSelectedGroups(newSelectedGroups); 
 
     let filtered = [];
     newSelectedGroups.forEach(group => {
@@ -310,6 +311,14 @@ function filterCharacters() {
     })
     characterData = filtered;
     return filtered;
+}
+
+function checkCorrectGroups(groups){
+
+    checkboxes.forEach(checkbox => {
+        // Check if the checkbox's value is in the provided list
+        checkbox.checked = groups.includes(checkbox.value);
+    });
 }
 
 //////////// DOMCONTENTLOADED
@@ -324,6 +333,8 @@ async function initGame() {
         length += characterDatas[game].length
     });
     console.log("Nombre de personnages chargés :", length);
+
+    checkCorrectGroups(readCookie("filter"));
 
     setValidateGuessFunction(validateGuess);
     setSelectCharacterToFindFunction(selectCharacterToFind);
