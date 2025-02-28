@@ -2,7 +2,7 @@
 
 // Importation des fichiers
 import { setValidateGuessFunction, validateButton } from './common/guessbar.js';
-import { dataLoaded, turnaboutGames, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getInfoByDebut, getGroupByCharacter, setGameMode} from './common/data.js';
+import { dataLoaded, turnaboutGames, characterDatas, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getInfoByDebut, getGroupByCharacter, setGameMode} from './common/data.js';
 import { setHints } from './common/hint.js';
 import { incrementNumTries, verifyTries, gameOver } from './common/life.js';
 import { readCookie, readJsonCookie, setCookie } from './common/cookie.js';
@@ -15,6 +15,7 @@ setGameMode("guess");
 
 let targetCharacter = null;
 let guessesCookie = null;
+let characterData = null;
 
 const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
@@ -302,14 +303,12 @@ function filterCharacters() {
         .filter(checkbox => checkbox.checked)
         .map(checkbox => checkbox.value);
 
-    setSelectedGroups(newSelectedGroups); // Mettre à jour selectedGroups via la fonction setSelectedGroups
-
-    // Filtrer les personnages en fonction du groupe sélectionné
-    const filtered = characterData.filter(character => {
-        const group = getGroupByCharacter(character);
-        return newSelectedGroups.includes(group);
-    });
-
+    let filtered = [];
+    newSelectedGroups.forEach(group => {
+        filtered = filtered.concat(characterDatas[group]);
+        console.log(filtered);
+    })
+    characterData = filtered;
     return filtered;
 }
 
@@ -318,7 +317,13 @@ function filterCharacters() {
 async function initGame() {
     await dataLoaded; // Attendre que les fichiers JSON soient chargés
     console.log("🚀 Les données sont prêtes, on peut commencer !");
-    console.log("Nombre de personnages chargés :", characterData.length);
+
+    let length = 0;
+    Object.keys(characterDatas).forEach(game => {
+        console.log(characterDatas[game].length)
+        length += characterDatas[game].length
+    });
+    console.log("Nombre de personnages chargés :", length);
 
     setValidateGuessFunction(validateGuess);
     setSelectCharacterToFindFunction(selectCharacterToFind);

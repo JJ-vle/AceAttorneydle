@@ -2,11 +2,12 @@
 
 // Importer la fonction depuis un autre fichier
 import { setValidateGuessFunction } from './common/guessbar.js';
-import { dataLoaded, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, setGameMode } from './common/data.js';
+import { dataLoaded, characterDatas, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, setGameMode } from './common/data.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
 setGameMode("silhouette");
 
 let targetCharacter = null;
+let characterData = null
 
 //////////////////
 
@@ -130,12 +131,13 @@ function filterCharacters() {
 
     setSelectedGroups(newSelectedGroups); // Mettre à jour selectedGroups via la fonction setSelectedGroups
 
-    // Filtrer les personnages en fonction du groupe sélectionné
-    const filtered = characterData.filter(character => {
-        const group = getGroupByCharacter(character);
-        return newSelectedGroups.includes(group);
-    });
-
+    let filtered = [];
+    newSelectedGroups.forEach(group => {
+        filtered = filtered.concat(characterDatas[group]);
+        console.log(filtered);
+    })
+    
+    characterData = filtered;
     return filtered;
 }
 
@@ -173,7 +175,13 @@ function imageProcessing(imgSrc) {
 async function initGame() {
     await dataLoaded; // Attendre que les fichiers JSON soient chargés
     console.log("🚀 Les données sont prêtes, on peut commencer !");
-    console.log("Nombre de personnages chargés :", characterData.length);
+
+    let length = 0;
+    Object.keys(characterDatas).forEach(game => {
+        console.log(characterDatas[game].length)
+        length += characterDatas[game].length
+    });
+    console.log("Nombre de personnages chargés :", length);
 
     setValidateGuessFunction(validateGuess);
     setSelectCharacterToFindFunction(selectCharacterToFind);

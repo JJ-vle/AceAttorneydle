@@ -2,7 +2,7 @@
 
 // Importation des fichiers
 import { setValidateGuessFunction } from './common/guessbar.js';
-import { dataLoaded, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, getInfoByDebut, setGameMode, quoteData } from './common/data.js';
+import { dataLoaded, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, getInfoByDebut, setGameMode, quoteDatas, characterDatas } from './common/data.js';
 import { setHints } from './common/hint.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
 setGameMode("quote");
@@ -11,6 +11,8 @@ setGameMode("quote");
 
 let targetCharacter = null;
 let targetQuote = null;
+let characterData = null;
+let quoteData = null;
 
 //////////////////
 
@@ -66,13 +68,16 @@ function addToHistory(guessedCharacter, result) {
 ////////////////// FUNCTIONS
 
 function selectCharacterToFind() {
+
+    // Appliquer les filtres aux personnages
+    let filteredCharacters = filterCharacters();
+    let filteredQuotes = filterQuotes();
+
     if (!quoteData || quoteData.length === 0 || !characterData || characterData.length === 0) {
         console.error("Data not loaded yet!");
         return;
     }
 
-    // Appliquer les filtres aux personnages
-    let filteredCharacters = filterCharacters();
     if (filteredCharacters.length === 0) {
         console.warn("No characters available after filtering!");
         return;
@@ -90,7 +95,7 @@ function selectCharacterToFind() {
         return attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow").length >= 3;
     }
 
-    let validQuotes = quoteData.filter(isValidQuote);
+    let validQuotes = filteredQuotes.filter(isValidQuote);
     if (validQuotes.length === 0) {
         console.error("No valid quotes found!");
         return;
@@ -203,12 +208,31 @@ function filterCharacters() {
 
     setSelectedGroups(newSelectedGroups); // Mettre à jour selectedGroups via la fonction setSelectedGroups
 
-    // Filtrer les personnages en fonction du groupe sélectionné
-    const filtered = characterData.filter(character => {
-        const group = getGroupByCharacter(character);
-        return newSelectedGroups.includes(group);
-    });
+    let filtered = [];
+    newSelectedGroups.forEach(group => {
+        filtered = filtered.concat(characterDatas[group]);
+        console.log(filtered);
+    })
 
+    characterData = filtered;
+    return filtered;
+}
+
+function filterQuotes(){
+    const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']"); // Assurez-vous que cette ligne existe
+    const newSelectedGroups = Array.from(checkboxes)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
+
+    setSelectedGroups(newSelectedGroups); // Mettre à jour selectedGroups via la fonction setSelectedGroups
+
+    let filtered = [];
+    newSelectedGroups.forEach(group => {
+        filtered = filtered.concat(quoteDatas[group]);
+        console.log(filtered);
+    })
+
+    quoteData = filtered;
     return filtered;
 }
 
@@ -217,8 +241,21 @@ function filterCharacters() {
 async function initGame() {
     await dataLoaded; // Attendre que les fichiers JSON soient chargés
     console.log("🚀 Les données sont prêtes, on peut commencer !");
-    console.log("Nombre de citations chargées :", quoteData.length);
-    console.log("Nombre de personnages chargés :", characterData.length);
+
+    let lengthQuote = 0;
+    Object.keys(quoteDatas).forEach(game => {
+        console.log(quoteDatas[game].length)
+        lengthQuote += quoteDatas[game].length
+    });
+    console.log("Nombre de citations chargées :", lengthQuote);
+
+    let lengthChar = 0;
+    Object.keys(characterDatas).forEach(game => {
+        console.log(characterDatas[game].length)
+        lengthChar += characterDatas[game].length
+    });
+    console.log("Nombre de personnages chargés :", lengthChar);
+
 
     setValidateGuessFunction(validateGuess);
     setSelectCharacterToFindFunction(selectCharacterToFind);

@@ -2,7 +2,7 @@
 
 // Importation des fichiers
 import { setValidateGuessFunction } from './common/guessbar.js';
-import { dataLoaded, casesData, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByTurnabout, setGameMode } from './common/data.js';
+import { dataLoaded, casesDatas, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByTurnabout, setGameMode } from './common/data.js';
 import { setHints } from './common/hint.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
 setGameMode("case");
@@ -10,6 +10,7 @@ setGameMode("case");
 //////////////////
 
 let targetCase = null;
+let casesData = null
 
 //////////////////
 
@@ -66,13 +67,14 @@ function addToHistory(guessedCase, result) {
 ////////////////// FUNCTIONS
 
 function selectCaseToFind() {
+    // Appliquer les filtres aux personnages
+    let filteredCases = filterCases();
+
     if (!casesData || casesData.length === 0 || !characterData || characterData.length === 0) {
         console.error("Data not loaded yet!");
         return;
     }
 
-    // Appliquer les filtres aux personnages
-    let filteredCases = filterCases();
     if (filteredCases.length === 0) {
         console.warn("No characters available after filtering!");
         return;
@@ -279,12 +281,13 @@ function filterCases() {
 
     setSelectedGroups(newSelectedGroups); // Mettre à jour selectedGroups via la fonction setSelectedGroups
 
-    // Filtrer les personnages en fonction du groupe sélectionné
-    const filtered = casesData.filter(turnabout => {
-        const group = getGroupByTurnabout(turnabout.name);
-        return newSelectedGroups.includes(group);
-    });
+    let filtered = [];
+    newSelectedGroups.forEach(group => {
+        filtered = filtered.concat(casesDatas[group]);
+        console.log(filtered);
+    })
 
+    casesData = filtered;
     return filtered;
 }
 
@@ -293,7 +296,12 @@ function filterCases() {
 async function initGame() {
     await dataLoaded; // Attendre que les fichiers JSON soient chargés
     console.log("🚀 Les données sont prêtes, on peut commencer !");
-    console.log("Nombre de turnabouts chargées :", casesData.length);
+    let length = 0;
+    Object.keys(casesDatas).forEach(game => {
+        console.log(casesDatas[game].length)
+        length += casesDatas[game].length
+    });
+    console.log("Nombre de turnabouts chargés :", length);
 
     setValidateGuessFunction(validateGuess);
     setSelectCharacterToFindFunction(selectCaseToFind);

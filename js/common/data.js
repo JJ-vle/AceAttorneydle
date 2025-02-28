@@ -4,12 +4,19 @@
 export let attemptedNames = new Array();
 // Charger le fichier JSON contenant les informations des débuts
 export let turnaboutGames = {};
-// JSON des personnages
-export let characterData = [];
+
+// JSON des personnages (Un tableau pour chaque serie)
+export let characterData= [];
+export let characterDatas = {};
+
 // JSON des citations
 export let quoteData = [];
+export let quoteDatas = {};
+
 // JSON des citations
 export let casesData = [];
+export let casesDatas = {};
+
 // Mode de jeu
 export let gameMode;
 
@@ -49,6 +56,7 @@ export let dataLoaded = Promise.all([
 ])
 .then(() => {
     console.log("🎯 Tous les fichiers JSON sont chargés !");
+    filterJSON();
     document.dispatchEvent(new Event("dataLoaded")); // Déclenche un événement global
 });
 
@@ -141,10 +149,58 @@ export function setSelectCharacterToFindFunction(func) {
     selectCharacterToFindFunction = func;
 }
 
-//////////// SELECTED GROUPS
+//////////// SELECTED GROUPS //////////////
 
-export let selectedGroups = ["Ace Attorney"];
+export let selectedGroups = ["Main"];
 
 export function setSelectedGroups(newSelectedGroups) {
     selectedGroups = newSelectedGroups;
+}
+
+
+let allGroups = ["Main", "Investigation", "Great"];
+export function filterJSON(){
+    allGroups.forEach(currentGroup => {
+
+        ////// CHARACTERS //////
+
+        // Filtrer les personnages en fonction du groupe sélectionné
+        const filteredChar = characterData.filter(character => {
+            const group = getGroupByCharacter(character);
+            return currentGroup.includes(group);
+        });
+
+        characterDatas[currentGroup] = filteredChar;
+
+
+        const filteredQuotes = quoteData.filter(quote => {
+            const group = getGroupByTurnabout(quote.source);
+            return currentGroup.includes(group);
+        });
+        quoteDatas[currentGroup] = filteredQuotes;
+
+
+        const filteredCases = casesData.filter(turnabout => {
+            const group = getGroupByTurnabout(turnabout.name);
+            return currentGroup.includes(group);
+        });
+
+        casesDatas[currentGroup] = filteredCases;
+        
+    });
+
+    /*
+    console.log(characterDatas["Main"]);
+    console.log(characterDatas["Investigation"]);
+    console.log(characterDatas["Great"]);
+    */
+    console.log(quoteDatas["Main"]);
+    console.log(quoteDatas["Investigation"]);
+    console.log(quoteDatas["Great"]);
+    /*
+    console.log(casesDatas["Main"]);
+    console.log(casesDatas["Investigation"]);
+    console.log(casesDatas["Great"]);
+    */
+    
 }
