@@ -4,6 +4,7 @@
 import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, setGameMode } from './common/data.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
+import { filterCharacters } from './common/filter.js';
 setGameMode("silhouette");
 
 let targetCharacter = null;
@@ -113,34 +114,8 @@ function compareInfoClass(guess, target) {
     return isCorrect ? 'correct' : 'incorrect';
 }
 
-// Récupère la liste des checkboxes et ajoute un écouteur d'événement
-const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']");
-//checkboxes.forEach(checkbox => checkbox.addEventListener("change", filterCharacters));
-
-const updateButton = document.querySelector("#updateFilters");
-updateButton.addEventListener("click", selectCharacterToFind);
-
-
-// Fonction pour filtrer les personnages en fonction des groupes cochés
-function filterCharacters() {
-    const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']"); // Assurez-vous que cette ligne existe
-    const newSelectedGroups = Array.from(checkboxes)
-        .filter(checkbox => checkbox.checked)
-        .map(checkbox => checkbox.value);
-
-    setSelectedGroups(newSelectedGroups); // Mettre à jour selectedGroups via la fonction setSelectedGroups
-
-    // Filtrer les personnages en fonction du groupe sélectionné
-    const filtered = characterData.filter(character => {
-        const group = getGroupByCharacter(character);
-        return newSelectedGroups.includes(group);
-    });
-
-    return filtered;
-}
-
 function selectCharacterToFind(){
-    let filteredData = filterCharacters();
+    let filteredData = filterCharacters(characterData);
     if (filteredData.length > 0) {
         targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
 

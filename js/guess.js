@@ -6,6 +6,7 @@ import { dataLoaded, turnaboutGames, characterData, setSelectCharacterToFindFunc
 import { setHints } from './common/hint.js';
 import { incrementNumTries, verifyTries, gameOver } from './common/life.js';
 import { readCookie, readJsonCookie, setCookie } from './common/cookie.js';
+import { filterCharacters } from './common/filter.js';
 
 setGameMode("guess");
 
@@ -125,7 +126,7 @@ function validateGuess(guessName=inputField.value.trim()) {
 
 function selectCharacterToFind() {
 
-    let filteredData = filterCharacters();
+    let filteredData = filterCharacters(characterData);
     if (filteredData.length > 0) {
 
         targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
@@ -285,32 +286,6 @@ function compareDebut(guessDebut, targetDebut) {
 
     // Si ce n'est pas le même groupe, alors rouge (incorrect)
     return `<td class=${colorclass}>${guessDebut}</td>`;
-}
-
-//////////// FILTERS
-
-// Récupère la liste des checkboxes et ajoute un écouteur d'événement
-const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']");
-
-const updateButton = document.querySelector("#updateFilters");
-updateButton.addEventListener("click", selectCharacterToFind);
-
-// Fonction pour filtrer les personnages en fonction des groupes cochés
-function filterCharacters() {
-    const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']"); // Assurez-vous que cette ligne existe
-    const newSelectedGroups = Array.from(checkboxes)
-        .filter(checkbox => checkbox.checked)
-        .map(checkbox => checkbox.value);
-
-    setSelectedGroups(newSelectedGroups); // Mettre à jour selectedGroups via la fonction setSelectedGroups
-
-    // Filtrer les personnages en fonction du groupe sélectionné
-    const filtered = characterData.filter(character => {
-        const group = getGroupByCharacter(character);
-        return newSelectedGroups.includes(group);
-    });
-
-    return filtered;
 }
 
 //////////// DOMCONTENTLOADED

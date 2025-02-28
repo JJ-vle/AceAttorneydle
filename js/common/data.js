@@ -134,7 +134,7 @@ function isValidCharacter(character) {
     return validAttributes.length >= 4;
 }
 
-let selectCharacterToFindFunction = null;
+export let selectCharacterToFindFunction = null;
 
 // Fonction pour définir validateGuess depuis l'extérieur
 export function setSelectCharacterToFindFunction(func) {

@@ -5,6 +5,7 @@ import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, casesData, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByTurnabout, setGameMode } from './common/data.js';
 import { setHints } from './common/hint.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
+import { filterCases } from './common/filter.js';
 setGameMode("case");
 
 //////////////////
@@ -72,7 +73,7 @@ function selectCaseToFind() {
     }
 
     // Appliquer les filtres aux personnages
-    let filteredCases = filterCases();
+    let filteredCases = filterCases(casesData);
     if (filteredCases.length === 0) {
         console.warn("No characters available after filtering!");
         return;
@@ -261,31 +262,6 @@ function compareInfoClass(guess, target) {
     // Comparer les valeurs et appliquer la couleur correspondante
     const isCorrect = guess === target;
     return isCorrect ? 'correct' : 'incorrect';
-}
-
-//////////// FILTERS
-
-// Récupère la liste des checkboxes et ajoute un écouteur d'événement
-const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']");
-
-const updateButton = document.querySelector("#updateFilters");
-updateButton.addEventListener("click", selectCaseToFind);
-
-// Fonction pour filtrer les personnages en fonction des groupes cochés
-function filterCases() {
-    const newSelectedGroups = Array.from(checkboxes)
-        .filter(checkbox => checkbox.checked)
-        .map(checkbox => checkbox.value);
-
-    setSelectedGroups(newSelectedGroups); // Mettre à jour selectedGroups via la fonction setSelectedGroups
-
-    // Filtrer les personnages en fonction du groupe sélectionné
-    const filtered = casesData.filter(turnabout => {
-        const group = getGroupByTurnabout(turnabout.name);
-        return newSelectedGroups.includes(group);
-    });
-
-    return filtered;
 }
 
 //////////// DOMCONTENTLOADED

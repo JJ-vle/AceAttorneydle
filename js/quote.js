@@ -5,6 +5,7 @@ import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, getInfoByDebut, setGameMode, quoteData } from './common/data.js';
 import { setHints } from './common/hint.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
+import { filterCharacters } from './common/filter.js';
 setGameMode("quote");
 
 //////////////////
@@ -72,7 +73,7 @@ function selectCharacterToFind() {
     }
 
     // Appliquer les filtres aux personnages
-    let filteredCharacters = filterCharacters();
+    let filteredCharacters = filterCharacters(characterData);
     if (filteredCharacters.length === 0) {
         console.warn("No characters available after filtering!");
         return;
@@ -184,32 +185,6 @@ function compareInfoClass(guess, target) {
     // Comparer les valeurs et appliquer la couleur correspondante
     const isCorrect = guess === target;
     return isCorrect ? 'correct' : 'incorrect';
-}
-
-//////////// FILTERS
-
-// Récupère la liste des checkboxes et ajoute un écouteur d'événement
-const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']");
-
-const updateButton = document.querySelector("#updateFilters");
-updateButton.addEventListener("click", selectCharacterToFind);
-
-// Fonction pour filtrer les personnages en fonction des groupes cochés
-function filterCharacters() {
-    const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']"); // Assurez-vous que cette ligne existe
-    const newSelectedGroups = Array.from(checkboxes)
-        .filter(checkbox => checkbox.checked)
-        .map(checkbox => checkbox.value);
-
-    setSelectedGroups(newSelectedGroups); // Mettre à jour selectedGroups via la fonction setSelectedGroups
-
-    // Filtrer les personnages en fonction du groupe sélectionné
-    const filtered = characterData.filter(character => {
-        const group = getGroupByCharacter(character);
-        return newSelectedGroups.includes(group);
-    });
-
-    return filtered;
 }
 
 //////////// DOMCONTENTLOADED
