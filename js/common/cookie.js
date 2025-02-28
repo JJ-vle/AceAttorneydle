@@ -6,7 +6,7 @@ streaks.silhouetteStreak = setupStreakCookie("silhouetteStreak");
 streaks.quoteStreak = setupStreakCookie("quoteStreak");
 streaks.caseStreak = setupStreakCookie("caseStreak");
 
-console.log(streaks);
+//console.log(streaks);
 
 function setupStreakCookie(name){
     let streak;
@@ -16,7 +16,7 @@ function setupStreakCookie(name){
     }
     else {
         streak = readCookie(name);
-        console.log("🔥 Current streak for " + name + " : " + streak);
+        console.log("🔥 Current streak for " + name.replace("Streak","") + " : " + streak);
     }
     
     setCookie(name, streak);

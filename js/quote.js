@@ -113,7 +113,7 @@ function selectCharacterToFind() {
         return;
     }
 
-    hints = {
+    let hints = {
         game: { title: "Case", tries: 3, icon: document.querySelector("#hint-case .hint-icon"), element: document.querySelector("#hint-case .hint-count"), text: targetQuote.source /*getInfoByDebut(targetCharacter.debut).game*/ },
         occupation: { title: "Occupation", tries: 7, icon: document.querySelector("#hint-occupation .hint-icon"), element: document.querySelector("#hint-occupation .hint-count"), text: targetCharacter.occupation },
         figure: { title: "Figure", tries: 12, icon: document.querySelector("#hint-figure .hint-icon"), element: document.querySelector("#hint-figure .hint-count"), image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }

@@ -131,7 +131,7 @@ function selectCharacterToFind() {
         targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
         //document.cookie = "targetCharacter=" + encodeURIComponent(JSON.stringify(targetCharacter));
 
-        hints = {
+        let hints = {
             game: { title: "Game", tries: 3, icon: document.querySelector("#hint-game .hint-icon"), element: document.querySelector("#hint-game .hint-count"), text: getInfoByDebut(targetCharacter.debut).game },
             occupation: { title: "Occupation", tries: 7, icon: document.querySelector("#hint-occupation .hint-icon"), element: document.querySelector("#hint-occupation .hint-count"), text: targetCharacter.occupation },
             figure: { title: "Figure", tries: 12, icon: document.querySelector("#hint-figure .hint-icon"), element: document.querySelector("#hint-figure .hint-count"), image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
