@@ -52,7 +52,7 @@ function selectCharacter() {
     const now = Date.now();
 
     if (now >= nextSelectionTime) {
-        console.log("Selected character:", characterNames[currentIndex]);
+        //console.log("Selected character:", characterNames[currentIndex]);
 
         currentIndex++;
 

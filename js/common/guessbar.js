@@ -1,6 +1,6 @@
 // guessbar.js
 
-import { characterData, casesData, selectedGroups, attemptedNames, getGroupByCharacter, getGroupByTurnabout, gameMode } from './data.js';
+import { characterData, casesData, selectedGroups, attemptedNames, getGroupByCharacter, getGroupByTurnabout, gameMode, targetCharacter } from './data.js';
 
 let selectedIndex = -1;
 let validateGuessFunction = null;
@@ -53,15 +53,13 @@ export function handleInput(query) {
     const dataToUse = gameMode === "case" ? casesData : characterData;
 
     const filteredItems = dataToUse.filter(c => {
-        const group = gameMode === "case" ? getGroupByTurnabout(c.name) : getGroupByCharacter(c);; 
+        const group = gameMode === "case" ? getGroupByTurnabout(c.name) : getGroupByCharacter(c);
         return selectedGroups.includes(group);
     });
-
     
+
     const matchedItems = gameMode === "case" ? searchMatchedCases(filteredItems, query) : searchMatchedCharacters(filteredItems, query);
 
-
-    // Trier les personnages par nom avant de les afficher
     matchedItems.sort((a, b) => a.name.localeCompare(b.name));
 
     if (matchedItems.length > 0) {
@@ -73,15 +71,12 @@ export function handleInput(query) {
 
             let imageUrl;
             
-            
             if (gameMode === "case") {
                 imageUrl = character.image?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
             } else {
                 let mugshotUrl = character.mugshot?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
                 imageUrl = mugshotUrl || character.image?.[0]?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
             }
-            
-
 
             listItem.innerHTML = `
                 <img src="${imageUrl}" alt="${character.name}" width="30" height="30" class="suggestion-img">
@@ -89,7 +84,7 @@ export function handleInput(query) {
             `;
 
             listItem.addEventListener("click", function () {
-                selectName(character.name); // Appeler la fonction selectName passée en argument
+                selectName(character.name);
                 validateGuessFunction();
             });
 
@@ -102,6 +97,7 @@ export function handleInput(query) {
         }
     }
 }
+
 
 export function handleKeyboard(event){
     const items = suggestionsList.getElementsByTagName("li");

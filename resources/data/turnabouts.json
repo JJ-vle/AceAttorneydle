@@ -1,5 +1,5 @@
 {
-    "Ace Attorney": {
+    "Main": {
         "Phoenix Wright: Ace Attorney": [
         "The First Turnabout", "Turnabout Sisters", "Turnabout Samurai", "Turnabout Goodbyes", "Rise from the Ashes"
         ],
@@ -27,7 +27,7 @@
         "Turnabout Trigger", "The Captive Turnabout", "Turnabout Legacy", "A Turnabout Forsaken", "Turnabout for the Ages"
         ]
     },
-    "The Great Ace Attorney": {
+    "Great": {
         "The Great Ace Attorney: Adventures": [
         "The Adventure of the Great Departure", "The Adventure of the Unbreakable Speckled Band", "The Adventure of the Runaway Room", "The Adventure of the Clouded Kokoro", "The Adventure of the Unspeakable Story", "In the Bailey"
         ],

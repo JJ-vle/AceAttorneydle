@@ -2,19 +2,15 @@
 
 // Importation des fichiers
 import { setValidateGuessFunction, validateButton } from './common/guessbar.js';
-import { dataLoaded, turnaboutGames, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getInfoByDebut, getGroupByCharacter, setGameMode} from './common/data.js';
-import { setHints } from './common/hint.js';
+import { dataLoaded, turnaboutGames, characterData, attemptedNames, getInfoByDebut, setGameMode, targetCharacter} from './common/data.js';
 import { incrementNumTries, verifyTries, gameOver } from './common/life.js';
-import { readCookie, readJsonCookie, setCookie } from './common/cookie.js';
-import { filterCharacters } from './common/filter.js';
-
 setGameMode("guess");
 
 ///////// FONCTION COOKIES /////////////
 
 //////////////////
 
-let targetCharacter = null;
+//let targetCharacter = null;
 let guessesCookie = null;
 
 const feedback = document.getElementById("feedback");
@@ -80,8 +76,14 @@ function addToHistory(guessedCharacter, result) {
 //////////// FUNCTIONS
 
 function validateGuess(guessName=inputField.value.trim()) {
-    if (!targetCharacter) {
+    if (!dataLoaded) { 
         feedback.textContent = "⚠️ The game is still loading. Please wait...";
+        feedback.className = "error";
+        return;
+    }
+
+    if (!targetCharacter) {
+        feedback.textContent = "⚠️ Target character not found!";
         feedback.className = "error";
         return;
     }
@@ -123,7 +125,7 @@ function validateGuess(guessName=inputField.value.trim()) {
         validateButton.disabled = true;
     }
 }
-
+/*
 function selectCharacterToFind() {
 
     let filteredData = filterCharacters(characterData);
@@ -145,7 +147,7 @@ function selectCharacterToFind() {
         console.warn("No characters available after filtering!");
     }
     
-}
+}*/
 
 //////////// COMPARE FUNCTIONS
 
@@ -296,9 +298,9 @@ async function initGame() {
     console.log("Nombre de personnages chargés :", characterData.length);
 
     setValidateGuessFunction(validateGuess);
-    setSelectCharacterToFindFunction(selectCharacterToFind);
+    //setSelectCharacterToFindFunction(selectCharacterToFind);
 
-    selectCharacterToFind(); // Maintenant on peut l'exécuter
+    //selectCharacterToFind(); // Maintenant on peut l'exécuter
 
     /*
     if(readCookie("attempts"));{

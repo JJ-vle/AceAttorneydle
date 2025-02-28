@@ -1,4 +1,5 @@
-//data.js
+// data.js
+import { setHints } from "./hint.js";
 
 // Stocke les noms déjà proposés
 export let attemptedNames = new Array();
@@ -10,47 +11,137 @@ export let characterData = [];
 export let quoteData = [];
 // JSON des citations
 export let casesData = [];
+// Personnage à trouver
+export let targetCharacter = null;
+
 // Mode de jeu
 export let gameMode;
-
 export function setGameMode(gm) {
     gameMode = gm;
+    tryLoadData();
+}
+// Filtres par jeu
+export let selectedGroups = [];
+export function setSelectedGroups(newSelectedGroups) {
+    selectedGroups = newSelectedGroups;
+    tryLoadData();
+}
+
+export let dataLoaded = null; // Initialisation de la promesse des données
+
+// Fonction pour vérifier si gameMode et selectedGroups sont définis et charger les données
+async function tryLoadData() {
+    // Attente que gameMode et selectedGroups soient définis
+    await waitUntil();
+
+    // Si les conditions sont remplies, on charge les données
+    if (gameMode && selectedGroups.length > 0 && !dataLoaded) {
+        loadData();  // Appel à loadData une seule fois
+        dataLoaded = true;
+    }
+}
+
+// Fonction pour vérifier que le gameMode et selectedGroups sont définis
+async function waitUntil() {
+    while (!(gameMode && selectedGroups.length > 0)) {
+        await new Promise(resolve => setTimeout(resolve, 100));
+    }
 }
 
 //////////// LOAD TURNABOUTS
 
-// Fonction pour charger un fichier JSON et retourner une Promise
-function loadJSON(url) {
-    return fetch(url).then(response => response.json());
+async function loadData() {
+    // Si les données sont déjà chargées, on arrête ici
+    if (dataLoaded) {
+        return;
+    }
+
+    await waitUntil();  // Attends que gameMode et selectedGroups soient définis
+    dataLoaded = Promise.all([
+        loadDataFromAPI(),
+        selectCharacterToFind()
+    ])
+    .then(() => {
+        console.log("🎯 Tous les fichiers JSON sont chargés !");
+        document.dispatchEvent(new Event("dataLoaded")); // Déclenche un événement global
+    });
 }
 
-// Créer une Promise qui attend le chargement des trois fichiers JSON
-export let dataLoaded = Promise.all([
-    loadJSON("resources/data/turnabouts.json").then(data => {
-        turnaboutGames = data;
-        console.log("✅ turnabouts.json chargé");
-    }).catch(error => console.error("Erreur de chargement de turnabout.json :", error)),
+async function loadDataFromAPI() {
+    try {
+        // Charger les données via fetch depuis le serveur backend sur le port 3000
+        const [turnaboutsResponse, charactersResponse, quotesResponse, casesResponse] = await Promise.all([
+            fetch('http://127.0.0.1:3000/api/turnabouts').then(res => res.json()),
+            fetch('http://127.0.0.1:3000/api/characters').then(res => res.json()),
+            fetch('http://127.0.0.1:3000/api/quotes').then(res => res.json()),
+            fetch('http://127.0.0.1:3000/api/cases').then(res => res.json())
+        ]);
 
-    loadJSON("resources/data/aceattorneychars.json").then(data => {
-        characterData = data.filter(isValidCharacter); // Filtrage des personnages valides
-        console.log("✅ aceattorneychars.json chargé :", characterData.length, "personnages valides.");
-    }).catch(error => console.error("Erreur de chargement de aceattorneychars.json :", error)),
+        // Assigner les données aux variables globales
+        turnaboutGames = turnaboutsResponse;
+        characterData = charactersResponse.filter(isValidCharacter);
+        quoteData = quotesResponse;
+        casesData = casesResponse;
 
-    loadJSON("resources/data/quotes.json").then(data => {
-        quoteData = data;
-        console.log("✅ quotes.json chargé");
-    }).catch(error => console.error("Erreur de chargement de quotes.json :", error)),
+        console.log("✅ Toutes les données chargées depuis l'API");
 
-    loadJSON("resources/data/cases.json").then(data => {
-        casesData = data;
-        console.log("✅ cases.json chargé");
-    }).catch(error => console.error("Erreur de chargement de cases.json :", error)),
+    } catch (error) {
+        console.error("Erreur lors du chargement des données depuis l'API :", error);
+    }
+}
 
-])
-.then(() => {
-    console.log("🎯 Tous les fichiers JSON sont chargés !");
-    document.dispatchEvent(new Event("dataLoaded")); // Déclenche un événement global
-});
+export function selectCharacterToFind() {
+    // Fait un appel API pour obtenir le personnage à deviner pour le mode et le filtre spécifiés
+    fetch(`http://127.0.0.1:3000/api/item-to-find/${gameMode}/${selectedGroups}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erreur lors de la récupération du personnage !");
+            }
+            return response.json(); // Parse la réponse JSON
+        })
+        .then(character => {
+            if (character) {
+                targetCharacter = character;
+
+                console.log("Character data reçu:", targetCharacter)
+                // Met à jour les indices et autres informations de personnage
+                const debutInfo = getInfoByDebut(targetCharacter.debut);
+                let hints = {
+                    game: {
+                        title: "Game", 
+                        tries: 3, 
+                        icon: document.querySelector("#hint-game .hint-icon"), 
+                        element: document.querySelector("#hint-game .hint-count"), 
+                        text: debutInfo ? debutInfo.game : "Inconnu" // Vérifie si debutInfo est null avant d'accéder à ses propriétés
+                    },
+                    occupation: {
+                        title: "Occupation", 
+                        tries: 7, 
+                        icon: document.querySelector("#hint-occupation .hint-icon"), 
+                        element: document.querySelector("#hint-occupation .hint-count"), 
+                        text: targetCharacter.occupation
+                    },
+                    figure: {
+                        title: "Figure", 
+                        tries: 12, 
+                        icon: document.querySelector("#hint-figure .hint-icon"), 
+                        element: document.querySelector("#hint-figure .hint-count"), 
+                        image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "")
+                    }
+                };
+
+
+                // Met à jour les indices avec les nouvelles informations
+                setHints(hints);
+
+                // Logue le personnage à trouver pour la console
+                console.log("Character to find :", targetCharacter.name);
+            }
+        })
+        .catch(error => {
+            console.error("Erreur lors du chargement du personnage :", error);
+        });
+}
 
 //////////// GET INFORMATIONS
 
@@ -132,19 +223,4 @@ function isValidCharacter(character) {
 
     // Garder seulement les personnages ayant au moins 4 attributs valides
     return validAttributes.length >= 4;
-}
-
-export let selectCharacterToFindFunction = null;
-
-// Fonction pour définir validateGuess depuis l'extérieur
-export function setSelectCharacterToFindFunction(func) {
-    selectCharacterToFindFunction = func;
-}
-
-//////////// SELECTED GROUPS
-
-export let selectedGroups = ["Ace Attorney"];
-
-export function setSelectedGroups(newSelectedGroups) {
-    selectedGroups = newSelectedGroups;
 }
