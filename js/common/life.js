@@ -13,6 +13,7 @@ export let numTries = 0; // Nombre d'essais
 
 export function incrementNumTries(){
     numTries++;
+    console.log(`🔢 Tentatives actuelles: ${numTries}`);
 }
 
 export function verifyTries(){

@@ -2,7 +2,7 @@
 
 // Importation des fichiers
 import { setValidateGuessFunction, validateButton } from './common/guessbar.js';
-import { dataLoaded, turnaboutGames, characterData, attemptedNames, getInfoByDebut, setGameMode, targetCharacter} from './common/data.js';
+import { dataLoaded, turnaboutGames, characterData, attemptedNames, getInfoByDebut, setGameMode, targetItem } from './common/data.js';
 import { incrementNumTries, verifyTries, gameOver } from './common/life.js';
 setGameMode("guess");
 
@@ -10,7 +10,7 @@ setGameMode("guess");
 
 //////////////////
 
-//let targetCharacter = null;
+//let targetItem = null;
 let guessesCookie = null;
 
 const feedback = document.getElementById("feedback");
@@ -62,12 +62,12 @@ function addToHistory(guessedCharacter, result) {
                 <span class="name-on-hover">${guessedCharacter.name}</span>
             </div>
         </td>
-        ${compareInfo(guessedCharacter.status, targetCharacter.status)}
-        ${compareInfo(guessedCharacter.gender, targetCharacter.gender)}
-        ${compareBirthday(guessedCharacter.birthday, targetCharacter.birthday)}
-        ${compareInfo(guessedCharacter.eyes, targetCharacter.eyes)}
-        ${compareInfo(guessedCharacter.hair, targetCharacter.hair)}
-        ${compareDebut(guessedCharacter.debut, targetCharacter.debut)}
+        ${compareInfo(guessedCharacter.status, targetItem.status)}
+        ${compareInfo(guessedCharacter.gender, targetItem.gender)}
+        ${compareBirthday(guessedCharacter.birthday, targetItem.birthday)}
+        ${compareInfo(guessedCharacter.eyes, targetItem.eyes)}
+        ${compareInfo(guessedCharacter.hair, targetItem.hair)}
+        ${compareDebut(guessedCharacter.debut, targetItem.debut)}
     `;
 
     historyBody.prepend(newRow); // Ajoute en haut du tableau
@@ -82,7 +82,7 @@ function validateGuess(guessName=inputField.value.trim()) {
         return;
     }
 
-    if (!targetCharacter) {
+    if (!targetItem) {
         feedback.textContent = "⚠️ Target character not found!";
         feedback.className = "error";
         return;
@@ -106,9 +106,9 @@ function validateGuess(guessName=inputField.value.trim()) {
     //setCookie("attempts", encodeURIComponent(JSON.stringify(attemptedNames)));
     //console.log(readJsonCookie("attempts"));
 
-    if (guessName.toLowerCase() === targetCharacter.name.toLowerCase()) {
+    if (guessName.toLowerCase() === targetItem.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
-        feedback.textContent = "🎉 Congratulation ! You found " + targetCharacter.name + " !";
+        feedback.textContent = "🎉 Congratulation ! You found " + targetItem.name + " !";
         feedback.className = "success";
         
         gameOver(true);
@@ -131,17 +131,17 @@ function selectCharacterToFind() {
     let filteredData = filterCharacters(characterData);
     if (filteredData.length > 0) {
 
-        targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
-        //document.cookie = "targetCharacter=" + encodeURIComponent(JSON.stringify(targetCharacter));
+        targetItem = filteredData[Math.floor(Math.random() * filteredData.length)];
+        //document.cookie = "targetItem=" + encodeURIComponent(JSON.stringify(targetItem));
 
         let hints = {
-            game: { title: "Game", tries: 3, icon: document.querySelector("#hint-game .hint-icon"), element: document.querySelector("#hint-game .hint-count"), text: getInfoByDebut(targetCharacter.debut).game },
-            occupation: { title: "Occupation", tries: 7, icon: document.querySelector("#hint-occupation .hint-icon"), element: document.querySelector("#hint-occupation .hint-count"), text: targetCharacter.occupation },
-            figure: { title: "Figure", tries: 12, icon: document.querySelector("#hint-figure .hint-icon"), element: document.querySelector("#hint-figure .hint-count"), image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
+            game: { title: "Game", tries: 3, icon: document.querySelector("#hint-game .hint-icon"), element: document.querySelector("#hint-game .hint-count"), text: getInfoByDebut(targetItem.debut).game },
+            occupation: { title: "Occupation", tries: 7, icon: document.querySelector("#hint-occupation .hint-icon"), element: document.querySelector("#hint-occupation .hint-count"), text: targetItem.occupation },
+            figure: { title: "Figure", tries: 12, icon: document.querySelector("#hint-figure .hint-icon"), element: document.querySelector("#hint-figure .hint-count"), image: targetItem.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
         };
         setHints(hints);
 
-        console.log("Character to find :", targetCharacter.name);
+        console.log("Character to find :", targetItem.name);
         //console.log(hints);
     } else {
         console.warn("No characters available after filtering!");

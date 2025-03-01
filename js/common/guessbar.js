@@ -1,6 +1,6 @@
 // guessbar.js
 
-import { characterData, casesData, selectedGroups, attemptedNames, getGroupByCharacter, getGroupByTurnabout, gameMode, targetCharacter } from './data.js';
+import { characterData, casesData, selectedGroups, attemptedNames, getGroupByCharacter, getGroupByTurnabout, gameMode } from './data.js';
 
 let selectedIndex = -1;
 let validateGuessFunction = null;

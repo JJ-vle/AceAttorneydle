@@ -1,5 +1,4 @@
 // data.js
-import { setHints } from "./hint.js";
 
 // Stocke les noms déjà proposés
 export let attemptedNames = new Array();
@@ -12,7 +11,9 @@ export let quoteData = [];
 // JSON des citations
 export let casesData = [];
 // Personnage à trouver
-export let targetCharacter = null;
+export let targetItem = null;
+// JSON des indices
+export let hints = {};
 
 // Mode de jeu
 export let gameMode;
@@ -79,7 +80,7 @@ async function loadDataFromAPI() {
 
         // Assigner les données aux variables globales
         turnaboutGames = turnaboutsResponse;
-        characterData = charactersResponse.filter(isValidCharacter);
+        characterData = charactersResponse;
         quoteData = quotesResponse;
         casesData = casesResponse;
 
@@ -99,47 +100,22 @@ export function selectCharacterToFind() {
             }
             return response.json(); // Parse la réponse JSON
         })
-        .then(character => {
-            if (character) {
-                targetCharacter = character;
+        .then(item => {
+            if (item) {
+                targetItem = item;
 
-                console.log("Character data reçu:", targetCharacter)
+                console.log("Character data reçu:", targetItem)
                 // Met à jour les indices et autres informations de personnage
-                const debutInfo = getInfoByDebut(targetCharacter.debut);
-                let hints = {
-                    game: {
-                        title: "Game", 
-                        tries: 3, 
-                        icon: document.querySelector("#hint-game .hint-icon"), 
-                        element: document.querySelector("#hint-game .hint-count"), 
-                        text: debutInfo ? debutInfo.game : "Unknow" // Vérifie si debutInfo est null avant d'accéder à ses propriétés
-                    },
-                    occupation: {
-                        title: "Occupation", 
-                        tries: 7, 
-                        icon: document.querySelector("#hint-occupation .hint-icon"), 
-                        element: document.querySelector("#hint-occupation .hint-count"), 
-                        text: targetCharacter.occupation
-                    },
-                    figure: {
-                        title: "Figure", 
-                        tries: 12, 
-                        icon: document.querySelector("#hint-figure .hint-icon"), 
-                        element: document.querySelector("#hint-figure .hint-count"), 
-                        image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "")
-                    }
-                };
 
                 if (gameMode =="silhouette"){
-                    imageProcessing(targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") )
+                    imageProcessing(targetItem.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") )
                 }
 
-
                 // Met à jour les indices avec les nouvelles informations
-                setHints(hints);
+                setHints(targetItem);
 
                 // Logue le personnage à trouver pour la console
-                console.log("Character to find :", targetCharacter.name);
+                console.log("Character to find :", targetItem.name);
                 document.dispatchEvent(new Event("dataLoaded"));
             }
         })
@@ -200,38 +176,6 @@ function getUniqueInfo(key) {
 
 //////////// LOAD CHARACTERS
 
-// Fonction pour filtrer les personnages
-function isValidCharacter(character) {
-
-    if (!character.image || character.exception == "unusable" || character.image === "N/A" || character.image === "Unknown" || character.image === "Unknow") {
-        return false;
-    }
-    if(gameMode == "silhouette" && character.exception == "unusable-silhouette"){
-        return false;
-    }
-    if (character.bypass) {
-        return true;
-    }
-
-    const attributes = [
-        character.name,
-        character.status,
-        character.gender,
-        character.birthday,
-        character.eyes,
-        character.hair,
-        character.debut
-    ];
-
-    // Filtrer les valeurs valides (excluant "N/A", "Unknown", "Unknow", null)
-    const validAttributes = attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow");
-
-    // Garder seulement les personnages ayant au moins 4 attributs valides
-    return validAttributes.length >= 4;
-}
-
-
-
 const silhouetteImg = document.getElementById("silhouette");
 
 function imageProcessing(imgSrc) {
@@ -248,4 +192,92 @@ function imageProcessing(imgSrc) {
 
     silhouetteImg.innerHTML = ''
     silhouetteImg.appendChild(imgElement);
+}
+
+async function setHints(target) {
+
+    if (gameMode == "case") {
+        hints = {
+            cause: {
+                title: "Death cause", tries: 3,
+                icon: document.querySelector("#hint-cause .hint-icon"),
+                element: document.querySelector("#hint-cause .hint-count"), 
+                text: target.cause || "Unknown"
+            },
+            locations: {
+                title: "Locations", tries: 7,
+                icon: document.querySelector("#hint-locations .hint-icon"),
+                element: document.querySelector("#hint-locations .hint-count"),
+                text: target.locations || "Unknown"
+            },
+            victim: {
+                title: "Victim", tries: 12,
+                icon: document.querySelector("#hint-victim .hint-icon"),
+                element: document.querySelector("#hint-victim .hint-count"),
+                text: target.victim || "Unknown"
+            }
+            /*image: {
+                title: "Image", tries: 12,
+                icon: document.querySelector("#hint-image .hint-icon"),
+                element: document.querySelector("#hint-image .hint-count"),
+                image: targetCase.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, ""),
+                clear: true
+            }*/
+        };
+    } else {
+        let debutInfo = target.debut ? getInfoByDebut(target.debut) : null;
+
+        if (gameMode == "guess") {
+            hints.game = {
+                    title: "Game", tries: 3, 
+                    icon: document.querySelector("#hint-game .hint-icon"), 
+                    element: document.querySelector("#hint-game .hint-count"), 
+                    text: debutInfo ? debutInfo.game : "Unknown"
+            };
+            
+        }
+        if (gameMode == "quote") {
+            target = await getCharacterInformations(target.speaker); // ✅ Attente de la réponse async
+
+            hints.case = {
+                title: "Case", tries: 3, 
+                icon: document.querySelector("#hint-case .hint-icon"), 
+                element: document.querySelector("#hint-case .hint-count"), 
+                text: target.debut ? target.debut : "Unknown"
+            };
+        }
+
+        // ✅ Ajout des autres hints correctement
+        Object.assign(hints, {
+            occupation: {
+                title: "Occupation", tries: 7, 
+                icon: document.querySelector("#hint-occupation .hint-icon"), 
+                element: document.querySelector("#hint-occupation .hint-count"), 
+                text: target.occupation || "Unknown"
+            },
+            figure: {
+                title: "Figure", tries: 12, 
+                icon: document.querySelector("#hint-figure .hint-icon"), 
+                element: document.querySelector("#hint-figure .hint-count"), 
+                image: target.image && target.image.length > 0 
+                    ? target.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") 
+                    : "default.jpg"
+            }
+        });
+    }
+
+    console.log("🟢 Hints générés :", hints);
+    return hints;
+}
+async function getCharacterInformations(name) {
+    try {
+        const response = await fetch(`/api/character/${name}`);
+        if (!response.ok) {
+            throw new Error("Erreur lors de la récupération du personnage !");
+        }
+        return await response.json(); // Retourne directement les données JSON
+    } catch (error) {
+        console.error("Erreur lors du chargement des informations du personnage :", error);
+        return null; // Retourne null en cas d'erreur
+    }
 }

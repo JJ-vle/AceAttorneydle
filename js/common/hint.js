@@ -1,12 +1,6 @@
 // hint.js
-
+import { dataLoaded, hints } from './data.js';
 import { numTries, setHintChecker } from './life.js';
-
-let hints = {};
-
-export function setHints(newHints) {
-    hints = newHints;
-}
 
 const hintDetails = document.getElementById("hint-details");
 const hintHeader = document.getElementById("hint-details-header");
@@ -109,7 +103,11 @@ function hintChecker() {
         let remainingTries = hints[key].tries - numTries;
         
         if (remainingTries > 0) {
-            hints[key].element.textContent = `in ${remainingTries} tries`;
+            if (hints[key].element) {
+                hints[key].element.textContent = `in ${remainingTries} tries`;
+            } else {
+                console.error(`Element not found for key: ${key}`);
+            }
         } else if (remainingTries == 0){
             hints[key].element.textContent = "Unlocked!";
             unlockHint(key);
@@ -123,11 +121,11 @@ function hintChecker() {
     }
 }
 
-
 //////////// DOMCONTENTLOADED
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
+    await dataLoaded;  // On attend que les données soient chargées
     setHintChecker(hintChecker);
-    // Initialisation des textes au début de la partie
-    hintChecker();
+    hintChecker();  // Maintenant, les hints seront bien disponibles
 });
+

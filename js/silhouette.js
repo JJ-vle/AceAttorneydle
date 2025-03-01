@@ -2,12 +2,12 @@
 
 // Importer la fonction depuis un autre fichier
 import { setValidateGuessFunction } from './common/guessbar.js';
-import { dataLoaded, characterData, targetCharacter, attemptedNames, setGameMode } from './common/data.js';
+import { dataLoaded, characterData, targetItem, attemptedNames, setGameMode } from './common/data.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
 import { filterCharacters } from './common/filter.js';
 setGameMode("silhouette");
 
-//let targetCharacter = null;
+//let targetItem = null;
 
 //////////////////
 
@@ -35,7 +35,7 @@ function createHistoryTable() {
 createHistoryTable()
 
 function validateGuess() {
-    if (!targetCharacter) {
+    if (!targetItem) {
         feedback.textContent = "⚠️ The game is still loading. Please wait...";
         feedback.className = "error";
         return;
@@ -58,10 +58,10 @@ function validateGuess() {
 
     attemptedNames.push(guessName);
 
-    if (guessName.toLowerCase() === targetCharacter.name.toLowerCase()) {
+    if (guessName.toLowerCase() === targetItem.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
         silhouetteImg.children[0].style.filter = ""
-        feedback.textContent = "🎉 Congratulation ! You found " + targetCharacter.name + " !";
+        feedback.textContent = "🎉 Congratulation ! You found " + targetItem.name + " !";
         feedback.className = "success";
 
         gameOver(true);
@@ -88,7 +88,7 @@ function addToHistory(guessedCharacter, result) {
 
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
-        <td class="single-cell-oneth ${compareInfoClass(guessedCharacter.name, targetCharacter.name)}" >
+        <td class="single-cell-oneth ${compareInfoClass(guessedCharacter.name, targetItem.name)}" >
             <div class="image-container-oneth">
                 <img src="${imageUrl}" alt="${guessedCharacter.name}" class="centered-image-oneth">
             </div>

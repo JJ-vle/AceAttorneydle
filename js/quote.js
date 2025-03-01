@@ -2,7 +2,7 @@
 
 // Importation des fichiers
 import { setValidateGuessFunction } from './common/guessbar.js';
-import { dataLoaded, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, getInfoByDebut, setGameMode, quoteData } from './common/data.js';
+import { dataLoaded, characterData, targetItem, attemptedNames, setGameMode, quoteData } from './common/data.js';
 import { setHints } from './common/hint.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
 import { filterCharacters } from './common/filter.js';
@@ -11,7 +11,7 @@ setGameMode("quote");
 //////////////////
 
 let targetCharacter = null;
-let targetQuote = null;
+//let targetItem = null;
 
 //////////////////
 
@@ -100,12 +100,12 @@ function selectCharacterToFind() {
     let maxAttempts = validQuotes.length; // Évite une boucle infinie
 
     while (maxAttempts > 0) {
-        targetQuote = validQuotes[Math.floor(Math.random() * validQuotes.length)];
-        targetCharacter = filteredCharacters.find(char => char.name === targetQuote.speaker);
+        targetItem = validQuotes[Math.floor(Math.random() * validQuotes.length)];
+        targetCharacter = filteredCharacters.find(char => char.name === targetItem.speaker);
 
         if (targetCharacter) break; // On sort si un personnage valide est trouvé
 
-        //console.warn("No character found or not in the right category for:", targetQuote.speaker, "- Retrying...");
+        //console.warn("No character found or not in the right category for:", targetItem.speaker, "- Retrying...");
         maxAttempts--;
     }
 
@@ -115,14 +115,14 @@ function selectCharacterToFind() {
     }
 
     let hints = {
-        game: { title: "Case", tries: 3, icon: document.querySelector("#hint-case .hint-icon"), element: document.querySelector("#hint-case .hint-count"), text: targetQuote.source /*getInfoByDebut(targetCharacter.debut).game*/ },
+        game: { title: "Case", tries: 3, icon: document.querySelector("#hint-case .hint-icon"), element: document.querySelector("#hint-case .hint-count"), text: targetItem.source /*getInfoByDebut(targetCharacter.debut).game*/ },
         occupation: { title: "Occupation", tries: 7, icon: document.querySelector("#hint-occupation .hint-icon"), element: document.querySelector("#hint-occupation .hint-count"), text: targetCharacter.occupation },
         figure: { title: "Figure", tries: 12, icon: document.querySelector("#hint-figure .hint-icon"), element: document.querySelector("#hint-figure .hint-count"), image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
     };
 
     setHints(hints);
-    displayQuote(targetQuote);
-    console.log("✅ Character to find (quote):", targetQuote.speaker);
+    displayQuote(targetItem);
+    console.log("✅ Character to find (quote):", targetItem.speaker);
 }
 
 function validateGuess() {
@@ -196,9 +196,9 @@ async function initGame() {
     console.log("Nombre de personnages chargés :", characterData.length);
 
     setValidateGuessFunction(validateGuess);
-    setSelectCharacterToFindFunction(selectCharacterToFind);
+    //setSelectCharacterToFindFunction(selectCharacterToFind);
 
-    selectCharacterToFind(); // Maintenant on peut l'exécuter
+    //selectCharacterToFind(); // Maintenant on peut l'exécuter
 }
 initGame();
 

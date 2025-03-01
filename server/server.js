@@ -8,11 +8,54 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+///////////////////// VALID CHARACTERS
+
+// Fonction pour filtrer les personnages
+function isValidCharacter(character, gameMod) {
+
+    if (!character.image || character.exception == "unusable" || character.image === "N/A" || character.image === "Unknown" || character.image === "Unknow") {
+        if (character.bypass) {
+            return true;
+        }
+        return false;
+    }
+    if (gameMod == "silhouette" && character.exception == "unusable-silhouette"){
+        return false;
+    }
+
+    const attributes = [
+        character.name,
+        character.status,
+        character.gender,
+        character.birthday,
+        character.eyes,
+        character.hair,
+        character.debut
+    ];
+
+    // Filtrer les valeurs valides (excluant "N/A", "Unknown", "Unknow", null)
+    const validAttributes = attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow");
+
+    // Garder seulement les personnages ayant au moins 4 attributs valides
+    return validAttributes.length >= 4;
+}
+// Fonction pour filtrer les personnages valides selon la logique donnée
+function validateListCharacters(data, gameMode) {
+    return data.filter(character => isValidCharacter(character, gameMode));
+}
+
+///////////////////// LOAD DATA
+
 // Charger les fichiers JSON
 let turnaboutGames = require('../resources/data/turnabouts.json');
 let characterData = require('../resources/data/aceattorneychars.json');
+characterData = characterData.filter(character => isValidCharacter(character, "guess"));
 let quoteData = require('../resources/data/quotes.json');
 let casesData = require('../resources/data/cases.json');
+
+
+
+///////////////////// QUEUE STRUCTURE
 
 // Structure pour stocker les files d'attente
 let gameQueues = {
@@ -21,6 +64,7 @@ let gameQueues = {
     quote: { Main: [], Investigation: [], Great: [] },
     case: { Main: [], Investigation: [], Great: [] }
 };
+// Structure pour stocker l'ordre de priorité
 let gamePriority = {
     guess: ["Main", "Great", "Investigation"],
     silhouette: ["Investigation", "Main", "Great"],
@@ -28,6 +72,7 @@ let gamePriority = {
     case: ["Main", "Investigation", "Great"]
 };
 
+///////////////////// 
 
 function shufflePriorities() {
     Object.keys(gamePriority).forEach(mode => {
@@ -44,6 +89,9 @@ function shuffleArray(array) {
 function filterByGroup(data, group) {
     return data.filter(item => getGroupByTurnabout(item.debut) === group);
 }
+function filterQuoteByGroup(data, group) {
+    return data.filter(item => getGroupByTurnabout(item.source) === group);
+}
 function getGroupByTurnabout(turnabout) {
     for (let group in turnaboutGames) {
         for (let game in turnaboutGames[group]) {
@@ -58,13 +106,13 @@ function getGroupByTurnabout(turnabout) {
 // Initialisation des files d'attente
 function initializeQueues() {
     ['Main', 'Investigation', 'Great'].forEach(group => {
-        gameQueues.guess[group] = filterByGroup(characterData, group);
+        gameQueues.guess[group] = validateListCharacters(filterByGroup(characterData, group), "guess");
         shuffleArray(gameQueues.guess[group]);
         
-        gameQueues.silhouette[group] = filterByGroup(characterData, group);
+        gameQueues.silhouette[group] = validateListCharacters(filterByGroup(characterData, group), "silhouette");
         shuffleArray(gameQueues.silhouette[group]);
         
-        gameQueues.quote[group] = filterByGroup(quoteData, group);
+        gameQueues.quote[group] = filterQuoteByGroup(quoteData, group);
         shuffleArray(gameQueues.quote[group]);
         
         gameQueues.case[group] = filterByGroup(casesData, group);
@@ -101,6 +149,9 @@ function rotateQueues() {
 // Supprime le premier élément toutes les 5 minutes
 setInterval(rotateQueues, 5 * 60 * 1000);
 
+//////////////////////////// API
+
+// get item to find with mode and filter
 app.get('/api/item-to-find/:mode/:filter?', (req, res) => {
     const { mode, filter } = req.params;
 
@@ -131,7 +182,22 @@ app.get('/api/item-to-find/:mode/:filter?', (req, res) => {
     res.json(selectedItem);
 });
 
-//////////////////////////// GET FULL JSON
+// get informations about a character with his name
+app.get('/api/character/:name', (req, res) => {
+    const { name } = req.params;
+
+    // Recherche du personnage dans characterData (insensible à la casse)
+    const character = characterData.find(char => char.name.toLowerCase() === name.toLowerCase());
+
+    if (!character) {
+        return res.status(404).json({ error: "Personnage non trouvé" });
+    }
+
+    res.json(character);
+});
+
+
+//////////////////////////// API GET FULL JSON
 
 // Point de terminaison pour récupérer tous les personnages
 app.get('/api/characters', (req, res) => {
@@ -150,8 +216,10 @@ app.get('/api/turnabouts', (req, res) => {
     res.json(turnaboutGames);
 });
 
-// Lancer le serveur sur le port 3000
+//////////////////////////// LAUNCH SERV
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
