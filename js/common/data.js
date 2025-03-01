@@ -41,7 +41,6 @@ async function tryLoadData() {
         dataLoaded = true;
     }
 }
-
 // Fonction pour vérifier que le gameMode et selectedGroups sont définis
 async function waitUntil() {
     while (!(gameMode && selectedGroups.length > 0)) {
@@ -109,6 +108,8 @@ export function selectCharacterToFind() {
 
                 if (gameMode =="silhouette"){
                     imageProcessing(targetItem.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") )
+                } else if (gameMode =="quote") {
+                    document.getElementById("quote").innerText = targetItem.quote;
                 }
 
                 // Met à jour les indices avec les nouvelles informations
@@ -177,7 +178,6 @@ function getUniqueInfo(key) {
 //////////// LOAD CHARACTERS
 
 const silhouetteImg = document.getElementById("silhouette");
-
 function imageProcessing(imgSrc) {
     const imgElement = document.createElement("img");
     imgElement.src = imgSrc;
@@ -195,7 +195,6 @@ function imageProcessing(imgSrc) {
 }
 
 async function setHints(target) {
-
     if (gameMode == "case") {
         hints = {
             cause: {
@@ -237,14 +236,14 @@ async function setHints(target) {
             
         }
         if (gameMode == "quote") {
-            target = await getCharacterInformations(target.speaker); // ✅ Attente de la réponse async
-
             hints.case = {
                 title: "Case", tries: 3, 
                 icon: document.querySelector("#hint-case .hint-icon"), 
                 element: document.querySelector("#hint-case .hint-count"), 
-                text: target.debut ? target.debut : "Unknown"
+                text: target.source ? target.source : "Unknown"
             };
+            target = await getCharacterInformations(target.speaker); // ✅ Attente de la réponse async
+            targetItem = target;
         }
 
         // ✅ Ajout des autres hints correctement
@@ -271,7 +270,7 @@ async function setHints(target) {
 }
 async function getCharacterInformations(name) {
     try {
-        const response = await fetch(`/api/character/${name}`);
+        const response = await fetch(`http://127.0.0.1:3000/api/character/${encodeURIComponent(name)}`);
         if (!response.ok) {
             throw new Error("Erreur lors de la récupération du personnage !");
         }

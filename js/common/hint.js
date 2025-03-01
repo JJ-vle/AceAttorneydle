@@ -98,6 +98,7 @@ function toggleHint(hint) {
 
 function hintChecker() {
     let lockedKeys = Object.values(hints).filter(hint => hint.tries - numTries > 0).length;
+    console.log("📌 Hints actuels :", hints);
 
     for (let key in hints) {
         let remainingTries = hints[key].tries - numTries;
@@ -124,7 +125,9 @@ function hintChecker() {
 //////////// DOMCONTENTLOADED
 
 document.addEventListener("DOMContentLoaded", async function () {
-    await dataLoaded;  // On attend que les données soient chargées
+    await dataLoaded;  // Assure-toi que les données sont bien chargées
+    console.log("✅ DOM chargé, initialisation des hints...");
+    console.log("🎯 Hints avant mise à jour :", hints);
     setHintChecker(hintChecker);
     hintChecker();  // Maintenant, les hints seront bien disponibles
 });

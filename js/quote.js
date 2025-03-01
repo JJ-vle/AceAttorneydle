@@ -3,14 +3,12 @@
 // Importation des fichiers
 import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, characterData, targetItem, attemptedNames, setGameMode, quoteData } from './common/data.js';
-import { setHints } from './common/hint.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
 import { filterCharacters } from './common/filter.js';
 setGameMode("quote");
 
 //////////////////
 
-let targetCharacter = null;
 //let targetItem = null;
 
 //////////////////
@@ -53,7 +51,7 @@ function addToHistory(guessedCharacter, result) {
 
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
-        <td class="single-cell-oneth ${compareInfoClass(guessedCharacter.name, targetCharacter.name)}" >
+        <td class="single-cell-oneth ${compareInfoClass(guessedCharacter.name, targetItem.name)}" >
             <div class="image-container-oneth">
                 <img src="${imageUrl}" alt="${guessedCharacter.name}" class="centered-image-oneth">
             </div>
@@ -66,67 +64,8 @@ function addToHistory(guessedCharacter, result) {
 
 ////////////////// FUNCTIONS
 
-function selectCharacterToFind() {
-    if (!quoteData || quoteData.length === 0 || !characterData || characterData.length === 0) {
-        console.error("Data not loaded yet!");
-        return;
-    }
-
-    // Appliquer les filtres aux personnages
-    let filteredCharacters = filterCharacters(characterData);
-    if (filteredCharacters.length === 0) {
-        console.warn("No characters available after filtering!");
-        return;
-    }
-
-    function isValidQuote(quote) {
-        if (!quote.speaker || !quote.quote || !quote.source || !quote.speaker_url) {
-            return false;
-        }
-        if (quote.bypass) {
-            return true;
-        }
-
-        const attributes = [quote.speaker, quote.quote, quote.source, quote.speaker_url];
-        return attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow").length >= 3;
-    }
-
-    let validQuotes = quoteData.filter(isValidQuote);
-    if (validQuotes.length === 0) {
-        console.error("No valid quotes found!");
-        return;
-    }
-
-    let maxAttempts = validQuotes.length; // Évite une boucle infinie
-
-    while (maxAttempts > 0) {
-        targetItem = validQuotes[Math.floor(Math.random() * validQuotes.length)];
-        targetCharacter = filteredCharacters.find(char => char.name === targetItem.speaker);
-
-        if (targetCharacter) break; // On sort si un personnage valide est trouvé
-
-        //console.warn("No character found or not in the right category for:", targetItem.speaker, "- Retrying...");
-        maxAttempts--;
-    }
-
-    if (!targetCharacter) {
-        console.error("❌ Aucune citation valide n'a un personnage correspondant dans les personnages filtrés !");
-        return;
-    }
-
-    let hints = {
-        game: { title: "Case", tries: 3, icon: document.querySelector("#hint-case .hint-icon"), element: document.querySelector("#hint-case .hint-count"), text: targetItem.source /*getInfoByDebut(targetCharacter.debut).game*/ },
-        occupation: { title: "Occupation", tries: 7, icon: document.querySelector("#hint-occupation .hint-icon"), element: document.querySelector("#hint-occupation .hint-count"), text: targetCharacter.occupation },
-        figure: { title: "Figure", tries: 12, icon: document.querySelector("#hint-figure .hint-icon"), element: document.querySelector("#hint-figure .hint-count"), image: targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
-    };
-
-    setHints(hints);
-    displayQuote(targetItem);
-    console.log("✅ Character to find (quote):", targetItem.speaker);
-}
-
 function validateGuess() {
-    /*if (!targetCharacter) {
+    /*if (!targetItem) {
         feedback.textContent = "⚠️ The game is still loading. Please wait...";
         feedback.className = "error";
         return;
@@ -149,9 +88,9 @@ function validateGuess() {
 
     attemptedNames.push(guessName);
 
-    if (guessName.toLowerCase() === targetCharacter.name.toLowerCase()) {
+    if (guessName.toLowerCase() === targetItem.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
-        feedback.textContent = "🎉 Congratulation ! You found " + targetCharacter.name + " !";
+        feedback.textContent = "🎉 Congratulation ! You found " + targetItem.name + " !";
         feedback.className = "success";
 
         gameOver(true);
@@ -164,10 +103,6 @@ function validateGuess() {
     verifyTries();
     inputField.value = "";
     validateButton.disabled = true;
-}
-
-function displayQuote(quote){
-    document.getElementById("quote").innerText = quote.quote
 }
 
 ////////////////// COMPARE FUNCTION
@@ -191,18 +126,6 @@ function compareInfoClass(guess, target) {
 
 async function initGame() {
     await dataLoaded; // Attendre que les fichiers JSON soient chargés
-    console.log("🚀 Les données sont prêtes, on peut commencer !");
-    console.log("Nombre de citations chargées :", quoteData.length);
-    console.log("Nombre de personnages chargés :", characterData.length);
-
     setValidateGuessFunction(validateGuess);
-    //setSelectCharacterToFindFunction(selectCharacterToFind);
-
-    //selectCharacterToFind(); // Maintenant on peut l'exécuter
 }
 initGame();
-
-/*
-document.addEventListener("DOMContentLoaded", function () {
-
-});*/

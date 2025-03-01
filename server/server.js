@@ -185,11 +185,13 @@ app.get('/api/item-to-find/:mode/:filter?', (req, res) => {
 // get informations about a character with his name
 app.get('/api/character/:name', (req, res) => {
     const { name } = req.params;
+    console.log(`🔍 Recherche du personnage : ${name}`);
 
-    // Recherche du personnage dans characterData (insensible à la casse)
+    // Recherche du personnage dans characterData
     const character = characterData.find(char => char.name.toLowerCase() === name.toLowerCase());
 
     if (!character) {
+        console.error("❌ Personnage non trouvé :", name);
         return res.status(404).json({ error: "Personnage non trouvé" });
     }
 
