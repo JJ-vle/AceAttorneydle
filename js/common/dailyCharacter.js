@@ -1,3 +1,4 @@
+/*
 import { dataLoaded, characterData } from './data.js';
 
 let characterNames = [];
@@ -93,4 +94,4 @@ export function getCurrentCharacter(){
 }
 
 // Example usage: Log remaining time every minute
-setInterval(() => console.log(getTimeRemaining()), 60000);
+setInterval(() => console.log(getTimeRemaining()), 60000);*/

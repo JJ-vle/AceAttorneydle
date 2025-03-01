@@ -2,12 +2,12 @@
 
 // Importer la fonction depuis un autre fichier
 import { setValidateGuessFunction } from './common/guessbar.js';
-import { dataLoaded, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByCharacter, setGameMode } from './common/data.js';
+import { dataLoaded, characterData, targetCharacter, attemptedNames, setGameMode } from './common/data.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
 import { filterCharacters } from './common/filter.js';
 setGameMode("silhouette");
 
-let targetCharacter = null;
+//let targetCharacter = null;
 
 //////////////////
 
@@ -114,35 +114,6 @@ function compareInfoClass(guess, target) {
     return isCorrect ? 'correct' : 'incorrect';
 }
 
-function selectCharacterToFind(){
-    let filteredData = filterCharacters(characterData);
-    if (filteredData.length > 0) {
-        targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
-
-        imageProcessing(targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") )
-        console.log("Character to find :", targetCharacter.name);
-    } else {
-        console.warn("No characters available after filtering!");
-        //selectCharacterToFind();
-    }
-}
-
-function imageProcessing(imgSrc) {
-    const imgElement = document.createElement("img");
-    imgElement.src = imgSrc;
-    imgElement.alt = "Silhouette du personnage";
-    
-    // Applique un filtre noir complet
-    imgElement.style.filter = "brightness(0)";
-    imgElement.style.height = "auto";
-    imgElement.style.maxWidth = "1500px";
-    imgElement.style.display = "block";
-    imgElement.style.margin = "10px auto"; // Centre l'image
-
-    silhouetteImg.innerHTML = ''
-    silhouetteImg.appendChild(imgElement);
-}
-
 //////////// DOMCONTENTLOADED
 
 async function initGame() {
@@ -151,9 +122,6 @@ async function initGame() {
     console.log("Nombre de personnages chargés :", characterData.length);
 
     setValidateGuessFunction(validateGuess);
-    setSelectCharacterToFindFunction(selectCharacterToFind);
-
-    selectCharacterToFind(); // Maintenant on peut l'exécuter
 }
 initGame();
 

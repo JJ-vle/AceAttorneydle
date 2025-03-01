@@ -63,7 +63,7 @@ async function loadData() {
     ])
     .then(() => {
         console.log("🎯 Tous les fichiers JSON sont chargés !");
-        document.dispatchEvent(new Event("dataLoaded")); // Déclenche un événement global
+        //document.dispatchEvent(new Event("dataLoaded")); // Déclenche un événement global
     });
 }
 
@@ -112,7 +112,7 @@ export function selectCharacterToFind() {
                         tries: 3, 
                         icon: document.querySelector("#hint-game .hint-icon"), 
                         element: document.querySelector("#hint-game .hint-count"), 
-                        text: debutInfo ? debutInfo.game : "Inconnu" // Vérifie si debutInfo est null avant d'accéder à ses propriétés
+                        text: debutInfo ? debutInfo.game : "Unknow" // Vérifie si debutInfo est null avant d'accéder à ses propriétés
                     },
                     occupation: {
                         title: "Occupation", 
@@ -130,12 +130,17 @@ export function selectCharacterToFind() {
                     }
                 };
 
+                if (gameMode =="silhouette"){
+                    imageProcessing(targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") )
+                }
+
 
                 // Met à jour les indices avec les nouvelles informations
                 setHints(hints);
 
                 // Logue le personnage à trouver pour la console
                 console.log("Character to find :", targetCharacter.name);
+                document.dispatchEvent(new Event("dataLoaded"));
             }
         })
         .catch(error => {
@@ -223,4 +228,24 @@ function isValidCharacter(character) {
 
     // Garder seulement les personnages ayant au moins 4 attributs valides
     return validAttributes.length >= 4;
+}
+
+
+
+const silhouetteImg = document.getElementById("silhouette");
+
+function imageProcessing(imgSrc) {
+    const imgElement = document.createElement("img");
+    imgElement.src = imgSrc;
+    imgElement.alt = "Silhouette du personnage";
+    
+    // Applique un filtre noir complet
+    imgElement.style.filter = "brightness(0)";
+    imgElement.style.height = "auto";
+    imgElement.style.maxWidth = "1500px";
+    imgElement.style.display = "block";
+    imgElement.style.margin = "10px auto"; // Centre l'image
+
+    silhouetteImg.innerHTML = ''
+    silhouetteImg.appendChild(imgElement);
 }
