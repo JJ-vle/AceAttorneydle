@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-///////////////////// VALID CHARACTERS
+///////////////////// VALID ITEMS
 
 // Fonction pour filtrer les personnages
 function isValidCharacter(character, gameMod) {
@@ -39,9 +39,25 @@ function isValidCharacter(character, gameMod) {
     // Garder seulement les personnages ayant au moins 4 attributs valides
     return validAttributes.length >= 4;
 }
+// Fonction pour filtrer les cas
+function isValidCase(turnabout) {
+    if (!turnabout.name || !turnabout.evidence) {
+        return false;
+    }
+    if (turnabout.bypass) {
+        return true;
+    }
+
+    const attributes = [turnabout.name, turnabout.image, turnabout.evidence, turnabout.victim, turnabout.cause];
+    return attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow").length >= 3;
+}
 // Fonction pour filtrer les personnages valides selon la logique donnée
 function validateListCharacters(data, gameMode) {
     return data.filter(character => isValidCharacter(character, gameMode));
+}
+// Fonction pour filtrer les cas valides selon la logique donnée
+function validateListCases(data) {
+    return data.filter(turnabout => isValidCase(turnabout));
 }
 
 ///////////////////// LOAD DATA
@@ -52,6 +68,7 @@ let characterData = require('../resources/data/aceattorneychars.json');
 characterData = characterData.filter(character => isValidCharacter(character, "guess"));
 let quoteData = require('../resources/data/quotes.json');
 let casesData = require('../resources/data/cases.json');
+characterData = characterData.filter(character => isValidCase(character));
 
 
 
@@ -86,7 +103,10 @@ function shuffleArray(array) {
     }
 }
 
-function filterByGroup(data, group) {
+function filterByGroup(data, group, cases) {
+    if(cases){
+        return data.filter(item => getGroupByTurnabout(item.name) === group);
+    }
     return data.filter(item => getGroupByTurnabout(item.debut) === group);
 }
 function filterQuoteByGroup(data, group) {
@@ -115,7 +135,7 @@ function initializeQueues() {
         gameQueues.quote[group] = filterQuoteByGroup(quoteData, group);
         shuffleArray(gameQueues.quote[group]);
         
-        gameQueues.case[group] = filterByGroup(casesData, group);
+        gameQueues.case[group] = validateListCases(filterByGroup(casesData, group, true));
         shuffleArray(gameQueues.case[group]);
     });
     console.log("✅ Files d'attente initialisées et mélangées.");

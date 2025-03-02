@@ -2,15 +2,13 @@
 
 // Importation des fichiers
 import { setValidateGuessFunction } from './common/guessbar.js';
-import { dataLoaded, casesData, characterData, setSelectCharacterToFindFunction, setSelectedGroups, attemptedNames, getGroupByTurnabout, setGameMode } from './common/data.js';
-import { setHints } from './common/hint.js';
+import { dataLoaded, casesData, targetItem, attemptedNames, setGameMode } from './common/data.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
-import { filterCases } from './common/filter.js';
 setGameMode("case");
 
 //////////////////
 
-let targetCase = null;
+//let targetItem = null;
 
 //////////////////
 
@@ -53,7 +51,7 @@ function addToHistory(guessedCase, result) {
 
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
-        <td class="single-cell-oneth ${compareInfoClass(guessedCase.name, targetCase.name)}" >
+        <td class="single-cell-oneth ${compareInfoClass(guessedCase.name, targetItem.name)}" >
             <div class="image-container-oneth-evidence">
                 <img src="${imageUrl}" alt="${guessedCase.name}" class="centered-image-oneth">
             </div>
@@ -66,60 +64,8 @@ function addToHistory(guessedCase, result) {
 
 ////////////////// FUNCTIONS
 
-function selectCaseToFind() {
-    if (!casesData || casesData.length === 0 || !characterData || characterData.length === 0) {
-        console.error("Data not loaded yet!");
-        return;
-    }
-
-    // Appliquer les filtres aux personnages
-    let filteredCases = filterCases(casesData);
-    if (filteredCases.length === 0) {
-        console.warn("No characters available after filtering!");
-        return;
-    }
-
-    function isValidCase(turnabout) {
-        if (!turnabout.name || !turnabout.evidence) {
-            return false;
-        }
-        if (turnabout.bypass) {
-            return true;
-        }
-
-        const attributes = [turnabout.name, turnabout.image, turnabout.evidence, turnabout.victim, turnabout.cause];
-        return attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow").length >= 3;
-    }
-
-    let validCases = filteredCases.filter(isValidCase);
-    if (validCases.length === 0) {
-        console.error("No valid quotes found!");
-        return;
-    }
-
-    targetCase = validCases[Math.floor(Math.random() * validCases.length)];
-
-
-    if (!targetCase) {
-        console.error("❌ Aucune citation valide n'a un personnage correspondant dans les personnages filtrés !");
-        return;
-    }
-
-    let hints = {
-        cause: { title: "Death cause", tries: 3, icon: document.querySelector("#hint-cause .hint-icon"), element: document.querySelector("#hint-cause .hint-count"),  text: targetCase.cause },
-        locations: { title: "Locations", tries: 7, icon: document.querySelector("#hint-locations .hint-icon"), element: document.querySelector("#hint-locations .hint-count"), text: targetCase.locations },
-        victim: { title: "Victim", tries: 12, icon: document.querySelector("#hint-victim .hint-icon"), element: document.querySelector("#hint-victim .hint-count"), text: targetCase.victim },
-        //image: { title: "Image", tries: 12, icon: document.querySelector("#hint-image .hint-icon"), element: document.querySelector("#hint-image .hint-count"), image: targetCase.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, ""), clear: true }
-        //image: { title: "Image", tries: 12, icon: document.querySelector("#hint-image .hint-icon"), element: document.querySelector("#hint-image .hint-count"), text: targetCase.name }
-    };
-
-    setHints(hints);
-    displayEvidence();
-    console.log("✅ Character to find (quote):", targetCase.name);
-}
-
 function validateGuess() {
-    if (!targetCase) {
+    if (!targetItem) {
         feedback.textContent = "⚠️ The game is still loading. Please wait...";
         feedback.className = "error";
         return;
@@ -142,9 +88,9 @@ function validateGuess() {
 
     attemptedNames.push(guessCase);
 
-    if (guessCase.toLowerCase() === targetCase.name.toLowerCase()) {
+    if (guessCase.toLowerCase() === targetItem.name.toLowerCase()) {
         addToHistory(guessedCase, true);
-        feedback.textContent = "🎉 Congratulation ! You found " + targetCase.name + " !";
+        feedback.textContent = "🎉 Congratulation ! You found " + targetItem.name + " !";
         feedback.className = "success";
         
         revealAllEvidence();
@@ -209,10 +155,10 @@ function createEvidenceDiv(evidence) {
 }
 
 function displayEvidence() {
-    if (targetCase.evidence.length < maxEvidence) {
-        maxEvidence = targetCase.evidence.length;
+    if (targetItem.evidence.length < maxEvidence) {
+        maxEvidence = targetItem.evidence.length;
     }
-    const caseEvidence = targetCase.evidence.slice(0, maxEvidence); // Limite aux 15 premiers éléments
+    const caseEvidence = targetItem.evidence.slice(0, maxEvidence); // Limite aux 15 premiers éléments
     caseEvidence.forEach(createEvidenceDiv);
 }
 
@@ -272,11 +218,11 @@ async function initGame() {
     console.log("Nombre de turnabouts chargées :", casesData.length);
 
     setValidateGuessFunction(validateGuess);
-    setSelectCharacterToFindFunction(selectCaseToFind);
+    //setSelectCharacterToFindFunction(selectCaseToFind);
 
-    selectCaseToFind(); // Maintenant on peut l'exécuter
-    displayEvidence(); // Charge les preuves masquées
-    revealNextEvidence() 
+    //selectCaseToFind(); // Maintenant on peut l'exécuter
+    //displayEvidence(); // Charge les preuves masquées
+    //revealNextEvidence() 
 }
 initGame();
 

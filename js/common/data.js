@@ -63,7 +63,7 @@ async function loadData() {
     ])
     .then(() => {
         console.log("🎯 Tous les fichiers JSON sont chargés !");
-        //document.dispatchEvent(new Event("dataLoaded")); // Déclenche un événement global
+        document.dispatchEvent(new Event("dataLoaded")); // Déclenche un événement global
     });
 }
 
@@ -110,6 +110,9 @@ export function selectCharacterToFind() {
                     imageProcessing(targetItem.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") )
                 } else if (gameMode =="quote") {
                     document.getElementById("quote").innerText = targetItem.quote;
+                } else if (gameMode == "case") {
+                    displayEvidence();
+                    revealNextEvidence();
                 }
 
                 // Met à jour les indices avec les nouvelles informations
@@ -117,7 +120,7 @@ export function selectCharacterToFind() {
 
                 // Logue le personnage à trouver pour la console
                 console.log("Character to find :", targetItem.name);
-                document.dispatchEvent(new Event("dataLoaded"));
+                //document.dispatchEvent(new Event("dataLoaded"));
             }
         })
         .catch(error => {
@@ -279,4 +282,93 @@ async function getCharacterInformations(name) {
         console.error("Erreur lors du chargement des informations du personnage :", error);
         return null; // Retourne null en cas d'erreur
     }
+}
+
+
+////////////////// EVIDENCE DISPLAY
+
+const evidenceContainer = document.getElementById("evidence-container");
+
+let currentEvidenceIndex = 0;
+let maxEvidence = 15; // Nombre maximum d'éléments affichables
+
+function createEvidenceDiv(evidence) {
+    if (document.querySelectorAll(".evidence-item").length >= maxEvidence) return;
+
+    const div = document.createElement("div");
+    div.classList.add("evidence-item");
+
+    // Création des coins avec des spans
+    const topLeft = document.createElement("span");
+    topLeft.classList.add("corner", "corner-top-left");
+
+    const topRight = document.createElement("span");
+    topRight.classList.add("corner", "corner-top-right");
+
+    const bottomLeft = document.createElement("span");
+    bottomLeft.classList.add("corner", "corner-bottom-left");
+
+    const bottomRight = document.createElement("span");
+    bottomRight.classList.add("corner", "corner-bottom-right");
+
+    // Création de l'image cachée par défaut
+    const img = document.createElement("img");
+    img.src = "/resources/img/icons/hiddenEvidence.png"; // Image cachée par défaut
+    img.dataset.revealSrc = evidence.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
+    img.classList.add("evidence-image");
+
+    // Création du titre (nom de la preuve)
+    const title = document.createElement("p");
+    title.textContent = evidence.name;
+    // Ne pas masquer le titre via style.display, le CSS s'en chargera
+
+    // Ajout des éléments au div principal
+    div.appendChild(topLeft);
+    div.appendChild(topRight);
+    div.appendChild(bottomLeft);
+    div.appendChild(bottomRight);
+    div.appendChild(img);
+    div.appendChild(title);
+
+    // Ajout au conteneur principal
+    evidenceContainer.appendChild(div);
+}
+
+function displayEvidence() {
+    if (targetItem.evidence.length < maxEvidence) {
+        maxEvidence = targetItem.evidence.length;
+    }
+    const caseEvidence = targetItem.evidence.slice(0, maxEvidence); // Limite aux 15 premiers éléments
+    caseEvidence.forEach(createEvidenceDiv);
+}
+
+function revealNextEvidence() {
+    const evidenceItems = document.querySelectorAll(".evidence-item");
+    if (currentEvidenceIndex < Math.min(evidenceItems.length, maxEvidence)) {
+        const div = evidenceItems[currentEvidenceIndex]; 
+        const img = div.querySelector(".evidence-image");
+        const name = div.querySelector("p");
+        
+        img.src = img.dataset.revealSrc; // Affiche la vraie image
+        div.classList.add("revealed"); // Marque l'évidence comme révélée
+        name.style.display = "block"; // Permet au hover de fonctionner
+
+        currentEvidenceIndex++;
+    }
+}
+
+function revealAllEvidence() {
+    const evidenceItems = document.querySelectorAll(".evidence-item");
+
+    for (let i = currentEvidenceIndex; i < Math.min(evidenceItems.length, maxEvidence); i++) {
+        const div = evidenceItems[i];
+        const img = div.querySelector(".evidence-image");
+        const name = div.querySelector("p");
+
+        img.src = img.dataset.revealSrc;
+        div.classList.add("revealed"); // Marque l'évidence comme révélée
+        name.style.display = "block"; // Permet au hover de fonctionner
+    }
+
+    currentEvidenceIndex = maxEvidence;
 }
