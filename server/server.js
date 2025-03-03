@@ -65,12 +65,10 @@ function validateListCases(data) {
 // Charger les fichiers JSON
 let turnaboutGames = require('../resources/data/turnabouts.json');
 let characterData = require('../resources/data/aceattorneychars.json');
-characterData = characterData.filter(character => isValidCharacter(character, "guess"));
+//characterData = characterData.filter(character => isValidCharacter(character, "guess"));
 let quoteData = require('../resources/data/quotes.json');
 let casesData = require('../resources/data/cases.json');
-characterData = characterData.filter(character => isValidCase(character));
-
-
+casesData = casesData.filter(character => isValidCase(character));
 
 ///////////////////// QUEUE STRUCTURE
 
