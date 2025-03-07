@@ -98,7 +98,7 @@ function toggleHint(hint) {
 
 function hintChecker() {
     let lockedKeys = Object.values(hints).filter(hint => hint.tries - numTries > 0).length;
-    console.log("📌 Hints actuels :", hints);
+    //console.log("📌 Hints actuels :", hints);
 
     for (let key in hints) {
         let remainingTries = hints[key].tries - numTries;

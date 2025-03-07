@@ -138,7 +138,7 @@ function initializeQueues() {
     });
     console.log("✅ Files d'attente initialisées et mélangées.");
     shufflePriorities();
-    console.log(gamePriority.guess);
+    //console.log(gamePriority.guess);
 }
 initializeQueues();
 
@@ -149,7 +149,7 @@ function rotateQueues() {
         Object.keys(gameQueues[mode]).forEach(group => {
             if (gameQueues[mode][group].length > 0) {
                 gameQueues[mode][group].shift();
-                console.log(`${mode} - ${group}     ` + gameQueues[mode][group][0].name);
+                //console.log(`${mode} - ${group}     ` + gameQueues[mode][group][0].name);
             }
             if (gameQueues[mode][group].length === 0) {
                 //console.log(`🔄 Recharge de la liste ${mode} - ${group}`);

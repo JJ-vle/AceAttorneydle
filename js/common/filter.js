@@ -1,13 +1,21 @@
 //filter.js
-
 import { selectCharacterToFind, setSelectedGroups, getGroupByCharacter, getGroupByTurnabout } from './data.js';
+import { resetNumTries, verifyTries } from './life.js';
 
 
-// Récupère la liste des checkboxes et ajoute un écouteur d'événement
 const checkboxes = document.querySelectorAll("#groupFilters input[type='checkbox']");
+const historyDiv = document.getElementById("history");
 
-const updateButton = document.querySelector("#updateFilters");
-updateButton.addEventListener("click", selectCharacterToFind);
+/*const updateButton = document.querySelector("#updateFilters");
+updateButton.addEventListener("click", selectCharacterToFind);*/
+
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener("change", () => {
+        updateSelectedGroups();
+        selectCharacterToFind();
+        resetGame();
+    });
+});
 
 updateSelectedGroups();
 function updateSelectedGroups() {
@@ -50,4 +58,22 @@ export function filterCases(casesData) {
     });
 
     return filtered;
+}
+
+/////////////
+
+function resetGame() {
+    // logique :
+    // reset history
+    // reset lifebar et hintcount
+    clearHistoryTable();
+    resetNumTries();
+    verifyTries();
+}
+
+function clearHistoryTable() {
+    const historyBody = document.getElementById("historyBody");
+    if (historyBody) {
+        historyBody.innerHTML = "";
+    }
 }
