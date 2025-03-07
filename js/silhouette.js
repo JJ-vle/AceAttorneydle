@@ -4,7 +4,6 @@
 import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, characterData, targetItem, attemptedNames, setGameMode } from './common/data.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
-import { filterCharacters } from './common/filter.js';
 import { readCookie } from './common/cookie.js';
 setGameMode("silhouette");
 
@@ -19,7 +18,7 @@ const historyDiv = document.getElementById("history");
 const silhouetteImg = document.getElementById("silhouette");
 
 // Assurer la création du tableau dès le début
-function createHistoryTable() {
+export function createHistoryTable() {
     if (!document.getElementById("historyTable")) {
         historyDiv.innerHTML = `
             <table id="historyTable" class="history-table">
