@@ -4,6 +4,8 @@
 import { setValidateGuessFunction, validateButton } from './common/guessbar.js';
 import { dataLoaded, turnaboutGames, characterData, attemptedNames, getInfoByDebut, setGameMode, targetItem } from './common/data.js';
 import { incrementNumTries, verifyTries, gameOver } from './common/life.js';
+import { readCookie, readJsonCookie, setCookie } from './common/cookie.js';
+
 setGameMode("guess");
 
 ///////// FONCTION COOKIES /////////////
@@ -12,6 +14,7 @@ setGameMode("guess");
 
 //let targetItem = null;
 let guessesCookie = null;
+//let characterData = null;
 
 const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
@@ -295,9 +298,19 @@ function compareDebut(guessDebut, targetDebut) {
 async function initGame() {
     await dataLoaded; // Attendre que les fichiers JSON soient chargés
     console.log("🚀 Les données sont prêtes, on peut commencer !");
-    console.log("Nombre de personnages chargés :", characterData.length);
+    /*
+    let length = 0;
+    Object.keys(characterDatas).forEach(game => {
+        console.log(characterDatas[game].length)
+        length += characterDatas[game].length
+    });
+    console.log("Nombre de personnages chargés :", length);
+
+    checkCorrectGroups(readCookie("filter"));
+    */
 
     setValidateGuessFunction(validateGuess);
+    
     //setSelectCharacterToFindFunction(selectCharacterToFind);
 
     //selectCharacterToFind(); // Maintenant on peut l'exécuter

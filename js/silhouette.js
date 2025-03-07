@@ -5,6 +5,7 @@ import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, characterData, targetItem, attemptedNames, setGameMode } from './common/data.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
 import { filterCharacters } from './common/filter.js';
+import { readCookie } from './common/cookie.js';
 setGameMode("silhouette");
 
 //let targetItem = null;
@@ -114,13 +115,61 @@ function compareInfoClass(guess, target) {
     return isCorrect ? 'correct' : 'incorrect';
 }
 
+
+/*
+function selectCharacterToFind(){
+    let filteredData = filterCharacters();
+    if (filteredData.length > 0) {
+        targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
+
+        imageProcessing(targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") )
+        console.log("Character to find :", targetCharacter.name);
+    } else {
+        console.warn("No characters available after filtering!");
+        //selectCharacterToFind();
+    }
+}*/
+
+
+function imageProcessing(imgSrc) {
+    const imgElement = document.createElement("img");
+    imgElement.src = imgSrc;
+    imgElement.alt = "Silhouette du personnage";
+    
+    // Applique un filtre noir complet
+    imgElement.style.filter = "brightness(0)";
+    imgElement.style.height = "auto";
+    imgElement.style.maxWidth = "1500px";
+    imgElement.style.display = "block";
+    imgElement.style.margin = "10px auto"; // Centre l'image
+
+    silhouetteImg.innerHTML = ''
+    silhouetteImg.appendChild(imgElement);
+}
+
+function checkCorrectGroups(groups){
+
+    checkboxes.forEach(checkbox => {
+        // Check if the checkbox's value is in the provided list
+        checkbox.checked = groups.includes(checkbox.value);
+    });
+}
+
 //////////// DOMCONTENTLOADED
 
 async function initGame() {
     await dataLoaded; // Attendre que les fichiers JSON soient chargés
     console.log("🚀 Les données sont prêtes, on peut commencer !");
-    console.log("Nombre de personnages chargés :", characterData.length);
+/*
+    let length = 0;
+    Object.keys(characterDatas).forEach(game => {
+        console.log(characterDatas[game].length)
+        length += characterDatas[game].length
+    });
+    console.log("Nombre de personnages chargés :", length);
 
+    checkCorrectGroups(readCookie("filter"));
+*/
     setValidateGuessFunction(validateGuess);
 }
 initGame();

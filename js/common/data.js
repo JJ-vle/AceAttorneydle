@@ -1,13 +1,20 @@
 // data.js
 
+import { setCookie } from './cookie.js';
+
 // Stocke les noms déjà proposés
 export let attemptedNames = new Array();
 // Charger le fichier JSON contenant les informations des débuts
 export let turnaboutGames = {};
-// JSON des personnages
-export let characterData = [];
+
+// JSON des personnages (Un tableau pour chaque serie)
+export let characterData= [];
+export let characterDatas = {};
+
 // JSON des citations
 export let quoteData = [];
+export let quoteDatas = {};
+
 // JSON des citations
 export let casesData = [];
 // Personnage à trouver
