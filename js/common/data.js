@@ -35,7 +35,9 @@ export function setSelectedGroups(newSelectedGroups) {
     tryLoadData();
 }
 
+let tryDataLoaded = null;
 export let dataLoaded = null; // Initialisation de la promesse des données
+export let ItemFound = null; // Initialisation de la promesse des données
 
 // Fonction pour vérifier si gameMode et selectedGroups sont définis et charger les données
 async function tryLoadData() {
@@ -43,9 +45,9 @@ async function tryLoadData() {
     await waitUntil();
 
     // Si les conditions sont remplies, on charge les données
-    if (gameMode && selectedGroups.length > 0 && !dataLoaded) {
+    if (gameMode && selectedGroups.length > 0 && !tryDataLoaded) {
         loadData();  // Appel à loadData une seule fois
-        dataLoaded = true;
+        tryDataLoaded = true;
     }
 }
 // Fonction pour vérifier que le gameMode et selectedGroups sont définis
@@ -71,6 +73,7 @@ async function loadData() {
     .then(() => {
         console.log("🎯 Tous les fichiers JSON sont chargés !");
         document.dispatchEvent(new Event("dataLoaded")); // Déclenche un événement global
+
     });
 }
 
@@ -128,11 +131,14 @@ export function selectCharacterToFind() {
                 // Logue le personnage à trouver pour la console
                 console.log("Character to find :", targetItem.name);
                 //document.dispatchEvent(new Event("dataLoaded"));
+                //document.dispatchEvent(new Event("itemFound"));
             }
         })
         .catch(error => {
             console.error("Erreur lors du chargement du personnage :", error);
         });
+
+        return targetItem;
 }
 
 //////////// GET INFORMATIONS
@@ -290,7 +296,6 @@ async function getCharacterInformations(name) {
         return null; // Retourne null en cas d'erreur
     }
 }
-
 
 ////////////////// EVIDENCE DISPLAY
 

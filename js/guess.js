@@ -2,19 +2,17 @@
 
 // Importation des fichiers
 import { setValidateGuessFunction, validateButton } from './common/guessbar.js';
-import { dataLoaded, turnaboutGames, characterData, attemptedNames, getInfoByDebut, setGameMode, targetItem } from './common/data.js';
+import { dataLoaded, turnaboutGames, characterData, attemptedNames, getInfoByDebut, setGameMode, targetItem, gameMode } from './common/data.js';
 import { incrementNumTries, verifyTries, gameOver } from './common/life.js';
-import { readCookie, readJsonCookie, setCookie } from './common/cookie.js';
-
+import { readCookie, readJsonCookie, setCookie, loadHistory } from './common/cookie.js';
 setGameMode("guess");
 
 ///////// FONCTION COOKIES /////////////
 
 //////////////////
 
-//let targetItem = null;
 let guessesCookie = null;
-//let characterData = null;
+let cookieName = "guessAttempts";
 
 const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
@@ -79,25 +77,24 @@ function addToHistory(guessedCharacter, result) {
 //////////// FUNCTIONS
 
 function validateGuess(guessName=inputField.value.trim()) {
-    if (!dataLoaded) { 
-        feedback.textContent = "⚠️ The game is still loading. Please wait...";
-        feedback.className = "error";
-        return;
-    }
+    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA l'aide");
 
     if (!targetItem) {
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA l'aide -- 3");
         feedback.textContent = "⚠️ Target character not found!";
         feedback.className = "error";
         return;
     }
 
     if (attemptedNames.includes(guessName)) {
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA l'aide -- 4");
         feedback.textContent = "⚠️ This character has already been guessed !";
         feedback.className = "error";
         return;
     }
 
     const guessedCharacter = characterData.find(c => c.name.toLowerCase() === guessName.toLowerCase());
+    console.log(guessedCharacter);
 
     if (!guessedCharacter) {
         feedback.textContent = "⚠️ Unknown character.";
@@ -106,8 +103,8 @@ function validateGuess(guessName=inputField.value.trim()) {
     }
 
     attemptedNames.push(guessName);
-    //setCookie("attempts", encodeURIComponent(JSON.stringify(attemptedNames)));
-    //console.log(readJsonCookie("attempts"));
+    setCookie(cookieName, encodeURIComponent(JSON.stringify(attemptedNames)));
+    //console.log("AAAA : ", readJsonCookie(cookieName));
 
     if (guessName.toLowerCase() === targetItem.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
@@ -296,34 +293,18 @@ function compareDebut(guessDebut, targetDebut) {
 //////////// DOMCONTENTLOADED
 
 async function initGame() {
-    await dataLoaded; // Attendre que les fichiers JSON soient chargés
-    console.log("🚀 Les données sont prêtes, on peut commencer !");
-    /*
-    let length = 0;
-    Object.keys(characterDatas).forEach(game => {
-        console.log(characterDatas[game].length)
-        length += characterDatas[game].length
-    });
-    console.log("Nombre de personnages chargés :", length);
+    while (!dataLoaded) {
+        await new Promise(resolve => setTimeout(resolve, 50));
+    }
 
-    checkCorrectGroups(readCookie("filter"));
-    */
+    await dataLoaded;
+    console.log("🚀 Les données sont prêtes, on peut commencer !");
 
     setValidateGuessFunction(validateGuess);
-    
-    //setSelectCharacterToFindFunction(selectCharacterToFind);
+    loadHistory(cookieName, guessesCookie);
 
-    //selectCharacterToFind(); // Maintenant on peut l'exécuter
-
-    /*
-    if(readCookie("attempts"));{
-        guessesCookie = readJsonCookie("attempts");
-        console.log(attemptedNames);
-    }
-    guessesCookie.forEach((attempt) => {
-        validateGuess(attempt);
-    })*/
 }
+
 initGame();
 
 document.addEventListener("DOMContentLoaded", function () {

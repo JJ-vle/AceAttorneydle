@@ -5,11 +5,14 @@ import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, characterData, targetItem, attemptedNames, setGameMode, quoteData } from './common/data.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
 import { filterCharacters } from './common/filter.js';
+import { setCookie, loadHistory   } from './common/cookie.js';
 setGameMode("quote");
 
 //////////////////
 
 //let targetItem = null;
+let guessesCookie = null;
+let cookieName = "quoteAttempts";
 
 //////////////////
 
@@ -64,15 +67,17 @@ function addToHistory(guessedCharacter, result) {
 
 ////////////////// FUNCTIONS
 
-function validateGuess() {
-    /*if (!targetItem) {
-        feedback.textContent = "⚠️ The game is still loading. Please wait...";
+function validateGuess(guessName=inputField.value.trim()) {
+
+    if (!targetItem) {
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA l'aide -- 3");
+        feedback.textContent = "⚠️ Target character not found!";
         feedback.className = "error";
         return;
-    }*/
+    }
 
-    const guessName = inputField.value.trim();
     if (attemptedNames.includes(guessName)) {
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA l'aide -- 4");
         feedback.textContent = "⚠️ This character has already been guessed !";
         feedback.className = "error";
         return;
@@ -87,6 +92,7 @@ function validateGuess() {
     }
 
     attemptedNames.push(guessName);
+    setCookie(cookieName, encodeURIComponent(JSON.stringify(attemptedNames)));
 
     if (guessName.toLowerCase() === targetItem.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
@@ -125,7 +131,16 @@ function compareInfoClass(guess, target) {
 //////////// DOMCONTENTLOADED
 
 async function initGame() {
-    await dataLoaded; // Attendre que les fichiers JSON soient chargés
+    while (!dataLoaded) {
+        await new Promise(resolve => setTimeout(resolve, 50));
+    }
+
+    await dataLoaded;
+    console.log("🚀 Les données sont prêtes, on peut commencer !");
+
     setValidateGuessFunction(validateGuess);
+    loadHistory(cookieName, guessesCookie);
+
 }
+
 initGame();

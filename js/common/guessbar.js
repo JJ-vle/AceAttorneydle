@@ -3,7 +3,7 @@
 import { characterData, casesData, selectedGroups, attemptedNames, getGroupByCharacter, getGroupByTurnabout, gameMode } from './data.js';
 
 let selectedIndex = -1;
-let validateGuessFunction = null;
+export let validateGuessFunction = null;
 export function setValidateGuessFunction(func) {
     validateGuessFunction = func;
 }

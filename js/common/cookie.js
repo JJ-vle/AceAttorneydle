@@ -1,4 +1,5 @@
 ///// COOKIE SETUP /////
+import { validateGuessFunction } from './guessbar.js';
 
 export let streaks = {};
 streaks.guessStreak = setupStreakCookie("guessStreak");
@@ -29,6 +30,22 @@ function setupStreakCookie(name){
     setCookie(name, streak);
     return streak;
 }
+
+export function loadHistory(cookieName, cookieList){
+    let cookieAttempts = readJsonCookie(cookieName);
+    if (cookieAttempts) {
+        cookieList = cookieAttempts;
+    }
+    
+    console.log(cookieList);
+
+    if(cookieList && cookieList.length > 0) {
+        cookieList.forEach((attempt) => {
+            validateGuessFunction(attempt);
+        });
+    }
+}
+
 
 ////////
 
