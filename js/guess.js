@@ -4,15 +4,14 @@
 import { setValidateGuessFunction, validateButton } from './common/guessbar.js';
 import { dataLoaded, turnaboutGames, characterData, attemptedNames, getInfoByDebut, setGameMode, targetItem, gameMode } from './common/data.js';
 import { incrementNumTries, verifyTries, gameOver } from './common/life.js';
-import { readCookie, readJsonCookie, setCookie, loadHistory } from './common/cookie.js';
-setGameMode("guess");
+import { setCookieName, updateAttemptsCookie, loadHistory } from './common/cookie.js';
 
 ///////// FONCTION COOKIES /////////////
 
 //////////////////
 
-let guessesCookie = null;
-let cookieName = "guessAttempts";
+setGameMode("guess");
+setCookieName("guessAttempts");
 
 const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
@@ -100,7 +99,7 @@ function validateGuess(guessName=inputField.value.trim()) {
     }
 
     attemptedNames.push(guessName);
-    setCookie(cookieName, encodeURIComponent(JSON.stringify(attemptedNames)));
+    updateAttemptsCookie();
 
     if (guessName.toLowerCase() === targetItem.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
@@ -274,7 +273,7 @@ async function initGame() {
     //console.log("🚀 Les données sont prêtes, on peut commencer !");
 
     setValidateGuessFunction(validateGuess);
-    loadHistory(cookieName, guessesCookie);
+    loadHistory();
 
 }
 

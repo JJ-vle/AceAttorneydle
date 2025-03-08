@@ -4,15 +4,12 @@
 import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, characterData, targetItem, attemptedNames, setGameMode, quoteData } from './common/data.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
-import { filterCharacters } from './common/filter.js';
-import { setCookie, loadHistory   } from './common/cookie.js';
-setGameMode("quote");
+import { setCookieName, updateAttemptsCookie, loadHistory } from './common/cookie.js';
 
 //////////////////
 
-//let targetItem = null;
-let guessesCookie = null;
-let cookieName = "quoteAttempts";
+setGameMode("quote");
+setCookieName("quoteAttempts");
 
 //////////////////
 
@@ -70,14 +67,12 @@ function addToHistory(guessedCharacter, result) {
 function validateGuess(guessName=inputField.value.trim()) {
 
     if (!targetItem) {
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA l'aide -- 3");
         feedback.textContent = "⚠️ Target character not found!";
         feedback.className = "error";
         return;
     }
 
     if (attemptedNames.includes(guessName)) {
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA l'aide -- 4");
         feedback.textContent = "⚠️ This character has already been guessed !";
         feedback.className = "error";
         return;
@@ -92,7 +87,7 @@ function validateGuess(guessName=inputField.value.trim()) {
     }
 
     attemptedNames.push(guessName);
-    setCookie(cookieName, encodeURIComponent(JSON.stringify(attemptedNames)));
+    updateAttemptsCookie();
 
     if (guessName.toLowerCase() === targetItem.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
@@ -136,10 +131,10 @@ async function initGame() {
     }
 
     await dataLoaded;
-    console.log("🚀 Les données sont prêtes, on peut commencer !");
+    //console.log("🚀 Les données sont prêtes, on peut commencer !");
 
     setValidateGuessFunction(validateGuess);
-    loadHistory(cookieName, guessesCookie);
+    loadHistory();
 
 }
 

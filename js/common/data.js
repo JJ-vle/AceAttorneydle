@@ -4,6 +4,9 @@ import { setCookie } from './cookie.js';
 
 // Stocke les noms déjà proposés
 export let attemptedNames = new Array();
+export function resetAttemptedNames(){
+    attemptedNames = new Array();
+}
 // Charger le fichier JSON contenant les informations des débuts
 export let turnaboutGames = {};
 
@@ -102,10 +105,6 @@ async function loadDataFromAPI() {
 
 export async function selectCharacterToFind() {
     try {
-        // Attendre que toutes les données soient chargées avant d'exécuter la suite
-        //await dataLoaded;
-        //console.log("📂 Données chargées, récupération du personnage en cours...");
-
         const response = await fetch(`http://127.0.0.1:3000/api/item-to-find/${gameMode}/${selectedGroups}`);
         
         if (!response.ok) {
@@ -115,7 +114,7 @@ export async function selectCharacterToFind() {
         const item = await response.json();
         if (item) {
             targetItem = item;
-            //console.log("✅ Personnage récupéré :", targetItem);
+            console.log("✅ Personnage récupéré :", targetItem);
 
             if (gameMode =="silhouette"){
                 imageProcessing(targetItem.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") )
@@ -286,7 +285,7 @@ async function setHints(target) {
     return hints;
 }
 
-async function getCharacterInformations(name) {
+export async function getCharacterInformations(name) {
     try {
         const response = await fetch(`http://127.0.0.1:3000/api/character/${encodeURIComponent(name)}`);
         if (!response.ok) {

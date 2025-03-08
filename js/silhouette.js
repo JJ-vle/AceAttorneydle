@@ -4,12 +4,12 @@
 import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, characterData, targetItem, attemptedNames, setGameMode } from './common/data.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
-import { readCookie, setCookie, loadHistory } from './common/cookie.js';
-setGameMode("silhouette");
+import { setCookieName, updateAttemptsCookie, loadHistory } from './common/cookie.js';
 
-//let targetItem = null;
-let guessesCookie = null;
-let cookieName = "silhouetteAttempts";
+//////////////////
+
+setGameMode("silhouette");
+setCookieName("silhouetteAttempts");
 
 //////////////////
 
@@ -39,14 +39,12 @@ createHistoryTable()
 function validateGuess(guessName=inputField.value.trim()) {
 
     if (!targetItem) {
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA l'aide -- 3");
         feedback.textContent = "⚠️ Target character not found!";
         feedback.className = "error";
         return;
     }
 
     if (attemptedNames.includes(guessName)) {
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA l'aide -- 4");
         feedback.textContent = "⚠️ This character has already been guessed !";
         feedback.className = "error";
         return;
@@ -64,8 +62,7 @@ function validateGuess(guessName=inputField.value.trim()) {
     }
 
     attemptedNames.push(guessName);
-    setCookie(cookieName, encodeURIComponent(JSON.stringify(attemptedNames)));
-    console.log("HIHOUUUUUU 8");
+    updateAttemptsCookie();
 
     if (guessName.toLowerCase() === targetItem.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
@@ -155,7 +152,7 @@ async function initGame() {
     }
 
     await dataLoaded;
-    console.log("🚀 Les données sont prêtes, on peut commencer !");
+    //console.log("🚀 Les données sont prêtes, on peut commencer !");
 
     setValidateGuessFunction(validateGuess);
     loadHistory(cookieName, guessesCookie);
@@ -163,7 +160,3 @@ async function initGame() {
 }
 
 initGame();
-
-document.addEventListener("DOMContentLoaded", function () {
-
-});

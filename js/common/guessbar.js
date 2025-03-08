@@ -98,7 +98,6 @@ export function handleInput(query) {
     }
 }
 
-
 export function handleKeyboard(event){
     const items = suggestionsList.getElementsByTagName("li");
 
@@ -175,7 +174,6 @@ function searchMatchedCases(filteredItems, query) {
         );
     });
 }
-
 
 // Sélection d'un nom et fermeture de la liste
 export function selectName(name) {
