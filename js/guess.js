@@ -77,24 +77,21 @@ function addToHistory(guessedCharacter, result) {
 //////////// FUNCTIONS
 
 function validateGuess(guessName=inputField.value.trim()) {
-    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA l'aide");
 
     if (!targetItem) {
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA l'aide -- 3");
         feedback.textContent = "⚠️ Target character not found!";
         feedback.className = "error";
         return;
     }
 
     if (attemptedNames.includes(guessName)) {
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA l'aide -- 4");
         feedback.textContent = "⚠️ This character has already been guessed !";
         feedback.className = "error";
         return;
     }
 
     const guessedCharacter = characterData.find(c => c.name.toLowerCase() === guessName.toLowerCase());
-    console.log(guessedCharacter);
+    //console.log(guessedCharacter);
 
     if (!guessedCharacter) {
         feedback.textContent = "⚠️ Unknown character.";
@@ -104,7 +101,6 @@ function validateGuess(guessName=inputField.value.trim()) {
 
     attemptedNames.push(guessName);
     setCookie(cookieName, encodeURIComponent(JSON.stringify(attemptedNames)));
-    //console.log("AAAA : ", readJsonCookie(cookieName));
 
     if (guessName.toLowerCase() === targetItem.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
@@ -125,29 +121,6 @@ function validateGuess(guessName=inputField.value.trim()) {
         validateButton.disabled = true;
     }
 }
-/*
-function selectCharacterToFind() {
-
-    let filteredData = filterCharacters(characterData);
-    if (filteredData.length > 0) {
-
-        targetItem = filteredData[Math.floor(Math.random() * filteredData.length)];
-        //document.cookie = "targetItem=" + encodeURIComponent(JSON.stringify(targetItem));
-
-        let hints = {
-            game: { title: "Game", tries: 3, icon: document.querySelector("#hint-game .hint-icon"), element: document.querySelector("#hint-game .hint-count"), text: getInfoByDebut(targetItem.debut).game },
-            occupation: { title: "Occupation", tries: 7, icon: document.querySelector("#hint-occupation .hint-icon"), element: document.querySelector("#hint-occupation .hint-count"), text: targetItem.occupation },
-            figure: { title: "Figure", tries: 12, icon: document.querySelector("#hint-figure .hint-icon"), element: document.querySelector("#hint-figure .hint-count"), image: targetItem.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
-        };
-        setHints(hints);
-
-        console.log("Character to find :", targetItem.name);
-        //console.log(hints);
-    } else {
-        console.warn("No characters available after filtering!");
-    }
-    
-}*/
 
 //////////// COMPARE FUNCTIONS
 
@@ -298,7 +271,7 @@ async function initGame() {
     }
 
     await dataLoaded;
-    console.log("🚀 Les données sont prêtes, on peut commencer !");
+    //console.log("🚀 Les données sont prêtes, on peut commencer !");
 
     setValidateGuessFunction(validateGuess);
     loadHistory(cookieName, guessesCookie);

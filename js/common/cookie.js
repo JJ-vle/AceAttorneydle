@@ -13,7 +13,6 @@ if(readCookie("filter").length === 0){
     setCookie("filter", readCookie("filter"));
 }
 
-
 //console.log(streaks);
 
 function setupStreakCookie(name){
@@ -37,7 +36,7 @@ export function loadHistory(cookieName, cookieList){
         cookieList = cookieAttempts;
     }
     
-    console.log(cookieList);
+    //console.log(cookieList);
 
     if(cookieList && cookieList.length > 0) {
         cookieList.forEach((attempt) => {
@@ -46,15 +45,27 @@ export function loadHistory(cookieName, cookieList){
     }
 }
 
-
 ////////
 
 export function readCookie(name){
     return document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || '';
 }
 
-export function readJsonCookie(name){
-    return JSON.parse(decodeURIComponent(document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || ''));
+export function readJsonCookie(name) {
+    try {
+        const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop();
+
+        if (!cookieValue) {
+            //console.warn(`⚠️ Le cookie '${name}' est vide ou non défini.`);
+            return null;
+        }
+
+        return JSON.parse(decodeURIComponent(cookieValue));
+
+    } catch (error) {
+        console.error(`❌ Erreur lors de la lecture du cookie '${name}':`, error);
+        return null;
+    }
 }
 
 export function setCookie(cookieName, value){
