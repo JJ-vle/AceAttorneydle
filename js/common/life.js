@@ -73,8 +73,7 @@ export function gameOver(result){
             <strong>${targetItem.name}</strong><br><br>
             🔥 Current Streak: ${newStreak}<br>
             🔢 Number of tries: ${numTries}<br>
-            ⏳ Next ${element} at Midnight UTC+2 (Europe)<br>
-            🎮 Next mode:
+            ⏳ Time until next ${element} : ${getTimeUntilNext()}<br>
         `;
         resultClass = "win";
     } else {
@@ -87,8 +86,7 @@ export function gameOver(result){
             <strong>${targetItem.name}</strong><br><br>
             🔄 Streak reset<br>
             🔢 Number of tries: ${numTries}<br>
-            ⏳ Next ${element} at Midnight UTC+2 (Europe)<br>
-            🎮 Next mode:
+            ⏳ Time until next ${element} : ${getTimeUntilNext()}<br>
         `;
         resultClass = "lose";
     }
@@ -113,4 +111,31 @@ function displayResult(message, resultClass) {
     const messageElement = document.createElement("p");
     messageElement.innerHTML = message;
     finalResultDiv.appendChild(messageElement);
+}
+
+function getTimeUntilNext(){
+    const now = new Date();
+
+    // Get current time in UTC
+    const utcNow = now.getTime() + now.getTimezoneOffset() * 60000;
+
+    // Calculate the next midnight in GMT+1
+    const nextMidnight = new Date(utcNow);
+    nextMidnight.setUTCHours(22, 0, 0, 0); // Midnight in GMT+1 (23:00 UTC)
+    
+    if (utcNow >= nextMidnight.getTime()) {
+        nextMidnight.setUTCDate(nextMidnight.getUTCDate() - 1);
+    }
+
+    let diff = nextMidnight.getTime() - utcNow;
+
+    // Convert to HH:mm:ss
+    const hours = Math.floor(diff / 3600000);
+    diff %= 3600000;
+    const minutes = Math.floor(diff / 60000);
+    diff %= 60000;
+    const seconds = Math.floor(diff / 1000);
+
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    
 }

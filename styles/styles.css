@@ -60,9 +60,74 @@ body {
 #logo {
     display: block;
     margin: 0 auto;
-    max-width: 30%;
+    max-width: 20%;
     height: auto;
 }
+
+/* GAME SELECTION CONTAINER */
+
+#game-container {
+    transform: scale(0.8);
+    transform-origin: top; /* Keeps scaling consistent from top-left */
+}
+
+/* Conteneur pour les modes de jeu */
+#gamemodeSelector {
+    margin: 5px auto; /* Centre la div et ajoute de l'espace */
+    padding: 20px;
+    position: relative; /* Positionnement correct */
+    text-align: center; /* Centre les éléments */
+}
+
+#gamemodeSelector::before {
+    content: "";
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 110%;
+    height: 30px; /* Adjust thickness */
+    background-color: #2781b2;
+    clip-path: polygon(0% 50%, 7% 0%, 93% 0%, 100% 50%, 93% 100%, 7% 100%);
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+/* Style du titre */
+#gamemodeSelector h2 {
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style des icônes */
+#gamemodeSelector a {
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+}
+
+#gamemodeSelector img {
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+    filter: drop-shadow(4px 6px 6px rgba(0, 0, 0, 0.6)); /* Drop shadow for depth */
+}
+
+/* Hover effect */
+#gamemodeSelector img:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 0 0 6px #ffc31d; 
+    filter: drop-shadow(6px 10px 10px rgba(0, 0, 0, 0.8));
+}
+
+/* Selected image */
+#gamemodeSelector img.selected {
+    transform: scale(1.05) translateY(-5px);
+    filter: drop-shadow(6px 10px 10px rgba(0, 0, 0, 0.8));
+}
+
+
 
 
 /******************************************************************************************/
@@ -156,13 +221,17 @@ body {
 }
 */
 
+#hint-container {
+    transform: scale(0.8);
+    transform-origin: top; /* Keeps scaling consistent from top-left */
+}
+
 #hints {
     background-color: white; /* Fond blanc */
     padding: 20px;
     position: relative;
     border: 5px solid #328CBD; /* Bordure plus fine */
     outline: 5px solid white; /* Bordure blanche interne */
-    
     max-width: 600px; /* Limite la largeur */
     width: fit-content; /* S'ajuste au contenu sans dépasser max-width */
     margin: 0 auto; /* Centre le bloc */
