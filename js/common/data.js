@@ -4,6 +4,9 @@ import { setCookie } from './cookie.js';
 
 // Stocke les noms déjà proposés
 export let attemptedNames = new Array();
+export function resetAttemptedNames(){
+    attemptedNames = new Array();
+}
 // Charger le fichier JSON contenant les informations des débuts
 export let turnaboutGames = {};
 
@@ -35,7 +38,9 @@ export function setSelectedGroups(newSelectedGroups) {
     tryLoadData();
 }
 
+let tryDataLoaded = null;
 export let dataLoaded = null; // Initialisation de la promesse des données
+export let ItemFound = null; // Initialisation de la promesse des données
 
 // Fonction pour vérifier si gameMode et selectedGroups sont définis et charger les données
 async function tryLoadData() {
@@ -43,9 +48,9 @@ async function tryLoadData() {
     await waitUntil();
 
     // Si les conditions sont remplies, on charge les données
-    if (gameMode && selectedGroups.length > 0 && !dataLoaded) {
+    if (gameMode && selectedGroups.length > 0 && !tryDataLoaded) {
         loadData();  // Appel à loadData une seule fois
-        dataLoaded = true;
+        tryDataLoaded = true;
     }
 }
 // Fonction pour vérifier que le gameMode et selectedGroups sont définis
@@ -71,6 +76,7 @@ async function loadData() {
     .then(() => {
         console.log("🎯 Tous les fichiers JSON sont chargés !");
         document.dispatchEvent(new Event("dataLoaded")); // Déclenche un événement global
+
     });
 }
 
@@ -97,42 +103,33 @@ async function loadDataFromAPI() {
     }
 }
 
-export function selectCharacterToFind() {
-    // Fait un appel API pour obtenir le personnage à deviner pour le mode et le filtre spécifiés
-    fetch(`http://127.0.0.1:3000/api/item-to-find/${gameMode}/${selectedGroups}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Erreur lors de la récupération du personnage !");
+export async function selectCharacterToFind() {
+    try {
+        const response = await fetch(`http://127.0.0.1:3000/api/item-to-find/${gameMode}/${selectedGroups}`);
+        
+        if (!response.ok) {
+            throw new Error("Erreur lors de la récupération du personnage !");
+        }
+
+        const item = await response.json();
+        if (item) {
+            targetItem = item;
+            console.log("✅ Personnage récupéré :", targetItem);
+
+            if (gameMode =="silhouette"){
+                imageProcessing(targetItem.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") )
+            } else if (gameMode =="quote") {
+                document.getElementById("quote").innerText = targetItem.quote;
+            } else if (gameMode == "case") {
+                displayEvidence();
+                revealNextEvidence();
             }
-            return response.json(); // Parse la réponse JSON
-        })
-        .then(item => {
-            if (item) {
-                targetItem = item;
 
-                console.log("Character data reçu:", targetItem)
-                // Met à jour les indices et autres informations de personnage
-
-                if (gameMode =="silhouette"){
-                    imageProcessing(targetItem.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") )
-                } else if (gameMode =="quote") {
-                    document.getElementById("quote").innerText = targetItem.quote;
-                } else if (gameMode == "case") {
-                    displayEvidence();
-                    revealNextEvidence();
-                }
-
-                // Met à jour les indices avec les nouvelles informations
-                setHints(targetItem);
-
-                // Logue le personnage à trouver pour la console
-                console.log("Character to find :", targetItem.name);
-                //document.dispatchEvent(new Event("dataLoaded"));
-            }
-        })
-        .catch(error => {
-            console.error("Erreur lors du chargement du personnage :", error);
-        });
+            setHints(targetItem);
+        }
+    } catch (error) {
+        console.error("Erreur lors du chargement du personnage :", error);
+    }
 }
 
 //////////// GET INFORMATIONS
@@ -234,14 +231,23 @@ async function setHints(target) {
             }*/
         };
     } else {
-        let debutInfo = target.debut ? getInfoByDebut(target.debut) : null;
-
+        let debutInfo = getInfoByDebut(target.debut);
+        //console.log("DEBUT -->", target.debut);
+        
+        if (!debutInfo) {
+            //console.warn("⚠️ Aucune information trouvée pour le début :", target.debut);
+            debutInfo = { game: "Unknown", group: "Unknown" };
+        }
+        
+        //console.log("DEBUT -->", target.debut, "|", debutInfo.game);
+        
         if (gameMode == "guess") {
             hints.game = {
                     title: "Game", tries: 3, 
                     icon: document.querySelector("#hint-game .hint-icon"), 
                     element: document.querySelector("#hint-game .hint-count"), 
-                    text: debutInfo ? debutInfo.game : "Unknown"
+                    //text: debutInfo ? debutInfo.game : "Unknown"
+                    text: debutInfo.game
             };
             
         }
@@ -275,10 +281,11 @@ async function setHints(target) {
         });
     }
 
-    console.log("🟢 Hints générés :", hints);
+    //console.log("🟢 Hints générés :", hints);
     return hints;
 }
-async function getCharacterInformations(name) {
+
+export async function getCharacterInformations(name) {
     try {
         const response = await fetch(`http://127.0.0.1:3000/api/character/${encodeURIComponent(name)}`);
         if (!response.ok) {
@@ -290,7 +297,6 @@ async function getCharacterInformations(name) {
         return null; // Retourne null en cas d'erreur
     }
 }
-
 
 ////////////////// EVIDENCE DISPLAY
 

@@ -126,8 +126,6 @@ function hintChecker() {
 
 document.addEventListener("DOMContentLoaded", async function () {
     await dataLoaded;  // Assure-toi que les données sont bien chargées
-    console.log("✅ DOM chargé, initialisation des hints...");
-    console.log("🎯 Hints avant mise à jour :", hints);
     setHintChecker(hintChecker);
     hintChecker();  // Maintenant, les hints seront bien disponibles
 });

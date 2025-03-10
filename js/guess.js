@@ -2,19 +2,16 @@
 
 // Importation des fichiers
 import { setValidateGuessFunction, validateButton } from './common/guessbar.js';
-import { dataLoaded, turnaboutGames, characterData, attemptedNames, getInfoByDebut, setGameMode, targetItem } from './common/data.js';
+import { dataLoaded, turnaboutGames, characterData, attemptedNames, getInfoByDebut, setGameMode, targetItem, gameMode } from './common/data.js';
 import { incrementNumTries, verifyTries, gameOver } from './common/life.js';
-import { readCookie, readJsonCookie, setCookie } from './common/cookie.js';
-
-setGameMode("guess");
+import { setCookieName, updateAttemptsCookie, loadHistory } from './common/cookie.js';
 
 ///////// FONCTION COOKIES /////////////
 
 //////////////////
 
-//let targetItem = null;
-let guessesCookie = null;
-//let characterData = null;
+setGameMode("guess");
+setCookieName("guessAttempts");
 
 const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
@@ -79,11 +76,6 @@ function addToHistory(guessedCharacter, result) {
 //////////// FUNCTIONS
 
 function validateGuess(guessName=inputField.value.trim()) {
-    if (!dataLoaded) { 
-        feedback.textContent = "⚠️ The game is still loading. Please wait...";
-        feedback.className = "error";
-        return;
-    }
 
     if (!targetItem) {
         feedback.textContent = "⚠️ Target character not found!";
@@ -98,6 +90,7 @@ function validateGuess(guessName=inputField.value.trim()) {
     }
 
     const guessedCharacter = characterData.find(c => c.name.toLowerCase() === guessName.toLowerCase());
+    //console.log(guessedCharacter);
 
     if (!guessedCharacter) {
         feedback.textContent = "⚠️ Unknown character.";
@@ -106,8 +99,7 @@ function validateGuess(guessName=inputField.value.trim()) {
     }
 
     attemptedNames.push(guessName);
-    //setCookie("attempts", encodeURIComponent(JSON.stringify(attemptedNames)));
-    //console.log(readJsonCookie("attempts"));
+    updateAttemptsCookie();
 
     if (guessName.toLowerCase() === targetItem.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
@@ -128,29 +120,6 @@ function validateGuess(guessName=inputField.value.trim()) {
         validateButton.disabled = true;
     }
 }
-/*
-function selectCharacterToFind() {
-
-    let filteredData = filterCharacters(characterData);
-    if (filteredData.length > 0) {
-
-        targetItem = filteredData[Math.floor(Math.random() * filteredData.length)];
-        //document.cookie = "targetItem=" + encodeURIComponent(JSON.stringify(targetItem));
-
-        let hints = {
-            game: { title: "Game", tries: 3, icon: document.querySelector("#hint-game .hint-icon"), element: document.querySelector("#hint-game .hint-count"), text: getInfoByDebut(targetItem.debut).game },
-            occupation: { title: "Occupation", tries: 7, icon: document.querySelector("#hint-occupation .hint-icon"), element: document.querySelector("#hint-occupation .hint-count"), text: targetItem.occupation },
-            figure: { title: "Figure", tries: 12, icon: document.querySelector("#hint-figure .hint-icon"), element: document.querySelector("#hint-figure .hint-count"), image: targetItem.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") }
-        };
-        setHints(hints);
-
-        console.log("Character to find :", targetItem.name);
-        //console.log(hints);
-    } else {
-        console.warn("No characters available after filtering!");
-    }
-    
-}*/
 
 //////////// COMPARE FUNCTIONS
 
@@ -296,34 +265,18 @@ function compareDebut(guessDebut, targetDebut) {
 //////////// DOMCONTENTLOADED
 
 async function initGame() {
-    await dataLoaded; // Attendre que les fichiers JSON soient chargés
-    console.log("🚀 Les données sont prêtes, on peut commencer !");
-    /*
-    let length = 0;
-    Object.keys(characterDatas).forEach(game => {
-        console.log(characterDatas[game].length)
-        length += characterDatas[game].length
-    });
-    console.log("Nombre de personnages chargés :", length);
+    while (!dataLoaded) {
+        await new Promise(resolve => setTimeout(resolve, 50));
+    }
 
-    checkCorrectGroups(readCookie("filter"));
-    */
+    await dataLoaded;
+    //console.log("🚀 Les données sont prêtes, on peut commencer !");
 
     setValidateGuessFunction(validateGuess);
-    
-    //setSelectCharacterToFindFunction(selectCharacterToFind);
+    loadHistory();
 
-    //selectCharacterToFind(); // Maintenant on peut l'exécuter
-
-    /*
-    if(readCookie("attempts"));{
-        guessesCookie = readJsonCookie("attempts");
-        console.log(attemptedNames);
-    }
-    guessesCookie.forEach((attempt) => {
-        validateGuess(attempt);
-    })*/
 }
+
 initGame();
 
 document.addEventListener("DOMContentLoaded", function () {

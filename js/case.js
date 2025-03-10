@@ -4,12 +4,12 @@
 import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, casesData, targetItem, attemptedNames, setGameMode } from './common/data.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
-import { readCookie } from './common/cookie.js';
-setGameMode("case");
+import { setCookieName, updateAttemptsCookie, loadHistory } from './common/cookie.js';
 
 //////////////////
 
-let targetCase = null;
+setGameMode("case");
+setCookieName("caseAttempts");
 
 //////////////////
 
@@ -64,68 +64,15 @@ function addToHistory(guessedCase, result) {
 }
 
 ////////////////// FUNCTIONS
-/*
-function selectCaseToFind() {
-    // Appliquer les filtres aux personnages
-    let filteredCases = filterCases();
 
-    if (!casesData || casesData.length === 0 || !characterData || characterData.length === 0) {
-        console.error("Data not loaded yet!");
-        return;
-    }
+function validateGuess(guessCase=inputField.value.trim()) {
 
-    if (filteredCases.length === 0) {
-        console.warn("No characters available after filtering!");
-        return;
-    }
-
-    function isValidCase(turnabout) {
-        if (!turnabout.name || !turnabout.evidence) {
-            return false;
-        }
-        if (turnabout.bypass) {
-            return true;
-        }
-
-        const attributes = [turnabout.name, turnabout.image, turnabout.evidence, turnabout.victim, turnabout.cause];
-        return attributes.filter(attr => attr && attr !== "N/A" && attr !== "Unknown" && attr !== "Unknow").length >= 3;
-    }
-
-    let validCases = filteredCases.filter(isValidCase);
-    if (validCases.length === 0) {
-        console.error("No valid quotes found!");
-        return;
-    }
-
-    targetCase = validCases[Math.floor(Math.random() * validCases.length)];
-
-
-    if (!targetCase) {
-        console.error("❌ Aucune citation valide n'a un personnage correspondant dans les personnages filtrés !");
-        return;
-    }
-
-    let hints = {
-        cause: { title: "Death cause", tries: 3, icon: document.querySelector("#hint-cause .hint-icon"), element: document.querySelector("#hint-cause .hint-count"),  text: targetCase.cause },
-        locations: { title: "Locations", tries: 7, icon: document.querySelector("#hint-locations .hint-icon"), element: document.querySelector("#hint-locations .hint-count"), text: targetCase.locations },
-        victim: { title: "Victim", tries: 12, icon: document.querySelector("#hint-victim .hint-icon"), element: document.querySelector("#hint-victim .hint-count"), text: targetCase.victim },
-        //image: { title: "Image", tries: 12, icon: document.querySelector("#hint-image .hint-icon"), element: document.querySelector("#hint-image .hint-count"), image: targetCase.image.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, ""), clear: true }
-        //image: { title: "Image", tries: 12, icon: document.querySelector("#hint-image .hint-icon"), element: document.querySelector("#hint-image .hint-count"), text: targetCase.name }
-    };
-
-    setHints(hints);
-    displayEvidence();
-    console.log("✅ Character to find (quote):", targetCase.name);
-}*/
-
-function validateGuess() {
     if (!targetItem) {
         feedback.textContent = "⚠️ The game is still loading. Please wait...";
         feedback.className = "error";
         return;
     }
 
-    const guessCase = inputField.value.trim();
     if (attemptedNames.includes(guessCase)) {
         feedback.textContent = "⚠️ This character has already been guessed !";
         feedback.className = "error";
@@ -141,6 +88,7 @@ function validateGuess() {
     }
 
     attemptedNames.push(guessCase);
+    updateAttemptsCookie();
 
     if (guessCase.toLowerCase() === targetItem.name.toLowerCase()) {
         addToHistory(guessedCase, true);
@@ -267,28 +215,14 @@ function compareInfoClass(guess, target) {
 //////////// DOMCONTENTLOADED
 
 async function initGame() {
-    await dataLoaded; // Attendre que les fichiers JSON soient chargés
-    console.log("🚀 Les données sont prêtes, on peut commencer !");
-    
-    /*let length = 0;
-    Object.keys(casesDatas).forEach(game => {
-        console.log(casesDatas[game].length)
-        length += casesDatas[game].length
-    });
-    console.log("Nombre de turnabouts chargés :", length);
+    while (!dataLoaded) {
+        await new Promise(resolve => setTimeout(resolve, 50));
+    }
 
-    checkCorrectGroups(readCookie("filter"));*/
+    await dataLoaded;
+    //console.log("🚀 Les données sont prêtes, on peut commencer !");
 
     setValidateGuessFunction(validateGuess);
-    //setSelectCharacterToFindFunction(selectCaseToFind);
-
-    //selectCaseToFind(); // Maintenant on peut l'exécuter
-    //displayEvidence(); // Charge les preuves masquées
-    //revealNextEvidence() 
+    loadHistory();
 }
 initGame();
-
-/*
-document.addEventListener("DOMContentLoaded", function () {
-
-});*/

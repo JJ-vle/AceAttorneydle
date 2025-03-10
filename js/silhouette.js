@@ -4,10 +4,12 @@
 import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, characterData, targetItem, attemptedNames, setGameMode } from './common/data.js';
 import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
-import { readCookie } from './common/cookie.js';
-setGameMode("silhouette");
+import { setCookieName, updateAttemptsCookie, loadHistory } from './common/cookie.js';
 
-//let targetItem = null;
+//////////////////
+
+setGameMode("silhouette");
+setCookieName("silhouetteAttempts");
 
 //////////////////
 
@@ -34,14 +36,14 @@ export function createHistoryTable() {
 }
 createHistoryTable()
 
-function validateGuess() {
+function validateGuess(guessName=inputField.value.trim()) {
+
     if (!targetItem) {
-        feedback.textContent = "⚠️ The game is still loading. Please wait...";
+        feedback.textContent = "⚠️ Target character not found!";
         feedback.className = "error";
         return;
     }
 
-    const guessName = inputField.value.trim();
     if (attemptedNames.includes(guessName)) {
         feedback.textContent = "⚠️ This character has already been guessed !";
         feedback.className = "error";
@@ -49,14 +51,18 @@ function validateGuess() {
     }
 
     const guessedCharacter = characterData.find(c => c.name.toLowerCase() === guessName.toLowerCase());
+    //console.log(guessedCharacter);
+    //console.log(guessName);
 
     if (!guessedCharacter) {
+        console.log("HIHOUUUUUU 7");
         feedback.textContent = "⚠️ Unknown character.";
         feedback.className = "error";
         return;
     }
 
     attemptedNames.push(guessName);
+    updateAttemptsCookie();
 
     if (guessName.toLowerCase() === targetItem.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
@@ -114,22 +120,6 @@ function compareInfoClass(guess, target) {
     return isCorrect ? 'correct' : 'incorrect';
 }
 
-
-/*
-function selectCharacterToFind(){
-    let filteredData = filterCharacters();
-    if (filteredData.length > 0) {
-        targetCharacter = filteredData[Math.floor(Math.random() * filteredData.length)];
-
-        imageProcessing(targetCharacter.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") )
-        console.log("Character to find :", targetCharacter.name);
-    } else {
-        console.warn("No characters available after filtering!");
-        //selectCharacterToFind();
-    }
-}*/
-
-
 function imageProcessing(imgSrc) {
     const imgElement = document.createElement("img");
     imgElement.src = imgSrc;
@@ -157,22 +147,16 @@ function checkCorrectGroups(groups){
 //////////// DOMCONTENTLOADED
 
 async function initGame() {
-    await dataLoaded; // Attendre que les fichiers JSON soient chargés
-    console.log("🚀 Les données sont prêtes, on peut commencer !");
-/*
-    let length = 0;
-    Object.keys(characterDatas).forEach(game => {
-        console.log(characterDatas[game].length)
-        length += characterDatas[game].length
-    });
-    console.log("Nombre de personnages chargés :", length);
+    while (!dataLoaded) {
+        await new Promise(resolve => setTimeout(resolve, 50));
+    }
 
-    checkCorrectGroups(readCookie("filter"));
-*/
+    await dataLoaded;
+    //console.log("🚀 Les données sont prêtes, on peut commencer !");
+
     setValidateGuessFunction(validateGuess);
+    loadHistory(cookieName, guessesCookie);
+
 }
+
 initGame();
-
-document.addEventListener("DOMContentLoaded", function () {
-
-});
