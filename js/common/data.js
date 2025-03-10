@@ -1,6 +1,6 @@
 // data.js
-
-import { setCookie } from './cookie.js';
+//import { collapseAllHints, hintChecker } from './hint.js';
+//import { setCookie } from './cookie.js';
 
 // Stocke les noms déjà proposés
 export let attemptedNames = new Array();
@@ -103,7 +103,7 @@ async function loadDataFromAPI() {
     }
 }
 
-export async function selectCharacterToFind() {
+export async function selectCharacterToFind(reload=false) {
     try {
         const response = await fetch(`http://127.0.0.1:3000/api/item-to-find/${gameMode}/${selectedGroups}`);
         
@@ -126,6 +126,11 @@ export async function selectCharacterToFind() {
             }
 
             setHints(targetItem);
+            //collapseAllHints();
+            //hintChecker();
+            if (reload) {
+                window.location.reload();
+            }            
         }
     } catch (error) {
         console.error("Erreur lors du chargement du personnage :", error);
@@ -281,7 +286,7 @@ async function setHints(target) {
         });
     }
 
-    //console.log("🟢 Hints générés :", hints);
+    console.log("🟢 Hints générés :", hints);
     return hints;
 }
 

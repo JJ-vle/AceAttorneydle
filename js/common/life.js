@@ -45,7 +45,7 @@ export function setHintChecker(newHintChecker){
 
 //////////// GAMEOVER
 
-export function gameOver(result){
+export function gameOver(result, fromhistory){
     guessbarDiv.innerHTML = "";
     removeValidateButtonListener();
     
@@ -65,7 +65,12 @@ export function gameOver(result){
 
     if (result) {
         console.log("😁 win");
-        newStreak = parseInt(streaks[gameMode + "Streak"]) + 1;
+        newStreak = parseInt(streaks[gameMode + "Streak"])
+
+        if(!fromhistory) {
+            newStreak = parseInt(streaks[gameMode + "Streak"]) + 1;
+        }
+        
         message = `
             🎉 Bravo!<br>
             You found the ${element} of the day.<br>

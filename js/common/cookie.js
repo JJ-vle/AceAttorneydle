@@ -84,7 +84,7 @@ export async function loadHistory() {
 
         // Traiter la liste filtrée
         filteredList.forEach(attempt => {
-            validateGuessFunction(attempt);
+            validateGuessFunction(attempt, true);
         });
     }
 }

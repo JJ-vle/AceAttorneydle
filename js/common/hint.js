@@ -61,6 +61,11 @@ function clearHints() {
     hintContent.innerHTML = "";
     hintDetails.style.display = "none"; // Cache le cadre si plus de contenu
 }
+export function collapseAllHints() {
+    clearHints(); // Vide le contenu des indices affichés
+    currentHint = null; // Réinitialise la variable de suivi
+}
+
 
 // Variable pour suivre le hint actuellement affiché
 let currentHint = null;
@@ -96,7 +101,7 @@ function toggleHint(hint) {
 
 //////////// HINTS COUNTS
 
-function hintChecker() {
+export function hintChecker() {
     let lockedKeys = Object.values(hints).filter(hint => hint.tries - numTries > 0).length;
     //console.log("📌 Hints actuels :", hints);
 

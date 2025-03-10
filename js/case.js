@@ -65,7 +65,7 @@ function addToHistory(guessedCase, result) {
 
 ////////////////// FUNCTIONS
 
-function validateGuess(guessCase=inputField.value.trim()) {
+function validateGuess(guessCase=inputField.value.trim(), fromhistory=false) {
 
     if (!targetItem) {
         feedback.textContent = "⚠️ The game is still loading. Please wait...";
@@ -96,7 +96,7 @@ function validateGuess(guessCase=inputField.value.trim()) {
         feedback.className = "success";
         
         revealAllEvidence();
-        gameOver(true);
+        gameOver(true, fromhistory);
     } else {
         addToHistory(guessedCase, false);
         feedback.textContent = "❌ wrong answer, try again !";

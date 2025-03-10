@@ -13,7 +13,7 @@ updateButton.addEventListener("click", selectCharacterToFind);*/
 checkboxes.forEach(checkbox => {
     checkbox.addEventListener("change", () => {
         updateSelectedGroups();
-        selectCharacterToFind();
+        selectCharacterToFind(true);
         resetGame();
         saveFiltersToCookie();
     });

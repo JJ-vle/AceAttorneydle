@@ -75,7 +75,7 @@ function addToHistory(guessedCharacter, result) {
 
 //////////// FUNCTIONS
 
-function validateGuess(guessName=inputField.value.trim()) {
+function validateGuess(guessName=inputField.value.trim(), fromhistory=false) {
 
     if (!targetItem) {
         feedback.textContent = "⚠️ Target character not found!";
@@ -106,7 +106,7 @@ function validateGuess(guessName=inputField.value.trim()) {
         feedback.textContent = "🎉 Congratulation ! You found " + targetItem.name + " !";
         feedback.className = "success";
         
-        gameOver(true);
+        gameOver(true, fromhistory);
 
     } else {
         addToHistory(guessedCharacter, false);
