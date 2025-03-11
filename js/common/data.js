@@ -40,7 +40,6 @@ export function setSelectedGroups(newSelectedGroups) {
 
 let tryDataLoaded = null;
 export let dataLoaded = null; // Initialisation de la promesse des données
-export let ItemFound = null; // Initialisation de la promesse des données
 
 // Fonction pour vérifier si gameMode et selectedGroups sont définis et charger les données
 async function tryLoadData() {
@@ -67,18 +66,20 @@ async function loadData() {
     if (dataLoaded) {
         return;
     }
+    await waitUntil();
 
-    await waitUntil();  // Attends que gameMode et selectedGroups soient définis
-    dataLoaded = Promise.all([
-        loadDataFromAPI(),
-        selectCharacterToFind()
-    ])
-    .then(() => {
+    try {
+        await loadDataFromAPI();
+        await selectCharacterToFind();
+
         console.log("🎯 Tous les fichiers JSON sont chargés !");
-        document.dispatchEvent(new Event("dataLoaded")); // Déclenche un événement global
-
-    });
+        document.dispatchEvent(new Event("dataLoaded")); 
+        dataLoaded = true;
+    } catch (error) {
+        console.error("❌ Erreur lors du chargement des données :", error);
+    }
 }
+
 
 async function loadDataFromAPI() {
     try {
@@ -141,6 +142,12 @@ export async function selectCharacterToFind(reload=false) {
 
 // Fonction pour récupérer le jeu d'un début d'affaire
 export function getInfoByDebut(debut) {
+
+    if (!turnaboutGames || Object.keys(turnaboutGames).length === 0) {
+        console.warn("⚠️ Les données de turnaboutGames ne sont pas encore chargées !");
+        return;
+    }
+    
     // Parcours chaque groupe
     for (let group in turnaboutGames) {
         // Parcours chaque jeu dans le groupe
@@ -244,7 +251,7 @@ async function setHints(target) {
             debutInfo = { game: "Unknown", group: "Unknown" };
         }
         
-        //console.log("DEBUT -->", target.debut, "|", debutInfo.game);
+        //console.log("DEBUT -->", target.debut, "  |  ", debutInfo.game);
         
         if (gameMode == "guess") {
             hints.game = {
