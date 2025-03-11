@@ -84,10 +84,10 @@ async function loadDataFromAPI() {
     try {
         // Charger les données via fetch depuis le serveur backend sur le port 3000
         const [turnaboutsResponse, charactersResponse, quotesResponse, casesResponse] = await Promise.all([
-            fetch('http://127.0.0.1:3000/api/turnabouts').then(res => res.json()),
-            fetch('http://127.0.0.1:3000/api/characters').then(res => res.json()),
-            fetch('http://127.0.0.1:3000/api/quotes').then(res => res.json()),
-            fetch('http://127.0.0.1:3000/api/cases').then(res => res.json())
+            fetch('https://ace-attorneydle-api.vercel.app/api/turnabouts').then(res => res.json()),
+            fetch('https://ace-attorneydle-api.vercel.app/api/characters').then(res => res.json()),
+            fetch('https://ace-attorneydle-api.vercel.app/api/quotes').then(res => res.json()),
+            fetch('https://ace-attorneydle-api.vercel.app/api/cases').then(res => res.json())
         ]);
 
         // Assigner les données aux variables globales
@@ -105,7 +105,7 @@ async function loadDataFromAPI() {
 
 export async function selectCharacterToFind(reload=false) {
     try {
-        const response = await fetch(`http://127.0.0.1:3000/api/item-to-find/${gameMode}/${selectedGroups}`);
+        const response = await fetch(`https://ace-attorneydle-api.vercel.app/api/item-to-find/${gameMode}/${selectedGroups}`);
         
         if (!response.ok) {
             throw new Error("Erreur lors de la récupération du personnage !");
@@ -292,7 +292,7 @@ async function setHints(target) {
 
 export async function getCharacterInformations(name) {
     try {
-        const response = await fetch(`http://127.0.0.1:3000/api/character/${encodeURIComponent(name)}`);
+        const response = await fetch(`https://ace-attorneydle-api.vercel.app/api/character/${encodeURIComponent(name)}`);
         if (!response.ok) {
             throw new Error("Erreur lors de la récupération du personnage !");
         }
