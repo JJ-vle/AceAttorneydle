@@ -69,6 +69,7 @@ body {
 #game-container {
     transform: scale(0.6);
     transform-origin: top; /* Keeps scaling consistent from top-left */
+    margin-bottom: -50px;
 }
 
 /* Conteneur pour les modes de jeu */
@@ -216,7 +217,6 @@ body {
 #hint-container {
     transform: scale(0.8);
     transform-origin: top; /* Keeps scaling consistent from top-left */
-    margin-top: -50px;
 }
 
 #hints {
