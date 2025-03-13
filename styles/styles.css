@@ -53,7 +53,7 @@ body {
     display: flex;
     flex-direction: column; /* Aligne les éléments verticalement */
     align-items: center; /* Centre les éléments horizontalement */
-    gap: 40px; /* Espace de 20px entre chaque élément */
+    gap: 20px; /* Espace de 20px entre chaque élément */
 }
 
 /* Logo dans l'en-tête */
@@ -67,7 +67,7 @@ body {
 /* GAME SELECTION CONTAINER */
 
 #game-container {
-    transform: scale(0.8);
+    transform: scale(0.6);
     transform-origin: top; /* Keeps scaling consistent from top-left */
 }
 
@@ -90,14 +90,6 @@ body {
     clip-path: polygon(0% 50%, 7% 0%, 93% 0%, 100% 50%, 93% 100%, 7% 100%);
     transform: translateX(-50%);
     z-index: -1;
-}
-
-/* Style du titre */
-#gamemodeSelector h2 {
-    font-size: 20px;
-    color: white;
-    text-align: center;
-    margin-bottom: 20px;
 }
 
 /* Style des icônes */
@@ -224,6 +216,7 @@ body {
 #hint-container {
     transform: scale(0.8);
     transform-origin: top; /* Keeps scaling consistent from top-left */
+    margin-top: -50px;
 }
 
 #hints {
