@@ -17,7 +17,7 @@ export function setCookieName(newCookieName){
 }
 
 export function updateAttemptsCookie() {
-    setCookie(cookieName, encodeURIComponent(JSON.stringify(attemptedNames)));
+    setCookieAttempt(cookieName, encodeURIComponent(JSON.stringify(attemptedNames)));
 }
 
 //console.log(streaks);
@@ -114,4 +114,13 @@ export function readJsonCookie(name) {
 
 export function setCookie(cookieName, value){
     document.cookie = cookieName + "=" + value;
+}
+
+export function setCookieAttempt(cookieName, value) {
+    const now = new Date();
+    const expiration = new Date();
+
+    expiration.setHours(23, 59, 59, 999);
+
+    document.cookie = `${cookieName}=${value}; expires=${expiration.toUTCString()}; path=/`;
 }
