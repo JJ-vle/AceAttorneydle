@@ -30,7 +30,7 @@ function setupStreakCookie(name){
     }
     else {
         streak = readCookie(name);
-        console.log("🔥 Current streak for " + name.replace("Streak","") + " : " + streak);
+        //console.log("🔥 Current streak for " + name.replace("Streak","") + " : " + streak);
     }
     
     setCookie(name, streak);

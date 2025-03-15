@@ -72,7 +72,7 @@ async function loadData() {
         await loadDataFromAPI();
         await selectCharacterToFind();
 
-        console.log("🎯 Tous les fichiers JSON sont chargés !");
+        //console.log("🎯 Tous les fichiers JSON sont chargés !");
         document.dispatchEvent(new Event("dataLoaded")); 
         dataLoaded = true;
     } catch (error) {
@@ -85,10 +85,10 @@ async function loadDataFromAPI() {
     try {
         // Charger les données via fetch depuis le serveur backend sur le port 3000
         const [turnaboutsResponse, charactersResponse, quotesResponse, casesResponse] = await Promise.all([
-            fetch('https://ace-attorneydle-api.vercel.app/api/turnabouts').then(res => res.json()),
-            fetch('https://ace-attorneydle-api.vercel.app/api/characters').then(res => res.json()),
-            fetch('https://ace-attorneydle-api.vercel.app/api/quotes').then(res => res.json()),
-            fetch('https://ace-attorneydle-api.vercel.app/api/cases').then(res => res.json())
+            fetch('https://api.aceattorneydle.fr/api/turnabouts').then(res => res.json()),
+            fetch('https://api.aceattorneydle.fr/api/characters').then(res => res.json()),
+            fetch('https://api.aceattorneydle.fr/api/quotes').then(res => res.json()),
+            fetch('https://api.aceattorneydle.fr/api/cases').then(res => res.json())
         ]);
 
         // Assigner les données aux variables globales
@@ -97,7 +97,7 @@ async function loadDataFromAPI() {
         quoteData = quotesResponse;
         casesData = casesResponse;
 
-        console.log("✅ Toutes les données chargées depuis l'API");
+        //console.log("✅ Toutes les données chargées depuis l'API");
 
     } catch (error) {
         console.error("Erreur lors du chargement des données depuis l'API :", error);
@@ -106,7 +106,7 @@ async function loadDataFromAPI() {
 
 export async function selectCharacterToFind(reload=false) {
     try {
-        const response = await fetch(`https://ace-attorneydle-api.vercel.app/api/item-to-find/${gameMode}/${selectedGroups}`);
+        const response = await fetch(`https://api.aceattorneydle.fr/api/item-to-find/${gameMode}/${selectedGroups}`);
         
         if (!response.ok) {
             throw new Error("Erreur lors de la récupération du personnage !");
@@ -115,7 +115,7 @@ export async function selectCharacterToFind(reload=false) {
         const item = await response.json();
         if (item) {
             targetItem = item;
-            console.log("✅ Personnage récupéré :", targetItem);
+            //console.log("✅ Personnage récupéré :", targetItem);
 
             if (gameMode =="silhouette"){
                 imageProcessing(targetItem.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") )
@@ -293,13 +293,13 @@ async function setHints(target) {
         });
     }
 
-    console.log("🟢 Hints générés :", hints);
+    //console.log("🟢 Hints générés :", hints);
     return hints;
 }
 
 export async function getCharacterInformations(name) {
     try {
-        const response = await fetch(`https://ace-attorneydle-api.vercel.app/api/character/${encodeURIComponent(name)}`);
+        const response = await fetch(`https://api.aceattorneydle.fr/api/character/${encodeURIComponent(name)}`);
         if (!response.ok) {
             throw new Error("Erreur lors de la récupération du personnage !");
         }

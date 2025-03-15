@@ -220,7 +220,6 @@ async function initGame() {
     }
 
     await dataLoaded;
-    //console.log("🚀 Les données sont prêtes, on peut commencer !");
 
     setValidateGuessFunction(validateGuess);
     loadHistory();
