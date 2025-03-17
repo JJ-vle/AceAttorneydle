@@ -618,3 +618,45 @@ ul, ol {
     border: 3px solid red;
 }
 
+
+
+
+
+/* Style pour les bannières publicitaires verticales */
+.ad-banner-left,
+.ad-banner-right {
+    position: absolute; /* Positionner la bannière de manière absolue */
+    top: 50%; /* Centrer verticalement */
+    transform: translateY(-50%); /* Centrer précisément */
+    width: 300px; /* Largeur de la bannière verticale */
+    height: 600px; /* Hauteur de la bannière verticale */
+    z-index: 999; /* Garantir que les bannières sont au-dessus du contenu */
+    padding: 10px; /* Ajouter un peu de padding interne pour un espacement */
+}
+
+/* Publicité à gauche */
+.ad-banner-left {
+    left: 20px; /* Ajouter un écart de 20px du côté gauche */
+    background-color: #f0f0f0; /* Fond clair pour la bannière */
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre autour de la bannière */
+    text-align: center;
+}
+
+/* Publicité à droite */
+.ad-banner-right {
+    right: 20px; /* Ajouter un écart de 20px du côté droit */
+    background-color: #f0f0f0; /* Fond clair pour la bannière */
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre autour de la bannière */
+    text-align: center;
+}
+
+/* Ajustements pour mobile */
+@media (max-width: 768px) {
+    .ad-banner-left,
+    .ad-banner-right {
+        width: 250px; /* Ajuster la largeur pour les petits écrans */
+        height: 300px; /* Ajuster la hauteur pour les petits écrans */
+    }
+}
