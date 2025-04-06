@@ -111,7 +111,7 @@ function validateGuess(guessCase=inputField.value.trim(), fromhistory=false) {
 
 ////////////////// EVIDENCE DISPLAY
 
-let currentEvidenceIndex = 0;
+let currentEvidenceIndex = 1;
 let maxEvidence = 15; // Nombre maximum d'éléments affichables
 
 function createEvidenceDiv(evidence) {
