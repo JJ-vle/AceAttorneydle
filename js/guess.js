@@ -65,8 +65,8 @@ function addToHistory(guessedCharacter, result) {
         ${compareInfo(guessedCharacter.status, targetItem.status)}
         ${compareInfo(guessedCharacter.gender, targetItem.gender)}
         ${compareBirthday(guessedCharacter.birthday, targetItem.birthday)}
-        ${compareInfo(guessedCharacter.eyes, targetItem.eyes)}
-        ${compareInfo(guessedCharacter.hair, targetItem.hair)}
+        ${compareColors(guessedCharacter.eyes, targetItem.eyes)}
+        ${compareColors(guessedCharacter.hair, targetItem.hair)}
         ${compareDebut(guessedCharacter.debut, targetItem.debut)}
     `;
 
@@ -261,6 +261,47 @@ function compareDebut(guessDebut, targetDebut) {
     // Si ce n'est pas le même groupe, alors rouge (incorrect)
     return `<td class=${colorclass}>${guessDebut}</td>`;
 }
+// Fonction de comparaison des couleurs de cheveux
+function compareColors(guessHair, targetHair) {
+    if (!guessHair || guessHair === "N/A") {
+        guessHair = "Unknown";
+    }
+    if (!targetHair || targetHair === "N/A") {
+        targetHair = "Unknown";
+    }
+
+    // Si les deux couleurs sont exactement les mêmes
+    if (guessHair === targetHair) {
+        return `<td class="correct">${guessHair}</td>`;
+    }
+
+    let colorClass = "incorrect";
+
+    // Fonction utilitaire : nettoyer et extraire les mots significatifs
+    function extractKeywords(hairDesc) {
+        return hairDesc
+            .toLowerCase()
+            .replace(/[^a-z0-9\s]/gi, "") // retirer ponctuation
+            .split(/\s+/) // découper en mots
+            .filter(word => ![
+                "with", "and", "but", "some", "parts", "fringe", "tip", "streak", "patch",
+                "paws", "mane", "sides", "stripe", "side", "central", "presumably", "appears", 
+                "otherwise", "wears", "toupée", "balding", "previously", "from", "his", "her", "at", "the", "of"
+            ].includes(word)); // filtrer les mots non-significatifs
+    }
+
+    const guessKeywords = extractKeywords(guessHair);
+    const targetKeywords = extractKeywords(targetHair);
+
+    // Chercher des mots en commun
+    const commonWords = guessKeywords.filter(word => targetKeywords.includes(word));
+
+    if (commonWords.length > 0) {
+        colorClass = "partial";
+    }
+
+    return `<td class="${colorClass}">${guessHair}</td>`;
+}
 
 //////////// DOMCONTENTLOADED
 
@@ -274,7 +315,6 @@ async function initGame() {
 
     setValidateGuessFunction(validateGuess);
     loadHistory();
-
 }
 
 initGame();
