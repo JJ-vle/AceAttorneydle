@@ -25,6 +25,12 @@ export let targetItem = null;
 // JSON des indices
 export let hints = {};
 
+// Unlimited
+export let unlimited = false;
+export function setUnlimited(un) {
+    unlimited = un;
+}
+
 // Mode de jeu
 export let gameMode;
 export function setGameMode(gm) {
@@ -80,7 +86,6 @@ async function loadData() {
     }
 }
 
-
 async function loadDataFromAPI() {
     try {
         // Charger les données via fetch depuis le serveur backend sur le port 3000
@@ -104,10 +109,14 @@ async function loadDataFromAPI() {
     }
 }
 
-export async function selectCharacterToFind(reload=false) {
+export async function selectCharacterToFind(reload = false) {
+    const baseUrl = "https://api.aceattorneydle.fr/api";
+    const endpoint = unlimited
+        ? `${baseUrl}/random-item/${gameMode}/${selectedGroups}`
+        : `${baseUrl}/item-to-find/${gameMode}/${selectedGroups}`;
+
     try {
-        const response = await fetch(`https://api.aceattorneydle.fr/api/item-to-find/${gameMode}/${selectedGroups}`);
-        
+        const response = await fetch(endpoint);
         if (!response.ok) {
             throw new Error("Erreur lors de la récupération du personnage !");
         }
@@ -115,23 +124,25 @@ export async function selectCharacterToFind(reload=false) {
         const item = await response.json();
         if (item) {
             targetItem = item;
-            //console.log("✅ Personnage récupéré :", targetItem);
 
-            if (gameMode =="silhouette"){
-                imageProcessing(targetItem.image[0].replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "") )
-            } else if (gameMode =="quote") {
+            if (gameMode === "silhouette") {
+                const image = targetItem.image[0].replace(
+                    /(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g,
+                    ""
+                );
+                imageProcessing(image);
+            } else if (gameMode === "quote") {
                 document.getElementById("quote").innerText = targetItem.quote;
-            } else if (gameMode == "case") {
+            } else if (gameMode === "case") {
                 displayEvidence();
                 revealNextEvidence();
             }
 
             setHints(targetItem);
-            //collapseAllHints();
-            //hintChecker();
+
             if (reload) {
                 window.location.reload();
-            }            
+            }
         }
     } catch (error) {
         console.error("Erreur lors du chargement du personnage :", error);

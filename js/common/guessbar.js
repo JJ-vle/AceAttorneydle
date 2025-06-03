@@ -14,7 +14,7 @@ export const suggestionsList = document.getElementById("suggestions");
 export const validateButton = document.getElementById("validateButton");
 
 const forcedCharactersPerGroup = {
-    Investigation: ["Miles Edgeworth", "Dick Gumshoe", "Maggey Byrde", "Franziska von Karma", "Mike Meekins", "Ema Skye", "Wendy Oldbag", "Manfred von Karma", "Judge", "Larry Butz", " Shelly de Killer", "Frank Sahwit", "Regina Berry", "Lotta Hart", "Penny Nichols", "Will Powers" ]
+    Investigation: ["Miles Edgeworth", "Dick Gumshoe", "Maggey Byrde", "Franziska von Karma", "Mike Meekins", "Ema Skye", "Wendy Oldbag", "Manfred von Karma", "Judge", "Larry Butz", "Shelly de Killer", "Frank Sahwit", "Regina Berry", "Lotta Hart", "Penny Nichols", "Will Powers" ]
 };
 
 //////////////////// EVENTLISTENERS
