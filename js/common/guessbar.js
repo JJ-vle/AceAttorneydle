@@ -13,6 +13,10 @@ export const inputField = document.getElementById("guessInput");
 export const suggestionsList = document.getElementById("suggestions");
 export const validateButton = document.getElementById("validateButton");
 
+const forcedCharactersPerGroup = {
+    Investigation: ["Miles Edgeworth", "Dick Gumshoe", "Maggey Byrde", "Franziska von Karma", "Mike Meekins", "Ema Skye", "Wendy Oldbag", "Manfred von Karma", "Judge", "Larry Butz", " Shelly de Killer", "Frank Sahwit", "Regina Berry", "Lotta Hart", "Penny Nichols", "Will Powers" ]
+};
+
 //////////////////// EVENTLISTENERS
 
 // Ajouter l'écouteur d'événement en utilisant la fonction importée
@@ -52,13 +56,29 @@ export function handleInput(query) {
 
     const dataToUse = gameMode === "case" ? casesData : characterData;
 
-    const filteredItems = dataToUse.filter(c => {
+    let filteredItems = dataToUse.filter(c => {
         const group = gameMode === "case" ? getGroupByTurnabout(c.name) : getGroupByCharacter(c);
         return selectedGroups.includes(group);
     });
-    
 
-    const matchedItems = gameMode === "case" ? searchMatchedCases(filteredItems, query) : searchMatchedCharacters(filteredItems, query);
+    // Ajout forcé de personnages spécifiques par groupe actif (si mode personnage)
+    if (gameMode !== "case") {
+        selectedGroups.forEach(group => {
+            const forcedNames = forcedCharactersPerGroup[group] || [];
+            forcedNames.forEach(name => {
+                if (!filteredItems.some(c => c.name === name)) {
+                    const match = characterData.find(c => c.name === name);
+                    if (match) {
+                        filteredItems.push(match);
+                    }
+                }
+            });
+        });
+    }
+
+    const matchedItems = gameMode === "case"
+        ? searchMatchedCases(filteredItems, query)
+        : searchMatchedCharacters(filteredItems, query);
 
     matchedItems.sort((a, b) => a.name.localeCompare(b.name));
 
@@ -70,7 +90,6 @@ export function handleInput(query) {
             listItem.dataset.index = index;
 
             let imageUrl;
-            
             if (gameMode === "case") {
                 imageUrl = character.image?.replace(/(\/scale-to-width-down\/\d+|\/revision\/latest\/scale-to-width-down\/\d+|\/revision\/latest\?cb=\d+)/g, "");
             } else {
@@ -97,6 +116,7 @@ export function handleInput(query) {
         }
     }
 }
+
 
 export function handleKeyboard(event){
     const items = suggestionsList.getElementsByTagName("li");
