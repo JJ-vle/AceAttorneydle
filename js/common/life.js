@@ -20,7 +20,7 @@ export function resetNumTries(){
 
 export function verifyTries(){
     if(hintChecker){
-        hintChecker(numTries);
+        hintChecker();
     }
     var defenseLevel = 15 - numTries;
 
@@ -71,6 +71,8 @@ export function gameOver(result, fromhistory){
             newStreak = parseInt(streaks[gameMode + "Streak"]) + 1;
         }
         
+        hintChecker(true);
+
         message = `
             🎉 Bravo!<br>
             You found the ${element} of the day.<br>

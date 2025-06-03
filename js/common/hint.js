@@ -99,11 +99,40 @@ function toggleHint(hint) {
     }
 }
 
+export function unlockAllHints() {
+    let keys = Object.keys(hints);
+    let lastKey = keys[keys.length - 1];
+
+    for (let i = 0; i < keys.length; i++) {
+        const key = keys[i];
+        const hint = hints[key];
+
+        // Déverrouille
+        if (hint.element) {
+            hint.element.textContent = "Unlocked!";
+        }
+
+        unlockHint(key);
+
+        // Change l'icône
+        hint.icon.src = (i === keys.length - 1)
+            ? "resources/img/icons/Black_Psyche-Lock-Broken.png"
+            : "resources/img/icons/Psyche-Lock-Broken.png";
+    }
+
+    currentHint = null; // Réinitialise
+}
+
+
 //////////// HINTS COUNTS
 
-export function hintChecker() {
+export function hintChecker(unlockAll = false) {
+    if (unlockAll) {
+        unlockAllHints();
+        return;
+    }
+
     let lockedKeys = Object.values(hints).filter(hint => hint.tries - numTries > 0).length;
-    //console.log("📌 Hints actuels :", hints);
 
     for (let key in hints) {
         let remainingTries = hints[key].tries - numTries;
@@ -114,7 +143,7 @@ export function hintChecker() {
             } else {
                 console.error(`Element not found for key: ${key}`);
             }
-        } else if (remainingTries == 0){
+        } else if (remainingTries === 0){
             hints[key].element.textContent = "Unlocked!";
             unlockHint(key);
         }
@@ -126,6 +155,7 @@ export function hintChecker() {
         }
     }
 }
+
 
 //////////// DOMCONTENTLOADED
 
