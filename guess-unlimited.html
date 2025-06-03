@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ace Attorneydle</title>
+    <meta name="description" content="Play Ace Attorneydle, the ultimate guessing game for Ace Attorney fans. Find the iconic character or case in just a few tries.">
+    <meta name="keywords" content="Ace Attorney, Ace Attorneydle, Phoenix Wright, Apollo Justice, guessing game, visual novel, fanmade game">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/defensebar.css">
+    <link rel="stylesheet" href="styles/tableguess.css">
+    <link rel="shortcut icon" href="resources/img/icons/favicon.ico">
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7272925406653306"
+    crossorigin="anonymous"></script>
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "VideoGame",
+          "name": "Ace Attorneydle",
+          "description": "A guessing game for fans of the Ace Attorney series. Guess the characters and iconic cases in just a few tries.",
+          "url": "https://aceattorneydle.fr",
+          "author": {
+            "@type": "Person",
+            "name": "BeignetBoyy & JJ-vle"
+          },
+          "genre": ["Puzzle", "Guessing Game", "Visual Novel"],
+          "inLanguage": "en",
+          "image": "https://aceattorneydle.fr/resources/img/AceAttorneydleLogo.png",
+          "isAccessibleForFree": true
+        }
+    </script>
+</head>
+<body>
+
+    <div class="background-blur" id="office"></div>
+
+    <header>
+        <a href="/">
+            <img src="resources/img/AceAttorneydleLogo.png" alt="AceAttorneydle Logo" id="logo">
+        </a>
+    </header>
+    
+    <div id="game-container">
+        <div id="gamemodeSelector">
+            <a href="/guess"><img src="resources/img/icons/guess.png" alt="Guess" class="selected"></a>
+            <a href="/silhouette"><img src="resources/img/icons/silhouette.png" alt="Silhouette"></a>
+            <a href="/quote"><img src="resources/img/icons/quote.png" alt="Quote"></a>
+            <a href="/case"><img src="resources/img/icons/case.png" alt="Case"></a>
+        </div>
+    </div>
+
+    <div id="hint-container">
+        <div id="hints">
+            <div class="hint" id="hint-game">
+                <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Game">
+                <p>Game</p>
+                <p class="hint-count">in 3 tries</p>
+            </div>
+            <div class="hint" id="hint-occupation">
+                <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Occupation">
+                <p>Occupation</p>
+                <p class="hint-count">in 7 tries</p>
+            </div>
+            <div class="hint" id="hint-figure">
+                <img src="resources/img/icons/Black_Psyche-Lock.png" class="hint-icon disabled" alt="Figure">
+                <p>Figure</p>
+                <p class="hint-count">in 12 tries</p>
+            </div>
+            <div id="hint-details">
+                <div id="hint-details-header"></div>
+
+                <div id="hint-details-content"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="defensebar">
+        <img src="resources/img/icons/defensebar/defensebar15.png" alt="Figure">
+    </div>
+
+    <div id="guessbar">
+        <div id="guessbarinputs">
+            <input type="text" id="guessInput" placeholder="Enter a name..." autocomplete="off" />
+            <button id="validateButton" disabled>Valider</button>
+        </div>
+        <ul id="suggestions"></ul>
+    </div>
+    <p id="feedback"></p>
+
+    <!--<h2>History of tests :</h2>-->
+    <div id="history"></div>
+    
+    <div id="finalresult"></div>
+
+    <div id="groupFilters">
+        <h2>Select the series you want to play with (you can select multiple at once)</h2>
+        <label><input type="checkbox" value="Main" checked> Ace Attorney Main Serie</label>
+        <label><input type="checkbox" value="Investigation"> Investigation</label>
+        <label><input type="checkbox" value="Great"> The Great Ace Attorney</label>
+        <!--<label><input type="checkbox" value="Other"> Other</label>-->
+    </div>
+
+    <script type="module" src="js/common/filter.js"></script>
+    <script type="module" src="js/common/life.js"></script>
+    <script type="module" src="js/common/hint.js"></script>
+    <script type="module" src="js/common/guessbar.js"></script>
+    <script type="module" src="js/guess-unlimited.js"></script>
+
+</body>
+</html>
