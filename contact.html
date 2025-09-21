@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Ace Attorneydle</title>
     <link rel="stylesheet" href="styles/legal_links.css">
+    <link rel="stylesheet" href="styles/cookie-banner.css">
 </head>
 <body>
 
-<header>Ace Attorneydle</header>
+
+<header>
+    <a href="index.html" class="site-header">Ace Attorneydle</a>
+</header>
 
 <nav class="pagination">
     <a href="privacy.html">Privacy</a> | 
@@ -29,5 +33,10 @@
     </p>
 </main>
 
+    <div id="banner-placeholder"></div>
+    <script type="module">
+        import { showConsentBanner, initCookieConsent } from './js/common/cookie.js';
+        initCookieConsent();
+    </script>
 </body>
 </html>

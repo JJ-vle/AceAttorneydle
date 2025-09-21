@@ -8,7 +8,9 @@
 </head>
 <body>
 
-<header>Ace Attorneydle</header>
+<header>
+    <a href="index.html" class="site-header">Ace Attorneydle</a>
+</header>
 
 <nav class="pagination">
     <a href="privacy.html">Privacy</a> | 
@@ -31,5 +33,10 @@
     </p>
 </main>
 
+    <script type="module">
+        import { showConsentBanner, initCookieConsent } from './js/common/cookie.js';
+        initCookieConsent();
+    </script>
 </body>
+
 </html>

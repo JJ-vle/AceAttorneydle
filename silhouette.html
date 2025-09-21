@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/defensebar.css">
     <link rel="stylesheet" href="styles/tableunique.css">
+    <link rel="stylesheet" href="styles/cookie-banner.css">
     <link rel="shortcut icon" href="resources/img/icons/favicon.ico">
 </head>
 <body>
@@ -63,5 +64,22 @@
     <script type="module" src="js/common/guessbar.js"></script>
     <script type="module" src="js/silhouette.js"></script>
 
+    <div id="banner-placeholder"></div>
+
+    <script type="module">
+        import { showConsentBanner, initCookieConsent } from './js/common/cookie.js';
+        initCookieConsent();
+    </script>
 </body>
+<footer>
+    <p>
+        Ace Attorneydle is a fan-made project and is not affiliated with, endorsed by, or associated with Capcom.
+    </p>
+    <p class="legal-links">
+        <a href="privacy.html">Privacy Policy</a> | 
+        <a href="terms.html">Terms of Service</a> | 
+        <a href="contact.html">Contact</a> | 
+        <button id="change-cookie-preferences">Cookie Preferences</button>
+    </p>
+</footer>
 </html>

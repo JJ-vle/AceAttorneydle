@@ -10,9 +10,21 @@ body {
 }
 
 header {
-    font-size: 28px;
+    text-align: left;
+    margin: 20px 0;
+}
+
+header .site-header {
+    font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 40px;
+    text-decoration: none;
+    color: #2781b2; /* bleu ou ta couleur principale */
+    transition: color 0.2s ease;
+}
+
+header .site-header:hover {
+    color: #1b5c80; /* bleu un peu plus sombre au hover */
+    text-decoration: underline;
 }
 
 nav.pagination {

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ace Attorneydle</title>
     <link rel="stylesheet" href="styles/main_style.css">
+    <link rel="stylesheet" href="styles/cookie-banner.css">
     <link rel="shortcut icon" href="resources/img/icons/favicon.ico">
 </head>
 <body>
@@ -14,7 +15,7 @@
         <img src="resources/img/AceAttorneydleLogo.png" alt="AceAttorneydle Logo" id="logo">
     </header>
 
-    <main>
+    <main class="menu-buttons">
         <a href="guess.html">
             <button class="halftone">Guess</button>
         </a>
@@ -29,16 +30,81 @@
         </a>
     </main>
 
-    <footer>
-        <p>
-            Ace Attorneydle is a fan-made project and is not affiliated with, endorsed by, or associated with Capcom or the Ace Attorney series.  
-            All rights to the Ace Attorney franchise, including characters, images, and other related content, belong to Capcom.
-        </p>
-        <p class="legal-links">
-            <a href="privacy.html">Privacy Policy</a> | 
-            <a href="terms.html">Terms of Service</a> | 
-            <a href="contact.html">Contact</a>
-        </p>
-    </footer>
 </body>
+
+<div id="banner-placeholder"></div>
+<script type="module">
+    function initCookieConsent() {
+        const consent = localStorage.getItem('cookiesAccepted');
+
+        if (consent === 'true') {
+            // rien
+        } else if (consent === 'false') {
+            // rien
+        } else {
+            showConsentBanner();
+        }
+
+        // bouton "changer d'avis"
+        const changeBtn = document.getElementById('change-cookie-preferences');
+        if (changeBtn) {
+            changeBtn.addEventListener('click', () => {
+                showConsentBanner(); // réaffiche la bannière
+            });
+        }
+    }
+
+
+    function showConsentBanner() {
+        const banner = document.createElement('div');
+        banner.id = 'cookie-banner';
+        banner.innerHTML = `
+            <p>
+                We use cookies to improve your gameplay experience. 
+                <button id="accept-cookies">Accept</button>
+                <button id="reject-cookies">Reject</button>
+            </p>
+        `;
+        document.getElementById('banner-placeholder').appendChild(banner);
+
+        // styles inline (ou via CSS importé)
+        banner.style.position = 'fixed';
+        banner.style.bottom = '0';
+        banner.style.left = '0';
+        banner.style.width = '100%';
+        banner.style.backgroundColor = 'rgba(0,0,0,0.85)';
+        banner.style.color = 'white';
+        banner.style.padding = '15px 20px';
+        banner.style.textAlign = 'center';
+        banner.style.zIndex = '9999';
+        banner.style.display = 'block';
+
+        document.getElementById('accept-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            banner.remove();
+            console.log('Cookies acceptés');
+            initGameCookies();
+        });
+
+        document.getElementById('reject-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'false');
+            banner.remove();
+            console.log('Cookies refusés');
+        });
+    }
+
+    initCookieConsent();
+</script>
+
+<footer>
+    <p>
+        Ace Attorneydle is a fan-made project and is not affiliated with, endorsed by, or associated with Capcom.
+    </p>
+    <p class="legal-links">
+        <a href="privacy.html">Privacy Policy</a> | 
+        <a href="terms.html">Terms of Service</a> | 
+        <a href="contact.html">Contact</a> | 
+        <button id="change-cookie-preferences">Cookie Preferences</button>
+    </p>
+</footer>
 </html>
