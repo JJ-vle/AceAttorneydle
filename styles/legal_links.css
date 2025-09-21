@@ -1,0 +1,48 @@
+/* style_simple.css */
+
+body {
+    font-family: Arial, sans-serif;
+    color: #000;
+    background-color: #fff;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+header {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+nav.pagination {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 14px;
+}
+
+nav.pagination a {
+    text-decoration: none;
+    color: #000;
+    margin-left: 10px;
+    font-weight: normal;
+}
+
+nav.pagination a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+p, ul {
+    margin-bottom: 15px;
+}

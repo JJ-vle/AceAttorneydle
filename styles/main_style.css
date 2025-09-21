@@ -14,10 +14,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: yop;
-    height: 100vh;
+    height: 100vh; /* prend toute la fenêtre */
     position: relative;
-    overflow: hidden; /* Prevents scrolling issues */
+    overflow: hidden;
 }
 
 /* Background Layer */
@@ -42,19 +41,34 @@ header {
     height: auto;
 }
 
+main {
+    flex: 1; /* occupe tout l’espace libre entre header et footer */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; /* répartit les boutons dans l’espace libre */
+    align-items: center;
+    width: 100%;
+}
+
 button {
     font-family: 'Cassia', serif;
-    font-size: 38px; /* Bigger text */
+    font-size: clamp(20px, 3vw, 36px);
     color: white;
     border: 3px solid rgb(255, 255, 255);
-    padding: 20px 0; /* Vertical padding */
-    margin: 5;
-    width: 300px; /* Fixed width for uniform size */
+
+    width: clamp(200px, 28vw, 360px);
+    height: clamp(60px, 12vh, 120px);
+
     cursor: pointer;
     box-shadow: 3px 3px 0px black;
     transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
+
 
 /* Apply Halftone Pattern */
 button.halftone {
@@ -87,10 +101,11 @@ a {
 div {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    justify-content: space-evenly; /* répartit verticalement */
     align-items: center;
     width: 100%;
-    padding-bottom: 50px;
+    height: 100%; /* occupe tout l’écran */
+    gap: 5vh; /* petit espace entre boutons (proportionnel à l’écran) */
 }
 
 .details {
@@ -103,4 +118,34 @@ div {
     color: white;
     opacity: 0.7;
     width: 90%;
+}
+
+
+footer {
+    font-size: 12px;
+    color: white;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 10px;
+}
+
+footer .legal-links {
+    margin-top: 6px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+footer .legal-links a {
+    color: white;
+    text-decoration: none;
+    color: rgba(112, 145, 207, 0.836);
+    text-decoration: none;
+}
+
+footer .legal-links a:hover {
+    opacity: 1;
+    text-decoration: underline;
 }
