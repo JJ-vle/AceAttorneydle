@@ -43,6 +43,14 @@
     box-sizing: border-box;
 }
 
+#logo {
+  transition: transform 0.3s ease; 
+}
+
+#logo:hover {
+  transform: scale(1.1);
+}
+
 
 /* Corps de la page */
 body { 

@@ -174,3 +174,12 @@ footer .legal-links a:hover {
     color: rgba(112, 180, 207, 0.836);
     text-decoration: underline;
 }
+
+
+#logo {
+  transition: transform 0.3s ease; 
+}
+
+#logo:hover {
+  transform: scale(1.1);
+}
