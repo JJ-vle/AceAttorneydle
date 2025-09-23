@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ace Attorneydle</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css?v=2">
     <link rel="stylesheet" href="styles/defensebar.css">
     <link rel="stylesheet" href="styles/tableguess.css">
     <link rel="stylesheet" href="styles/cookie-banner.css">
@@ -14,11 +14,32 @@
 
     <div class="background-blur" id="office"></div>
 
-    <header>
-        <a href="index.html">
-            <img src="resources/img/AceAttorneydleLogo.png" alt="AceAttorneydle Logo" id="logo">
+    <header class="site-header">
+    <div class="logo-group">
+        <button class="icon-btn">
+        <img src="resources/img/icons/flame.png" alt="Flame">
+        </button>
+
+        <a href="index.html" class="logo-link">
+        <img src="resources/img/AceAttorneydleLogo.png" alt="AceAttorneydle Logo" id="logo">
         </a>
+
+        <div class="side-right">
+        <button class="icon-btn">
+            <img src="resources/img/icons/patchnotes.png" alt="Patch Notes">
+        </button>
+        <button class="icon-btn">
+            <img src="resources/img/icons/param.png" alt="Settings">
+        </button>
+        <button class="icon-btn">
+            <img src="resources/img/icons/questionmark.png" alt="Help">
+        </button>
+        </div>
+    </div>
     </header>
+
+
+
     
     <div id="game-container">
         <div id="gamemodeSelector">

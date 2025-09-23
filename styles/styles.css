@@ -35,7 +35,6 @@
     font-style: normal;
 }
 
-
 /* Réinitialisation des bordures pour des éléments spécifiques */
 * {
     margin: 0;
@@ -43,20 +42,11 @@
     box-sizing: border-box;
 }
 
-#logo {
-  transition: transform 0.3s ease; 
-}
-
-#logo:hover {
-  transform: scale(1.1);
-}
-
-
 /* Corps de la page */
-body { 
+body {
     font-family: 'Cassia', serif;
-    text-align: center; 
-    padding: 20px; 
+    text-align: center;
+    padding: 20px;
     background-color: #f4f4f4;
     display: flex;
     flex-direction: column; /* Aligne les éléments verticalement */
@@ -64,13 +54,7 @@ body {
     gap: 20px; /* Espace de 20px entre chaque élément */
 }
 
-/* Logo dans l'en-tête */
-#logo {
-    display: block;
-    margin: 0 auto;
-    max-width: 20%;
-    height: auto;
-}
+/* NOTE: on ne définit PLUS un sélecteur global #logo ici (évite conflit avec d'autres règles). */
 
 /* GAME SELECTION CONTAINER */
 
@@ -118,7 +102,7 @@ body {
 /* Hover effect */
 #gamemodeSelector img:hover {
     transform: scale(1.1) translateY(-5px);
-    box-shadow: 0 0 0 6px #ffc31d; 
+    box-shadow: 0 0 0 6px #ffc31d;
     filter: drop-shadow(6px 10px 10px rgba(0, 0, 0, 0.8));
 }
 
@@ -128,11 +112,7 @@ body {
     filter: drop-shadow(6px 10px 10px rgba(0, 0, 0, 0.8));
 }
 
-
-
-
 /******************************************************************************************/
-
 
 /* Conteneur pour les filtres */
 #groupFilters {
@@ -141,7 +121,7 @@ body {
     border: 5px solid white; /* Bordure blanche */
     border-radius: 10px; /* Coins arrondis */
     max-width: 700px;
-    background-image: 
+    background-image:
         radial-gradient(circle at center, #2781b2 0.25rem, transparent 0), /* Points avec un centre transparent */
         radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0); /* Dégradé de couleur */
     background-size: 1.3rem 1.3rem; /* Taille des points */
@@ -204,7 +184,7 @@ body {
 }
 
 #groupFilters button:hover {
-    box-shadow: 0 0 0 6px #ffc31d; 
+    box-shadow: 0 0 0 6px #ffc31d;
 }
 
 #groupFilters button:disabled {
@@ -212,16 +192,7 @@ body {
     cursor: not-allowed;
 }
 
-
 /* Section des indices */
-/*
-#hints {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px;
-}
-*/
-
 #hint-container {
     transform: scale(0.8);
     transform-origin: top; /* Keeps scaling consistent from top-left */
@@ -237,7 +208,6 @@ body {
     width: fit-content; /* S'ajuste au contenu sans dépasser max-width */
     margin: 0 auto; /* Centre le bloc */
 }
-
 
 /* Coins bleus */
 #hints::before,
@@ -284,8 +254,6 @@ body {
     border-top: none;
 }
 
-
-
 .hint {
     display: inline-block;
     text-align: center;
@@ -296,7 +264,6 @@ body {
     padding: 5px;  /* Ajoute un peu d'espace pour éviter que le texte touche les bords */
     word-wrap: break-word;  /* Permet au texte de passer à la ligne si besoin */
 }
-
 
 .hint p {
     color: #328CBD;
@@ -317,15 +284,12 @@ body {
     opacity: 0.5;
 }
 
-
 /* Cache le cadre par défaut */
 #hint-details {
     display: none; /* Caché par défaut */
     width: 100%;
     max-width: 500px;
-    /*border-radius: 10px;*/
     overflow: hidden;
-    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);*/
     margin: 20px auto;
     border: 3px solid #2781b2; /* Bordure bleue */
     background-color: white;
@@ -338,7 +302,7 @@ body {
     font-weight: bold;
     color: white;
     text-align: center;
-    background-image: 
+    background-image:
         radial-gradient(circle at center, #2781b2 0.25rem, transparent 0),
         radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0);
     background-size: 1.3rem 1.3rem;
@@ -374,13 +338,11 @@ body {
     margin: 10px auto;
 }
 
-
 /* Détails des indices */
-
 #a-def {
     width: 50%; /* Prend toute la largeur */
     min-height: 100px; /* Hauteur minimale */
-    margin: 20px auto; 
+    margin: 20px auto;
     padding: 20px;
     font-size: 18px;
     font-weight: bold;
@@ -389,7 +351,7 @@ body {
     border: 5px solid #F6F6F6; /* Bordure du haut plus fine */
     border-radius: 0; /* Pas de bordures arrondies sur les côtés */
 
-    background-image: 
+    background-image:
         radial-gradient(circle at center, #212839 0.25rem, transparent 0),
         radial-gradient(circle at center, #212839 0.25rem, #081021 0);
     background-size: 1.3rem 1.3rem;
@@ -406,10 +368,6 @@ body {
 #a-def:not(:empty) {
     visibility: visible;
 }
-
-
-/*******************/
-
 
 /* Conteneur principal de la guessbar */
 #guessbar {
@@ -494,9 +452,9 @@ body {
     height: 30px; /* Taille de l'image */
 }
 
-#suggestions li:hover, 
-#suggestions li.selected { 
-    background-image: 
+#suggestions li:hover,
+#suggestions li.selected {
+    background-image:
         radial-gradient(circle at center, #2781b2 0.25rem, transparent 0), /* Dots with transparent middle */
         radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0); /* Color gradient */
     background-size: 1.3rem 1.3rem; /* Dot size */
@@ -506,29 +464,21 @@ body {
     color: white;
 }
 
-/*******************/
-
 /* Retour d'information sur la devinette */
 #feedback {
-    font-size: 20px; 
-    font-weight: bold; 
-    margin-top: 10px; 
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
     color: #328CBD;
 }
 
-.success { 
-    color: green; 
+.success {
+    color: green;
 }
 
-.error { 
-    color: red; 
+.error {
+    color: red;
 }
-
-
-
-
-
-
 
 .correct {
     background-color: #8fda92;
@@ -569,31 +519,25 @@ body {
 .bigger::after {
     background-image: url('../resources/img/icons/arrow/up.png');
 }
+
 /* Tableaux */
 table {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
 }
-/*
-th, td {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    text-align: center;
-    padding: 8px;
-    border: 1px solid #ddd;
-    max-width: 150px;
-}*/
 
-/* Images */
+/* Images - règle globale (garde la contrainte pour la plupart des images) */
 img {
     max-width: 100px;
     height: auto;
 }
 
-.hidden { 
-    display: none; 
+/* Si tu veux que certaines images (ex: icônes) restent petites, laisse cette règle.
+   On override explicitement le logo dans l'en-tête ci-dessous. */
+
+.hidden {
+    display: none;
 }
 
 ul, ol {
@@ -601,8 +545,6 @@ ul, ol {
     padding-left: 0;
     margin-left: 0;
 }
-
-
 
 /* Animation d'apparition en fondu pour le résultat final */
 #finalresult {
@@ -625,10 +567,6 @@ ul, ol {
     background-color: rgba(255, 99, 71, 0.9); /* Rouge clair */
     border: 3px solid red;
 }
-
-
-
-
 
 /* Style pour les bannières publicitaires verticales */
 .ad-banner-left,
@@ -669,10 +607,8 @@ ul, ol {
     }
 }
 
-
 footer {
     font-size: 12px;
-    color: white;
     color: rgba(255,255,255,0.6);
     text-align: center;
     padding: 10px;
@@ -688,12 +624,9 @@ footer .legal-links {
 }
 
 footer .legal-links a {
-    color: white;
-    text-decoration: none;
     color: rgba(112, 145, 207, 0.836);
     text-decoration: none;
 }
-
 
 footer .legal-links a:hover {
     opacity: 1;
@@ -712,4 +645,66 @@ footer .legal-links a:hover {
 }
 #change-cookie-preferences:hover {
     color: rgba(112, 180, 207, 0.836);
+}
+
+/* === HEADER WITH CENTERED LOGO AND SIDE ICONS (CORRIGÉ) === */
+
+.site-header {
+  display: flex;
+  justify-content: center; /* centre l’ensemble logo + icônes */
+  padding: 16px 0;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 14px; /* espace entre flame, logo et icônes de droite */
+}
+
+#logo {
+  height: 120px;     /* hauteur visible mais pas trop petite */
+  width: auto;       /* conserve les proportions */
+  max-width: 100%;   /* ne dépasse jamais la largeur du conteneur parent */
+  flex-shrink: 0;    /* ne se compresse pas dans un flexbox */
+  transition: transform 0.3s ease;
+}
+
+#logo:hover {
+  transform: scale(1.1);
+}
+
+.side-right {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* espace entre icônes */
+}
+
+.icon-btn {
+  border: none;
+  background: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.icon-btn img {
+  height: 30px; /* icônes plus petites que le logo */
+  width: auto;
+}
+
+.icon-btn:hover {
+  transform: translateY(-2px);
+}
+
+
+/* responsive tweak */
+@media (max-width: 480px){
+  .site-header{ height: 64px; }
+  .site-header #logo{ height: 56px; }
+  .side-left{ left: 8px; }
+  .side-right{ right: 8px; }
+  .icon-btn img{ height: 22px; }
 }
