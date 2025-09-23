@@ -708,3 +708,29 @@ footer .legal-links a:hover {
   .side-right{ right: 8px; }
   .icon-btn img{ height: 22px; }
 }
+
+.flame-container {
+  position: relative;       /* permet le positionnement absolu */
+  display: inline-block;
+  width: 100px;             /* taille globale (ajuste selon besoin) */
+  height: 100px;
+}
+
+.flame-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;      /* garde les proportions de l’image */
+}
+
+.flame-count {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* centre parfaitement */
+  color: white;
+  font-size: 32px;          /* taille du chiffre */
+  font-weight: bold;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6); /* lisible même sur fond clair */
+  pointer-events: none;     /* le chiffre n'intercepte pas de clics */
+}
+
