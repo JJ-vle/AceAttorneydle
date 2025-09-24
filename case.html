@@ -16,74 +16,98 @@
 
     <div class="background-blur" id="police"></div>
 
-    <header>
-        <a href="index.html">
-            <img src="resources/img/AceAttorneydleLogo.png" alt="AceAttorneydle Logo" id="logo">
+    <header class="site-header">
+    <div class="logo-group">
+        <div class="flame-container">
+        <img src="resources/img/icons/flame.png" alt="Flamme" class="flame-icon">
+        <span class="flame-count">3</span>
+        </div>
+
+
+        <a href="index.html" class="logo-link">
+        <img src="resources/img/AceAttorneydleLogo.png" alt="AceAttorneydle Logo" id="logo">
         </a>
+
+        <div class="side-right">
+        <button class="icon-btn">
+            <img src="resources/img/icons/patchnotes.png" alt="Patch Notes">
+        </button>
+        <button class="icon-btn">
+            <img src="resources/img/icons/param.png" alt="Settings">
+        </button>
+        <button class="icon-btn">
+            <img src="resources/img/icons/questionmark.png" alt="Help">
+        </button>
+        </div>
+    </div>
     </header>
 
-    <div id="game-container">
-        <div id="gamemodeSelector">
-            <a href="guess.html"><img src="resources/img/icons/guess.png" alt="Guess"></a>
-            <a href="silhouette.html"><img src="resources/img/icons/silhouette.png" alt="Silhouette"></a>
-            <a href="quote.html"><img src="resources/img/icons/quote.png" alt="Quote"></a>
-            <a href="case.html"><img src="resources/img/icons/case.png" alt="Case" class="selected"></a>
-        </div>
-    </div>
-
-    <div id="hint-container">
-        <div id="hints">
-            <div class="hint" id="hint-cause">
-                <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Death cause">
-                <p>Death cause</p>
-                <p class="hint-count">in 3 tries</p>
-            </div>
-            <div class="hint" id="hint-locations">
-                <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Victim">
-                <p>Locations</p>
-                <p class="hint-count">in 7 tries</p>
-            </div>
-            <div class="hint" id="hint-victim">
-                <img src="resources/img/icons/Black_Psyche-Lock.png" class="hint-icon disabled" alt="Victim">
-                <p>Victim</p>
-                <p class="hint-count">in 7 tries</p>
-            </div>
-            <div id="hint-details">
-                <div id="hint-details-header"></div>
-
-                <div id="hint-details-content"></div>
+    
+    <main>
+        <div id="game-container">
+            <div id="gamemodeSelector">
+                <a href="guess.html"><img src="resources/img/icons/guess.png" alt="Guess"></a>
+                <a href="silhouette.html"><img src="resources/img/icons/silhouette.png" alt="Silhouette"></a>
+                <a href="quote.html"><img src="resources/img/icons/quote.png" alt="Quote"></a>
+                <a href="case.html"><img src="resources/img/icons/case.png" alt="Case" class="selected"></a>
             </div>
         </div>
-    </div>
-    
-    <div id="defensebar">
-        <img src="resources/img/icons/defensebar/defensebar15.png" alt="Figure">
-    </div>
 
-    <div id="evidence-container">
-    </div>
+        <div id="hint-container">
+            <div id="hints">
+                <div class="hint" id="hint-cause">
+                    <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Death cause">
+                    <p>Death cause</p>
+                    <p class="hint-count">in 3 tries</p>
+                </div>
+                <div class="hint" id="hint-locations">
+                    <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Victim">
+                    <p>Locations</p>
+                    <p class="hint-count">in 7 tries</p>
+                </div>
+                <div class="hint" id="hint-victim">
+                    <img src="resources/img/icons/Black_Psyche-Lock.png" class="hint-icon disabled" alt="Victim">
+                    <p>Victim</p>
+                    <p class="hint-count">in 7 tries</p>
+                </div>
+                <div id="hint-details">
+                    <div id="hint-details-header"></div>
 
-    <div id="guessbar">
-        <div id="guessbarinputs">
-            <input type="text" id="guessInput" placeholder="Enter a name..." autocomplete="off" />
-            <button id="validateButton" disabled>Valider</button>
+                    <div id="hint-details-content"></div>
+                </div>
+            </div>
         </div>
-        <ul id="suggestions"></ul>
-    </div>
-    <p id="feedback"></p>
+        
+        <div id="defensebar">
+            <img src="resources/img/icons/defensebar/defensebar15.png" alt="Figure">
+        </div>
 
-    <!--<h2>History of tests :</h2>-->
-    <div id="history"></div>
-    
-    <div id="finalresult"></div>
-    
-    <div id="groupFilters">
-        <h2>Select the series you want to play with (you can select multiple at once)</h2>
-        <label><input type="checkbox" value="Main" checked> Ace Attorney Main Serie</label>
-        <label><input type="checkbox" value="Investigation"> Investigation</label>
-        <label><input type="checkbox" value="Great"> The Great Ace Attorney</label>
-        <!--<label><input type="checkbox" value="Other"> Other</label>-->
-    </div>
+        <div id="evidence-container">
+        </div>
+
+        <div id="guessbar">
+            <div id="guessbarinputs">
+                <input type="text" id="guessInput" placeholder="Enter a name..." autocomplete="off" />
+                <button id="validateButton" disabled>Valider</button>
+            </div>
+            <ul id="suggestions"></ul>
+        </div>
+        <p id="feedback"></p>
+
+        <!--<h2>History of tests :</h2>-->
+        <div id="history"></div>
+        
+        <div id="finalresult"></div>
+        
+        <div id="groupFilters">
+            <h2>Select the series you want to play with (you can select multiple at once)</h2>
+            <label><input type="checkbox" value="Main" checked> Ace Attorney Main Serie</label>
+            <label><input type="checkbox" value="Investigation"> Investigation</label>
+            <label><input type="checkbox" value="Great"> The Great Ace Attorney</label>
+            <!--<label><input type="checkbox" value="Other"> Other</label>-->
+        </div>
+
+    </main>
 
     <script type="module" src="js/common/filter.js"></script>
     <script type="module" src="js/common/life.js"></script>

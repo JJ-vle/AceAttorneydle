@@ -45,14 +45,23 @@
 /* Corps de la page */
 body {
     font-family: 'Cassia', serif;
-    text-align: center;
-    padding-top: 20px;
     background-color: #f4f4f4;
     display: flex;
-    flex-direction: column; /* Aligne les éléments verticalement */
-    align-items: center; /* Centre les éléments horizontalement */
-    gap: 20px; /* Espace de 20px entre chaque élément */
+    flex-direction: column;
+    min-height: 100vh;   /* occupe toute la hauteur de la fenêtre */
 }
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* centre horizontalement */
+  justify-content: flex-start; /* commence en haut */
+  text-align: center;      /* centre le texte aussi */
+  gap: 20px;               /* espace vertical entre chaque enfant */
+  padding: 20px 0;         /* optionnel : ajoute un peu d’air en haut/bas */
+}
+
 
 /* NOTE: on ne définit PLUS un sélecteur global #logo ici (évite conflit avec d'autres règles). */
 

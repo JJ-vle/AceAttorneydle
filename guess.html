@@ -42,70 +42,71 @@
 
 
 
-    
-    <div id="game-container">
-        <div id="gamemodeSelector">
-            <a href="guess.html"><img src="resources/img/icons/guess.png" alt="Guess" class="selected"></a>
-            <a href="silhouette.html"><img src="resources/img/icons/silhouette.png" alt="Silhouette"></a>
-            <a href="quote.html"><img src="resources/img/icons/quote.png" alt="Quote"></a>
-            <a href="case.html"><img src="resources/img/icons/case.png" alt="Case"></a>
-        </div>
-    </div>
-
-    <div id="hint-container">
-        <div id="hints">
-            <div class="hint" id="hint-game">
-                <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Game">
-                <p>Game</p>
-                <p class="hint-count">in 3 tries</p>
-            </div>
-            <div class="hint" id="hint-occupation">
-                <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Occupation">
-                <p>Occupation</p>
-                <p class="hint-count">in 7 tries</p>
-            </div>
-            <div class="hint" id="hint-figure">
-                <img src="resources/img/icons/Black_Psyche-Lock.png" class="hint-icon disabled" alt="Figure">
-                <p>Figure</p>
-                <p class="hint-count">in 12 tries</p>
-            </div>
-            <div id="hint-details">
-                <div id="hint-details-header"></div>
-
-                <div id="hint-details-content"></div>
+    <main>
+        <div id="game-container">
+            <div id="gamemodeSelector">
+                <a href="guess.html"><img src="resources/img/icons/guess.png" alt="Guess" class="selected"></a>
+                <a href="silhouette.html"><img src="resources/img/icons/silhouette.png" alt="Silhouette"></a>
+                <a href="quote.html"><img src="resources/img/icons/quote.png" alt="Quote"></a>
+                <a href="case.html"><img src="resources/img/icons/case.png" alt="Case"></a>
             </div>
         </div>
-    </div>
-    
-    <div id="defensebar">
-        <img src="resources/img/icons/defensebar/defensebar15.png" alt="Figure">
-    </div>
-    
-    <!--
-    <div id="a-def"></div>
-    -->
-    <div id="guessbar">
-        <div id="guessbarinputs">
-            <input type="text" id="guessInput" placeholder="Enter a name..." autocomplete="off" />
-            <button id="validateButton" disabled>Valider</button>
+
+        <div id="hint-container">
+            <div id="hints">
+                <div class="hint" id="hint-game">
+                    <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Game">
+                    <p>Game</p>
+                    <p class="hint-count">in 3 tries</p>
+                </div>
+                <div class="hint" id="hint-occupation">
+                    <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Occupation">
+                    <p>Occupation</p>
+                    <p class="hint-count">in 7 tries</p>
+                </div>
+                <div class="hint" id="hint-figure">
+                    <img src="resources/img/icons/Black_Psyche-Lock.png" class="hint-icon disabled" alt="Figure">
+                    <p>Figure</p>
+                    <p class="hint-count">in 12 tries</p>
+                </div>
+                <div id="hint-details">
+                    <div id="hint-details-header"></div>
+
+                    <div id="hint-details-content"></div>
+                </div>
+            </div>
         </div>
-        <ul id="suggestions"></ul>
-    </div>
-    <p id="feedback"></p>
-
-    <!--<h2>History of tests :</h2>-->
-    <div id="history"></div>
-    
-    <div id="finalresult"></div>
-
-    <div id="groupFilters">
-        <h2>Select the series you want to play with (you can select multiple at once)</h2>
-        <label><input type="checkbox" value="Main" checked> Ace Attorney Main Serie</label>
-        <label><input type="checkbox" value="Investigation"> Investigation</label>
-        <label><input type="checkbox" value="Great"> The Great Ace Attorney</label>
-        <!--<label><input type="checkbox" value="Other"> Other</label>-->
-    </div>
         
+        <div id="defensebar">
+            <img src="resources/img/icons/defensebar/defensebar15.png" alt="Figure">
+        </div>
+        
+        <!--
+        <div id="a-def"></div>
+        -->
+        <div id="guessbar">
+            <div id="guessbarinputs">
+                <input type="text" id="guessInput" placeholder="Enter a name..." autocomplete="off" />
+                <button id="validateButton" disabled>Valider</button>
+            </div>
+            <ul id="suggestions"></ul>
+        </div>
+        <p id="feedback"></p>
+
+        <!--<h2>History of tests :</h2>-->
+        <div id="history"></div>
+        
+        <div id="finalresult"></div>
+
+        <div id="groupFilters">
+            <h2>Select the series you want to play with (you can select multiple at once)</h2>
+            <label><input type="checkbox" value="Main" checked> Ace Attorney Main Serie</label>
+            <label><input type="checkbox" value="Investigation"> Investigation</label>
+            <label><input type="checkbox" value="Great"> The Great Ace Attorney</label>
+            <!--<label><input type="checkbox" value="Other"> Other</label>-->
+        </div>
+    </main>
+
     <script type="module" src="js/common/filter.js"></script>
     <script type="module" src="js/common/life.js"></script>
     <script type="module" src="js/common/hint.js"></script>
