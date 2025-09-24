@@ -79,7 +79,7 @@ export function gameOver(result, fromhistory){
             <img src="${img}" alt="${element}"><br>
             <strong>${targetItem.name}</strong><br><br>
             🔥 Current Streak: ${newStreak}<br>
-            🔢 Number of tries: ${numTries}<br>
+            🔢 Number of tries: ${numTries+1}<br>
             ⏳ Time until next ${element} : ${getTimeUntilNext()}<br>
         `;
         resultClass = "win";
@@ -92,7 +92,7 @@ export function gameOver(result, fromhistory){
             <img src="${img}" alt="${element}"><br>
             <strong>${targetItem.name}</strong><br><br>
             🔄 Streak reset<br>
-            🔢 Number of tries: ${numTries}<br>
+            🔢 Number of tries: ${numTries+1}<br>
             ⏳ Time until next ${element} : ${getTimeUntilNext()}<br>
         `;
         resultClass = "lose";

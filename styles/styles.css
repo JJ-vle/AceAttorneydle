@@ -46,7 +46,7 @@
 body {
     font-family: 'Cassia', serif;
     text-align: center;
-    padding: 20px;
+    padding-top: 20px;
     background-color: #f4f4f4;
     display: flex;
     flex-direction: column; /* Aligne les éléments verticalement */
@@ -608,8 +608,16 @@ ul, ol {
 }
 
 footer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background: linear-gradient(0deg,rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 0) 100%);
+}
+
+footer .content {
+    width:50%;
     font-size: 12px;
-    color: rgba(255,255,255,0.6);
+    color: black;
     text-align: center;
     padding: 10px;
 }
@@ -628,10 +636,16 @@ footer .legal-links a {
     text-decoration: none;
 }
 
+footer .legal-links button {
+    color: rgba(112, 145, 207, 0.836);
+    text-decoration: none;
+}
+
 footer .legal-links a:hover {
     opacity: 1;
     text-decoration: underline;
 }
+
 
 #change-cookie-preferences {
     background: none;
