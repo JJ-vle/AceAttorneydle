@@ -69,17 +69,25 @@ export function collapseAllHints() {
 
 // Variable pour suivre le hint actuellement affiché
 let currentHint = null;
+// Map pour stocker les listeners attachés
+const hintListeners = {};
 
 function unlockHint(hint) {
     hints[hint].icon.classList.add("active");
     hints[hint].icon.classList.remove("disabled");
     hints[hint].icon.style.cursor = "pointer";
 
-    // On enlève tous les anciens écouteurs pour éviter la duplication
-    hints[hint].icon.removeEventListener("click", toggleHint);
-    hints[hint].icon.addEventListener("click", toggleHint.bind(null, hint));
-    
+    // Si on n’a pas encore créé de listener pour ce hint, on le crée et on le garde
+    if (!hintListeners[hint]) {
+        hintListeners[hint] = toggleHint.bind(null, hint);
+    }
+
+    // On enlève l’ancien listener (si présent) et on remet le même (référence stable)
+    hints[hint].icon.removeEventListener("click", hintListeners[hint]);
+    hints[hint].icon.addEventListener("click", hintListeners[hint]);
 }
+
+
 
 function toggleHint(hint) {
     // Si on clique sur le même hint, on le cache
@@ -120,7 +128,7 @@ export function unlockAllHints() {
             : "resources/img/icons/Psyche-Lock-Broken.png";
     }
 
-    currentHint = null; // Réinitialise
+    //currentHint = null; // Réinitialise
 }
 
 
