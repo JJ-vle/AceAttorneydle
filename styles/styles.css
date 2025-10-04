@@ -757,3 +757,11 @@ footer .legal-links a:hover {
   pointer-events: none;     /* le chiffre n'intercepte pas de clics */
 }
 
+/***********/
+
+#silhouette img {
+  filter: brightness(0); /* rend l’image entièrement noire */
+  -webkit-user-drag: none; /* empêche le drag sur Webkit */
+  pointer-events: none; /* désactive clics/déplacements */
+  user-select: none; /* empêche la sélection */
+}
