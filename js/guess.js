@@ -137,6 +137,7 @@ function compareInfo(guess, target) {
     const isCorrect = guess === target;
     return `<td class="${isCorrect ? 'correct' : 'incorrect'}">${guess}</td>`;
 }
+
 // Fonction de comparaison des dates de naissances
 function compareBirthday(guessBirthday, targetBirthday) {
     if (!guessBirthday || guessBirthday === "N/A") {
@@ -156,14 +157,26 @@ function compareBirthday(guessBirthday, targetBirthday) {
 
     // Convertir les siècles en années approximatives
     function parseYear(yearStr) {
+        if (typeof yearStr !== "string") return [];
+
+        // Gestion des siècles
         if (yearStr.includes("19th")) return [1800];
         if (yearStr.includes("20th")) return [1900];
         if (yearStr.includes("21st")) return [2000];
-        if (yearStr.includes("7th")) return [600];
         if (yearStr.includes("17th")) return [1600];
+        if (yearStr.includes("7th"))  return [600];
 
-        let years = yearStr.split("-").map(y => parseInt(y.trim())); // Toujours un tableau
-        return years.length > 1 ? years : [years[0]]; // Si une seule année, on la met dans un tableau
+        const rangeMatch = yearStr.match(/(\d{4})\s*-\s*(\d{4})/);
+        if (rangeMatch) {
+            return [parseInt(rangeMatch[1]), parseInt(rangeMatch[2])];
+        }
+
+        const matches = yearStr.match(/\d{4}/g);
+        if (matches) {
+            return matches.map(y => parseInt(y));
+        }
+
+        return [];
     }
 
     let guessedYears = guessBirthday !== "Unknown" ? parseYear(guessBirthday) : [];
