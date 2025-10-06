@@ -143,9 +143,7 @@ function imageProcessing(imgSrc) {
     silhouetteImg.innerHTML = ''
     silhouetteImg.appendChild(imgElement);
 }
-
 function checkCorrectGroups(groups){
-
     checkboxes.forEach(checkbox => {
         // Check if the checkbox's value is in the provided list
         checkbox.checked = groups.includes(checkbox.value);

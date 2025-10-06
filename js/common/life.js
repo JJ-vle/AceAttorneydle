@@ -2,6 +2,7 @@
 import { removeValidateButtonListener, guessbarDiv } from './guessbar.js';
 import { setCookie, streaks } from './cookie.js';
 import { gameMode, targetItem } from './data.js';
+import { setFlameCount, recolorFlame } from './streak.js';
 
 const defensebar = document.getElementById("defensebar");
 const resultDiv = document.getElementById("result");
@@ -71,7 +72,12 @@ export function gameOver(result, fromhistory){
             newStreak = parseInt(streaks[gameMode + "Streak"]) + 1;
         }
         
-        hintChecker(true);
+        setFlameCount(newStreak+1);
+        recolorFlame();
+
+        if(gameMode != "silhouette"){
+            hintChecker(true);
+        }
 
         message = `
             🎉 Bravo!<br>

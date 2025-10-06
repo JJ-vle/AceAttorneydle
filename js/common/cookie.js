@@ -3,6 +3,7 @@
 // Import de tes fonctions existantes
 import { gameMode, getGroupByCharacter, getGroupByTurnabout, selectedGroups, getCharacterInformations, attemptedNames, resetAttemptedNames } from './data.js';
 import { validateGuessFunction } from './guessbar.js';
+import { hideFlame, setFlameCount, uncolorFlame } from './streak.js';
 
 // ==========================
 // CONSENT MANAGEMENT
@@ -106,6 +107,8 @@ function setupStreakCookie(name){
     }
     
     setCookie(name, streak);
+    uncolorFlame();
+    setFlameCount(streak);
     return streak;
 }
 
@@ -115,7 +118,10 @@ function setupStreakCookie(name){
 
 export async function loadHistory() {
     // Ne charge les cookies que si consenté
-    if(localStorage.getItem('cookiesAccepted') !== 'true') return;
+    if(localStorage.getItem('cookiesAccepted') !== 'true'){
+        hideFlame();
+        return;
+    } 
 
     resetAttemptedNames();
     let cookieAttempts = readJsonCookie(cookieName);

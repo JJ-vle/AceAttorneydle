@@ -743,6 +743,7 @@ footer .legal-links a:hover {
   width: 100%;
   height: 100%;
   object-fit: contain;      /* garde les proportions de l’image */
+  transition: filter 0.3s ease;
 }
 
 .flame-count {
