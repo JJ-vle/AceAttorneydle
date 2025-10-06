@@ -1,6 +1,15 @@
 const infoPage = document.querySelector(".info-page");
 const buttons = document.querySelectorAll(".side-right .icon-btn");
 
+let frenchNamesEnabled = false;
+let colorblindModeEnabled = false;
+
+function loadSettings() {
+    frenchNamesEnabled = localStorage.getItem("frenchNamesEnabled") === "true";
+    colorblindModeEnabled = localStorage.getItem("colorblindModeEnabled") === "true";
+}
+loadSettings();
+
 // Patch notes data
 const patchNotes = [
     {
@@ -102,6 +111,33 @@ const contents = {
     `
 };
 
+
+
+// Restaure les valeurs sauvegardées dans les paramètres
+function restoreSettingsState() {
+    const frenchToggle = document.querySelector("#french-names-toggle");
+    const colorToggle = document.querySelector("#colorblind-mode-toggle");
+
+    if (frenchToggle) {
+        frenchToggle.checked = frenchNamesEnabled;
+        frenchToggle.addEventListener("change", () => {
+            frenchNamesEnabled = frenchToggle.checked; 
+            localStorage.setItem("frenchNamesEnabled", frenchNamesEnabled);
+        });
+    }
+
+    if (colorToggle) {
+        colorToggle.checked = colorblindModeEnabled;
+        colorToggle.addEventListener("change", () => {
+            colorblindModeEnabled = colorToggle.checked;
+            localStorage.setItem("colorblindModeEnabled", colorblindModeEnabled);
+        });
+    }
+}
+
+
+
+
 function showInfo(contentKey) {
     infoPage.innerHTML = `
         <div class="info-content">
@@ -122,9 +158,12 @@ function showInfo(contentKey) {
             infoPage.innerHTML = "";
         }
     }, { once: true });
+
+    if (contentKey === "settings") restoreSettingsState();
 }
 
 // Buttons actions
 buttons[0].addEventListener("click", () => showInfo("patchnotes"));
 buttons[1].addEventListener("click", () => showInfo("settings"));
 buttons[2].addEventListener("click", () => showInfo("help"));
+
