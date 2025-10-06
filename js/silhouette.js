@@ -66,7 +66,14 @@ function validateGuess(guessName=inputField.value.trim(), fromhistory=false) {
 
     if (guessName.toLowerCase() === targetItem.name.toLowerCase()) {
         addToHistory(guessedCharacter, true);
-        silhouetteImg.children[0].style.filter = ""
+
+
+        const silhouetteImage = document.querySelector("#silhouette img");
+        if (silhouetteImage) {
+            silhouetteImage.style.filter = "none";
+        }
+
+        //silhouetteImg.children[0].style.filter = ""
         feedback.textContent = "🎉 Congratulation ! You found " + targetItem.name + " !";
         feedback.className = "success";
         
@@ -76,6 +83,7 @@ function validateGuess(guessName=inputField.value.trim(), fromhistory=false) {
         feedback.textContent = "❌ wrong answer, try again !";
         feedback.className = "error";
     }
+
     incrementNumTries();
     verifyTries();
     inputField.value = "";
