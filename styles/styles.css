@@ -507,6 +507,29 @@ main {
     position: relative;
 }
 
+/* Mode daltonien actif */
+.colorblind-mode .correct {
+    background-color: #0072B2; /* Bleu */
+    color: white;
+}
+
+.colorblind-mode .incorrect {
+    background-color: #D55E00; /* Orange foncé */
+    color: white;
+}
+
+.colorblind-mode .partial {
+    background-color: #E69F00; /* Jaune orangé */
+    color: black;
+}
+
+/* Optionnel : contraste plus fort pour le texte */
+.colorblind-mode .guess-cell {
+    border: 2px solid #000;
+}
+
+
+
 .lower::after,
 .bigger::after {
     content: "";

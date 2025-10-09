@@ -1,14 +1,15 @@
 const infoPage = document.querySelector(".info-page");
 const buttons = document.querySelectorAll(".side-right .icon-btn");
 
-let frenchNamesEnabled = false;
-let colorblindModeEnabled = false;
+export let frenchNamesEnabled = false;
+export let colorblindModeEnabled = false;
 
 function loadSettings() {
     frenchNamesEnabled = localStorage.getItem("frenchNamesEnabled") === "true";
     colorblindModeEnabled = localStorage.getItem("colorblindModeEnabled") === "true";
 }
 loadSettings();
+updateColorblindMode(colorblindModeEnabled);
 
 // Patch notes data
 const patchNotes = [
@@ -128,15 +129,25 @@ function restoreSettingsState() {
 
     if (colorToggle) {
         colorToggle.checked = colorblindModeEnabled;
+        updateColorblindMode(colorblindModeEnabled); // <-- applique dès le chargement
+
         colorToggle.addEventListener("change", () => {
             colorblindModeEnabled = colorToggle.checked;
             localStorage.setItem("colorblindModeEnabled", colorblindModeEnabled);
+            updateColorblindMode(colorblindModeEnabled);
         });
     }
+
 }
 
-
-
+function updateColorblindMode(enabled) {
+    const body = document.body;
+    if (enabled) {
+        body.classList.add("colorblind-mode");
+    } else {
+        body.classList.remove("colorblind-mode");
+    }
+}
 
 function showInfo(contentKey) {
     infoPage.innerHTML = `

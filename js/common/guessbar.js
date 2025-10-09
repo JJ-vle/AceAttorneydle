@@ -1,6 +1,7 @@
 // guessbar.js
 
 import { characterData, casesData, selectedGroups, attemptedNames, getGroupByCharacter, getGroupByTurnabout, gameMode } from './data.js';
+import { frenchNamesEnabled } from './infoPage.js';
 
 let selectedIndex = -1;
 export let validateGuessFunction = null;
@@ -155,24 +156,24 @@ function searchMatchedCharacters(filteredItems, query) {
     return filteredItems.filter(c => {
         if (attemptedNames.includes(c.name)) return false;
 
-        const englishNameParts = c.name.toLowerCase().split(" "); // Diviser le nom anglais en parties
-        const frenchNamesParts = (c.french || []).map(f => f.toLowerCase().split(" ")); // Diviser les noms français en parties
+        const englishNameParts = c.name.toLowerCase().split(" "); // Nom anglais
+        const frenchNamesParts = (c.french || []).map(f => f.toLowerCase().split(" ")); // Noms français
 
         // Vérifier si tous les segments de la requête correspondent à une partie du nom
-        return (
-            // Vérification sur le nom anglais
-            queryParts.every(queryPart => 
-                englishNameParts.some(namePart => namePart.startsWith(queryPart))
-            ) ||
-            // Vérification sur le nom français
-            frenchNamesParts.some(frenchNameParts =>
-                queryParts.every(queryPart => 
-                    frenchNameParts.some(namePart => namePart.startsWith(queryPart))
-                )
+        const matchesEnglish = queryParts.every(queryPart =>
+            englishNameParts.some(namePart => namePart.startsWith(queryPart))
+        );
+
+        const matchesFrench = frenchNamesEnabled && frenchNamesParts.some(frenchNameParts =>
+            queryParts.every(queryPart =>
+                frenchNameParts.some(namePart => namePart.startsWith(queryPart))
             )
         );
+
+        return matchesEnglish || matchesFrench;
     });
 }
+
 
 function searchMatchedCases(filteredItems, query) {
     const queryParts = query.toLowerCase().split(" ");
