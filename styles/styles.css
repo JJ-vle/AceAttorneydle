@@ -1,3 +1,17 @@
+:root {
+  --blue-primary: #2781b2;   /* Couleur dominante (barres, fond, hover, etc.) */
+  --blue-secondary: #328CBD; /* Variante un peu plus claire */
+  --blue-accent: #338ebf;    /* Accent dans les dégradés */
+  --blue-dark: #28799D;      /* Bleu foncé pour hover */
+  --blue-deep: #212839;      /* Bleu très foncé, utilisé dans les fonds */
+  --blue-deeper: #081021;    /* Variante encore plus sombre */
+
+  --blue-light: #F6F6F6;
+  --yellow-highlight: #ffc31d;
+  --neutral-white: #ffffff;
+}
+
+
 .background-blur {
     position: fixed; /* Le fond reste fixe pendant le défilement */
     top: 0;
@@ -88,7 +102,7 @@ main {
     left: 50%;
     width: 110%;
     height: 30px; /* Adjust thickness */
-    background-color: #2781b2;
+    background-color: var(--blue-primary);
     clip-path: polygon(0% 50%, 7% 0%, 93% 0%, 100% 50%, 93% 100%, 7% 100%);
     transform: translateX(-50%);
     z-index: -1;
@@ -111,7 +125,7 @@ main {
 /* Hover effect */
 #gamemodeSelector img:hover {
     transform: scale(1.1) translateY(-5px);
-    box-shadow: 0 0 0 6px #ffc31d;
+    box-shadow: 0 0 0 6px var(--yellow-highlight);
     filter: drop-shadow(6px 10px 10px rgba(0, 0, 0, 0.8));
 }
 
@@ -131,8 +145,8 @@ main {
     border-radius: 10px; /* Coins arrondis */
     max-width: 700px;
     background-image:
-        radial-gradient(circle at center, #2781b2 0.25rem, transparent 0), /* Points avec un centre transparent */
-        radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0); /* Dégradé de couleur */
+        radial-gradient(circle at center, var(--blue-primary) 0.25rem, transparent 0), /* Points avec un centre transparent */
+        radial-gradient(circle at center, var(--blue-primary) 0.25rem, var(--blue-accent) 0); /* Dégradé de couleur */
     background-size: 1.3rem 1.3rem; /* Taille des points */
     background-position: 0 0, 0.65rem 0.65rem; /* Positionnement des points */
     background-blend-mode: normal; /* Pas de mélange, superposition des couches */
@@ -173,7 +187,7 @@ main {
 
 /* Changement de couleur des labels lorsque la checkbox est cochée */
 #groupFilters label:has(input[type="checkbox"]:checked) {
-    color: #ffc31d;
+    color: var(--yellow-highlight);
     font-weight: bold; /* Texte en gras */
     text-decoration: underline; /* Texte souligné */
 }
@@ -181,7 +195,7 @@ main {
 /* Style du bouton */
 #groupFilters button {
     padding: 10px 20px;
-    background-color: #28799D;
+    background-color: var(--blue-dark);
     color: white;
     border: none;
     cursor: pointer;
@@ -193,7 +207,7 @@ main {
 }
 
 #groupFilters button:hover {
-    box-shadow: 0 0 0 6px #ffc31d;
+    box-shadow: 0 0 0 6px var(--yellow-highlight);
 }
 
 #groupFilters button:disabled {
@@ -211,7 +225,7 @@ main {
     background-color: white; /* Fond blanc */
     padding: 20px;
     position: relative;
-    border: 5px solid #328CBD; /* Bordure plus fine */
+    border: 5px solid var(--blue-secondary); /* Bordure plus fine */
     outline: 5px solid white; /* Bordure blanche interne */
     max-width: 600px; /* Limite la largeur */
     width: fit-content; /* S'ajuste au contenu sans dépasser max-width */
@@ -227,7 +241,7 @@ main {
     position: absolute;
     width: 20px;
     height: 20px;
-    border: 7px solid #328CBD; /* Coins bleus */
+    border: 7px solid var(--blue-secondary); /* Coins bleus */
     margin: 5px; /* Espace vide entre les coins et les bordures */
 }
 
@@ -275,7 +289,7 @@ main {
 }
 
 .hint p {
-    color: #328CBD;
+    color: var(--blue-secondary);
 }
 
 .hint-icon {
@@ -300,7 +314,7 @@ main {
     max-width: 500px;
     overflow: hidden;
     margin: 20px auto;
-    border: 3px solid #2781b2; /* Bordure bleue */
+    border: 3px solid var(--blue-primary); /* Bordure bleue */
     background-color: white;
 }
 
@@ -312,12 +326,12 @@ main {
     color: white;
     text-align: center;
     background-image:
-        radial-gradient(circle at center, #2781b2 0.25rem, transparent 0),
-        radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0);
+        radial-gradient(circle at center, var(--blue-primary) 0.25rem, transparent 0),
+        radial-gradient(circle at center, var(--blue-primary) 0.25rem, var(--blue-accent) 0);
     background-size: 1.3rem 1.3rem;
     background-position: 0 0, 0.65rem 0.65rem;
     background-blend-mode: normal;
-    border-bottom: 3px solid #2781b2;
+    border-bottom: 3px solid var(--blue-primary);
 }
 
 /* Style du contenu */
@@ -355,14 +369,14 @@ main {
     padding: 20px;
     font-size: 18px;
     font-weight: bold;
-    color: #F6F6F6;
+    color: var(--blue-light);
     text-align: center;
-    border: 5px solid #F6F6F6; /* Bordure du haut plus fine */
+    border: 5px solid var(--blue-light); /* Bordure du haut plus fine */
     border-radius: 0; /* Pas de bordures arrondies sur les côtés */
 
     background-image:
-        radial-gradient(circle at center, #212839 0.25rem, transparent 0),
-        radial-gradient(circle at center, #212839 0.25rem, #081021 0);
+        radial-gradient(circle at center, var(--blue-deep) 0.25rem, transparent 0),
+        radial-gradient(circle at center, var(--blue-deep) 0.25rem, var(--blue-deeper) 0);
     background-size: 1.3rem 1.3rem;
     background-position: 0 0, 0.65rem 0.65rem;
     background-blend-mode: normal;
@@ -398,7 +412,7 @@ main {
 #guessInput {
     flex-grow: 1; /* Prend tout l'espace disponible */
     padding: 10px;
-    border: 1px solid #328CBD;
+    border: 1px solid var(--blue-secondary);
     border-radius: 5px;
     font-size: 16px;
 }
@@ -406,7 +420,7 @@ main {
 /* Bouton de validation */
 #validateButton {
     padding: 10px 20px;
-    background-color: #328CBD;
+    background-color: var(--blue-secondary);
     color: white;
     border: none;
     border-radius: 5px;
@@ -421,7 +435,7 @@ main {
 }
 
 #validateButton:hover:enabled {
-    background-color: #28799D;
+    background-color: var(--blue-dark);
 }
 
 /* Liste des suggestions */
@@ -464,8 +478,8 @@ main {
 #suggestions li:hover,
 #suggestions li.selected {
     background-image:
-        radial-gradient(circle at center, #2781b2 0.25rem, transparent 0), /* Dots with transparent middle */
-        radial-gradient(circle at center, #2781b2 0.25rem, #338ebf 0); /* Color gradient */
+        radial-gradient(circle at center, var(--blue-primary) 0.25rem, transparent 0), /* Dots with transparent middle */
+        radial-gradient(circle at center, var(--blue-primary) 0.25rem, var(--blue-accent) 0); /* Color gradient */
     background-size: 1.3rem 1.3rem; /* Dot size */
     background-position: 0 0, 0.65rem 0.65rem; /* Adjust dot positioning */
     background-blend-mode: normal; /* No blending, just stacking layers */
@@ -478,7 +492,7 @@ main {
     font-size: 20px;
     font-weight: bold;
     margin-top: 10px;
-    color: #328CBD;
+    color: var(--blue-secondary);
 }
 
 .success {
