@@ -68,8 +68,12 @@ async function waitUntil() {
 //////////// LOAD TURNABOUTS
 
 async function loadData() {
+    const loadingIndicator = document.getElementById("loading-indicator");
+    if (loadingIndicator) loadingIndicator.classList.remove("hidden");
+
     // Si les données sont déjà chargées, on arrête ici
     if (dataLoaded) {
+        if (loadingIndicator) loadingIndicator.classList.add("hidden");
         return;
     }
     await waitUntil();
@@ -78,11 +82,12 @@ async function loadData() {
         await loadDataFromAPI();
         await selectCharacterToFind();
 
-        //console.log("🎯 Tous les fichiers JSON sont chargés !");
-        document.dispatchEvent(new Event("dataLoaded")); 
+        document.dispatchEvent(new Event("dataLoaded"));
         dataLoaded = true;
     } catch (error) {
-        console.error("❌ Erreur lors du chargement des données :", error);
+        console.error("Erreur lors du chargement des données :", error);
+    } finally {
+        if (loadingIndicator) loadingIndicator.classList.add("hidden");
     }
 }
 
@@ -102,7 +107,7 @@ async function loadDataFromAPI() {
         quoteData = quotesResponse;
         casesData = casesResponse;
 
-        //console.log("✅ Toutes les données chargées depuis l'API");
+        //console.log("Toutes les données chargées depuis l'API");
 
     } catch (error) {
         console.error("Erreur lors du chargement des données depuis l'API :", error);
@@ -258,7 +263,7 @@ async function setHints(target) {
         //console.log("DEBUT -->", target.debut);
         
         if (!debutInfo) {
-            //console.warn("⚠️ Aucune information trouvée pour le début :", target.debut);
+            //console.warn("Aucune information trouvée pour le début :", target.debut);
             debutInfo = { game: "Unknown", group: "Unknown" };
         }
         
@@ -281,11 +286,11 @@ async function setHints(target) {
                 element: document.querySelector("#hint-case .hint-count"), 
                 text: target.source ? target.source : "Unknown"
             };
-            target = await getCharacterInformations(target.speaker); // ✅ Attente de la réponse async
+            target = await getCharacterInformations(target.speaker); // Attente de la réponse async
             targetItem = target;
         }
 
-        // ✅ Ajout des autres hints correctement
+        // Ajout des autres hints correctement
         Object.assign(hints, {
             occupation: {
                 title: "Occupation", tries: 7, 
@@ -304,7 +309,7 @@ async function setHints(target) {
         });
     }
 
-    //console.log("🟢 Hints générés :", hints);
+    //console.log("Hints générés :", hints);
     return hints;
 }
 

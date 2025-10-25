@@ -795,11 +795,30 @@ footer .legal-links a:hover {
   pointer-events: none;     /* le chiffre n'intercepte pas de clics */
 }
 
-/***********/
-
 #silhouette img {
   filter: brightness(0); /* rend l’image entièrement noire */
   -webkit-user-drag: none; /* empêche le drag sur Webkit */
   pointer-events: none; /* désactive clics/déplacements */
   user-select: none; /* empêche la sélection */
+}
+
+#loading-indicator {
+    position: fixed;
+    top: 10px;
+    left: 15px;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#loading-indicator.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
