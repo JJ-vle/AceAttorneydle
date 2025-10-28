@@ -14,12 +14,8 @@ updateColorblindMode(colorblindModeEnabled);
 // Patch notes data
 const patchNotes = [
     {
-        date: "09-25-2025",
+        date: "10-28-2025",
         text: "Added new menus: Patch Notes, Settings and Help. Streak is now displayed."
-    },
-    {
-        date: "09-20-2025",
-        text: "New pages added for Legality."
     }
 ];
 
