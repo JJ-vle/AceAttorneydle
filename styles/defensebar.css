@@ -1,4 +1,11 @@
 /* Barre de défense (image) */
+#defensebar img {
+    width: auto;
+    height: 100%;
+    max-width: 40%;
+    display: inline-block;
+}
+
 #defensebar {
     position: fixed;
     top: 20px;
@@ -7,12 +14,5 @@
     margin: 0;
     z-index: 1000;
     width: 100%;
-    height: 10%;
-}
-
-#defensebar img {
-    width: auto;
-    height: 100%;
-    max-width: none;
-    display: inline-block;
+    height: 5%;
 }
