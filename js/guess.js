@@ -274,6 +274,15 @@ function compareDebut(guessDebut, targetDebut) {
     // Si ce n'est pas le même groupe, alors rouge (incorrect)
     return `<td class=${colorclass}>${guessDebut}</td>`;
 }
+function normalizeColor(word) {
+    const colorMap = {
+        grey: "gray"
+        // ajoute d'autres équivalences si besoin
+    };
+
+    return colorMap[word] || word;
+}
+
 // Fonction de comparaison des couleurs de cheveux
 function compareColors(guessHair, targetHair) {
     if (!guessHair || guessHair === "N/A") {
@@ -300,7 +309,8 @@ function compareColors(guessHair, targetHair) {
                 "with", "and", "but", "some", "parts", "fringe", "tip", "streak", "patch",
                 "paws", "mane", "sides", "stripe", "side", "central", "presumably", "appears", 
                 "otherwise", "wears", "toupée", "balding", "previously", "from", "his", "her", "at", "the", "of"
-            ].includes(word)); // filtrer les mots non-significatifs
+            ].includes(word)) // filtrer les mots non-significatifs
+            .map(normalizeColor); //normalize
     }
 
     const guessKeywords = extractKeywords(guessHair);
