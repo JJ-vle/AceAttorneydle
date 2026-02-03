@@ -10,29 +10,8 @@
     <link rel="stylesheet" href="styles/defensebar.css">
     <link rel="stylesheet" href="styles/tableguess.css">
     <link rel="stylesheet" href="styles/cookie-banner.css">
+    <link rel="stylesheet" href="styles/info-page.css">
     <link rel="shortcut icon" href="resources/img/icons/favicon.ico">
-    
-    <!-- AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7272925406653306"
-    crossorigin="anonymous"></script>
-
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "VideoGame",
-          "name": "Ace Attorneydle",
-          "description": "A guessing game for fans of the Ace Attorney series. Guess the characters and iconic cases in just a few tries.",
-          "url": "https://aceattorneydle.fr",
-          "author": {
-            "@type": "Person",
-            "name": "BeignetBoyy & JJ-vle"
-          },
-          "genre": ["Puzzle", "Guessing Game", "Visual Novel"],
-          "inLanguage": "en",
-          "image": "https://aceattorneydle.fr/resources/img/AceAttorneydleLogo.png",
-          "isAccessibleForFree": true
-        }
-    </script>
 </head>
 <body>
 
@@ -43,6 +22,10 @@
             <img src="resources/img/AceAttorneydleLogo.png" alt="AceAttorneydle Logo" id="logo">
         </a>
     </header>
+
+    
+    <div class="info-page">
+    </div>
     
     <div id="game-container">
         <div id="gamemodeSelector">
@@ -104,6 +87,7 @@
         <!--<label><input type="checkbox" value="Other"> Other</label>-->
     </div>
 
+    <script type="module" src="js/common/infoPage.js"></script>
     <script type="module" src="js/common/filter.js"></script>
     <script type="module" src="js/common/life.js"></script>
     <script type="module" src="js/common/hint.js"></script>
