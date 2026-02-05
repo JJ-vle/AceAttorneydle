@@ -1,0 +1,74 @@
+/* Classes de feedback de base */
+.correct {
+    background-color: var(--color-success);
+    color: black;
+    position: relative;
+}
+
+.incorrect {
+    background-color: var(--color-error);
+    color: black;
+    position: relative;
+}
+
+.partial {
+    background-color: var(--color-partial);
+    color: black;
+    position: relative;
+}
+
+/* ============================================
+   MODE DALTONIEN
+   Couleurs adaptées pour le daltonisme
+   ============================================ */
+
+/* Mode daltonien actif */
+.colorblind-mode .correct {
+    background-color: var(--colorblind-correct); /* Bleu */
+    color: white;
+}
+
+.colorblind-mode .incorrect {
+    background-color: var(--colorblind-incorrect); /* Orange foncé */
+    color: white;
+}
+
+.colorblind-mode .partial {
+    background-color: var(--colorblind-partial); /* Jaune orangé */
+    color: black;
+}
+
+/* Contraste plus fort pour le texte en mode daltonien */
+.colorblind-mode .guess-cell {
+    border: var(--border-width-thin) solid #000;
+}
+
+/* ============================================
+   FLÈCHES DIRECTIONNELLES
+   Indicateurs visuels pour les comparaisons
+   ============================================ */
+
+/* Pseudo-éléments pour les flèches */
+.lower::after,
+.bigger::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+}
+
+/* Flèche vers le bas */
+.lower::after {
+    background-image: url('../../resources/img/icons/arrow/down.png');
+}
+
+/* Flèche vers le haut */
+.bigger::after {
+    background-image: url('../../resources/img/icons/arrow/up.png');
+}

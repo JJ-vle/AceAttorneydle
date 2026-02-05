@@ -1,0 +1,66 @@
+#loading-indicator {
+    position: fixed;
+    top: 10px;
+    left: 15px;
+    z-index: var(--z-loading);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: opacity var(--transition-slow), visibility var(--transition-slow);
+}
+
+#loading-indicator.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Animation de points de chargement */
+@keyframes loadingDots {
+    0%, 20% {
+        content: '.';
+    }
+    40% {
+        content: '..';
+    }
+    60%, 100% {
+        content: '...';
+    }
+}
+
+/* Optionnel: ajouter une animation de pulsation au loading */
+@keyframes loadingPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+#loading-indicator.pulse {
+    animation: loadingPulse 1.5s ease-in-out infinite;
+}
+
+/* Animation de rotation pour un spinner (optionnel) */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+}

@@ -1,0 +1,31 @@
+/* Arrière-plan avec effet de flou */
+.background-blur {
+    position: fixed; /* Le fond reste fixe pendant le défilement */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(8px); /* Applique un flou */
+    z-index: var(--z-background); /* Met le fond derrière le contenu */
+}
+
+/* Différents arrière-plans thématiques */
+#office {
+    background: url(' ../../resources/img/wright_law_office.png') no-repeat center center;
+    background-size: cover;
+}
+
+#detention {
+    background: url(' ../../resources/img/detention.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+#lobby {
+    background: url(' ../../resources/img/lobby.png') no-repeat center center;
+    background-size: cover;
+}
+
+#police {
+    background: url(' ../../resources/img/police.png') no-repeat center center;
+    background-size: cover;
+}

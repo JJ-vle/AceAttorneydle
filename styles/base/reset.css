@@ -1,0 +1,42 @@
+/* Réinitialisation des bordures pour tous les éléments */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Suppression des styles de liste par défaut */
+ul, ol {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+/* Images - taille par défaut */
+img {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Tableaux */
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Classe utilitaire pour cacher des éléments */
+.hidden {
+    display: none;
+}
+
+/* Boutons - reset des styles par défaut */
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* Inputs - reset des styles par défaut */
+input {
+    font-family: inherit;
+}

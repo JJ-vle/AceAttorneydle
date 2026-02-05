@@ -1,0 +1,52 @@
+/* Conteneur principal */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* centre horizontalement */
+    justify-content: flex-start; /* commence en haut */
+    text-align: center;      /* centre le texte aussi */
+    gap: var(--spacing-lg);  /* espace vertical entre chaque enfant */
+    padding: var(--spacing-lg) 0;
+}
+
+/* ============================================
+   FOOTER
+   Pied de page
+   ============================================ */
+
+footer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 0) 100%);
+}
+
+footer .content {
+    width: 50%;
+    text-align: center;
+    padding: var(--spacing-sm);
+}
+
+footer .legal-links {
+    margin-top: 6px;
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+}
+
+/* Bouton de changement des préférences cookies */
+#change-cookie-preferences {
+    background: none;
+    border: none;
+    font: inherit;
+    color: rgba(112, 145, 207, 0.836);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: var(--spacing-sm);
+}
+
+#change-cookie-preferences:hover {
+    color: rgba(112, 180, 207, 0.836);
+}

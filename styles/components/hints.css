@@ -1,0 +1,182 @@
+/* Conteneur des indices */
+#hint-container {
+    transform: scale(0.8);
+    transform-origin: top; /* Keeps scaling consistent from top-left */
+}
+
+/* Section des indices */
+#hints {
+    background-color: white; /* Fond blanc */
+    padding: var(--spacing-lg);
+    position: relative;
+    border: var(--border-width-thick) solid var(--blue-secondary); /* Bordure plus fine */
+    outline: var(--border-width-thick) solid white; /* Bordure blanche interne */
+    max-width: 600px; /* Limite la largeur */
+    width: fit-content; /* S'ajuste au contenu sans dépasser max-width */
+    margin: 0 auto; /* Centre le bloc */
+}
+
+/* Coins bleus */
+#hints::before,
+#hints::after,
+#hints .corner-top-right,
+#hints .corner-bottom-left {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 7px solid var(--blue-secondary); /* Coins bleus */
+    margin: var(--spacing-xs); /* Espace vide entre les coins et les bordures */
+}
+
+/* Coin supérieur gauche */
+#hints::before {
+    top: -25px;
+    left: -25px;
+    border-right: none;
+    border-bottom: none;
+}
+
+/* Coin supérieur droit */
+#hints .corner-top-right {
+    top: -25px;
+    right: -25px;
+    border-left: none;
+    border-bottom: none;
+}
+
+/* Coin inférieur gauche */
+#hints .corner-bottom-left {
+    bottom: -25px;
+    left: -25px;
+    border-right: none;
+    border-top: none;
+}
+
+/* Coin inférieur droit */
+#hints::after {
+    bottom: -25px;
+    right: -25px;
+    border-left: none;
+    border-top: none;
+}
+
+/* Indice individuel */
+.hint {
+    display: inline-block;
+    text-align: center;
+    margin: var(--spacing-sm);
+    cursor: not-allowed;
+    width: 150px;  /* Ajuste la largeur au contenu */
+    max-width: 150px;  /* Empêche que ce soit trop large */
+    padding: var(--spacing-xs);  /* Ajoute un peu d'espace pour éviter que le texte touche les bords */
+    word-wrap: break-word;  /* Permet au texte de passer à la ligne si besoin */
+}
+
+.hint p {
+    color: var(--blue-secondary);
+}
+
+/* Icône d'indice */
+.hint-icon {
+    max-height: 50px;
+    opacity: 0.5;
+    transition: opacity var(--transition-normal);
+}
+
+.hint-icon.active {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.hint-icon.disabled {
+    opacity: 0.5;
+}
+
+/* Cadre de détails d'indice */
+#hint-details {
+    display: none; /* Caché par défaut */
+    width: 100%;
+    max-width: 500px;
+    overflow: hidden;
+    margin: var(--spacing-lg) auto;
+    border: var(--border-width-medium) solid var(--blue-primary); /* Bordure bleue */
+    background-color: white;
+}
+
+/* Style de l'en-tête */
+#hint-details-header {
+    padding: var(--spacing-md);
+    color: white;
+    text-align: center;
+    background-image:
+        radial-gradient(circle at center, var(--blue-primary) 0.25rem, transparent 0),
+        radial-gradient(circle at center, var(--blue-primary) 0.25rem, var(--blue-accent) 0);
+    background-size: 1.3rem 1.3rem;
+    background-position: 0 0, 0.65rem 0.65rem;
+    background-blend-mode: normal;
+    border-bottom: var(--border-width-medium) solid var(--blue-primary);
+}
+
+/* Style du contenu */
+#hint-details-content {
+    background-color: white;
+    padding: var(--spacing-md);
+    color: #333;
+    min-height: 50px;
+}
+
+/* Style des images d'indices */
+.hint-image {
+    filter: brightness(0);
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: var(--spacing-sm) auto;
+}
+
+.hint-image-clear {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: var(--spacing-sm) auto;
+}
+
+/* Détails des indices - définition */
+#a-def {
+    width: 50%; /* Prend toute la largeur */
+    min-height: 100px; /* Hauteur minimale */
+    margin: var(--spacing-lg) auto;
+    padding: var(--spacing-lg);
+    color: var(--blue-light);
+    text-align: center;
+    border: var(--border-width-thick) solid var(--blue-light); /* Bordure du haut plus fine */
+    border-radius: 0; /* Pas de bordures arrondies sur les côtés */
+
+    background-image:
+        radial-gradient(circle at center, var(--blue-deep) 0.25rem, transparent 0),
+        radial-gradient(circle at center, var(--blue-deep) 0.25rem, var(--blue-deeper) 0);
+    background-size: 1.3rem 1.3rem;
+    background-position: 0 0, 0.65rem 0.65rem;
+    background-blend-mode: normal;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden; /* Caché par défaut */
+}
+
+/* Afficher uniquement si la div contient du texte */
+#a-def:not(:empty) {
+    visibility: visible;
+}
+
+/* Silhouette avec filtre noir */
+#silhouette img {
+    filter: brightness(0); /* rend l'image entièrement noire */
+    -webkit-user-drag: none; /* empêche le drag sur Webkit */
+    pointer-events: none; /* désactive clics/déplacements */
+    user-select: none; /* empêche la sélection */
+}

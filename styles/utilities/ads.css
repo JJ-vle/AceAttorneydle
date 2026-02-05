@@ -1,0 +1,43 @@
+/* Style commun pour les bannières publicitaires verticales */
+.ad-banner-left,
+.ad-banner-right {
+    position: absolute; /* Positionner la bannière de manière absolue */
+    top: 50%; /* Centrer verticalement */
+    transform: translateY(-50%); /* Centrer précisément */
+    width: 300px; /* Largeur de la bannière verticale */
+    height: 600px; /* Hauteur de la bannière verticale */
+    z-index: var(--z-ads); /* Garantir que les bannières sont au-dessus du contenu */
+    padding: var(--spacing-sm); /* Ajouter un peu de padding interne pour un espacement */
+    background-color: #f0f0f0; /* Fond clair pour la bannière */
+    border: 1px solid #ddd;
+    box-shadow: var(--shadow-light); /* Ombre autour de la bannière */
+    text-align: center;
+}
+
+/* Publicité à gauche */
+.ad-banner-left {
+    left: var(--spacing-lg); /* Ajouter un écart du côté gauche */
+}
+
+/* Publicité à droite */
+.ad-banner-right {
+    right: var(--spacing-lg); /* Ajouter un écart du côté droit */
+}
+
+/* Contenu de la bannière */
+.ad-banner-left img,
+.ad-banner-right img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Message "Publicité" */
+.ad-banner-left::before,
+.ad-banner-right::before {
+    content: "Publicité";
+    display: block;
+    font-size: 10px;
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-xs);
+}

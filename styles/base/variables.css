@@ -1,0 +1,63 @@
+:root {
+    /* Couleurs principales - Bleus */
+    --blue-primary: #2781b2;   /* Couleur dominante (barres, fond, hover, etc.) */
+    --blue-secondary: #328CBD; /* Variante un peu plus claire */
+    --blue-accent: #338ebf;    /* Accent dans les dégradés */
+    --blue-dark: #28799D;      /* Bleu foncé pour hover */
+    --blue-deep: #212839;      /* Bleu très foncé, utilisé dans les fonds */
+    --blue-deeper: #081021;    /* Variante encore plus sombre */
+
+    /* Couleurs secondaires */
+    --blue-light: #F6F6F6;
+    --yellow-highlight: #ffc31d;
+    --neutral-white: #ffffff;
+
+    /* Couleurs de feedback */
+    --color-success: #8fda92;
+    --color-error: #e57373;
+    --color-partial: #f4c539;
+
+    /* Couleurs mode daltonien */
+    --colorblind-correct: #0072B2;   /* Bleu */
+    --colorblind-incorrect: #D55E00; /* Orange foncé */
+    --colorblind-partial: #E69F00;   /* Jaune orangé */
+
+    /* Espacements */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 30px;
+
+    /* Bordures */
+    --border-radius-sm: 5px;
+    --border-radius-md: 10px;
+    --border-width-thin: 2px;
+    --border-width-medium: 3px;
+    --border-width-thick: 5px;
+
+    /* Ombres */
+    --shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-heavy: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --transition-very-slow: 1s ease-in-out;
+
+    /* Tailles de police */
+    --font-size-sm: 12px;
+    --font-size-base: 16px;
+    --font-size-md: 18px;
+    --font-size-lg: 20px;
+    --font-size-xl: 32px;
+
+    /* Z-index */
+    --z-background: -1;
+    --z-content: 1;
+    --z-ads: 999;
+    --z-suggestions: 1000;
+    --z-loading: 9999;
+}

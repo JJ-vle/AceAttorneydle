@@ -1,0 +1,98 @@
+/* Conteneur principal de la guessbar */
+#guessbar {
+    position: relative; /* Permet de positionner les suggestions par rapport à ce conteneur */
+    width: 450px; /* Largeur initiale plus grande */
+    margin: 0 auto; /* Centrer la guessbar */
+}
+
+/* Conteneur pour l'input et le bouton */
+#guessbarinputs {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm); /* Espace entre les éléments */
+    width: 100%; /* Prend toute la largeur du parent */
+    transition: width var(--transition-slow); /* Animation fluide pour la largeur */
+}
+
+/* Entrée de texte pour la devinette */
+#guessInput {
+    flex-grow: 1; /* Prend tout l'espace disponible */
+    padding: var(--spacing-sm);
+    border: 1px solid var(--blue-secondary);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-base);
+}
+
+/* Bouton de validation */
+#validateButton {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background-color: var(--blue-secondary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-normal);
+}
+
+#validateButton:disabled {
+    background-color: #A9A9A9;
+    cursor: not-allowed;
+}
+
+#validateButton:hover:enabled {
+    background-color: var(--blue-dark);
+}
+
+/* ============================================
+   SUGGESTIONS
+   Liste déroulante de suggestions
+   ============================================ */
+
+/* Liste des suggestions */
+#suggestions {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Supprime la marge par défaut */
+    width: 100%; /* Même largeur que #guessbarinputs */
+    border: 1px solid #ddd;
+    background: white;
+    max-height: 250px; /* Hauteur maximale plus grande */
+    overflow-y: auto;
+    display: none; /* Caché par défaut */
+    position: absolute; /* Position absolue pour superposer */
+    top: 100%; /* Positionne la liste juste en dessous de #guessbarinputs */
+    left: 0;
+    z-index: var(--z-suggestions); /* Assure que la liste est au-dessus des autres éléments */
+    box-shadow: var(--shadow-medium); /* Ombre légère pour un effet de superposition */
+}
+
+/* Éléments de la liste des suggestions */
+#suggestions li {
+    padding: var(--spacing-md); /* Padding plus grand pour plus d'espace */
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    height: 50px; /* Hauteur fixe pour chaque élément */
+    display: flex;
+    align-items: center; /* Centre le texte verticalement */
+    text-align: left; /* Alignement du texte à gauche */
+    gap: var(--spacing-md); /* Espace entre l'image et le texte */
+}
+
+/* Style de l'image dans les suggestions */
+#suggestions li img {
+    width: 30px; /* Taille de l'image */
+    height: 30px; /* Taille de l'image */
+}
+
+/* Hover et sélection des suggestions */
+#suggestions li:hover,
+#suggestions li.selected {
+    background-image:
+        radial-gradient(circle at center, var(--blue-primary) 0.25rem, transparent 0), /* Dots with transparent middle */
+        radial-gradient(circle at center, var(--blue-primary) 0.25rem, var(--blue-accent) 0); /* Color gradient */
+    background-size: 1.3rem 1.3rem; /* Dot size */
+    background-position: 0 0, 0.65rem 0.65rem; /* Adjust dot positioning */
+    background-blend-mode: normal; /* No blending, just stacking layers */
+    position: relative; /* Ensure the button is layered correctly */
+    color: white;
+}

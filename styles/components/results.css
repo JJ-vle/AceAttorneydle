@@ -1,0 +1,22 @@
+/* Animation d'apparition en fondu pour le résultat final */
+#finalresult {
+    opacity: 0;
+    transition: opacity var(--transition-very-slow);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-heavy);
+    max-width: 600px;
+    margin: var(--spacing-lg) auto;
+}
+
+/* Résultat victoire */
+#finalresult.win {
+    background-color: rgba(144, 238, 144, 0.9); /* Vert clair */
+    border: var(--border-width-medium) solid green;
+}
+
+/* Résultat défaite */
+#finalresult.lose {
+    background-color: rgba(255, 99, 71, 0.9); /* Rouge clair */
+    border: var(--border-width-medium) solid red;
+}

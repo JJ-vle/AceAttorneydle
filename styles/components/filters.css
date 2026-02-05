@@ -1,0 +1,72 @@
+/* Conteneur pour les filtres */
+#groupFilters {
+    margin: var(--spacing-lg) auto; /* Centre la div horizontalement et ajoute de l'espace en haut et en bas */
+    padding: var(--spacing-lg);
+    border: var(--border-width-thick) solid white; /* Bordure blanche */
+    border-radius: var(--border-radius-md); /* Coins arrondis */
+    max-width: 700px;
+    background-image:
+        radial-gradient(circle at center, var(--blue-primary) 0.25rem, transparent 0), /* Points avec un centre transparent */
+        radial-gradient(circle at center, var(--blue-primary) 0.25rem, var(--blue-accent) 0); /* Dégradé de couleur */
+    background-size: 1.3rem 1.3rem; /* Taille des points */
+    background-position: 0 0, 0.65rem 0.65rem; /* Positionnement des points */
+    background-blend-mode: normal; /* Pas de mélange, superposition des couches */
+    position: relative; /* Assure un positionnement correct */
+    box-shadow: var(--shadow-medium); /* Ombre légère */
+}
+
+/* Cacher les checkboxes */
+#groupFilters input[type="checkbox"] {
+    display: none; /* Cache les checkboxes */
+}
+
+/* Style des labels */
+#groupFilters label {
+    color: white; /* Texte en blanc */
+    margin-right: var(--spacing-md);
+    margin-bottom: var(--spacing-md); /* Espacement entre les éléments */
+    display: inline-block;
+    cursor: pointer; /* Curseur pointer pour indiquer que c'est cliquable */
+    padding: var(--spacing-sm); /* Ajoute un peu de padding pour un meilleur espacement */
+    transition: color var(--transition-normal); /* Transition fluide pour la couleur */
+}
+
+/* Style des titres h2 */
+#groupFilters h2 {
+    color: white; /* Texte en blanc */
+    margin-right: var(--spacing-md);
+    margin-bottom: var(--spacing-md); /* Espacement entre les éléments */
+    display: inline-block;
+    cursor: pointer; /* Curseur pointer pour indiquer que c'est cliquable */
+    padding: var(--spacing-sm); /* Ajoute un peu de padding pour un meilleur espacement */
+    transition: color var(--transition-normal); /* Transition fluide pour la couleur */
+}
+
+/* Changement de couleur des labels lorsque la checkbox est cochée */
+#groupFilters label:has(input[type="checkbox"]:checked) {
+    color: var(--yellow-highlight);
+    font-weight: bold; /* Texte en gras */
+    text-decoration: underline; /* Texte souligné */
+}
+
+/* Style du bouton */
+#groupFilters button {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background-color: var(--blue-dark);
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: var(--spacing-lg) auto 0; /* Espacement avec les éléments au-dessus */
+    display: block;
+    transition: background-color var(--transition-normal); /* Transition fluide */
+    border: var(--border-width-thin) solid white;
+}
+
+#groupFilters button:hover {
+    box-shadow: 0 0 0 6px var(--yellow-highlight);
+}
+
+#groupFilters button:disabled {
+    background-color: #A9A9A9;
+    cursor: not-allowed;
+}
