@@ -1,0 +1,522 @@
+/* ============================================
+   MOBILE RESPONSIVE
+   Styles pour téléphones (max-width: 480px)
+   ============================================ */
+
+@media (max-width: 480px) {
+    
+    /* ========================================
+       LAYOUT - HEADER
+       ======================================== */
+    
+    .site-header {
+        height: 64px;
+        padding: 8px 0;
+    }
+    
+    .logo-group {
+        gap: 8px;
+    }
+    
+    #logo {
+        height: 56px;
+    }
+    
+    .icon-btn img {
+        height: 22px;
+    }
+    
+    .flame-container {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .flame-count {
+        font-size: 20px;
+    }
+    
+    /* ========================================
+       LAYOUT - MAIN & FOOTER
+       ======================================== */
+    
+    main {
+        padding: 10px 5px;
+        gap: 15px;
+        padding-top: 30px;
+    }
+    
+    footer .content {
+        width: 90%;
+        font-size: 10px;
+        padding: 8px;
+    }
+    
+    footer .legal-links {
+        flex-direction: column;
+        gap: 10px;
+        font-size: 14px;
+    }
+    
+    #change-cookie-preferences {
+        margin-left: 0;
+        margin-top: 5px;
+        font-size: 12px;
+    }
+    
+    /* ========================================
+       COMPONENTS - GAME MODE SELECTOR
+       ======================================== */
+    
+    #game-container {
+        transform: scale(0.5);
+        margin-bottom: -80px;
+    }
+    
+    #gamemodeSelector {
+        padding: 10px;
+        margin: 0 auto;
+    }
+    
+    #gamemodeSelector::before {
+        height: 25px;
+        width: 100%;
+    }
+    
+    #gamemodeSelector a {
+        padding: 5px;
+    }
+    
+    #gamemodeSelector img {
+        max-width: 80px;
+        height: auto;
+    }
+    
+    /* ========================================
+       COMPONENTS - FILTERS
+       ======================================== */
+    
+    #groupFilters {
+        max-width: 95%;
+        padding: 15px 10px;
+        margin: 10px auto;
+    }
+    
+    #groupFilters label,
+    #groupFilters h2 {
+        font-size: 14px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        padding: 8px;
+    }
+    
+    #groupFilters button {
+        font-size: 14px;
+        padding: 8px 16px;
+        margin-top: 15px;
+    }
+    
+    /* ========================================
+       COMPONENTS - HINTS
+       ======================================== */
+    
+    #hint-container {
+        transform: scale(0.7);
+        margin-bottom: -40px;
+    }
+    
+    #hints {
+        max-width: 95%;
+        padding: 15px 10px;
+    }
+    
+    #hints::before,
+    #hints::after,
+    #hints .corner-top-right,
+    #hints .corner-bottom-left {
+        width: 15px;
+        height: 15px;
+        border-width: 5px;
+    }
+    
+    .hint {
+        width: 100px;
+        max-width: 100px;
+        margin: 5px;
+        padding: 3px;
+    }
+    
+    .hint p {
+        font-size: 12px;
+    }
+    
+    .hint-icon {
+        max-height: 40px;
+    }
+    
+    #hint-details {
+        max-width: 95%;
+        margin: 10px auto;
+    }
+    
+    #hint-details-header {
+        padding: 10px;
+        font-size: 1rem;
+    }
+    
+    #hint-details-content {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .hint-image,
+    .hint-image-clear {
+        max-width: 150px;
+        margin: 8px auto;
+    }
+    
+    #a-def {
+        width: 90%;
+        min-height: 80px;
+        padding: 15px;
+        font-size: 16px;
+        margin: 15px auto;
+    }
+    
+    #silhouette img {
+        max-width: 200px;
+        height: auto;
+    }
+    
+    /* ========================================
+       COMPONENTS - GUESSBAR
+       ======================================== */
+    
+    #guessbar {
+        width: 95%;
+        max-width: 350px;
+    }
+    
+    #guessbarinputs {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    #guessInput {
+        width: 100%;
+        padding: 8px;
+        font-size: 14px;
+    }
+    
+    #validateButton {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    #suggestions {
+        max-height: 200px;
+    }
+    
+    #suggestions li {
+        padding: 12px;
+        height: 45px;
+        font-size: 16px;
+        gap: 10px;
+    }
+    
+    #suggestions li img {
+        width: 25px;
+        height: 25px;
+    }
+    
+    /* ========================================
+       COMPONENTS - FEEDBACK
+       ======================================== */
+    
+    #feedback {
+        font-size: 16px;
+        margin-top: 8px;
+        padding: 0 10px;
+    }
+    
+    table {
+        font-size: 12px;
+    }
+    
+    /* Ajuster les flèches dans les cellules */
+    .lower::after,
+    .bigger::after {
+        top: 15%;
+        left: 15%;
+        width: 70%;
+        height: 70%;
+        opacity: 0.2;
+    }
+    
+    /* ========================================
+       COMPONENTS - RESULTS
+       ======================================== */
+    
+    #finalresult {
+        max-width: 95%;
+        padding: 15px;
+        margin: 15px auto;
+        font-size: 14px;
+    }
+    
+    #finalresult h2 {
+        font-size: 18px;
+    }
+    
+    #finalresult p {
+        font-size: 14px;
+    }
+    
+    /* ========================================
+       UTILITIES - ADS
+       ======================================== */
+    
+    /* Cacher les bannières publicitaires sur mobile */
+    .ad-banner-left,
+    .ad-banner-right {
+        display: none;
+    }
+    
+    /* ========================================
+       UTILITIES - LOADING
+       ======================================== */
+    
+    #loading-indicator {
+        top: 5px;
+        left: 5px;
+        font-size: 0.9rem;
+        padding: 6px 10px;
+        letter-spacing: 1px;
+    }
+    
+    /* ========================================
+       LAYOUT - BACKGROUNDS
+       ======================================== */
+    
+    .background-blur {
+        filter: blur(5px);
+    }
+    
+    /* ========================================
+       TYPOGRAPHY
+       ======================================== */
+    
+    body {
+        font-size: 14px;
+    }
+    
+    /* ========================================
+       IMAGES
+       ======================================== */
+    
+    img {
+        max-width: 80px;
+    }
+    
+    /* ========================================
+       UTILITIES - SPACING
+       ======================================== */
+    
+    /* Réduire les espacements sur mobile */
+    .mt-lg { margin-top: var(--spacing-md); }
+    .mb-lg { margin-bottom: var(--spacing-md); }
+    .p-lg { padding: var(--spacing-md); }
+    
+    /* ========================================
+       ORIENTATION LANDSCAPE (paysage)
+       ======================================== */
+    
+    @media (orientation: landscape) {
+        .site-header {
+            height: 50px;
+        }
+        
+        #logo {
+            height: 45px;
+        }
+        
+        .flame-container {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .flame-count {
+            font-size: 16px;
+        }
+        
+        main {
+            padding: 5px;
+            gap: 10px;
+        }
+        
+        #game-container {
+            transform: scale(0.4);
+            margin-bottom: -100px;
+        }
+        
+        #hint-container {
+            transform: scale(0.6);
+            margin-bottom: -60px;
+        }
+    }
+
+    /*******************************************************************/
+    /*  ========================================
+        DEFENSEBAR RESPONSIVE - MOBILE (VERSION VERTICALE AVEC ROTATION)
+        ======================================== */
+    
+    /* Barre principale - rotated */
+    #defensebar {
+        position: fixed; /* on revient à fixed */
+        top: 260px; /* position de départ (60 + 200) */
+        left: 10px;
+        right: auto;
+        width: 300%; /* largeur (qui devient hauteur après rotation) */
+        max-width: 500px;
+        height: auto; /* hauteur (qui devient largeur après rotation) */
+        text-align: left;
+        z-index: 1000;
+        display: flex;
+        justify-content: flex-start; /* éléments vers le haut après rotation */
+        align-items: center;
+        padding: 0 8px;
+        transform: rotate(-90deg) scale(0.95); /* ROTATION -90° */
+        transform-origin: top left; /* pivot en haut à gauche */
+        border-radius: 8px;
+        transition: top 0.3s ease; /* animation fluide */
+    }
+    
+    /* Quand on scroll, cette classe sera ajoutée en JavaScript */
+    #defensebar.scrolled {
+        top: 200px;
+    }
+    
+    /* Images dans la barre */
+    #defensebar img {
+        max-height: 60px;
+        width: auto;
+        display: inline-block;
+        margin-right: 6px;
+    }
+
+   
+    /*******************************************************************/
+  
+    /* ========================================
+       HISTORY - STRUCTURE
+       ======================================== */
+  
+       #history {
+        margin-top: 40px;
+        padding: 15px 5px;
+        width: 100%;
+        max-width: 100%;
+      }
+    
+      /* ========================================
+         TABLE SCROLLABLE
+         ======================================== */
+    
+      #historyTable {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    
+        width: 100%;
+        max-width: 100%;
+    
+        border: 2px solid var(--blue-secondary, #328CBD);
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+        /* Espacement réel entre cellules */
+        border-collapse: separate;
+        border-spacing: 6px; /* 🔑 espace entre colonnes et lignes */
+      }
+    
+      /* ========================================
+         TABLE LAYOUT — FIXE MAIS SCROLLABLE
+         ======================================== */
+    
+      #historyTable {
+        table-layout: fixed;
+        width: max-content; /* force le scroll horizontal */
+      }
+    
+      /* ========================================
+         CELLULES — CARRÉES ET LISIBLES
+         ======================================== */
+    
+      #historyTable th,
+      #historyTable td {
+        width: 72px;
+        min-width: 72px;
+        max-width: 72px;
+    
+        /* ✅ hauteur contrôlée */
+        aspect-ratio: 1 / 1; /* force les cellules à rester carrées */
+    
+        padding: 4px;
+        font-size: 11px;
+        line-height: 1.1;
+    
+        text-align: center;
+        vertical-align: middle;
+    
+        white-space: normal; /* texte peut wrap */
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+        border-radius: 4px; /* coins arrondis */
+      }
+    
+      /* ========================================
+         HEADERS STICKY
+         ======================================== */
+    
+      #historyTable thead th {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background-color: var(--blue-primary, #2781b2);
+        color: white;
+        font-weight: 600;
+      }
+    
+      /* ========================================
+         PREMIÈRE COLONNE STICKY (IMAGE)
+         ======================================== */
+    
+      #historyTable th:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 20;
+        background-color: var(--blue-primary, #2781b2);
+      }
+    
+      #historyTable td:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 5;
+        background-color: white;
+      }
+    
+      /* ========================================
+         IMAGES
+         ======================================== */
+    
+      .history-photo {
+        display: block;
+        width: 36px;
+        height: auto;
+        margin: 0 auto 2px;
+      }
+}
