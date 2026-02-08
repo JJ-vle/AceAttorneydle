@@ -70,6 +70,7 @@
     #game-container {
         transform: scale(0.5);
         margin-bottom: -80px;
+        padding-bottom: 20px;
     }
     
     #gamemodeSelector {
