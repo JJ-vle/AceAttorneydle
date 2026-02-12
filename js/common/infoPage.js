@@ -18,8 +18,12 @@ await dataLoaded;
 // Patch notes data
 const patchNotes = [
     {
-        date: "02-03-2026",
-        text: "Menus now work on every pages. Gray and grey ar now displayed as the same color."
+        date: "02-12-2026",
+        text: "Menus now work on every pages. Gray and grey ar now detected as the same color. A mobile version is now available, with a new design adapted to small screens."
+    },
+    {
+        date: "02-10-2026",
+        text: "Multiples images fix for some Investigation characters (Artie Frost, Di Jun Wang (Body double), Delicia Scone, Lance Amano, Alf Aldown)"
     },
     {
         date: "10-28-2025",
