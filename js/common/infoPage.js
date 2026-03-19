@@ -18,6 +18,10 @@ await dataLoaded;
 // Patch notes data
 const patchNotes = [
     {
+        date: "03-19-2026",
+        text: "Mobile responsiveness improvements."
+    },
+    {
         date: "02-03-2026",
         text: "Menus now work on every pages. Gray and grey ar now displayed as the same color."
     },

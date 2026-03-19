@@ -182,9 +182,26 @@
         margin: 15px auto;
     }
     
+    #silhouette {
+        max-width: 92%;
+        margin: 0 auto;
+        overflow: hidden;
+        display: block;
+        box-sizing: border-box;
+    }
+
     #silhouette img {
-        max-width: 200px;
+        width: 100%;
+        max-width: 100%;
         height: auto;
+        display: block;
+        margin: 0 auto;
+        object-fit: contain;
+        max-height: 60vh;
+        filter: brightness(0);
+        -webkit-user-drag: none;
+        pointer-events: none;
+        user-select: none;
     }
     
     /* ========================================
@@ -519,4 +536,59 @@
         height: auto;
         margin: 0 auto 2px;
       }
+
+            /* Pages with single-cell tables: center the table and make cells wider */
+            body.single-cell-table #history {
+                display: flex;
+                justify-content: center;
+                padding: 10px 0 20px;
+            }
+
+            body.single-cell-table #historyTable {
+                display: table; /* keep table semantics */
+                table-layout: fixed;
+                width: 92%;
+                max-width: 420px; /* a bit wider for single-cell rows */
+                margin: 0 auto;
+                overflow: visible; /* avoid horizontal scroll for single-column layout */
+            }
+
+            body.single-cell-table #historyTable th,
+            body.single-cell-table #historyTable td {
+                width: 100%;
+                min-width: 0;
+                max-width: none;
+                aspect-ratio: auto; /* let height follow content */
+                padding: 12px 10px;
+                font-size: 15px;
+                text-align: center;
+            }
+
+            body.single-cell-table .history-photo {
+                width: 48px; /* slightly larger image */
+            }
+
+               /* Bordures colorées selon résultat (mobile) */
+               body.single-cell-table #historyTable td.single-cell-oneth.correct {
+                   border-width: var(--border-width-medium);
+                   border-style: solid;
+                   border-color: var(--color-success);
+                   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+               }
+
+               body.single-cell-table #historyTable td.single-cell-oneth.incorrect {
+                   border-width: var(--border-width-medium);
+                   border-style: solid;
+                   border-color: var(--color-error);
+                   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+               }
+
+               /* Mode daltonien : couleurs alternatives */
+               .colorblind-mode body.single-cell-table #historyTable td.single-cell-oneth.correct {
+                   border-color: var(--colorblind-correct);
+               }
+
+               .colorblind-mode body.single-cell-table #historyTable td.single-cell-oneth.incorrect {
+                   border-color: var(--colorblind-incorrect);
+               }
 }
