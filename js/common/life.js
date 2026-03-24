@@ -2,7 +2,7 @@
 import { removeValidateButtonListener, guessbarDiv } from './guessbar.js';
 import { setCookie, streaks } from './cookie.js';
 import { gameMode, targetItem } from './data.js';
-import { setFlameCount, recolorFlame } from './streak.js';
+import { setFlameCount, recolorFlame, uncolorFlame } from './streak.js';
 
 const defensebar = document.getElementById("defensebar");
 const resultDiv = document.getElementById("result");
@@ -66,13 +66,11 @@ export function gameOver(result, fromhistory){
 
     if (result) {
         console.log("😁 win");
-        newStreak = parseInt(streaks[gameMode + "Streak"])
+        const stored = parseInt(streaks[gameMode + "Streak"]) || 0;
+        newStreak = fromhistory ? stored : (stored + 1);
 
-        if(!fromhistory) {
-            newStreak = parseInt(streaks[gameMode + "Streak"]) + 1;
-        }
-        
-        setFlameCount(newStreak+1);
+        // show the updated streak and color the flame when the user actually won
+        setFlameCount(newStreak);
         recolorFlame();
 
         if(gameMode != "silhouette"){
@@ -90,7 +88,7 @@ export function gameOver(result, fromhistory){
         `;
         resultClass = "win";
     } else {
-        console.log("😢 lose");        
+        console.log("😢 lose");
         newStreak = 0;
         message = `
             ❌ Lost!<br>
@@ -113,7 +111,12 @@ export function gameOver(result, fromhistory){
         finalResultDiv.style.opacity = 1;
     }, 100);
 
+    // update stored streak and reflect UI color/count
     setCookie(gameMode + "Streak", newStreak);
+    if (newStreak === 0) {
+        setFlameCount(0);
+        uncolorFlame();
+    }
     displayResult(message, resultClass);
 }
 

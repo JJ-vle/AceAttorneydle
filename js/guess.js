@@ -4,7 +4,7 @@
 import { setValidateGuessFunction, validateButton } from './common/guessbar.js';
 import { dataLoaded, turnaboutGames, characterData, attemptedNames, getInfoByDebut, setGameMode, targetItem, gameMode } from './common/data.js';
 import { incrementNumTries, verifyTries, gameOver } from './common/life.js';
-import { setCookieName, updateAttemptsCookie, loadHistory } from './common/cookie.js';
+import { setCookieName, updateAttemptsCookie, loadHistory, displayStoredStreak } from './common/cookie.js';
 
 ///////// FONCTION COOKIES /////////////
 
@@ -337,6 +337,7 @@ async function initGame() {
     //console.log("🚀 Les données sont prêtes, on peut commencer !");
 
     setValidateGuessFunction(validateGuess);
+    displayStoredStreak();
     loadHistory();
 }
 

@@ -76,16 +76,28 @@ export function showConsentBanner() {
 
 export let streaks = {};
 export let guessesCookie = null;
-export let cookieName;
+export let cookieBaseName = null; // base name set by pages (e.g. 'guessAttempts')
 
 export function setCookieName(newCookieName){
-    cookieName = newCookieName;
+    cookieBaseName = newCookieName;
+}
+
+// Build a cookie name that includes game mode and active groups so different
+// filter combinations produce separate histories.
+function getCookieName() {
+    const base = cookieBaseName || 'attempts';
+    const mode = gameMode || 'unknownmode';
+    const groups = Array.isArray(selectedGroups) && selectedGroups.length > 0
+        ? selectedGroups.join('|')
+        : 'all';
+    return `${base}_${mode}_${encodeURIComponent(groups)}`;
 }
 
 export function updateAttemptsCookie() {
     // Ne sauvegarde que si l'utilisateur a accepté
     if(localStorage.getItem('cookiesAccepted') === 'true'){
-        setCookieAttempt(cookieName, encodeURIComponent(JSON.stringify(attemptedNames)));
+        const name = getCookieName();
+        setCookieAttempt(name, encodeURIComponent(JSON.stringify(attemptedNames)));
     }
 }
 
@@ -97,16 +109,14 @@ function initGameCookies() {
 }
 
 function setupStreakCookie(name){
-    let streak;
+    const raw = readCookie(name);
+    let streak = 0;
+    if (raw && raw.length > 0 && !isNaN(parseInt(raw, 10))) {
+        streak = parseInt(raw, 10);
+    }
 
-    if(readCookie(name).length === 0){
-        streak = 0;
-    }
-    else {
-        streak = readCookie(name);
-    }
-    
     setCookie(name, streak);
+    // show stored streak in grey until user wins the current day
     uncolorFlame();
     setFlameCount(streak);
     return streak;
@@ -124,7 +134,8 @@ export async function loadHistory() {
     } 
 
     resetAttemptedNames();
-    let cookieAttempts = readJsonCookie(cookieName);
+    const name = getCookieName();
+    let cookieAttempts = readJsonCookie(name);
     let cookieList;
 
     if (cookieAttempts) cookieList = cookieAttempts;
@@ -148,6 +159,23 @@ export async function loadHistory() {
         filteredList.forEach(attempt => {
             validateGuessFunction(attempt, true);
         });
+    }
+}
+
+// Display stored streak for current mode (grey flame) at page load
+export function displayStoredStreak(){
+    try{
+        const name = gameMode + "Streak";
+        const raw = readCookie(name);
+        let streak = 0;
+        if (raw && raw.length > 0 && !isNaN(parseInt(raw,10))) {
+            streak = parseInt(raw,10);
+        }
+        // show greyed flame with current streak (0 if none)
+        uncolorFlame();
+        setFlameCount(streak);
+    } catch (e) {
+        console.warn('displayStoredStreak failed', e);
     }
 }
 
