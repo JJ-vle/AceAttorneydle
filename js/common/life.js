@@ -8,6 +8,8 @@ const defensebar = document.getElementById("defensebar");
 const resultDiv = document.getElementById("result");
 const finalResultDiv = document.getElementById("finalresult");
 
+let countdownInterval = null;
+
 //////////// TRIES
 
 export let numTries = 0; // Nombre d'essais
@@ -77,28 +79,11 @@ export function gameOver(result, fromhistory){
             hintChecker(true);
         }
 
-        message = `
-            🎉 Bravo!<br>
-            You found the ${element} of the day.<br>
-            <img src="${img}" alt="${element}"><br>
-            <strong>${targetItem.name}</strong><br><br>
-            🔥 Current Streak: ${newStreak}<br>
-            🔢 Number of tries: ${numTries+1}<br>
-            ⏳ Time until next ${element} : ${getTimeUntilNext()}<br>
-        `;
+        // Build message data for display
         resultClass = "win";
     } else {
         console.log("😢 lose");
         newStreak = 0;
-        message = `
-            ❌ Lost!<br>
-            The ${element} of the day was:<br>
-            <img src="${img}" alt="${element}"><br>
-            <strong>${targetItem.name}</strong><br><br>
-            🔄 Streak reset<br>
-            🔢 Number of tries: ${numTries+1}<br>
-            ⏳ Time until next ${element} : ${getTimeUntilNext()}<br>
-        `;
         resultClass = "lose";
     }
 
@@ -117,16 +102,149 @@ export function gameOver(result, fromhistory){
         setFlameCount(0);
         uncolorFlame();
     }
-    displayResult(message, resultClass);
+    displayResult(result, resultClass, img, newStreak, element);
 }
 
-function displayResult(message, resultClass) {
+function displayResult(resultBool, resultClass, imgSrc, streak, elementName) {
+    // clear previous countdown if any
+    if (countdownInterval) {
+        clearInterval(countdownInterval);
+        countdownInterval = null;
+    }
+
     finalResultDiv.innerHTML = "";
     finalResultDiv.className = resultClass;
-    
-    const messageElement = document.createElement("p");
-    messageElement.innerHTML = message;
-    finalResultDiv.appendChild(messageElement);
+
+    // Card container
+    const card = document.createElement('div');
+    card.className = 'result-card';
+
+    const avatar = document.createElement('img');
+    avatar.className = 'avatar';
+    avatar.src = imgSrc;
+    avatar.alt = targetItem.name || 'result';
+    card.appendChild(avatar);
+
+    // Stats column
+    const stats = document.createElement('div');
+    stats.className = 'result-stats';
+    const title = document.createElement('h2');
+    title.textContent = resultBool ? '🎉 Bravo!' : '❌ Lost';
+    const nameEl = document.createElement('div');
+    nameEl.innerHTML = `<strong>${targetItem.name}</strong>`;
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.innerHTML = `🔢 Number of tries: ${numTries+1}<br>🔥 Streak: ${streak}`;
+    stats.appendChild(title);
+    stats.appendChild(nameEl);
+    stats.appendChild(meta);
+    card.appendChild(stats);
+
+    // Countdown
+    const countdownWrap = document.createElement('div');
+    countdownWrap.className = 'countdown-wrap';
+    // countdown ring with animated digit groups
+    const ring = document.createElement('div');
+    ring.className = 'countdown';
+    ring.id = 'countdownTimer';
+
+    const digits = document.createElement('div');
+    digits.className = 'digits';
+    digits.id = 'countdownDigits';
+
+    // create three groups: HH MM SS
+    ['HH','MM','SS'].forEach((d, idx) => {
+        const grp = document.createElement('span');
+        grp.className = 'digit-group';
+        grp.dataset.part = idx; // 0,1,2
+        const txt = document.createElement('span');
+        txt.className = 'digit-text';
+        txt.textContent = d;
+        grp.appendChild(txt);
+        digits.appendChild(grp);
+        if (idx < 2) {
+            const sep = document.createElement('span');
+            sep.className = 'digit-sep';
+            sep.textContent = ':';
+            digits.appendChild(sep);
+        }
+    });
+
+    ring.appendChild(digits);
+
+    countdownWrap.appendChild(ring);
+    card.appendChild(countdownWrap);
+
+    finalResultDiv.appendChild(card);
+
+    // Start live countdown and ring update
+    function getSecondsUntilNext() {
+        const now = new Date();
+        const utcNow = now.getTime() + now.getTimezoneOffset() * 60000;
+        const nextMidnight = new Date(utcNow);
+        nextMidnight.setUTCHours(22,0,0,0); // midnight in GMT+1
+        if (utcNow >= nextMidnight.getTime()) {
+            nextMidnight.setUTCDate(nextMidnight.getUTCDate() + 1);
+        }
+        return Math.max(0, Math.floor((nextMidnight.getTime() - utcNow) / 1000));
+    }
+
+    function formatHMS(totalSeconds) {
+        const hours = Math.floor(totalSeconds / 3600);
+        totalSeconds %= 3600;
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        return `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+    }
+
+    // previous time string to detect changes
+    let prevTime = '';
+
+    function updateCountdown() {
+        const secondsLeft = getSecondsUntilNext();
+        const ringEl = document.getElementById('countdownTimer');
+        const digitsEl = document.getElementById('countdownDigits');
+        if (!ringEl || !digitsEl) return;
+        const totalDay = 24 * 3600;
+        const elapsed = totalDay - secondsLeft;
+        const pct = Math.max(0, Math.min(100, Math.round((elapsed / totalDay) * 100)));
+        // filled portion uses primary blue, remainder is a semi-transparent white layer
+        ringEl.style.background = `conic-gradient(var(--blue-primary) ${pct}%, rgba(255,255,255,0.5) ${pct}% )`;
+
+        const timeStr = formatHMS(secondsLeft);
+        if (timeStr !== prevTime) {
+            // split parts
+            const parts = timeStr.split(':');
+            let grpIndex = 0;
+            const groupEls = digitsEl.querySelectorAll('.digit-group');
+            groupEls.forEach((el) => {
+                const newText = parts[grpIndex] || '00';
+                const textEl = el.querySelector('.digit-text');
+                if (textEl.textContent !== newText) {
+                    // animate out, swap, animate in
+                    el.classList.add('flip-out');
+                    el.addEventListener('animationend', function handler(ev) {
+                        if (ev.animationName === 'flipOut') {
+                            // swap
+                            textEl.textContent = newText;
+                            el.classList.remove('flip-out');
+                            el.classList.add('flip-in');
+                        } else if (ev.animationName === 'flipIn') {
+                            el.classList.remove('flip-in');
+                            el.removeEventListener('animationend', handler);
+                        }
+                    });
+                }
+                grpIndex++;
+            });
+            prevTime = timeStr;
+        }
+        // label removed: digits display time, no extra text
+    }
+
+    // immediate update then every second
+    updateCountdown();
+    countdownInterval = setInterval(updateCountdown, 1000);
 }
 
 function getTimeUntilNext(){

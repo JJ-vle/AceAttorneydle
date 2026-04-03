@@ -80,6 +80,8 @@
     padding: 5px; /* Ajout d'un léger padding */
     text-align: center;
     vertical-align: middle; /* Centre le contenu verticalement */
+    background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0 3px, transparent 3px 10px);
+    background-blend-mode: overlay;
 }
 
 /* En-têtes de colonnes */

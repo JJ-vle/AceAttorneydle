@@ -18,6 +18,10 @@ await dataLoaded;
 // Patch notes data
 const patchNotes = [
     {
+        date: "04-03-2026",
+        text: "Small CSS update, mainly focused on the endgame window."
+    },
+    {
         date: "03-19-2026",
         text: "Mobile responsiveness improvements."
     },

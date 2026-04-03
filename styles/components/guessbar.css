@@ -43,6 +43,25 @@
     background-color: var(--blue-dark);
 }
 
+/* Small prompt below the input to give the field more emphasis */
+.input-prompt {
+    display: block;
+    width: 100%;
+    margin-top: 0.6rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--border-radius-sm);
+    background: rgba(0,0,0,0.32);
+    color: #fff;
+    font-size: 0.95rem;
+    text-align: center;
+    backdrop-filter: blur(4px);
+}
+
+.input-prompt small {
+    opacity: 0.9;
+    display: block;
+}
+
 /* ============================================
    SUGGESTIONS
    Liste déroulante de suggestions

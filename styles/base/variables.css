@@ -17,6 +17,18 @@
     --color-error: #e57373;
     --color-partial: #f4c539;
 
+    /* Result / endscreen color tokens (derived from feedback colors) */
+    --result-win-light: #adf6bf;
+    --result-win-dark: var(--color-success);
+    --result-lose-light: #efa9a9;
+    --result-lose-dark: var(--color-error);
+    --result-accent: var(--yellow-highlight);
+
+    /* Countdown colors */
+    --countdown-start: var(--blue-primary);
+    --countdown-mid: var(--blue-accent);
+    --countdown-end: var(--yellow-highlight);
+
     /* Couleurs mode daltonien */
     --colorblind-correct: #0072B2;   /* Bleu */
     --colorblind-incorrect: #D55E00; /* Orange foncé */

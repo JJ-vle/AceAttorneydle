@@ -72,3 +72,46 @@
 .bigger::after {
     background-image: url('../../resources/img/icons/arrow/up.png');
 }
+
+/* ============================================
+   FEEDBACK / MESSAGES
+   Enhanced styling for inline feedback messages
+   ============================================ */
+
+#feedback {
+    display: inline-block;
+    margin: 0.75rem auto;
+    padding: 0.55rem 0.9rem;
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(6px);
+    background: rgba(255,255,255,0.04);
+    color: var(--text-color, #fff);
+    font-weight: 600;
+    text-align: center;
+    max-width: 95%;
+    transition: transform 120ms ease, opacity 200ms ease;
+}
+
+#feedback.success {
+    background: linear-gradient(135deg, rgba(120,220,120,0.12), rgba(34,139,34,0.06));
+    border: 1px solid rgba(34,139,34,0.18);
+    color: #083b12;
+}
+
+#feedback.error {
+    background: linear-gradient(135deg, rgba(255,140,140,0.12), rgba(220,20,60,0.05));
+    border: 1px solid rgba(220,20,60,0.16);
+    color: #5a0a0a;
+}
+
+#feedback.info {
+    background: linear-gradient(135deg, rgba(120,180,255,0.08), rgba(50,100,200,0.04));
+    border: 1px solid rgba(50,100,200,0.12);
+    color: #052a4a;
+}
+
+/* Slight entrance animation when the class is toggled */
+.feedback-pop {
+    transform: translateY(-4px);
+}
