@@ -214,7 +214,7 @@ function compareDebut(guessDebut, targetDebut) {
     }
 
     // Si les débuts sont identiques
-    if (guessDebut === targetDebut) {
+    if (guessDebut.toLowerCase() === targetDebut.toLowerCase()) {
         return `<td class="correct">${guessDebut}</td>`;
     }
 
@@ -283,25 +283,25 @@ function normalizeColor(word) {
     return colorMap[word] || word;
 }
 
-// Fonction de comparaison des couleurs de cheveux
-function compareColors(guessHair, targetHair) {
-    if (!guessHair || guessHair === "N/A") {
-        guessHair = "Unknown";
+// Fonction de comparaison des couleurs de cheveux et yeux
+function compareColors(guessColor, targetColor) {
+    if (!guessColor || guessColor === "N/A") {
+        guessColor = "Unknown";
     }
-    if (!targetHair || targetHair === "N/A") {
-        targetHair = "Unknown";
+    if (!targetColor || targetColor === "N/A") {
+        targetColor = "Unknown";
     }
 
     // Si les deux couleurs sont exactement les mêmes
-    if (guessHair === targetHair) {
-        return `<td class="correct">${guessHair}</td>`;
+    if (guessColor.toLowerCase() === targetColor.toLowerCase()) {
+        return `<td class="correct">${guessColor}</td>`;
     }
 
     let colorClass = "incorrect";
 
     // Fonction utilitaire : nettoyer et extraire les mots significatifs
-    function extractKeywords(hairDesc) {
-        return hairDesc
+    function extractKeywords(colorDesc) {
+        return colorDesc
             .toLowerCase()
             .replace(/[^a-z0-9\s]/gi, "") // retirer ponctuation
             .split(/\s+/) // découper en mots
@@ -313,8 +313,8 @@ function compareColors(guessHair, targetHair) {
             .map(normalizeColor); //normalize
     }
 
-    const guessKeywords = extractKeywords(guessHair);
-    const targetKeywords = extractKeywords(targetHair);
+    const guessKeywords = extractKeywords(guessColor);
+    const targetKeywords = extractKeywords(targetColor);
 
     // Chercher des mots en commun
     const commonWords = guessKeywords.filter(word => targetKeywords.includes(word));
@@ -323,7 +323,7 @@ function compareColors(guessHair, targetHair) {
         colorClass = "partial";
     }
 
-    return `<td class="${colorClass}">${guessHair}</td>`;
+    return `<td class="${colorClass}">${guessColor}</td>`;
 }
 
 //////////// DOMCONTENTLOADED
