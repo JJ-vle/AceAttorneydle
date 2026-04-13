@@ -595,7 +595,7 @@
         ]
     },
     {
-        "image": "https://static.wikia.nocookie.net/aceattorney/images/3/3c/Astronaut_escape.png/revision/latest/scale-to-width-down/268?cb=20240809025343",
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/8/8d/TheCosmicTurnabout.png/revision/latest/scale-to-width-down/536?cb=20240507201106",
         "locations": [
             "Space Center entrance",
             "Boarding Lounge 1",
@@ -604,11 +604,11 @@
             "Robotics lab",
             "Wright Anything Agency"
         ],
-        "french": null,
+        "french": "Volte-face cosmique",
         "victim": "Clay Terran",
         "cause": "Stabbed in the chest with a utility knife",
-        "name": "Death of Clay Terran",
-        "url": "https://aceattorney.fandom.com/wiki/Death_of_Clay_Terran",
+        "name": "The Cosmic Turnabout",
+        "url": "https://aceattorney.fandom.com/wiki/The_Cosmic_Turnabout",
         "evidence": [
             {
                 "name": "Terran's Autopsy Report",
@@ -681,7 +681,7 @@
         ]
     },
     {
-        "image": "https://static.wikia.nocookie.net/aceattorney/images/c/c1/Vera_serving_coffee.png/revision/latest/scale-to-width-down/268?cb=20230527162012",
+        "image": "https://static.wikia.nocookie.net/aceattorney/images/d/da/Turnabout_Succession.png/revision/latest/scale-to-width-down/536?cb=20240507180405",
         "locations": [
             "Wright Anything Agency",
             "Visitor's room",
@@ -691,11 +691,11 @@
             "Jurists' chambers",
             "Hickfield Clinic"
         ],
-        "french": null,
+        "french": "Volte-face et succession",
         "victim": "Drew Misham",
         "cause": "Atroquinine poisoning via a Commemorative Stamp; initially thought to be via a Coffee Mug",
-        "name": "Death of Drew Misham",
-        "url": "https://aceattorney.fandom.com/wiki/Death_of_Drew_Misham",
+        "name": "Turnabout Succession",
+        "url": "https://aceattorney.fandom.com/wiki/Turnabout_Succession",
         "evidence": [
             {
                 "name": "Magic Show Ticket",
