@@ -14,6 +14,10 @@ export const inputField = document.getElementById("guessInput");
 export const suggestionsList = document.getElementById("suggestions");
 export const validateButton = document.getElementById("validateButton");
 
+if (validateButton) {
+    validateButton.textContent = "Validate";
+}
+
 const forcedCharactersPerGroup = {
     Investigation: ["Miles Edgeworth", "Dick Gumshoe", "Maggey Byrde", "Franziska von Karma", "Mike Meekins", "Ema Skye", "Wendy Oldbag", "Manfred von Karma", "Judge", "Larry Butz", "Shelly de Killer", "Frank Sahwit", "Regina Berry", "Lotta Hart", "Penny Nichols", "Will Powers" ]
 };
@@ -30,9 +34,7 @@ inputField.addEventListener("keydown", function (event) {
 });
 // Valider la réponse
 validateButton.addEventListener("click", function () {
-    if (validateGuessFunction) {
-        validateGuessFunction();
-    }
+    triggerValidationFromInput();
 });
 export function removeValidateButtonListener() {
     if (validateButton) {
@@ -46,6 +48,7 @@ export function removeValidateButtonListener() {
 export function handleInput(query) {
     query = query.toLowerCase().trim();
     suggestionsList.innerHTML = "";
+    selectedIndex = -1;
 
     if (query.length === 0) {
         suggestionsList.style.display = "none";
@@ -85,6 +88,9 @@ export function handleInput(query) {
 
     if (matchedItems.length > 0) {
         suggestionsList.style.display = "block";
+        if (validateButton){
+            validateButton.disabled = false;
+        }
 
         matchedItems.forEach((character, index) => {
             const listItem = document.createElement("li");
@@ -134,16 +140,7 @@ export function handleKeyboard(event){
         }
     } else if (event.key === "Enter") {
         event.preventDefault();
-
-        if (selectedIndex < 0) {
-            selectedIndex = 0;
-        }
-        if (items[selectedIndex]) {
-            selectName(items[selectedIndex].textContent.trim());
-            selectedIndex = -1; // Réinitialisation de la sélection
-            updateSelection(items)
-            validateGuessFunction();
-        }
+        triggerValidationFromInput();
 
     }
 
@@ -201,8 +198,36 @@ export function selectName(name) {
     inputField.value = name;
     suggestionsList.style.display = "none";
     if (validateButton){
-        validateButton.disabled = true;
+        validateButton.disabled = !name.trim();
     }
+}
+
+function triggerValidationFromInput() {
+    if (!validateGuessFunction) return;
+
+    const items = suggestionsList.getElementsByTagName("li");
+    const visibleSuggestions = suggestionsList.style.display !== "none" && items.length > 0;
+    const currentValue = inputField.value.trim().toLowerCase();
+
+    if (visibleSuggestions) {
+        const exactItem = Array.from(items).find(item => {
+            const nameSpan = item.querySelector("span");
+            return nameSpan && nameSpan.textContent.trim().toLowerCase() === currentValue;
+        });
+
+        if (exactItem) {
+            const exactName = exactItem.querySelector("span")?.textContent?.trim();
+            if (exactName) selectName(exactName);
+        } else {
+            if (selectedIndex < 0) selectedIndex = 0;
+            const selectedItem = items[selectedIndex] || items[0];
+            const selectedName = selectedItem?.querySelector("span")?.textContent?.trim();
+            if (selectedName) selectName(selectedName);
+        }
+    }
+
+    validateGuessFunction();
+    selectedIndex = -1;
 }
 
 // Mise à jour de la sélection visuelle

@@ -8,7 +8,7 @@
 /* Conteneur pour l'input et le bouton */
 #guessbarinputs {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     gap: var(--spacing-sm); /* Espace entre les éléments */
     width: 100%; /* Prend toute la largeur du parent */
     transition: width var(--transition-slow); /* Animation fluide pour la largeur */
@@ -17,6 +17,8 @@
 /* Entrée de texte pour la devinette */
 #guessInput {
     flex-grow: 1; /* Prend tout l'espace disponible */
+    height: 2.5rem;
+    box-sizing: border-box;
     padding: var(--spacing-sm);
     border: 1px solid var(--blue-secondary);
     border-radius: var(--border-radius-sm);
@@ -25,22 +27,42 @@
 
 /* Bouton de validation */
 #validateButton {
-    padding: var(--spacing-sm) var(--spacing-lg);
-    background-color: var(--blue-secondary);
+    min-width: 7.5rem;
+    height: 2.5rem;
+    box-sizing: border-box;
+    padding: 0 var(--spacing-lg);
+    background-image:
+        radial-gradient(circle at center, var(--blue-primary) 0.25rem, transparent 0),
+        radial-gradient(circle at center, var(--blue-primary) 0.25rem, var(--blue-accent) 0);
+    background-size: 1.3rem 1.3rem;
+    background-position: 0 0, 0.65rem 0.65rem;
+    background-blend-mode: normal;
     color: white;
-    border: none;
+    border: var(--border-width-thin) solid white;
     border-radius: var(--border-radius-sm);
     cursor: pointer;
-    transition: background-color var(--transition-normal);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    box-shadow: 0 3px 10px rgba(20, 52, 93, 0.3);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal), filter var(--transition-normal);
 }
 
 #validateButton:disabled {
-    background-color: #A9A9A9;
+    background: #8a96a3;
+    border-color: #8a96a3;
+    box-shadow: none;
+    filter: grayscale(0.15);
     cursor: not-allowed;
 }
 
 #validateButton:hover:enabled {
-    background-color: var(--blue-dark);
+    transform: none;
+    box-shadow: 0 0 0 6px var(--yellow-highlight);
+}
+
+#validateButton:active:enabled {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(20, 52, 93, 0.35);
 }
 
 /* Small prompt below the input to give the field more emphasis */
