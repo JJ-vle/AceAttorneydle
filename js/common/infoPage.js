@@ -18,6 +18,10 @@ await dataLoaded;
 // Patch notes data
 const patchNotes = [
     {
+        date: "05-05-2026",
+        text: "Fix the validate button (now it should work correctly)."
+    },
+    {
         date: "04-03-2026",
         text: "Small CSS update, mainly focused on the endgame window."
     },

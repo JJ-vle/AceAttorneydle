@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^guess$ /guess.html [L]
+RewriteRule ^quote$ /quote.html [L]
+RewriteRule ^silhouette$ /silhouette.html [L]
+RewriteRule ^case$ /case.html [L]
