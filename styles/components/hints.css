@@ -175,7 +175,8 @@
 
 /* Conteneur silhouette */
 #silhouette {
-    max-width: 100%;
+    width: min(100%, 1200px);
+    max-width: 1200px;
     overflow: hidden;
     display: block;
     box-sizing: border-box;
@@ -184,7 +185,7 @@
 /* Silhouette avec filtre noir */
 #silhouette img {
     max-width: 100%;
-    max-height: 60vh;
+    max-height: 78vh;
     width: auto;
     height: auto;
     display: block;
@@ -194,4 +195,79 @@
     -webkit-user-drag: none; /* empêche le drag sur Webkit */
     pointer-events: none; /* désactive clics/déplacements */
     user-select: none; /* empêche la sélection */
+}
+
+.silhouette-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: var(--spacing-md);
+}
+
+.silhouette-control {
+    min-width: 210px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: var(--border-width-thin) solid var(--blue-secondary);
+    background-color: white;
+    color: var(--blue-primary);
+    cursor: pointer;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast), background-color var(--transition-fast);
+}
+
+.silhouette-control:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 0 0 4px var(--yellow-highlight);
+}
+
+.silhouette-control.active {
+    background-color: var(--blue-primary);
+    color: white;
+    border-color: var(--blue-primary);
+}
+
+.silhouette-control.locked,
+.silhouette-control:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.silhouette-control-label,
+.silhouette-control-meta {
+    display: block;
+}
+
+.silhouette-control-meta {
+    margin-top: 2px;
+    font-size: 0.8em;
+    color: currentColor;
+    opacity: 0.85;
+}
+
+@media (min-width: 901px) {
+    #hints:has(#silhouette-controls) {
+        max-width: 1300px;
+        width: fit-content;
+    }
+
+    #silhouette {
+        width: min(100%, 1300px);
+        max-width: 1300px;
+    }
+
+    #silhouette img {
+        width: 100%;
+        max-width: 1300px;
+        max-height: 82vh;
+    }
+
+    .silhouette-controls {
+        max-width: 1300px;
+    }
+
+    .silhouette-control {
+        min-width: 220px;
+    }
 }

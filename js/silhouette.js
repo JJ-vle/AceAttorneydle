@@ -3,7 +3,7 @@
 // Importer la fonction depuis un autre fichier
 import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, characterData, targetItem, attemptedNames, setGameMode } from './common/data.js';
-import { gameOver, incrementNumTries, verifyTries } from './common/life.js';
+import { gameOver, incrementNumTries, verifyTries, numTries } from './common/life.js';
 import { setCookieName, updateAttemptsCookie, loadHistory, displayStoredStreak } from './common/cookie.js';
 
 //////////////////
@@ -18,6 +18,66 @@ const validateButton = document.getElementById("validateButton");
 const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
 const silhouetteImg = document.getElementById("silhouette");
+const silhouetteControls = document.getElementById("silhouette-controls");
+
+const silhouetteStates = {
+    default: "brightness(0)",
+    "grayscale-blur": "grayscale(100%) brightness(0.2) contrast(0.85) blur(14px)",
+    "color-blur": "blur(14px)"
+};
+
+let currentSilhouetteState = "default";
+
+function getSilhouetteImage() {
+    return document.querySelector("#silhouette img");
+}
+
+function applySilhouetteState(state) {
+    const silhouetteImage = getSilhouetteImage();
+    if (!silhouetteImage || !silhouetteStates[state]) {
+        return;
+    }
+
+    currentSilhouetteState = state;
+    silhouetteImage.style.filter = silhouetteStates[state];
+
+    if (silhouetteControls) {
+        silhouetteControls.querySelectorAll(".silhouette-control").forEach(button => {
+            button.classList.toggle("active", button.dataset.mode === state);
+        });
+    }
+}
+
+function updateSilhouetteControls() {
+    if (!silhouetteControls) {
+        return;
+    }
+
+    const grayscaleButton = silhouetteControls.querySelector('[data-mode="grayscale-blur"]');
+    const colorButton = silhouetteControls.querySelector('[data-mode="color-blur"]');
+    const grayscaleMeta = grayscaleButton?.querySelector("[data-tries-left]");
+    const colorMeta = colorButton?.querySelector("[data-tries-left]");
+    const grayscaleRemaining = Math.max(0, 5 - numTries);
+    const colorRemaining = Math.max(0, 10 - numTries);
+
+    if (grayscaleButton) {
+        const unlocked = numTries >= 5;
+        grayscaleButton.disabled = !unlocked;
+        grayscaleButton.classList.toggle("locked", !unlocked);
+        if (grayscaleMeta) {
+            grayscaleMeta.textContent = unlocked ? "Unlocked" : `${grayscaleRemaining} tries left`;
+        }
+    }
+
+    if (colorButton) {
+        const unlocked = numTries >= 10;
+        colorButton.disabled = !unlocked;
+        colorButton.classList.toggle("locked", !unlocked);
+        if (colorMeta) {
+            colorMeta.textContent = unlocked ? "Unlocked" : `${colorRemaining} tries left`;
+        }
+    }
+}
 
 // Assurer la création du tableau dès le début
 export function createHistoryTable() {
@@ -35,6 +95,19 @@ export function createHistoryTable() {
     }
 }
 createHistoryTable()
+
+if (silhouetteControls) {
+    silhouetteControls.addEventListener("click", event => {
+        const button = event.target.closest(".silhouette-control");
+        if (!button || button.disabled) {
+            return;
+        }
+
+        applySilhouetteState(button.dataset.mode);
+    });
+}
+
+updateSilhouetteControls();
 
 function validateGuess(guessName=inputField.value.trim(), fromhistory=false) {
 
@@ -86,6 +159,7 @@ function validateGuess(guessName=inputField.value.trim(), fromhistory=false) {
 
     incrementNumTries();
     verifyTries();
+    updateSilhouetteControls();
     inputField.value = "";
     validateButton.disabled = true;
 }
@@ -136,12 +210,16 @@ function imageProcessing(imgSrc) {
     // Applique un filtre noir complet
     imgElement.style.filter = "brightness(0)";
     imgElement.style.height = "auto";
-    imgElement.style.maxWidth = "1500px";
+    imgElement.style.maxWidth = "100%";
     imgElement.style.display = "block";
     imgElement.style.margin = "10px auto"; // Centre l'image
 
     silhouetteImg.innerHTML = ''
     silhouetteImg.appendChild(imgElement);
+
+    currentSilhouetteState = "default";
+    updateSilhouetteControls();
+    applySilhouetteState("default");
 }
 function checkCorrectGroups(groups){
     checkboxes.forEach(checkbox => {
@@ -163,6 +241,8 @@ async function initGame() {
     setValidateGuessFunction(validateGuess);
     displayStoredStreak();
     loadHistory();
+    updateSilhouetteControls();
+    applySilhouetteState(currentSilhouetteState);
 
 }
 

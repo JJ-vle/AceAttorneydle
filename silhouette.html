@@ -57,6 +57,17 @@
 
         <div id="hints">
             <div id="silhouette"></div>
+            <div id="silhouette-controls" class="silhouette-controls" aria-label="Silhouette hint controls">
+                <button type="button" class="silhouette-control active" data-mode="default">Silhouette</button>
+                <button type="button" class="silhouette-control locked" data-mode="grayscale-blur" disabled>
+                    <span class="silhouette-control-label">Grayscale</span>
+                    <span class="silhouette-control-meta" data-tries-left></span>
+                </button>
+                <button type="button" class="silhouette-control locked" data-mode="color-blur" disabled>
+                    <span class="silhouette-control-label">Color</span>
+                    <span class="silhouette-control-meta" data-tries-left></span>
+                </button>
+            </div>
         </div>
 
         <div id="guessbar">

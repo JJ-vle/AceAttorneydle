@@ -127,6 +127,18 @@ const helpContents = {
                 <li><strong>Red</strong> → Your guess is not the correct character.</li>
             </ul>
         </div>
+
+        <div class="patch-card">
+            <h3>Silhouette Hints</h3>
+            <p>
+                The silhouette panel now offers 3 visual states:
+            </p>
+            <ul>
+                <li><strong>Default</strong> → Black silhouette, available immediately.</li>
+                <li><strong>After 5 guesses</strong> → Grayscale silhouette with blur.</li>
+                <li><strong>After 10 guesses</strong> → Full-color silhouette with blur.</li>
+            </ul>
+        </div>
         
         <div class="patch-card">
             <h3>Life Bar</h3>
