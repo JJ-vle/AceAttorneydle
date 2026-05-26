@@ -131,9 +131,14 @@
     }
 
     .silhouette-control {
-        min-width: 120px;
+        min-width: 110px;
         font-size: 12px;
         padding: 8px 10px;
+    }
+
+    .silhouette-control .hint-icon {
+        max-height: 34px;
+        width: 34px;
     }
     
     /* ========================================

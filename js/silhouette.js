@@ -22,14 +22,117 @@ const silhouetteControls = document.getElementById("silhouette-controls");
 
 const silhouetteStates = {
     default: "brightness(0)",
-    "grayscale-blur": "grayscale(100%) brightness(0.2) contrast(0.85) blur(14px)",
-    "color-blur": "blur(14px)"
+    "grayscale-blur": "pixelated-grayscale",
+    "color-blur": "pixelated-color",
+    original: "original"
 };
 
 let currentSilhouetteState = "default";
+let currentSilhouetteSource = "";
 
 function getSilhouetteImage() {
     return document.querySelector("#silhouette img");
+}
+
+function clearPixelatedPreview() {
+    const existingCanvas = document.querySelector("#silhouette canvas");
+    if (existingCanvas) {
+        existingCanvas.remove();
+    }
+
+    const silhouetteImage = getSilhouetteImage();
+    if (silhouetteImage) {
+        silhouetteImage.style.display = "block";
+    }
+}
+
+function getCleanSilhouetteSource() {
+    const silhouetteImage = getSilhouetteImage();
+    if (!silhouetteImage) {
+        return "";
+    }
+
+    return silhouetteImage.getAttribute("src") || "";
+}
+
+function renderPixelatedSilhouette(mode) {
+    const silhouetteImage = getSilhouetteImage();
+    if (!silhouetteImage) {
+        return false;
+    }
+
+    const source = silhouetteImage.getAttribute("src");
+    if (!source) {
+        return false;
+    }
+
+    const sampleSize = mode === "grayscale-blur" ? 28 : 36;
+    const image = new Image();
+    image.crossOrigin = "anonymous";
+
+    image.onload = () => {
+        try {
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+            const sampleCanvas = document.createElement("canvas");
+            const sampleContext = sampleCanvas.getContext("2d");
+            const sourceWidth = image.naturalWidth || image.width;
+            const sourceHeight = image.naturalHeight || image.height;
+
+            if (!sourceWidth || !sourceHeight) {
+                return;
+            }
+
+            const scaledWidth = sampleSize;
+            const scaledHeight = Math.max(1, Math.round((sourceHeight / sourceWidth) * scaledWidth));
+
+            sampleCanvas.width = scaledWidth;
+            sampleCanvas.height = scaledHeight;
+            sampleContext.imageSmoothingEnabled = false;
+            sampleContext.drawImage(image, 0, 0, scaledWidth, scaledHeight);
+
+            if (mode === "grayscale-blur") {
+                const pixels = sampleContext.getImageData(0, 0, sampleCanvas.width, sampleCanvas.height);
+                const data = pixels.data;
+
+                for (let i = 0; i < data.length; i += 4) {
+                    const gray = Math.round(data[i] * 0.3 + data[i + 1] * 0.59 + data[i + 2] * 0.11);
+                    const darkGray = Math.max(0, Math.round(gray * 0.45));
+                    data[i] = darkGray;
+                    data[i + 1] = darkGray;
+                    data[i + 2] = darkGray;
+                }
+
+                sampleContext.putImageData(pixels, 0, 0);
+            }
+
+            canvas.width = sourceWidth;
+            canvas.height = sourceHeight;
+            context.imageSmoothingEnabled = false;
+            context.drawImage(sampleCanvas, 0, 0, sourceWidth, sourceHeight);
+
+            canvas.className = "pixelated-silhouette";
+            canvas.style.maxWidth = "100%";
+            canvas.style.width = "100%";
+            canvas.style.height = "auto";
+            canvas.style.display = "block";
+            canvas.style.margin = "10px auto";
+            canvas.style.imageRendering = "pixelated";
+
+            clearPixelatedPreview();
+            silhouetteImage.style.display = "none";
+            silhouetteImage.parentNode.insertBefore(canvas, silhouetteImage);
+        } catch (error) {
+            console.warn("Pixelation failed, keeping original silhouette.", error);
+        }
+    };
+
+    image.onerror = () => {
+        console.warn("Could not load silhouette image for pixelation.");
+    };
+
+    image.src = source;
+    return true;
 }
 
 function applySilhouetteState(state) {
@@ -39,7 +142,21 @@ function applySilhouetteState(state) {
     }
 
     currentSilhouetteState = state;
-    silhouetteImage.style.filter = silhouetteStates[state];
+
+    if (state === "default") {
+        clearPixelatedPreview();
+        silhouetteImage.style.filter = silhouetteStates[state];
+        silhouetteImage.style.display = "block";
+    } else if (state === "original") {
+        clearPixelatedPreview();
+        silhouetteImage.style.filter = "none";
+        silhouetteImage.style.display = "block";
+    } else {
+        const applied = renderPixelatedSilhouette(state);
+        if (!applied) {
+            silhouetteImage.style.filter = "brightness(0)";
+        }
+    }
 
     if (silhouetteControls) {
         silhouetteControls.querySelectorAll(".silhouette-control").forEach(button => {
@@ -55,15 +172,32 @@ function updateSilhouetteControls() {
 
     const grayscaleButton = silhouetteControls.querySelector('[data-mode="grayscale-blur"]');
     const colorButton = silhouetteControls.querySelector('[data-mode="color-blur"]');
+    const originalButton = silhouetteControls.querySelector('[data-mode="original"]');
+    const defaultButton = silhouetteControls.querySelector('[data-mode="default"]');
     const grayscaleMeta = grayscaleButton?.querySelector("[data-tries-left]");
     const colorMeta = colorButton?.querySelector("[data-tries-left]");
+    const originalMeta = originalButton?.querySelector("[data-tries-left]");
+    const grayscaleIcon = grayscaleButton?.querySelector("img");
+    const colorIcon = colorButton?.querySelector("img");
+    const originalIcon = originalButton?.querySelector("img");
+    const defaultIcon = defaultButton?.querySelector("img");
     const grayscaleRemaining = Math.max(0, 5 - numTries);
     const colorRemaining = Math.max(0, 10 - numTries);
+    const originalRemaining = Math.max(0, 14 - numTries);
+
+    if (defaultIcon) {
+        defaultIcon.src = "resources/img/icons/Psyche-Lock-Broken.png";
+    }
 
     if (grayscaleButton) {
         const unlocked = numTries >= 5;
         grayscaleButton.disabled = !unlocked;
         grayscaleButton.classList.toggle("locked", !unlocked);
+        if (grayscaleIcon) {
+            grayscaleIcon.src = unlocked
+                ? "resources/img/icons/Psyche-Lock-Broken.png"
+                : "resources/img/icons/Psyche-Lock.png";
+        }
         if (grayscaleMeta) {
             grayscaleMeta.textContent = unlocked ? "Unlocked" : `${grayscaleRemaining} tries left`;
         }
@@ -73,8 +207,27 @@ function updateSilhouetteControls() {
         const unlocked = numTries >= 10;
         colorButton.disabled = !unlocked;
         colorButton.classList.toggle("locked", !unlocked);
+        if (colorIcon) {
+            colorIcon.src = unlocked
+                ? "resources/img/icons/Psyche-Lock-Broken.png"
+                : "resources/img/icons/Psyche-Lock.png";
+        }
         if (colorMeta) {
             colorMeta.textContent = unlocked ? "Unlocked" : `${colorRemaining} tries left`;
+        }
+    }
+
+    if (originalButton) {
+        const unlocked = numTries >= 14;
+        originalButton.disabled = !unlocked;
+        originalButton.classList.toggle("locked", !unlocked);
+        if (originalIcon) {
+            originalIcon.src = unlocked
+                ? "resources/img/icons/Black_Psyche-Lock-Broken.png"
+                : "resources/img/icons/Black_Psyche-Lock.png";
+        }
+        if (originalMeta) {
+            originalMeta.textContent = unlocked ? "Unlocked" : `${originalRemaining} tries left`;
         }
     }
 }
@@ -203,6 +356,7 @@ function compareInfoClass(guess, target) {
 }
 
 function imageProcessing(imgSrc) {
+    currentSilhouetteSource = imgSrc;
     const imgElement = document.createElement("img");
     imgElement.src = imgSrc;
     imgElement.alt = "Silhouette du personnage";

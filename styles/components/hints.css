@@ -200,21 +200,37 @@
 .silhouette-controls {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing-sm);
+    gap: 8px;
     justify-content: center;
     width: 100%;
-    max-width: 1200px;
-    margin-top: var(--spacing-md);
+    max-width: 980px;
+    margin-top: 10px;
 }
 
 .silhouette-control {
-    min-width: 210px;
-    padding: var(--spacing-md) var(--spacing-lg);
+    min-width: 170px;
+    padding: 10px 12px;
     border: var(--border-width-thin) solid var(--blue-secondary);
     background-color: white;
     color: var(--blue-primary);
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     transition: transform var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast), background-color var(--transition-fast);
+}
+
+.silhouette-control .hint-icon {
+    max-height: 42px;
+    margin-bottom: 4px;
+    width: 42px;
+    object-fit: contain;
+    opacity: 0.5;
+}
+
+.silhouette-control:not(.locked) .hint-icon {
+    opacity: 1;
 }
 
 .silhouette-control:hover:not(:disabled) {
@@ -230,7 +246,6 @@
 
 .silhouette-control.locked,
 .silhouette-control:disabled {
-    opacity: 0.45;
     cursor: not-allowed;
 }
 
@@ -264,10 +279,15 @@
     }
 
     .silhouette-controls {
-        max-width: 1300px;
+        max-width: 980px;
     }
 
     .silhouette-control {
-        min-width: 220px;
+        min-width: 170px;
+    }
+
+    .silhouette-control .hint-icon {
+        width: 42px;
+        max-height: 42px;
     }
 }

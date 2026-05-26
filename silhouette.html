@@ -58,13 +58,23 @@
         <div id="hints">
             <div id="silhouette"></div>
             <div id="silhouette-controls" class="silhouette-controls" aria-label="Silhouette hint controls">
-                <button type="button" class="silhouette-control active" data-mode="default">Silhouette</button>
+                <button type="button" class="silhouette-control active" data-mode="default">
+                    <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon" alt="Silhouette">
+                    <span class="silhouette-control-label">Silhouette</span>
+                </button>
                 <button type="button" class="silhouette-control locked" data-mode="grayscale-blur" disabled>
+                    <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon" alt="Grayscale">
                     <span class="silhouette-control-label">Grayscale</span>
                     <span class="silhouette-control-meta" data-tries-left></span>
                 </button>
                 <button type="button" class="silhouette-control locked" data-mode="color-blur" disabled>
+                    <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon" alt="Color">
                     <span class="silhouette-control-label">Color</span>
+                    <span class="silhouette-control-meta" data-tries-left></span>
+                </button>
+                <button type="button" class="silhouette-control locked" data-mode="original" disabled>
+                    <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon" alt="Original">
+                    <span class="silhouette-control-label">Original</span>
                     <span class="silhouette-control-meta" data-tries-left></span>
                 </button>
             </div>
