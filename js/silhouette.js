@@ -66,7 +66,8 @@ function renderPixelatedSilhouette(mode) {
         return false;
     }
 
-    const sampleSize = mode === "grayscale-blur" ? 28 : 36;
+    // Restore previous sample sizes for stronger pixelation
+    const sampleSize = mode === "grayscale-blur" ? 12 : 16;
     const image = new Image();
     image.crossOrigin = "anonymous";
 
@@ -97,6 +98,7 @@ function renderPixelatedSilhouette(mode) {
 
                 for (let i = 0; i < data.length; i += 4) {
                     const gray = Math.round(data[i] * 0.3 + data[i + 1] * 0.59 + data[i + 2] * 0.11);
+                    // Restore original darkening factor for clearer pixel blocks
                     const darkGray = Math.max(0, Math.round(gray * 0.45));
                     data[i] = darkGray;
                     data[i + 1] = darkGray;
@@ -118,6 +120,8 @@ function renderPixelatedSilhouette(mode) {
             canvas.style.display = "block";
             canvas.style.margin = "10px auto";
             canvas.style.imageRendering = "pixelated";
+            // No additional blur on the pixelated canvas to preserve pixelation
+            canvas.style.filter = "";
 
             clearPixelatedPreview();
             silhouetteImage.style.display = "none";
@@ -151,6 +155,16 @@ function applySilhouetteState(state) {
         clearPixelatedPreview();
         silhouetteImage.style.filter = "none";
         silhouetteImage.style.display = "block";
+    } else if (state === "grayscale-blur") {
+        // Non-pixelated grayscale + strong blur
+        clearPixelatedPreview();
+        silhouetteImage.style.filter = "grayscale(100%) brightness(0.4) blur(40px)";
+        silhouetteImage.style.display = "block";
+    } else if (state === "color-blur") {
+        // Non-pixelated color + strong blur
+        clearPixelatedPreview();
+        silhouetteImage.style.filter = "blur(40px)";
+        silhouetteImage.style.display = "block";
     } else {
         const applied = renderPixelatedSilhouette(state);
         if (!applied) {
@@ -171,6 +185,7 @@ function updateSilhouetteControls() {
     }
 
     const grayscaleButton = silhouetteControls.querySelector('[data-mode="grayscale-blur"]');
+    
     const colorButton = silhouetteControls.querySelector('[data-mode="color-blur"]');
     const originalButton = silhouetteControls.querySelector('[data-mode="original"]');
     const defaultButton = silhouetteControls.querySelector('[data-mode="default"]');
@@ -202,6 +217,8 @@ function updateSilhouetteControls() {
             grayscaleMeta.textContent = unlocked ? "Unlocked" : `${grayscaleRemaining} tries left`;
         }
     }
+
+    // black-blur control removed; grayscale and color now use non-pixelated blur
 
     if (colorButton) {
         const unlocked = numTries >= 10;
