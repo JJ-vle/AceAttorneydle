@@ -22,8 +22,8 @@ const silhouetteControls = document.getElementById("silhouette-controls");
 
 const silhouetteStates = {
     default: "brightness(0)",
-    "grayscale-blur": "pixelated-grayscale",
-    "color-blur": "pixelated-color",
+    "grayscale-blur": "grayscale-blur",
+    "color-blur": "color-blur",
     original: "original"
 };
 
@@ -185,24 +185,17 @@ function updateSilhouetteControls() {
     }
 
     const grayscaleButton = silhouetteControls.querySelector('[data-mode="grayscale-blur"]');
-    
     const colorButton = silhouetteControls.querySelector('[data-mode="color-blur"]');
     const originalButton = silhouetteControls.querySelector('[data-mode="original"]');
-    const defaultButton = silhouetteControls.querySelector('[data-mode="default"]');
     const grayscaleMeta = grayscaleButton?.querySelector("[data-tries-left]");
     const colorMeta = colorButton?.querySelector("[data-tries-left]");
     const originalMeta = originalButton?.querySelector("[data-tries-left]");
     const grayscaleIcon = grayscaleButton?.querySelector("img");
     const colorIcon = colorButton?.querySelector("img");
     const originalIcon = originalButton?.querySelector("img");
-    const defaultIcon = defaultButton?.querySelector("img");
     const grayscaleRemaining = Math.max(0, 5 - numTries);
     const colorRemaining = Math.max(0, 10 - numTries);
     const originalRemaining = Math.max(0, 14 - numTries);
-
-    if (defaultIcon) {
-        defaultIcon.src = "resources/img/icons/Psyche-Lock-Broken.png";
-    }
 
     if (grayscaleButton) {
         const unlocked = numTries >= 5;
@@ -217,8 +210,6 @@ function updateSilhouetteControls() {
             grayscaleMeta.textContent = unlocked ? "Unlocked" : `${grayscaleRemaining} tries left`;
         }
     }
-
-    // black-blur control removed; grayscale and color now use non-pixelated blur
 
     if (colorButton) {
         const unlocked = numTries >= 10;
@@ -273,7 +264,8 @@ if (silhouetteControls) {
             return;
         }
 
-        applySilhouetteState(button.dataset.mode);
+        const nextMode = currentSilhouetteState === button.dataset.mode ? "default" : button.dataset.mode;
+        applySilhouetteState(nextMode);
     });
 }
 
