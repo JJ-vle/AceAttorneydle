@@ -11,6 +11,29 @@
 
 /* Différents arrière-plans thématiques */
 #office {
+    background: url(' ../../resources/img/neverbet.png') no-repeat top center;
+    background-size: cover;
+}
+
+#detention {
+    background: url(' ../../resources/img/neverbet.png') no-repeat top center;
+    background-size: cover;
+}
+
+#lobby {
+    background: url(' ../../resources/img/neverbet.png') no-repeat top center;
+    background-size: cover;
+}
+
+#police {
+    background: url(' ../../resources/img/neverbet.png') no-repeat top center;
+    background-size: cover;
+}
+
+
+/* TODO A REMETTRE UNE FOIS LA BLAGUE FINIE
+
+#office {
     background: url(' ../../resources/img/wright_law_office.png') no-repeat center center;
     background-size: cover;
 }
@@ -29,3 +52,5 @@
     background: url(' ../../resources/img/police.png') no-repeat center center;
     background-size: cover;
 }
+
+*/
