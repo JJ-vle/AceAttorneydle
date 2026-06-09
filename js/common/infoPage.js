@@ -18,6 +18,10 @@ await dataLoaded;
 // Patch notes data
 const patchNotes = [
     {
+        date: "06-01-2026",
+        text: "Added hints for the silhouette mode. Displaying a special logo for the pride month."
+    },
+    {
         date: "05-05-2026",
         text: "Fix the validate button (now it should work correctly)."
     },
