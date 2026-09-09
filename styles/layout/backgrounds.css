@@ -10,7 +10,7 @@
 }
 
 /* Différents arrière-plans thématiques */
-#office {
+/*#office {
     background: url(' ../../resources/img/neverbet.png') no-repeat top center;
     background-size: cover;
 }
@@ -28,10 +28,10 @@
 #police {
     background: url(' ../../resources/img/neverbet.png') no-repeat top center;
     background-size: cover;
-}
+}*/
 
 
-/* TODO A REMETTRE UNE FOIS LA BLAGUE FINIE
+/* TODO A REMETTRE UNE FOIS LA BLAGUE FINIE*/
 
 #office {
     background: url(' ../../resources/img/wright_law_office.png') no-repeat center center;
@@ -53,4 +53,3 @@
     background-size: cover;
 }
 
-*/
