@@ -1,0 +1,95 @@
+.unlimited-theme {
+    --blue-primary: #7b2348;
+    --blue-secondary: #9b3f70;
+    --blue-accent: #6f3b91;
+    --blue-dark: #4c193d;
+    --blue-deep: #29152f;
+    --blue-deeper: #160d1d;
+    --yellow-highlight: #e2ad4b;
+    --countdown-start: #7b2348;
+    --countdown-mid: #6f3b91;
+}
+
+.unlimited-theme .site-header {
+    margin-bottom: 72px;
+}
+
+.unlimited-theme #guessbar {
+    margin-top: 48px;
+}
+
+@media (max-width: 480px) {
+    .unlimited-theme .site-header {
+        margin-bottom: 36px;
+    }
+
+    .unlimited-theme #guessbar {
+        margin-top: 24px;
+    }
+}
+
+.unlimited-theme .history-table th {
+    background-color: rgb(123 35 72 / 43%);
+    border-bottom-color: #7b2348;
+}
+
+.unlimited-theme .tableimage,
+.unlimited-theme .photo-name-cell {
+    background-color: #211522;
+    background-image:
+        radial-gradient(circle at center, #57283f 0.18rem, transparent 0),
+        radial-gradient(circle at center, #57283f 0.18rem, #2d1b30 0);
+    background-size: 1.3rem 1.3rem;
+    background-position: 0 0, 0.65rem 0.65rem;
+}
+
+.unlimited-theme .name-on-hover {
+    background-image: none;
+    background-color: rgb(45 27 48 / 92%);
+    border: 1px solid #c28a4a;
+}
+
+.unlimited-theme #groupFilters {
+    border-color: #e2ad4b;
+    background-color: #29152f;
+    background-image:
+        radial-gradient(circle at center, #4c193d 0.25rem, transparent 0),
+        radial-gradient(circle at center, #4c193d 0.25rem, #29152f 0);
+    box-shadow: 0 4px 14px rgb(22 13 29 / 45%);
+}
+
+.unlimited-theme #groupFilters h2 {
+    color: #f4e7f1;
+}
+
+.unlimited-theme #groupFilters label {
+    color: #ead8e6;
+}
+
+.unlimited-theme #groupFilters label:has(input[type="checkbox"]:checked) {
+    color: #e2ad4b;
+}
+
+.unlimited-theme footer .legal-links a,
+.unlimited-theme footer .legal-links button,
+.unlimited-theme #change-cookie-preferences {
+    color: #9b3f70;
+}
+
+.unlimited-theme #change-cookie-preferences:hover {
+    color: #e2ad4b;
+}
+
+.unlimited-theme #cookie-banner button#accept-cookies {
+    background-color: #7b2348;
+}
+
+.unlimited-theme #cookie-banner button#accept-cookies:hover,
+.unlimited-theme #cookie-banner button#reject-cookies:hover {
+    background-color: #4c193d;
+}
+
+.unlimited-theme #cookie-banner button#reject-cookies {
+    color: #9b3f70;
+    border-color: #9b3f70;
+}

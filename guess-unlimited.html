@@ -6,36 +6,58 @@
     <title>Ace Attorneydle</title>
     <meta name="description" content="Play Ace Attorneydle, the ultimate guessing game for Ace Attorney fans. Find the iconic character or case in just a few tries.">
     <meta name="keywords" content="Ace Attorney, Ace Attorneydle, Phoenix Wright, Apollo Justice, guessing game, visual novel, fanmade game">
-    <link rel="stylesheet" href="styles/styles.css?v=4">
-    <link rel="stylesheet" href="styles/components/defensebar.css">
+    <link rel="stylesheet" href="styles/styles.css?v=5">
     <link rel="stylesheet" href="styles/components/tableguess.css">
-    <link rel="stylesheet" href="styles/components/cookie-banner.css">
+    <link rel="stylesheet" href="styles/components/unlimited-theme.css">
     <link rel="shortcut icon" href="resources/img/icons/favicon.ico">
 </head>
-<body>
+<body class="unlimited-theme">
 
-    <div class="background-blur" id="office"></div>
+    <div class="background-blur" id="edgeworthoffice"></div>
 
-    <header>
-        <a href="/">
-            <img src="resources/img/AceAttorneydleLogo.png" alt="AceAttorneydle Logo" id="logo">
+    <header class="site-header">
+    <div class="logo-group">
+        <div class="flame-container">
+        <img src="resources/img/icons/flame.png" alt="Flamme" class="flame-icon">
+        <span class="flame-count">-</span>
+        </div>
+
+
+        <a href="index.html" class="logo-link">
+        <img src="resources/img/AceAttorneydleLogo.png" alt="AceAttorneydle Logo" id="logo">
         </a>
+
+        <div class="side-right">
+        <button class="icon-btn">
+            <img src="resources/img/icons/patchnotes.png" alt="Patch Notes">
+        </button>
+        <button class="icon-btn">
+            <img src="resources/img/icons/param.png" alt="Settings">
+        </button>
+        <button class="icon-btn">
+            <img src="resources/img/icons/questionmark.png" alt="Help">
+        </button>
+        </div>
+    </div>
     </header>
 
     
     <div class="info-page">
     </div>
     
-    <div id="game-container">
+    <main>
+        <!--
+        <div id="game-container">
         <div id="gamemodeSelector">
             <a href="/guess"><img src="resources/img/icons/guess.png" alt="Guess" class="selected"></a>
             <a href="/silhouette"><img src="resources/img/icons/silhouette.png" alt="Silhouette"></a>
             <a href="/quote"><img src="resources/img/icons/quote.png" alt="Quote"></a>
             <a href="/case"><img src="resources/img/icons/case.png" alt="Case"></a>
         </div>
-    </div>
+        </div>
 
-    <div id="hint-container">
+        <div id="hint-container">
+
         <div id="hints">
             <div class="hint" id="hint-game">
                 <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Game">
@@ -58,33 +80,37 @@
                 <div id="hint-details-content"></div>
             </div>
         </div>
-    </div>
-    
-    <div id="defensebar">
-        <img src="resources/img/icons/defensebar/defensebar15.png" alt="Figure">
-    </div>
-
-    <div id="guessbar">
-        <div id="guessbarinputs">
-            <input type="text" id="guessInput" placeholder="Enter a name..." autocomplete="off" />
-            <button id="validateButton" disabled>Validate</button>
+        -->
         </div>
-        <ul id="suggestions"></ul>
-    </div>
-    <p id="feedback"></p>
-
-    <!--<h2>History of tests :</h2>-->
-    <div id="history"></div>
+        </div>
     
-    <div id="finalresult"></div>
+        <div id="defensebar">
+            <img src="resources/img/icons/defensebar/defensebar15.png" alt="Figure">
+        </div>
 
-    <div id="groupFilters">
-        <h2>Select the series you want to play with (you can select multiple at once)</h2>
-        <label><input type="checkbox" value="Main" checked> Ace Attorney Main Serie</label>
-        <label><input type="checkbox" value="Investigation"> Investigation</label>
-        <label><input type="checkbox" value="Great"> The Great Ace Attorney</label>
-        <!--<label><input type="checkbox" value="Other"> Other</label>-->
-    </div>
+        <div id="guessbar">
+            <div class="input-prompt">Enter the name of the character you think you've found:</div>
+            <div id="guessbarinputs">
+                <input type="text" id="guessInput" placeholder="Enter a name..." autocomplete="off" />
+                <button id="validateButton" disabled>Validate</button>
+            </div>
+            <ul id="suggestions"></ul>
+        </div>
+        <p id="feedback"></p>
+
+        <!--<h2>History of tests :</h2>-->
+        <div id="history"></div>
+
+        <div id="finalresult"></div>
+
+        <div id="groupFilters">
+            <h2>Select the series you want to play with (you can select multiple at once)</h2>
+            <label><input type="checkbox" value="Main" checked> Ace Attorney Main Serie</label>
+            <label><input type="checkbox" value="Investigation"> Investigation</label>
+            <label><input type="checkbox" value="Great"> The Great Ace Attorney</label>
+            <!--<label><input type="checkbox" value="Other"> Other</label>-->
+        </div>
+    </main>
 
     <script type="module" src="js/logo.js"></script>
     <script type="module" src="js/common/infoPage.js"></script>

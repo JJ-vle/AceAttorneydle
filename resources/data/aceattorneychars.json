@@ -2112,7 +2112,7 @@
         "french": [
             "Misty Fey"
         ],
-        "debut": "Bridge to the Turnabout",
+        "debut": "Turnabout Sisters",
         "name": "Misty Fey",
         "url": "https://aceattorney.fandom.com/wiki/Misty_Fey",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney",
@@ -3713,7 +3713,7 @@
         "french": [
             "Jove Justice"
         ],
-        "debut": "Turnabout Succession",
+        "debut": "Turnabout Revolution",
         "name": "Jove Justice",
         "url": "https://aceattorney.fandom.com/wiki/Jove_Justice",
         "gender": "Male"
@@ -5820,6 +5820,7 @@
     },
     {
         "image": [
+            "https://static.wikia.nocookie.net/aceattorney/images/a/a4/MyriamScuttlebutt.PNG/revision/latest?cb=20260201214118",
             "https://static.wikia.nocookie.net/aceattorney/images/5/55/Myriam_portrait.png/revision/latest/scale-to-width-down/333?cb=20240212172712",
             "https://static.wikia.nocookie.net/aceattorney/images/d/d4/Scuttlebuttnobox.png/revision/latest/scale-to-width-down/333?cb=20240212172446"
         ],
