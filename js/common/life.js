@@ -1,7 +1,7 @@
 // life.js
 import { removeValidateButtonListener, guessbarDiv } from './guessbar.js';
 import { setCookie, streaks } from './cookie.js';
-import { gameMode, targetItem } from './data.js';
+import { gameMode, targetItem, unlimited } from './data.js';
 import { setFlameCount, recolorFlame, uncolorFlame } from './streak.js';
 
 const defensebar = document.getElementById("defensebar");
@@ -9,6 +9,7 @@ const resultDiv = document.getElementById("result");
 const finalResultDiv = document.getElementById("finalresult");
 
 let countdownInterval = null;
+let gameFinished = false;
 
 //////////// TRIES
 
@@ -19,22 +20,29 @@ export function incrementNumTries(){
 }
 export function resetNumTries(){
     numTries = 0;
+    gameFinished = false;
 }
 
 export function verifyTries(){
     if(hintChecker){
         hintChecker();
     }
-    var defenseLevel = 15 - numTries;
+    const maxTries = unlimited ? 5 : 15;
+    var defenseLevel = maxTries - numTries;
 
-    if(defenseLevel < 0) {
+    if(defenseLevel <= 0) {
         defenseLevel = 0;
-        gameOver(false);
+        if (!gameFinished) {
+            gameOver(false);
+        }
     }
 
     defensebar.innerHTML = "";
     var img = document.createElement("img");
-    img.src = `resources/img/icons/defensebar/defensebar${defenseLevel}.png`;
+    const defensebarPath = unlimited
+        ? "resources/img/icons/defensebar/unlimited"
+        : "resources/img/icons/defensebar";
+    img.src = `${defensebarPath}/defensebar${defenseLevel}.png`;
     img.alt = "Defensebar Image";
     defensebar.appendChild(img);
 }
@@ -49,6 +57,7 @@ export function setHintChecker(newHintChecker){
 //////////// GAMEOVER
 
 export function gameOver(result, fromhistory){
+    gameFinished = true;
     guessbarDiv.innerHTML = "";
     removeValidateButtonListener();
     
