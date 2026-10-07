@@ -1,6 +1,6 @@
 // life.js
 import { removeValidateButtonListener, guessbarDiv } from './guessbar.js';
-import { setCookie, streaks } from './cookie.js';
+import { setCookie, streaks, recordUnlimitedWin, resetUnlimitedCurrentStreak, readCookie } from './cookie.js';
 import { gameMode, targetItem, unlimited } from './data.js';
 import { setFlameCount, recolorFlame, uncolorFlame } from './streak.js';
 
@@ -61,7 +61,8 @@ export function gameOver(result, fromhistory){
     guessbarDiv.innerHTML = "";
     removeValidateButtonListener();
     
-    let newStreak;
+    let currentStreak;
+    let bestStreak;
     let message = "";
     let resultClass = "";
 
@@ -77,22 +78,41 @@ export function gameOver(result, fromhistory){
 
     if (result) {
         console.log("😁 win");
-        const stored = parseInt(streaks[gameMode + "Streak"]) || 0;
-        newStreak = fromhistory ? stored : (stored + 1);
 
-        // show the updated streak and color the flame when the user actually won
-        setFlameCount(newStreak);
-        recolorFlame();
+        if (unlimited) {
+            const unlimitedStreaks = recordUnlimitedWin();
+            currentStreak = unlimitedStreaks.currentStreak;
+            bestStreak = unlimitedStreaks.bestStreak;
+            setFlameCount(bestStreak);
+            if (currentStreak >= bestStreak) {
+                recolorFlame();
+            } else {
+                uncolorFlame();
+            }
+        } else {
+            const stored = parseInt(streaks[gameMode + "Streak"]) || 0;
+            bestStreak = fromhistory ? stored : (stored + 1);
+            currentStreak = bestStreak;
 
-        if(gameMode != "silhouette"){
-            hintChecker(true);
+            // show the updated streak and color the flame when the user actually won
+            setFlameCount(bestStreak);
+            recolorFlame();
+
+            if(gameMode != "silhouette"){
+                hintChecker(true);
+            }
         }
 
         // Build message data for display
         resultClass = "win";
     } else {
         console.log("😢 lose");
-        newStreak = 0;
+        currentStreak = 0;
+        bestStreak = unlimited ? (parseInt(readCookie("unlimitedStreak"), 10) || 0) : 0;
+        if (unlimited) {
+            resetUnlimitedCurrentStreak();
+            uncolorFlame();
+        }
         resultClass = "lose";
     }
 
@@ -106,15 +126,17 @@ export function gameOver(result, fromhistory){
     }, 100);
 
     // update stored streak and reflect UI color/count
-    setCookie(gameMode + "Streak", newStreak);
-    if (newStreak === 0) {
+    if (!unlimited) {
+        setCookie(gameMode + "Streak", bestStreak);
+    }
+    if (bestStreak === 0 && !unlimited) {
         setFlameCount(0);
         uncolorFlame();
     }
-    displayResult(result, resultClass, img, newStreak, element);
+    displayResult(result, resultClass, img, currentStreak, bestStreak, element);
 }
 
-function displayResult(resultBool, resultClass, imgSrc, streak, elementName) {
+function displayResult(resultBool, resultClass, imgSrc, currentStreak, bestStreak, elementName) {
     // clear previous countdown if any
     if (countdownInterval) {
         clearInterval(countdownInterval);
@@ -143,11 +165,27 @@ function displayResult(resultBool, resultClass, imgSrc, streak, elementName) {
     nameEl.innerHTML = `<strong>${targetItem.name}</strong>`;
     const meta = document.createElement('div');
     meta.className = 'meta';
-    meta.innerHTML = `🔢 Number of tries: ${numTries+1}<br>🔥 Streak: ${streak}`;
+    meta.innerHTML = `🔢 Number of tries: ${numTries+1}<br>🔥 Current streak: ${currentStreak}<br>🏆 Best streak: ${bestStreak}`;
     stats.appendChild(title);
     stats.appendChild(nameEl);
     stats.appendChild(meta);
     card.appendChild(stats);
+
+    if (unlimited) {
+        const nextButton = document.createElement('button');
+        nextButton.className = 'next-button';
+        nextButton.type = 'button';
+        nextButton.textContent = 'Next';
+        nextButton.addEventListener('click', () => {
+            window.location.reload();
+        });
+        card.appendChild(nextButton);
+    }
+
+    if (unlimited) {
+        finalResultDiv.appendChild(card);
+        return;
+    }
 
     // Countdown
     const countdownWrap = document.createElement('div');

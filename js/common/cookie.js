@@ -1,9 +1,9 @@
 ///// COOKIE & CONSENT SETUP /////
 
 // Import de tes fonctions existantes
-import { gameMode, getGroupByCharacter, getGroupByTurnabout, selectedGroups, getCharacterInformations, attemptedNames, resetAttemptedNames } from './data.js';
+import { gameMode, unlimited, getGroupByCharacter, getGroupByTurnabout, selectedGroups, getCharacterInformations, attemptedNames, resetAttemptedNames } from './data.js';
 import { validateGuessFunction } from './guessbar.js';
-import { hideFlame, setFlameCount, uncolorFlame } from './streak.js';
+import { hideFlame, setFlameCount, recolorFlame, uncolorFlame } from './streak.js';
 
 // ==========================
 // CONSENT MANAGEMENT
@@ -165,14 +165,23 @@ export async function loadHistory() {
 // Display stored streak for current mode (grey flame) at page load
 export function displayStoredStreak(){
     try{
-        const name = gameMode + "Streak";
+        const name = unlimited ? "unlimitedStreak" : gameMode + "Streak";
         const raw = readCookie(name);
         let streak = 0;
         if (raw && raw.length > 0 && !isNaN(parseInt(raw,10))) {
             streak = parseInt(raw,10);
         }
-        // show greyed flame with current streak (0 if none)
-        uncolorFlame();
+        if (unlimited) {
+            const currentStreak = parseInt(readCookie("unlimitedCurrentStreak"), 10) || 0;
+            if (currentStreak >= streak && streak > 0) {
+                recolorFlame();
+            } else {
+                uncolorFlame();
+            }
+        } else {
+            // show stored streak in grey until the user wins the current game
+            uncolorFlame();
+        }
         setFlameCount(streak);
     } catch (e) {
         console.warn('displayStoredStreak failed', e);
@@ -200,6 +209,23 @@ export function readJsonCookie(name) {
 
 export function setCookie(cookieName, value){
     document.cookie = cookieName + "=" + value;
+}
+
+export function recordUnlimitedWin() {
+    const currentStreak = (parseInt(readCookie("unlimitedCurrentStreak"), 10) || 0) + 1;
+    const bestStreak = Math.max(
+        currentStreak,
+        parseInt(readCookie("unlimitedStreak"), 10) || 0
+    );
+
+    setCookie("unlimitedCurrentStreak", currentStreak);
+    setCookie("unlimitedStreak", bestStreak);
+
+    return { currentStreak, bestStreak };
+}
+
+export function resetUnlimitedCurrentStreak() {
+    setCookie("unlimitedCurrentStreak", 0);
 }
 
 export function setCookieAttempt(cookieName, value) {

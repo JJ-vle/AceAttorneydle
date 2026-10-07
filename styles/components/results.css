@@ -70,6 +70,21 @@
 #finalresult .result-stats div strong { font-size: 1.25rem; display:block; margin-top:0.35rem; }
 #finalresult .result-stats .meta { color: rgba(0,0,0,0.6); margin-top:0.6rem; font-size:1rem; }
 
+.next-button {
+    padding: 0.7rem 2rem;
+    border: 0;
+    border-radius: 0.35rem;
+    background-color: var(--blue-primary);
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.next-button:hover {
+    background-color: var(--blue-dark);
+}
+
 /* Countdown: larger, centered, custom system font */
 /* Center the countdown and allow the inner digits to size naturally
    Use a pill-shaped background that adapts to the digit width */
