@@ -6,6 +6,10 @@ rules.push({
     name: 'pride',
     matches: date => date.getMonth() === 5, // June
     src: 'resources/img/AceAttorneydleLogo_pride.png'
+},{
+    name: 'halloween',
+    matches: date => date.getMonth() === 9, // October
+    src: 'resources/img/AceAttorneydleLogo_halloween.png'
 });
 
 // Public API to add rules dynamically
