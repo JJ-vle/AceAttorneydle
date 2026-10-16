@@ -13,7 +13,6 @@ import { setCookieName, updateAttemptsCookie, loadHistory, displayStoredStreak }
 setGameMode("guess");
 setCookieName("guessAttempts");
 
-const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
 const inputField = document.getElementById("guessInput");
 
@@ -78,14 +77,10 @@ function addToHistory(guessedCharacter, result) {
 function validateGuess(guessName=inputField.value.trim(), fromhistory=false) {
 
     if (!targetItem) {
-        feedback.textContent = "⚠️ Target character not found!";
-        feedback.className = "error";
         return;
     }
 
     if (attemptedNames.includes(guessName)) {
-        feedback.textContent = "⚠️ This character has already been guessed !";
-        feedback.className = "error";
         return;
     }
 
@@ -93,8 +88,6 @@ function validateGuess(guessName=inputField.value.trim(), fromhistory=false) {
     //console.log(guessedCharacter);
 
     if (!guessedCharacter) {
-        feedback.textContent = "⚠️ Unknown character.";
-        feedback.className = "error";
         return;
     }
 
@@ -102,16 +95,11 @@ function validateGuess(guessName=inputField.value.trim(), fromhistory=false) {
     updateAttemptsCookie();
 
     if (guessName.toLowerCase() === targetItem.name.toLowerCase()) {
-        addToHistory(guessedCharacter, true);
-        feedback.textContent = "🎉 Congratulation ! You found " + targetItem.name + " !";
-        feedback.className = "success";
-        
+        addToHistory(guessedCharacter, true);        
         gameOver(true, fromhistory);
 
     } else {
         addToHistory(guessedCharacter, false);
-        feedback.textContent = "❌ wrong answer, try again !";
-        feedback.className = "error";
     }
     incrementNumTries();
     verifyTries();

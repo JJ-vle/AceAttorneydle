@@ -12,7 +12,6 @@
     z-index: 2000;
     padding: 40px 20px;
     box-sizing: border-box;
-    overflow-y: auto; /* si beaucoup de contenu */
 }
 
 .info-page.active {
@@ -23,16 +22,20 @@
     background-image:
         radial-gradient(circle at center, #212839 0.25rem, transparent 0),
         radial-gradient(circle at center, #212839 0.25rem, #081021 0);
+    background-position: 0 0, 0.65rem 0.65rem; /* Positionnement des points */
+    background-blend-mode: normal; /* Pas de mélange, superposition des couches */
     background-size: 1.3rem 1.3rem;
     border: 5px solid white;
     outline: 4px solid #2781b2;
-    border-radius: 12px;
+    border-radius: var(--border-radius-sm);
     padding: 25px;
     max-width: 700px;
     width: 100%;
+    max-height: 90%;
     text-align: left;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
     animation: fadeIn 0.3s ease;
+    overflow-y: auto; /* si beaucoup de contenu */
 }
 
 .info-content h2 {
@@ -61,7 +64,7 @@
 .patch-card {
     background: rgba(255, 255, 255, 0.1);
     border: 2px solid #2781b2;
-    border-radius: 10px;
+    border-radius: var(--border-radius-sm);
     padding: 15px;
     margin-bottom: 15px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.4);
@@ -81,7 +84,7 @@
     background: #2781b2;
     border: 3px solid white;
     color: white;
-    border-radius: 8px;
+    border-radius: var(--border-radius-sm);
     cursor: pointer;
     font-weight: bold;
     transition: background 0.2s ease, transform 0.2s ease;

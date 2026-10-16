@@ -160,7 +160,7 @@ function displayResult(resultBool, resultClass, imgSrc, currentStreak, bestStrea
     const stats = document.createElement('div');
     stats.className = 'result-stats';
     const title = document.createElement('h2');
-    title.textContent = resultBool ? '🎉 Bravo!' : '❌ Lost';
+    title.textContent = resultBool ? '🎉 Well Done, You Win!' : '❌ You Lost';
     const nameEl = document.createElement('div');
     nameEl.innerHTML = `<strong>${targetItem.name}</strong>`;
     const meta = document.createElement('div');
@@ -185,6 +185,49 @@ function displayResult(resultBool, resultClass, imgSrc, currentStreak, bestStrea
     if (unlimited) {
         finalResultDiv.appendChild(card);
         return;
+    }
+
+    if(!unlimited && gameMode == "guess"){
+        const historyBody = document.getElementById("historyBody");
+        const guesses = historyBody.querySelectorAll("tr");
+        const date = new Date();
+        let nb_guesses = resultBool ? guesses.length : "X";
+        
+        let share_string = "AceAttorneydle \n" + date.toLocaleDateString() + " - " + nb_guesses + "/15\n";
+        console.log(share_string)
+        guesses.forEach(guess => {
+            const infos = guess.querySelectorAll("td:not(.photo-name-cell)");
+            let guess_string = "";
+            infos.forEach(info => {
+                switch (info.className.split(" ")[0]) {
+                    case "correct":
+                        guess_string += "🟩";
+                        break;
+                    case "incorrect":
+                        guess_string += "🟥";
+                        break;
+                    case "partial":
+                        guess_string += "🟨";
+                        break;
+                    default:
+                        break;
+                }
+            })
+            share_string += guess_string + "\n";
+
+        })
+        //console.log(share_string)
+
+        const shareButton = document.createElement('button');
+        shareButton.className = 'next-button';
+        shareButton.type = 'button';
+        shareButton.textContent = 'Share results';
+        shareButton.addEventListener('click', () => {
+            navigator.clipboard.writeText(share_string);
+            shareButton.textContent = "Results copied to clipboard";
+            shareButton.disabled = true;
+        });
+        card.appendChild(shareButton);
     }
 
     // Countdown
@@ -252,11 +295,6 @@ function displayResult(resultBool, resultClass, imgSrc, currentStreak, bestStrea
         const ringEl = document.getElementById('countdownTimer');
         const digitsEl = document.getElementById('countdownDigits');
         if (!ringEl || !digitsEl) return;
-        const totalDay = 24 * 3600;
-        const elapsed = totalDay - secondsLeft;
-        const pct = Math.max(0, Math.min(100, Math.round((elapsed / totalDay) * 100)));
-        // filled portion uses primary blue, remainder is a semi-transparent white layer
-        ringEl.style.background = `conic-gradient(var(--blue-primary) ${pct}%, rgba(255,255,255,0.5) ${pct}% )`;
 
         const timeStr = formatHMS(secondsLeft);
         if (timeStr !== prevTime) {

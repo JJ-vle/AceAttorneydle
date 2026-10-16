@@ -87,6 +87,7 @@
     background-blend-mode: normal; /* No blending, just stacking layers */
     position: relative; /* Ensure the button is layered correctly */
     color: white;
+    padding-top: 0px !important; 
 }
 
 .photo-name-container {
@@ -112,7 +113,7 @@
     background-color: #338ebfc4; /* Semi-transparent background */
     color: white;
     padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: var(--border-radius-sm);
     font-size: 14px;
     opacity: 0; /* Hidden by default */
     transition: opacity 0.3s ease; /* Smooth transition */

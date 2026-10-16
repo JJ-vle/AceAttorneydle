@@ -15,7 +15,6 @@ setCookieName("caseAttempts");
 
 const inputField = document.getElementById("guessInput");
 const validateButton = document.getElementById("validateButton");
-const feedback = document.getElementById("feedback");
 const historyDiv = document.getElementById("history");
 const evidenceContainer = document.getElementById("evidence-container");
 
@@ -68,22 +67,16 @@ function addToHistory(guessedCase, result) {
 function validateGuess(guessCase=inputField.value.trim(), fromhistory=false) {
 
     if (!targetItem) {
-        feedback.textContent = "⚠️ The game is still loading. Please wait...";
-        feedback.className = "error";
         return;
     }
 
     if (attemptedNames.includes(guessCase)) {
-        feedback.textContent = "⚠️ This character has already been guessed !";
-        feedback.className = "error";
         return;
     }
 
     const guessedCase = casesData.find(c => c.name.toLowerCase() === guessCase.toLowerCase());
 
     if (!guessedCase) {
-        feedback.textContent = "⚠️ Unknown character.";
-        feedback.className = "error";
         return;
     }
 
@@ -92,15 +85,10 @@ function validateGuess(guessCase=inputField.value.trim(), fromhistory=false) {
 
     if (guessCase.toLowerCase() === targetItem.name.toLowerCase()) {
         addToHistory(guessedCase, true);
-        feedback.textContent = "🎉 Congratulation ! You found " + targetItem.name + " !";
-        feedback.className = "success";
-        
         revealAllEvidence();
         gameOver(true, fromhistory);
     } else {
         addToHistory(guessedCase, false);
-        feedback.textContent = "❌ wrong answer, try again !";
-        feedback.className = "error";
     }
     incrementNumTries();
     verifyTries();

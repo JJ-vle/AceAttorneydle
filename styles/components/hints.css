@@ -153,7 +153,7 @@
     color: var(--blue-light);
     text-align: center;
     border: var(--border-width-thick) solid var(--blue-light); /* Bordure du haut plus fine */
-    border-radius: 0; /* Pas de bordures arrondies sur les côtés */
+    border-radius: var(--border-radius-sm); /* Pas de bordures arrondies sur les côtés */
 
     background-image:
         radial-gradient(circle at center, var(--blue-deep) 0.25rem, transparent 0),

@@ -277,12 +277,6 @@
        COMPONENTS - FEEDBACK
        ======================================== */
     
-    #feedback {
-        font-size: 16px;
-        margin-top: 8px;
-        padding: 0 10px;
-    }
-    
     table {
         font-size: 12px;
     }
@@ -431,7 +425,7 @@
         padding: 0 8px;
         transform: rotate(-90deg) scale(0.95); /* ROTATION -90° */
         transform-origin: top left; /* pivot en haut à gauche */
-        border-radius: 8px;
+        border-radius: var(--border-radius-sm);
         transition: top 0.3s ease; /* animation fluide */
     }
     
@@ -475,7 +469,7 @@
         max-width: 100%;
     
         border: 2px solid var(--blue-secondary, #328CBD);
-        border-radius: 8px;
+        border-radius: var(--border-radius-sm);
         background-color: rgba(255, 255, 255, 0.95);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     
@@ -519,7 +513,7 @@
     
         border: 1px solid #ddd;
         box-sizing: border-box;
-        border-radius: 4px; /* coins arrondis */
+        border-radius: var(--border-radius-sm); /* coins arrondis */
       }
     
       /* ========================================

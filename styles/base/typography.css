@@ -15,23 +15,6 @@ body {
     min-height: 100vh;
 }
 
-/* Styles de texte pour le feedback */
-#feedback {
-    font-size: var(--font-size-lg);
-    font-weight: bold;
-    margin-top: var(--spacing-sm);
-    color: var(--blue-secondary);
-}
-
-/* Classes de feedback */
-.success {
-    color: green;
-}
-
-.error {
-    color: red;
-}
-
 /* Styles pour les messages de chargement */
 #loading-indicator {
     font-family: 'Courier New', monospace;

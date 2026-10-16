@@ -48,10 +48,8 @@
 }
 
 #validateButton:disabled {
-    background: #8a96a3;
-    border-color: #8a96a3;
     box-shadow: none;
-    filter: grayscale(0.15);
+    filter: grayscale(1);
     cursor: not-allowed;
 }
 
@@ -70,6 +68,7 @@
     display: block;
     width: 100%;
     margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
     padding: 0.5rem 0.75rem;
     border-radius: var(--border-radius-sm);
     background: rgba(0,0,0,0.32);
