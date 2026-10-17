@@ -18,6 +18,14 @@ await dataLoaded;
 // Patch notes data
 const patchNotes = [
     {
+        date: "10-X-2026",
+        text: "Major update: Added the new 'Guess Unlimited' game mode, introduced the Share button after completing Classic Guess, and made several visual improvements."
+    },
+    {
+        date: "10-12-2026",
+        text: "Displaying a special logo for Halloween month."
+    },
+    {
         date: "06-01-2026",
         text: "Added hints for the silhouette mode. Displaying a special logo for the pride month."
     },
@@ -340,4 +348,3 @@ function showInfo(contentKey) {
 buttons[0].addEventListener("click", () => showInfo("patchnotes"));
 buttons[1].addEventListener("click", () => showInfo("settings"));
 buttons[2].addEventListener("click", () => showInfo("help"));
-

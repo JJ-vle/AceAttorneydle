@@ -265,6 +265,14 @@ function displayResult(resultBool, resultClass, imgSrc, currentStreak, bestStrea
     countdownWrap.appendChild(ring);
     card.appendChild(countdownWrap);
 
+    if (gameMode == "guess") {
+        const unlimitedLink = document.createElement('a');
+        unlimitedLink.className = 'unlimited-cta-button';
+        unlimitedLink.href = '/guess-unlimited';
+        unlimitedLink.textContent = 'Want more? Play Unlimited!';
+        card.appendChild(unlimitedLink);
+    }
+
     finalResultDiv.appendChild(card);
 
     // Start live countdown and ring update

@@ -186,3 +186,27 @@
     #finalresult .avatar { width: 96px; height: 96px; }
     .countdown { width: 72px; height: 72px; }
 }
+/* Lien vers le mode unlimited depuis l'écran de fin du mode classique (style unlimited) */
+.unlimited-cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 320px;
+    max-width: 100%;
+    height: 48px;
+    padding: 0 2.25rem;
+    box-sizing: border-box;
+    background: transparent url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='48' viewBox='0 0 320 48'><defs><pattern id='c' width='20' height='20' patternUnits='userSpaceOnUse'><rect width='20' height='20' fill='%23a40d35'/><rect width='10' height='10' fill='%238b092b'/><rect x='10' y='10' width='10' height='10' fill='%238b092b'/></pattern></defs><polygon points='0,24 18,0 302,0 320,24 302,48 18,48' fill='%23f0d0c8'/><polygon points='3,24 19.5,2 300.5,2 317,24 300.5,46 19.5,46' fill='url(%23c)'/><polygon points='7,24 21,5.5 299,5.5 313,24 299,42.5 21,42.5' fill='none' stroke='white' stroke-width='1.5'/><polygon points='20,18.5 25.5,24 20,29.5 14.5,24' fill='white'/><polygon points='300,18.5 305.5,24 300,29.5 294.5,24' fill='white'/></svg>") center / 100% 100% no-repeat;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-shadow: 0 1px 2px rgb(60 0 10 / 60%);
+    filter: drop-shadow(0 3px 6px rgb(0 0 0 / 40%));
+    transition: filter var(--transition-normal);
+}
+
+.unlimited-cta-button:hover {
+    filter: brightness(1.1) drop-shadow(0 0 4px #e2ad4b);
+}
