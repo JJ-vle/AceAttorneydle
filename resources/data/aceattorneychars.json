@@ -149,7 +149,7 @@
         "name": "Lance Amano",
         "url": "https://aceattorney.fandom.com/wiki/Lance_Amano",
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Ace_Attorney_Investigations:_Miles_Edgeworth",
-        "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/2/23/Unknown_Person.png/revision/latest?cb=20180128082826",
+        "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/c/c4/Lance_mugshot.png/revision/latest?cb=20160121012400",
         "age": "21",
         "gender": "Male"
     },
@@ -6012,7 +6012,7 @@
     },
     {
         "image": [
-            "https://static.wikia.nocookie.net/aceattorney/images/a/a2/Ale.png/revision/latest/scale-to-width-down/346?cb=20220620043541"
+            "https://static.wikia.nocookie.net/aceattorney/images/e/eb/Orla_Shipley.png/revision/latest/scale-to-width-down/1000?cb=20220620043541"
         ],
         "occupation": [
             "Aquarium orca"
@@ -7131,7 +7131,7 @@
     },
     {
         "image": [
-            "https://static.wikia.nocookie.net/aceattorney/images/4/43/Di-Jun_Huang%27s_Body_Double_Mug.png/revision/latest/scale-to-width-down/350?cb=20190819043706"
+            "https://static.wikia.nocookie.net/aceattorney/images/d/da/Oportrait.png/revision/latest?cb=20250614000205"
         ],
         "occupation": [
             "Di-Jun Wang's body double",
@@ -7145,6 +7145,7 @@
         "debut": "Turnabout Trigger",
         "name": "Di-Jun Wang (body double)",
         "url": "https://aceattorney.fandom.com/wiki/Di-Jun_Wang_(body_double)",
+        "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/e/eb/Teikun.png/revision/latest?cb=20160121020706",
         "gender": "Male"
     },
     {
