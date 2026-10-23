@@ -4052,7 +4052,8 @@
         "game_url": "https://aceattorney.fandom.com/wiki/List_of_Profiles_in_Phoenix_Wright:_Ace_Attorney_-_Dual_Destinies",
         "mugshot": "https://static.wikia.nocookie.net/aceattorney/images/1/12/XZUvQ8p_%281%29.png/revision/latest?cb=20241009012326",
         "age": "33",
-        "gender": "Male"
+        "gender": "Male",
+        "exception": "unusable-silhouette"
     },
     {
         "image": [
