@@ -34,14 +34,81 @@
     color: white;
 }
 
+/* Bouton "Validate" : même bandeau que "Next", en rouge */
 .unlimited-theme #validateButton {
-    background-color: #8b092b;
-    background-image:
-        linear-gradient(45deg, #a40d35 25%, transparent 25% 75%, #a40d35 75%),
-        linear-gradient(45deg, #a40d35 25%, transparent 25% 75%, #a40d35 75%);
-    background-size: 48px 48px;
-    background-position: 0 0, 24px 24px;
+    background: transparent url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='40' viewBox='0 0 180 40' preserveAspectRatio='none'><defs><pattern id='c' width='16' height='16' patternUnits='userSpaceOnUse'><rect width='16' height='16' fill='%23a40d35'/><rect width='8' height='8' fill='%238b092b'/><rect x='8' y='8' width='8' height='8' fill='%238b092b'/></pattern></defs><polygon points='0,20 15,0 165,0 180,20 165,40 15,40' fill='%23f0d0c8'/><polygon points='2.5,20 16.3,1.7 163.7,1.7 177.5,20 163.7,38.3 16.3,38.3' fill='url(%23c)'/><polygon points='6,20 17.5,4.5 162.5,4.5 174,20 162.5,35.5 17.5,35.5' fill='none' stroke='white' stroke-width='1.5' vector-effect='non-scaling-stroke'/></svg>") center / 100% 100% no-repeat;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow: 0 1px 2px rgb(60 0 10 / 60%);
+    filter: drop-shadow(0 3px 6px rgb(0 0 0 / 40%));
 }
+
+.unlimited-theme #validateButton:hover:enabled {
+    box-shadow: none;
+    filter: brightness(1.1) drop-shadow(0 0 4px var(--yellow-highlight));
+}
+
+.unlimited-theme #validateButton:active:enabled {
+    box-shadow: none;
+}
+
+.unlimited-theme #validateButton:disabled {
+    filter: grayscale(1);
+}
+
+/* Bouton "Next" de l'écran de fin : bandeau doré à damier façon "Chapter Select" */
+.unlimited-theme .next-button {
+    width: 256px;
+    height: 48px;
+    padding: 0 2.5rem;
+    background: transparent url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='48' viewBox='0 0 256 48'><defs><pattern id='c' width='20' height='20' patternUnits='userSpaceOnUse'><rect width='20' height='20' fill='%23b08c1c'/><rect width='10' height='10' fill='%239c7a12'/><rect x='10' y='10' width='10' height='10' fill='%239c7a12'/></pattern></defs><polygon points='0,24 18,0 238,0 256,24 238,48 18,48' fill='%23efe1b0'/><polygon points='3,24 19.5,2 236.5,2 253,24 236.5,46 19.5,46' fill='url(%23c)'/><polygon points='7,24 21,5.5 235,5.5 249,24 235,42.5 21,42.5' fill='none' stroke='white' stroke-width='1.5'/><polygon points='20,18.5 25.5,24 20,29.5 14.5,24' fill='white'/><polygon points='236,18.5 241.5,24 236,29.5 230.5,24' fill='white'/></svg>") center / 256px 48px no-repeat;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 2px rgb(60 40 0 / 60%);
+    filter: drop-shadow(0 3px 6px rgb(0 0 0 / 40%));
+}
+
+.unlimited-theme .next-button:hover {
+    box-shadow: none;
+    filter: brightness(1.1) drop-shadow(0 0 4px var(--yellow-highlight));
+}
+
+/* Cadre de l'écran de fin assorti au bouton "Next" */
+.unlimited-theme #finalresult,
+.unlimited-theme #finalresult.win,
+.unlimited-theme #finalresult.lose {
+    position: relative;
+    border: 2px solid #1e1810;
+    border-radius: 0;
+    box-shadow:
+        inset 0 0 0 3px #efe4c4,
+        inset 0 0 0 4px #3a2f1d,
+        0 6px 20px rgb(0 0 0 / 45%);
+}
+
+.unlimited-theme #finalresult::before,
+.unlimited-theme #finalresult::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background: #f4ecd6;
+    border: 2px solid #1e1810;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.unlimited-theme #finalresult::before { top: -9px; }
+.unlimited-theme #finalresult::after { bottom: -9px; }
 
 #validateButton:disabled {
     box-shadow: none;
@@ -134,4 +201,28 @@
 
 .icon-btn {
     filter: hue-rotate(140deg) saturate(3) brightness(50%);
+}
+/* Logo unlimited légèrement plus grand */
+.unlimited-theme #logo {
+    height: 140px;
+}
+
+@media (max-width: 480px) {
+    .unlimited-theme #logo {
+        height: 64px;
+    }
+
+    /* Le mobile force un fond blanc sur la 1re colonne : on remet le rouge
+       sous le damier et on resserre le motif à la taille des cases */
+    .unlimited-theme #historyTable td.photo-name-cell {
+        background-color: #8b092b;
+        background-size: auto, 24px 24px, 24px 24px;
+        background-position: 0 0, 0 0, 12px 12px;
+    }
+}
+
+@media (max-width: 480px) and (orientation: landscape) {
+    .unlimited-theme #logo {
+        height: 52px;
+    }
 }

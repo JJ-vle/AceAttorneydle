@@ -1,5 +1,5 @@
 // life.js
-import { removeValidateButtonListener, guessbarDiv } from './guessbar.js';
+import { removeValidateButtonListener } from './guessbar.js';
 import { setCookie, streaks, recordUnlimitedWin, resetUnlimitedCurrentStreak, readCookie } from './cookie.js';
 import { gameMode, targetItem, unlimited } from './data.js';
 import { setFlameCount, recolorFlame, uncolorFlame } from './streak.js';
@@ -58,6 +58,8 @@ export function setHintChecker(newHintChecker){
 
 export function gameOver(result, fromhistory){
     gameFinished = true;
+
+    const guessbarDiv = document.getElementById("guessbar");
     guessbarDiv.innerHTML = "";
     removeValidateButtonListener();
     
@@ -264,6 +266,14 @@ function displayResult(resultBool, resultClass, imgSrc, currentStreak, bestStrea
 
     countdownWrap.appendChild(ring);
     card.appendChild(countdownWrap);
+
+    if (gameMode == "guess") {
+        const unlimitedLink = document.createElement('a');
+        unlimitedLink.className = 'unlimited-cta-button';
+        unlimitedLink.href = '/guess-unlimited';
+        unlimitedLink.textContent = 'Want more? Play Unlimited!';
+        card.appendChild(unlimitedLink);
+    }
 
     finalResultDiv.appendChild(card);
 

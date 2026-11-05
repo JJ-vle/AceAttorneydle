@@ -15,7 +15,7 @@ export const suggestionsList = document.getElementById("suggestions");
 export const validateButton = document.getElementById("validateButton");
 
 if (validateButton) {
-    validateButton.textContent = "Validate";
+    validateButton.textContent = "Present evidence";
 }
 
 const forcedCharactersPerGroup = {

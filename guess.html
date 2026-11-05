@@ -13,29 +13,7 @@
     <div class="background-blur" id="office"></div>
 
     <header class="site-header">
-    <div class="logo-group">
-        <div class="flame-container">
-        <img src="resources/img/icons/flame.png" alt="Flamme" class="flame-icon">
-        <span class="flame-count">-</span>
-        </div>
-
-
-        <a href="index.html" class="logo-link">
-        <img src="resources/img/AceAttorneydleLogo.png" alt="AceAttorneydle Logo" id="logo">
-        </a>
-
-        <div class="side-right">
-        <button class="icon-btn">
-            <img src="resources/img/icons/patchnotes.png" alt="Patch Notes">
-        </button>
-        <button class="icon-btn">
-            <img src="resources/img/icons/param.png" alt="Settings">
-        </button>
-        <button class="icon-btn">
-            <img src="resources/img/icons/questionmark.png" alt="Help">
-        </button>
-        </div>
-    </div>
+    <div class="logo-group"></div>
     </header>
 
     <div class="info-page">
@@ -43,39 +21,9 @@
  
 
     <main>
-        <div id="game-container">
-            <div id="gamemodeSelector">
-                <a href="guess"><img src="resources/img/icons/guess.png" alt="Guess" class="selected"></a>
-                <a href="silhouette"><img src="resources/img/icons/silhouette.png" alt="Silhouette"></a>
-                <a href="quote"><img src="resources/img/icons/quote.png" alt="Quote"></a>
-                <a href="case"><img src="resources/img/icons/case.png" alt="Case"></a>
-            </div>
-        </div>
+        <div id="game-container"></div>
 
-        <div id="hint-container">
-            <div id="hints">
-                <div class="hint" id="hint-game">
-                    <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Game">
-                    <p>Game</p>
-                    <p class="hint-count">in 3 tries</p>
-                </div>
-                <div class="hint" id="hint-occupation">
-                    <img src="resources/img/icons/Psyche-Lock.png" class="hint-icon disabled" alt="Occupation">
-                    <p>Occupation</p>
-                    <p class="hint-count">in 7 tries</p>
-                </div>
-                <div class="hint" id="hint-figure">
-                    <img src="resources/img/icons/Black_Psyche-Lock.png" class="hint-icon disabled" alt="Figure">
-                    <p>Figure</p>
-                    <p class="hint-count">in 12 tries</p>
-                </div>
-                <div id="hint-details">
-                    <div id="hint-details-header"></div>
-
-                    <div id="hint-details-content"></div>
-                </div>
-            </div>
-        </div>
+        <div id="hint-container"></div>
         
         <div id="defensebar">
             <img src="resources/img/icons/defensebar/defensebar15.png" alt="Figure">
@@ -98,22 +46,17 @@
         
         <div id="finalresult"></div>
 
-        <div id="groupFilters">
-            <h2>Select the series you want to play with (you can select multiple at once)</h2>
-            <label><input type="checkbox" value="Main" checked> Ace Attorney Main Serie</label>
-            <label><input type="checkbox" value="Investigation"> Investigation</label>
-            <label><input type="checkbox" value="Great"> The Great Ace Attorney</label>
-            <!--<label><input type="checkbox" value="Other"> Other</label>-->
-        </div>
+        <div id="groupFilters"></div>
     </main>
 
+    <script type="module" src="js/guess.js"></script>
+    <script type="module" src="js/common/initPage.js"></script>
     <script type="module" src="js/logo.js"></script>
     <script type="module" src="js/common/infoPage.js"></script>
     <script type="module" src="js/common/filter.js"></script>
     <script type="module" src="js/common/life.js"></script>
     <script type="module" src="js/common/hint.js"></script>
     <script type="module" src="js/common/guessbar.js"></script>
-    <script type="module" src="js/guess.js"></script>
     
 
     <div id="banner-placeholder"></div>
@@ -128,17 +71,7 @@
 </body>
 
 <footer>
-    <div class="content">
-        <p>
-            Ace Attorneydle is a fan-made project and is not affiliated with, endorsed by, or associated with Capcom.
-        </p>
-        <p class="legal-links">
-            <a href="privacy.html">Privacy Policy</a> | 
-            <a href="terms.html">Terms of Service</a> | 
-            <a href="contact.html">Contact</a> | 
-            <button id="change-cookie-preferences">Cookie Preferences</button>
-        </p>
-    </div>
+    <div class="content"></div>
 </footer>
 
 </html>

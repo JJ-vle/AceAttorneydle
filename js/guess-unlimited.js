@@ -1,7 +1,7 @@
 //guess.js
 
 // Importation des fichiers
-import { setValidateGuessFunction, validateButton } from './common/guessbar.js';
+import { setValidateGuessFunction } from './common/guessbar.js';
 import { dataLoaded, turnaboutGames, characterData, attemptedNames, getInfoByDebut, setGameMode, targetItem, gameMode, setUnlimited } from './common/data.js';
 import { incrementNumTries, verifyTries, gameOver } from './common/life.js';
 import { displayStoredStreak } from './common/cookie.js';
@@ -13,6 +13,7 @@ import { displayStoredStreak } from './common/cookie.js';
 setUnlimited(true);
 setGameMode("guess");
 
+const validateButton = document.getElementById("validateButton");
 const historyDiv = document.getElementById("history");
 const inputField = document.getElementById("guessInput");
 
