@@ -342,9 +342,3 @@ export function showInfo(contentKey) {
 
     if (contentKey === "settings") restoreSettingsState();
 }
-
-// Buttons actions
-buttons[0].addEventListener("click", () => showInfo("patchnotes"));
-buttons[1].addEventListener("click", () => showInfo("settings"));
-buttons[2].addEventListener("click", () => showInfo("help"));
-
