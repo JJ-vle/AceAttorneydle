@@ -17,8 +17,8 @@ const content = document.querySelector(".content");
 if(logo_group){
 
     const last_patch = getLastPatchNote();
-    if(!localStorage.getItem('lastPatchNoteRead')){ //If there is no last patch note, we set it to the last released
-        localStorage.setItem('lastPatchNoteRead', last_patch.date)
+    if(!localStorage.getItem('lastPatchNoteRead')){ //If there is no last patch note, we set it to 0
+        localStorage.setItem('lastPatchNoteRead', 0)
     }
     const local_last_patch = localStorage.getItem('lastPatchNoteRead')
 
