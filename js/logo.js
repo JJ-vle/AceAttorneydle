@@ -1,16 +1,21 @@
 // js/logo.js
 const rules = [];
 
-// Default rule: Pride month (June) -> use pride logo
-rules.push({
+registerLogoRule({
     name: 'pride',
     matches: date => date.getMonth() === 5, // June
     src: 'resources/img/AceAttorneydleLogo_pride.png'
-},{
+})
+registerLogoRule({
     name: 'halloween',
     matches: date => date.getMonth() === 9, // October
     src: 'resources/img/AceAttorneydleLogo_halloween.png'
-});
+})
+registerLogoRule({
+    name: 'christmas',
+    matches: date => date.getMonth() === 11, // December
+    src: 'resources/img/AceAttorneydleLogo_christmas.png'
+})
 
 // Public API to add rules dynamically
 export function registerLogoRule(rule) {
@@ -24,7 +29,6 @@ export function registerLogoRule(rule) {
 export function applyLogoForDate(date = new Date()) {
     const logoElems = document.querySelectorAll('#logo');
     if (!logoElems || logoElems.length === 0) return;
-
     // find first matching rule
     const match = rules.find(r => {
         try { return r.matches(date); } catch (e) { return false; }

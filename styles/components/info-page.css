@@ -62,7 +62,7 @@
 
 /* Style des "patch cards" */
 .patch-card {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.418);
     border: 2px solid #2781b2;
     border-radius: var(--border-radius-sm);
     padding: 15px;

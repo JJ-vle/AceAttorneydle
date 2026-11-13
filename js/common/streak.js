@@ -4,17 +4,21 @@ let count = document.querySelector(".flame-count");
 
 // Rend la flamme grise (désactivée)
 export function uncolorFlame() {
-    const flame = container.querySelector("img");
-    if (flame) {
-        flame.style.filter = "grayscale(100%) brightness(0.7)";
+    if(container){
+        const flame = container.querySelector("img");
+        if (flame) {
+            flame.style.filter = "grayscale(100%) brightness(0.7)";
+        }
     }
 }
 
 // Remet la couleur normale (active)
 export function recolorFlame() {
-    const flame = container.querySelector("img");
-    if (flame) {
-        flame.style.filter = "none";
+    if(container){
+        const flame = container.querySelector("img");
+        if (flame) {
+            flame.style.filter = "none";
+        }   
     }
 }
 

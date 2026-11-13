@@ -18,39 +18,79 @@ await dataLoaded;
 const patchNotes = [
     {
         date: "10-X-2026",
-        text: "Major update: Added the new 'Guess Unlimited' game mode, introduced the Share button after completing Classic Guess, and made several visual improvements."
+        text: `
+        Hello everybody, we thought it would be nice to write a short message, first and foremost to wish you <b>Happy Holidays</b> and also to announce we are adding two long awaited features !
+        <br><br>The first being <b>Unlimited Guess mode</b> where after beating the daily guess you'll now be able to play as long as you'd like but with only 5 tries per character. 
+        This is a feature we've wanted to add since the beginning, and we've got a lot of feedbacks from all of you to add it, so we hope you'll enjoy it.
+        <br>The second is an option to <b>share</b> your guess attempt, similar to how other games like wordle and such do it.
+        <br><br>We've also been working on a couple minor changes and bug fixes following issues we've received.
+        <br><br>The new features are still a bit experimental so if you encounter any problems while playing be sure to let us know 
+        (either by reporting an issue on GitHub or by contacting us via email) even if we don't answer directly we're always reading them.
+        <br><br><b>Thanks again for playing our game, and Happy Holidays</b>
+        <br>Detailed patch note below
+        <br><br><b>Major changes</b>: 
+        <br>- Addition of a new 'Guess Unlimited' game mode
+        <br>- Addition of a Share button after completing Classic Guess
+        <br><br><b>Minor changes</b>:
+        <br>- Addition of an icon notifying the release of a new patch note
+        <br>- Improvements to the code base for easier edits to the pages
+        <br>- Logo change for the Holidays
+        <br>- Minor graphical improvements
+        <br>- Minor bug fixes (see issues on github)`
     },
     {
         date: "10-12-2026",
-        text: "Displaying a special logo for Halloween month."
+        text: `
+        <b>Minor changes</b>:
+        <br>- Logo change for the month of Halloween`
     },
     {
         date: "06-01-2026",
-        text: "Added hints for the silhouette mode. Displaying a special logo for the pride month."
+        text: `
+        <b>Major changes</b>:
+        <br>- Added hints to the silhouette mode
+        <br><br><b>Minor changes</b>:
+        <br>- Logo change for pride month`
     },
     {
         date: "05-05-2026",
-        text: "Fix the validate button (now it should work correctly)."
+        text: `
+        <b>Minor changes</b>:
+        <br>- Fixed a bug where the 'Validate button' wasn't working`
     },
     {
         date: "04-03-2026",
-        text: "Small CSS update, mainly focused on the endgame window."
+        text: `
+        <b>Minor changes</b>:
+        <br>- Small CSS update, mainly focused on the endgame window`
     },
     {
         date: "03-19-2026",
-        text: "Mobile responsiveness improvements."
+        text: `
+        <b>Minor changes</b>:
+        <br>- Mobile responsiveness improvements`
     },
     {
         date: "02-12-2026",
-        text: "Menus now work on every pages. Gray and grey ar now detected as the same color. A mobile version is now available, with a new design adapted to small screens."
+        text: `
+        <b>Major changes</b>:
+        <br>- Update to the UI for mobile devices
+        <br><br><b>Minor changes</b>:
+        <br>- Fixed a bug where menus weren't working on every pages 
+        <br>- Gray and Grey are now considered the same color when comparing guesses`
     },
     {
         date: "02-10-2026",
-        text: "Multiples images fix for some Investigation characters (Artie Frost, Di Jun Wang (Body double), Delicia Scone, Lance Amano, Alf Aldown)"
+        text: `
+        <b>Minor changes</b>:
+        <br>- Multiples images fix for some Investigation characters (Artie Frost, Di Jun Wang (Body double), Delicia Scone, Lance Amano, Alf Aldown)`
     },
     {
         date: "10-28-2025",
-        text: "Added new menus: Patch Notes, Settings and Help. Streak is now displayed."
+        text: `
+        <b>Minor changes</b>:
+        <br>- Addition of new menus for Patch Notes, Settings and Help
+        <br>- Addition of an indicator for the Win streak`
     }
 ];
 
@@ -341,10 +381,23 @@ export function showInfo(contentKey) {
     }, { once: true });
 
     if (contentKey === "settings") restoreSettingsState();
+
+    if (contentKey === "patchnotes"){
+        localStorage.setItem('lastPatchNoteRead', getLastPatchNote().date)
+
+        const patchnote_btn = document.querySelector(".new-patch");
+        if(patchnote_btn){
+
+            patchnote_btn.classList.remove("new-patch")
+
+            const badge = patchnote_btn.querySelector(".badge")
+            if(badge){
+                badge.style.display = 'none';
+            }
+        }
+    }
 }
 
-// Buttons actions
-buttons[0].addEventListener("click", () => showInfo("patchnotes"));
-buttons[1].addEventListener("click", () => showInfo("settings"));
-buttons[2].addEventListener("click", () => showInfo("help"));
-
+export function getLastPatchNote(){
+    return patchNotes[0];
+}

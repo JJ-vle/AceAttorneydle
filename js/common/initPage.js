@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////
 
 import { gameMode } from "./data.js";
-import { showInfo } from "./infoPage.js";
+import { getLastPatchNote, showInfo } from "./infoPage.js";
 
 
 const logo_group = document.querySelector(".logo-group");
@@ -15,6 +15,18 @@ const content = document.querySelector(".content");
 //////////////////////////////////////////////////////////////////
 
 if(logo_group){
+
+    const last_patch = getLastPatchNote();
+    if(!localStorage.getItem('lastPatchNoteRead')){ //If there is no last patch note, we set it to the last released
+        localStorage.setItem('lastPatchNoteRead', last_patch.date)
+    }
+    const local_last_patch = localStorage.getItem('lastPatchNoteRead')
+
+    let new_patch_enabled = false
+    if(local_last_patch != last_patch.date){
+        new_patch_enabled = true
+    }
+
     logo_group.innerHTML = `
     <div class="flame-container">
         <img src="resources/img/icons/flame.png" alt="Flamme" class="flame-icon">
@@ -27,8 +39,9 @@ if(logo_group){
         </a>
 
         <div class="side-right">
-        <button class="icon-btn">
+        <button class="icon-btn${new_patch_enabled ? ' new-patch' : ''}">
             <img src="resources/img/icons/patchnotes.png" alt="Patch Notes">
+            <span class="badge"${new_patch_enabled ? '' : 'style=\'display:none;\''}>!</span>
         </button>
         <button class="icon-btn">
             <img src="resources/img/icons/param.png" alt="Settings">

@@ -41,6 +41,7 @@
     align-items: center;
     justify-content: center;
     transition: transform var(--transition-fast);
+    position: relative;
 }
 
 .icon-btn img {
@@ -51,6 +52,31 @@
 .icon-btn:hover {
     transform: translateY(-2px);
 }
+
+.badge {
+    background-color: #fa3e3e;
+    border-radius: 2px;
+    color: white;
+    
+    padding: 1px 3px;
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+    
+    position: absolute; /* Position the badge within the relatively positioned button */
+    top: 0;
+    right: 0;
+}
+
+.new-patch{
+    animation: patchnote_jump 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes patchnote_jump {
+    50% { transform: scale(120%); }
+}
+
+
 
 /* Conteneur de la flamme avec compteur */
 .flame-container {

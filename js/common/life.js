@@ -193,10 +193,26 @@ function displayResult(resultBool, resultClass, imgSrc, currentStreak, bestStrea
         const historyBody = document.getElementById("historyBody");
         const guesses = historyBody.querySelectorAll("tr");
         const date = new Date();
-        let nb_guesses = resultBool ? guesses.length : "X";
-        
-        let share_string = "AceAttorneydle \n" + date.toLocaleDateString() + " - " + nb_guesses + "/15\n";
-        console.log(share_string)
+        let nb_guesses = resultBool ? guesses.length : 16;
+        let emoji = "💀"
+
+        if (nb_guesses == 1){
+            emoji = "🤯";
+        }else if (nb_guesses <= 2){
+            emoji = "😎";
+        }else if (nb_guesses <= 6){
+            emoji = "😃";
+        }else if (nb_guesses <= 9){
+            emoji = "😶";
+        }else if (nb_guesses <= 12){
+            emoji = "😬";
+        }else if (nb_guesses == 15){
+            emoji = "😰"; 
+        }else{
+            nb_guesses = "X"
+        }
+
+        let share_string = "AceAttorneydle \n" + date.toLocaleDateString() + " - " + nb_guesses + "/15 " + emoji + "\n";
         guesses.forEach(guess => {
             const infos = guess.querySelectorAll("td:not(.photo-name-cell)");
             let guess_string = "";
@@ -218,7 +234,7 @@ function displayResult(resultBool, resultClass, imgSrc, currentStreak, bestStrea
             share_string += guess_string + "\n";
 
         })
-        //console.log(share_string)
+        console.log(share_string)
 
         const shareButton = document.createElement('button');
         shareButton.className = 'next-button';
