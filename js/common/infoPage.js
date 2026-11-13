@@ -17,7 +17,7 @@ await dataLoaded;
 // Patch notes data
 const patchNotes = [
     {
-        date: "10-X-2026",
+        date: "11-13-2026",
         text: `
         Hello everybody, we thought it would be nice to write a short message, first and foremost to wish you <b>Happy Holidays</b> and also to announce we are adding two long awaited features !
         <br><br>The first being <b>Unlimited Guess mode</b> where after beating the daily guess you'll now be able to play as long as you'd like but with only 5 tries per character. 
