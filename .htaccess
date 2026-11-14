@@ -6,3 +6,10 @@ RewriteRule ^quote$ /quote.html [L]
 RewriteRule ^silhouette$ /silhouette.html [L]
 RewriteRule ^case$ /case.html [L]
 RewriteRule ^guess-unlimited$ /guess-unlimited.html [L]
+
+# version.js contient le numero de version des fichiers JS donc doit pas être memorisé dans le cache
+<IfModule mod_headers.c>
+    <Files "version.js">
+        Header set Cache-Control "no-cache"
+    </Files>
+</IfModule>

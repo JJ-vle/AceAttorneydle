@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/main_style.css?v=3">
     <link rel="stylesheet" href="styles/components/cookie-banner.css">
     <link rel="shortcut icon" href="resources/img/icons/favicon.ico">
+    <script src="js/version.js"></script>
 </head>
 <body>
     <div class="background-blur"></div> <!-- Background layer -->
@@ -33,7 +34,7 @@
 </body>
 
 <div id="banner-placeholder"></div>
-<script type="module" src="js/logo.js"></script>
+<script type="module">import "./js/logo.js";</script>
 <script type="module">
     function initCookieConsent() {
         const consent = localStorage.getItem('cookiesAccepted');
