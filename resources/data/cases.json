@@ -7,7 +7,7 @@
         "french": null,
         "victim": "Jezaille Brett",
         "cause": "Stabbed through lungs after consumption of poison",
-        "name": "The Adventure of the Blossoming Attorney",
+        "name": "G2-1 The Adventure of the Blossoming Attorney",
         "url": "https://aceattorney.fandom.com/wiki/The_Adventure_of_the_Blossoming_Attorney",
         "evidence": [
             {
@@ -62,7 +62,7 @@
         "french": null,
         "victim": "Olive Green",
         "cause": "Stab to the back with a knife",
-        "name": "The Adventure of the Clouded Kokoro",
+        "name": "G1-4 The Adventure of the Clouded Kokoro",
         "url": "https://aceattorney.fandom.com/wiki/The_Adventure_of_the_Clouded_Kokoro",
         "evidence": [
             {
@@ -125,7 +125,7 @@
         "french": null,
         "victim": "John Wilson",
         "cause": "Asphyxiation caused by curare",
-        "name": "The Adventure of the Great Departure",
+        "name": "G1-1 The Adventure of the Great Departure",
         "url": "https://aceattorney.fandom.com/wiki/The_Adventure_of_the_Great_Departure",
         "evidence": [
             {
@@ -179,7 +179,7 @@
         "french": null,
         "victim": "Mason Milverton",
         "cause": "Internal bleeding due to knife stab to the stomach",
-        "name": "The Adventure of the Runaway Room",
+        "name": "G1-3 The Adventure of the Runaway Room",
         "url": "https://aceattorney.fandom.com/wiki/The_Adventure_of_the_Runaway_Room",
         "evidence": [
             {
@@ -223,7 +223,7 @@
         "french": null,
         "victim": "Kazuma Asogi",
         "cause": "Neck injury",
-        "name": "The Adventure of the Unbreakable Speckled Band",
+        "name": "G1-2 The Adventure of the Unbreakable Speckled Band",
         "url": "https://aceattorney.fandom.com/wiki/The_Adventure_of_the_Unbreakable_Speckled_Band",
         "evidence": [
             {
@@ -284,7 +284,7 @@
         "french": null,
         "victim": "Pop Windibank / Herlock Sholmes / Magnus McGilded",
         "cause": "Gunshot to the back   Stabbed in the stomach by shrapnel from exploding test tube   Immolation",
-        "name": "The Adventure of the Unspeakable Story",
+        "name": "G1-5 The Adventure of the Unspeakable Story",
         "url": "https://aceattorney.fandom.com/wiki/The_Adventure_of_the_Unspeakable_Story",
         "evidence": [
             {
@@ -388,10 +388,10 @@
             "Heavenly Hall",
             "Hotti Clinic"
         ],
-        "french": "Le pont des volte-face",
+        "french": "3-5 Le pont des volte-face",
         "victim": "Misty Fey",
         "cause": "Stabbed in the back with the Shichishito Stabbed in the back with her sword cane",
-        "name": "Bridge to the Turnabout",
+        "name": "3-5 Bridge to the Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/Bridge_to_the_Turnabout",
         "evidence": [
             {
@@ -490,10 +490,10 @@
             "Yard",
             "Room 1202"
         ],
-        "french": "Volte-face et détention",
+        "french": "I2-2 Volte-face et détention",
         "victim": "Bronco Knight",
         "cause": "Stabbed in the neck with a knife",
-        "name": "The Captive Turnabout",
+        "name": "I2-2 The Captive Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/The_Captive_Turnabout",
         "evidence": [
             {
@@ -604,10 +604,10 @@
             "Robotics lab",
             "Wright Anything Agency"
         ],
-        "french": "Volte-face cosmique",
+        "french": "5-4 Volte-face cosmique",
         "victim": "Clay Terran",
         "cause": "Stabbed in the chest with a utility knife",
-        "name": "The Cosmic Turnabout",
+        "name": "5-4 The Cosmic Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/The_Cosmic_Turnabout",
         "evidence": [
             {
@@ -691,10 +691,10 @@
             "Jurists' chambers",
             "Hickfield Clinic"
         ],
-        "french": "Volte-face et succession",
+        "french": "4-4 Volte-face et succession",
         "victim": "Drew Misham",
         "cause": "Atroquinine poisoning via a Commemorative Stamp; initially thought to be via a Coffee Mug",
-        "name": "Turnabout Succession",
+        "name": "4-4 Turnabout Succession",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Succession",
         "evidence": [
             {
@@ -842,7 +842,7 @@
         "french": null,
         "victim": "Magnifi Gramarye",
         "cause": "Bullet to the forehead from a Stage Pistol",
-        "name": "Death of Magnifi Gramarye",
+        "name": "4-4 Death of Magnifi Gramarye",
         "url": "https://aceattorney.fandom.com/wiki/Death_of_Magnifi_Gramarye",
         "evidence": [
             {
@@ -993,10 +993,10 @@
             "Private lounge",
             "Wine cellar"
         ],
-        "french": "Adieu ma volte-face",
+        "french": "2-4 Adieu ma volte-face",
         "victim": "Juan Corrida",
         "cause": "Strangled with a scarf",
-        "name": "Farewell, My Turnabout",
+        "name": "2-4 Farewell, My Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/Farewell,_My_Turnabout",
         "evidence": [
             {
@@ -1126,10 +1126,10 @@
         "locations": [
             "Defendant Lobby No. 2"
         ],
-        "french": "La première volte-face",
+        "french": "1-1 La première volte-face",
         "victim": "Cindy Stone",
         "cause": "Head trauma caused by a blow to the head with a \"The Thinker\" clock",
-        "name": "The First Turnabout",
+        "name": "1-1 The First Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/The_First_Turnabout",
         "evidence": [
             {
@@ -1153,10 +1153,10 @@
     {
         "image": "https://static.wikia.nocookie.net/aceattorney/images/f/f3/Turnabout_Foreigner.png/revision/latest/scale-to-width-down/268?cb=20240507201254",
         "locations": [],
-        "french": "La volte-face étrangère",
+        "french": "6-1 La volte-face étrangère",
         "victim": "Paht Rohl",
         "cause": "Blunt force trauma via a dahmalan  to the head",
-        "name": "The Foreign Turnabout",
+        "name": "6-1 The Foreign Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/The_Foreign_Turnabout",
         "evidence": [
             {
@@ -1203,10 +1203,10 @@
             "Stadium",
             "Haunted house"
         ],
-        "french": "Volte-face et ravissement",
+        "french": "I1-3 Volte-face et ravissement",
         "victim": "Lance Amano / Colin Devorae",
         "cause": "Gunshot wound from a revolver",
-        "name": "The Kidnapped Turnabout",
+        "name": "I1-3 The Kidnapped Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/The_Kidnapped_Turnabout",
         "evidence": [
             {
@@ -1280,10 +1280,10 @@
         "locations": [
             "Defendant Lobby No. 1"
         ],
-        "french": "La volte-face perdue",
+        "french": "2-1 La volte-face perdue",
         "victim": "Dustin Prince",
         "cause": "Broken neck from a fall",
-        "name": "The Lost Turnabout",
+        "name": "2-1 The Lost Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/The_Lost_Turnabout",
         "evidence": [
             {
@@ -1334,10 +1334,10 @@
             "Understage",
             "Take-2 TV"
         ],
-        "french": "La volte-face magique",
+        "french": "6-2 La volte-face magique",
         "victim": "Manov Mistree",
         "cause": "Impaled in the back with a sword",
-        "name": "The Magical Turnabout",
+        "name": "6-2 The Magical Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/The_Magical_Turnabout",
         "evidence": [
             {
@@ -1422,7 +1422,7 @@
         "french": null,
         "victim": "William Shamspeare / Duncan Ross",
         "cause": "Asphyxiation via natural gas",
-        "name": "The Memoirs of the Clouded Kokoro",
+        "name": "G2-2 The Memoirs of the Clouded Kokoro",
         "url": "https://aceattorney.fandom.com/wiki/The_Memoirs_of_the_Clouded_Kokoro",
         "evidence": [
             {
@@ -1499,10 +1499,10 @@
             "Tenma Town",
             "Wright Anything Agency"
         ],
-        "french": "La volte-face monstrueuse",
+        "french": "5-2 La volte-face monstrueuse",
         "victim": "Rex Kyubi",
         "cause": "Stab wound from a spear",
-        "name": "The Monstrous Turnabout",
+        "name": "5-2 The Monstrous Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/The_Monstrous_Turnabout",
         "evidence": [
             {
@@ -1590,10 +1590,10 @@
     {
         "image": "https://static.wikia.nocookie.net/aceattorney/images/5/59/Gyakuten_Saiban_manga_VJump_2018.jpg/revision/latest/scale-to-width-down/268?cb=20181227094610",
         "locations": [],
-        "french": "Volte-face en express",
+        "french": "(Anime) Volte-face en express",
         "victim": "Benjamin Cashanova / Gale Gaelic",
         "cause": "Gunshot wound to the chest from a pistol   Stab wound to the chest from a knife",
-        "name": "Northward, Turnabout Express",
+        "name": "(Anime) Northward, Turnabout Express",
         "url": "https://aceattorney.fandom.com/wiki/Northward,_Turnabout_Express",
         "evidence": []
     },
@@ -1631,10 +1631,10 @@
             "Blue Screens, Inc.",
             "Tender Lender"
         ],
-        "french": "Recette de volte-face",
+        "french": "3-3 Recette de volte-face",
         "victim": "Glen Elg",
         "cause": "Potassium cyanide poisoning",
-        "name": "Recipe for Turnabout",
+        "name": "3-3 Recipe for Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/Recipe_for_Turnabout",
         "evidence": [
             {
@@ -1751,7 +1751,7 @@
         "french": null,
         "victim": "Around 1000 people scammed / Daley Vigil kidnapped and bruised",
         "cause": null,
-        "name": "Red-Headed League",
+        "name": "G2-4 Red-Headed League",
         "url": "https://aceattorney.fandom.com/wiki/Red-Headed_League",
         "evidence": [
             {
@@ -1860,7 +1860,7 @@
         "french": null,
         "victim": "Odie Asman",
         "cause": "Stabbed through heart by screwdriver, causing fatal hemorrhage from chest wound",
-        "name": "The Return of the Great Departed Soul",
+        "name": "G2-3 The Return of the Great Departed Soul",
         "url": "https://aceattorney.fandom.com/wiki/The_Return_of_the_Great_Departed_Soul",
         "evidence": [
             {
@@ -1958,10 +1958,10 @@
             "Hotti Clinic",
             "Solitary Cell 13"
         ],
-        "french": "Réunion, et volte-face",
+        "french": "2-2 Réunion, et volte-face",
         "victim": "Turner Grey",
         "cause": "Single pistol shot to the forehead at point-blank range, after being stabbed in the chest.",
-        "name": "Reunion, and Turnabout",
+        "name": "2-2 Reunion, and Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/Reunion,_and_Turnabout",
         "evidence": [
             {
@@ -2048,10 +2048,10 @@
             "Evidence room",
             "Chief's office"
         ],
-        "french": "Phoenix renaît de ses cendres",
+        "french": "1-5 Phoenix renaît de ses cendres",
         "victim": "Bruce Goodman",
         "cause": "Stabbed in the chest with a switchblade knife",
-        "name": "Rise from the Ashes",
+        "name": "1-5 Rise from the Ashes",
         "url": "https://aceattorney.fandom.com/wiki/Rise_from_the_Ashes",
         "evidence": [
             {
@@ -2206,10 +2206,10 @@
             "High priest's house",
             "Rebel hideout"
         ],
-        "french": "La volte-face rituelle",
+        "french": "6-3 La volte-face rituelle",
         "victim": "Tahrust Inmee / Puhray Zeh'lot",
         "cause": "Blood loss due to a stab wound to the stomach  Spinal cord injury caused by stab wound to the back of neck",
-        "name": "The Rite of Turnabout",
+        "name": "6-3 The Rite of Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/The_Rite_of_Turnabout",
         "evidence": [
             {
@@ -2332,10 +2332,10 @@
             "Mask☆DeMasque's Hideout",
             "Atmey Detective Agency"
         ],
-        "french": "La volte-face volée",
+        "french": "3-2 La volte-face volée",
         "victim": "Fey Clan",
         "cause": "Cerebral hemorrhaging from a wound to the forehead with a unknown weapon",
-        "name": "The Stolen Turnabout",
+        "name": "3-2 The Stolen Turnabout",
         "url": "https://aceattorney.fandom.com/wiki/The_Stolen_Turnabout",
         "evidence": [
             {
@@ -2403,10 +2403,10 @@
             "Rose garden",
             "Defendant Lobby No. 2"
         ],
-        "french": "Volte-face et embrasement",
+        "french": "I1-5 Volte-face et embrasement",
         "victim": "Manny Coachen / Ka-Shi Nou",
         "cause": "Stab wound from a knife    Blunt force trauma to the head",
-        "name": "Turnabout Ablaze",
+        "name": "I1-5 Turnabout Ablaze",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Ablaze",
         "evidence": [
             {
@@ -2570,10 +2570,10 @@
             "Maintenance area",
             "Wright Anything Agency"
         ],
-        "french": "Volte-face sur les bancs",
+        "french": "5-3 Volte-face sur les bancs",
         "victim": "Constance Courte",
         "cause": "Blood loss from a deep stab wound",
-        "name": "Turnabout Academy",
+        "name": "5-3 Turnabout Academy",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Academy",
         "evidence": [
             {
@@ -2668,10 +2668,10 @@
             "Flight attendants' room",
             "Cargo hold"
         ],
-        "french": "Volte-face de haut vol",
+        "french": "I1-2 Volte-face de haut vol",
         "victim": "Akbey Hicks",
         "cause": "Blunt force trauma after falling from a height",
-        "name": "Turnabout Airlines",
+        "name": "I1-2 Turnabout Airlines",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Airlines",
         "evidence": [
             {
@@ -2741,10 +2741,10 @@
         "locations": [
             "Defendant lobby No. 4"
         ],
-        "french": "La volte-face initiale",
+        "french": "3-4 La volte-face initiale",
         "victim": "Valerie Hawthorne",
         "cause": "Stabbed in the back with a knife",
-        "name": "Turnabout Beginnings",
+        "name": "3-4 Turnabout Beginnings",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Beginnings",
         "evidence": [
             {
@@ -2794,10 +2794,10 @@
             "Ringmaster's room",
             "Cafeteria"
         ],
-        "french": "Volte-face circus",
+        "french": "2-3 Volte-face circus",
         "victim": "Russell Berry",
         "cause": "Blow to back of head from a bust of Max Galactica, with the resulting blunt force trauma snapping a neck vertebra",
-        "name": "Turnabout Big Top",
+        "name": "2-3 Turnabout Big Top",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Big_Top",
         "evidence": [
             {
@@ -2883,10 +2883,10 @@
             "Visitor's room",
             "Defendant Lobby No. 2"
         ],
-        "french": "Boulevard des Volte-face",
+        "french": "4-2 Boulevard des Volte-face",
         "victim": "Phoenix Wright / Trucy Wright / Guy Eldoon / Pal Meraktis",
         "cause": "Pistol shot to the right temple",
-        "name": "Turnabout Corner",
+        "name": "4-2 Turnabout Corner",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Corner",
         "evidence": [
             {
@@ -2972,10 +2972,10 @@
         "locations": [
             "Defendant Lobby No. 5"
         ],
-        "french": "Volte-face à rebours",
+        "french": "5-1 Volte-face à rebours",
         "victim": "Candice Arme / District Court / Apollo Justice",
         "cause": "Struck with the HH-3000Explosion caused by a planted HH-3000 bombStruck with a piece of rubble",
-        "name": "Turnabout Countdown",
+        "name": "5-1 Turnabout Countdown",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Countdown",
         "evidence": [
             {
@@ -3036,10 +3036,10 @@
             "Room 1202",
             "Sunshine Coliseum"
         ],
-        "french": "Volte-face et consécration",
+        "french": "I2-5 Volte-face et consécration",
         "victim": "Di-Jun Wang / Shaun Fenn / Eustace Winner",
         "cause": "Crushed to death by a hot air balloon",
-        "name": "Turnabout for the Ages",
+        "name": "I2-5 Turnabout for the Ages",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_for_the_Ages",
         "evidence": [
             {
@@ -3187,10 +3187,10 @@
             "Space Museum",
             "Robotics lab"
         ],
-        "french": "Demain est une autre volte-face",
+        "french": "5-5 Demain est une autre volte-face",
         "victim": "Metis Cykes / Clay Terran",
         "cause": "Stabbed in the heart with a katana   Stabbed in the chest with a utility knife",
-        "name": "Turnabout for Tomorrow",
+        "name": "5-5 Turnabout for Tomorrow",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_for_Tomorrow",
         "evidence": [
             {
@@ -3281,10 +3281,10 @@
             "Bigg Building",
             "Committee chamber"
         ],
-        "french": "Volte-face et rémission",
+        "french": "I2-4 Volte-face et rémission",
         "victim": "Rosie Ringer",
         "cause": "Blood loss from blunt trauma to the head",
-        "name": "A Turnabout Forsaken",
+        "name": "I2-4 A Turnabout Forsaken",
         "url": "https://aceattorney.fandom.com/wiki/A_Turnabout_Forsaken",
         "evidence": [
             {
@@ -3400,10 +3400,10 @@
             "Records Room",
             "Grossberg Law Offices"
         ],
-        "french": "Adieux et volte-face",
+        "french": "1-4 Adieux et volte-face",
         "victim": "Robert Hammond",
         "cause": "Shot with a pistol",
-        "name": "Turnabout Goodbyes",
+        "name": "1-4 Turnabout Goodbyes",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Goodbyes",
         "evidence": [
             {
@@ -3502,10 +3502,10 @@
             "Fountain room",
             "Tangaroa's Room"
         ],
-        "french": "Volte-face et ascendance",
+        "french": "I2-3 Volte-face et ascendance",
         "victim": "Artie Frost",
         "cause": "Blunt force trauma due to a blow to the head from a rock salt lamp",
-        "name": "Turnabout Legacy",
+        "name": "I2-3 Turnabout Legacy",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Legacy",
         "evidence": [
             {
@@ -3583,10 +3583,10 @@
         "locations": [
             "Defendant lobby No. 3"
         ],
-        "french": "Souvenirs et volte-face",
+        "french": "3-1 Souvenirs et volte-face",
         "victim": "Doug Swallow",
         "cause": "Electrocuted with a cable wire",
-        "name": "Turnabout Memories",
+        "name": "3-1 Turnabout Memories",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Memories",
         "evidence": [
             {
@@ -3642,10 +3642,10 @@
             "Pub O' Danger",
             "Stage Show"
         ],
-        "french": "Volte-face à la barre",
+        "french": "5-DLC Volte-face à la barre",
         "victim": "Jack Shipley",
         "cause": "Blunt force trauma from a fall",
-        "name": "Turnabout Reclaimed",
+        "name": "5-DLC Turnabout Reclaimed",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Reclaimed",
         "evidence": [
             {
@@ -3747,10 +3747,10 @@
             "Defendant Lobby No. 2",
             "Defendant Lobby No. 1"
         ],
-        "french": "Volte-face et réminiscences",
+        "french": "I1-4 Volte-face et réminiscences",
         "victim": "Mack Rell / Byrne Faraday",
         "cause": "Gunshot and stabbing, respectively",
-        "name": "Turnabout Reminiscence",
+        "name": "I1-4 Turnabout Reminiscence",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Reminiscence",
         "evidence": [
             {
@@ -3830,10 +3830,10 @@
             "Kurain Village",
             "Doctor's study"
         ],
-        "french": "Volte-face et révolution",
+        "french": "6-5 Volte-face et révolution",
         "victim": "Inga Karkhuul Khura'in / Amara Sigatar Khura'in",
         "cause": "Blood loss from a stab wound to the back",
-        "name": "Turnabout Revolution",
+        "name": "6-5 Turnabout Revolution",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Revolution",
         "evidence": [
             {
@@ -3908,10 +3908,10 @@
             "Studio Two",
             "Trailer"
         ],
-        "french": "La volte-face du samouraï",
+        "french": "1-3 La volte-face du samouraï",
         "victim": "Jack Hammer",
         "cause": "Impaled by a metal fencepost",
-        "name": "Turnabout Samurai",
+        "name": "1-3 Turnabout Samurai",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Samurai",
         "evidence": [
             {
@@ -4003,10 +4003,10 @@
             "Hickfield Clinic",
             "Defendant Lobby No. 2"
         ],
-        "french": "Volte-face et Sérénade",
+        "french": "4-3 Volte-face et Sérénade",
         "victim": "Romein LeTouse / Lamiroir",
         "cause": ".45 caliber handgun's bullet into the left shoulder",
-        "name": "Turnabout Serenade",
+        "name": "4-3 Turnabout Serenade",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Serenade",
         "evidence": [
             {
@@ -4099,10 +4099,10 @@
             "Gatewater Hotel",
             "Bluecorp"
         ],
-        "french": "La volte-face des sœurs",
+        "french": "1-2 La volte-face des sœurs",
         "victim": "Mia Fey",
         "cause": "Blow to the head with a statue/clock of \"The Thinker\"",
-        "name": "Turnabout Sisters",
+        "name": "1-2 Turnabout Sisters",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Sisters",
         "evidence": [
             {
@@ -4170,10 +4170,10 @@
             "Courtroom No. 4",
             "Kurukuru Tei"
         ],
-        "french": "Volte-face et rakugo",
+        "french": "6-4 Volte-face et rakugo",
         "victim": "Taifu Toneido",
         "cause": "Asphyxiation with Udon noodle dough",
-        "name": "Turnabout Storyteller",
+        "name": "6-4 Turnabout Storyteller",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Storyteller",
         "evidence": [
             {
@@ -4220,10 +4220,10 @@
             "Hold",
             "Foyer"
         ],
-        "french": "Retour vers la volte-face",
+        "french": "6-DLC Retour vers la volte-face",
         "victim": "Dumas Gloomsbury",
         "cause": "Blunt force trauma from a Time Keeper clock",
-        "name": "Turnabout Time Traveler",
+        "name": "6-DLC Turnabout Time Traveler",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Time_Traveler",
         "evidence": [
             {
@@ -4316,10 +4316,10 @@
             "Spectator area",
             "Presidential plane"
         ],
-        "french": "Volte-face et point de mire",
+        "french": "I2-1 Volte-face et point de mire",
         "victim": "Bastian Rook",
         "cause": "Loss of blood from gunshot in the armpit area",
-        "name": "Turnabout Trigger",
+        "name": "I2-1 Turnabout Trigger",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Trigger",
         "evidence": [
             {
@@ -4385,10 +4385,10 @@
         "locations": [
             "Defendant lobby"
         ],
-        "french": "Atout et Volte-face",
+        "french": "4-1 Atout et Volte-face",
         "victim": "Shadi Smith",
         "cause": "Blow to the head from a grape juice bottle",
-        "name": "Turnabout Trump",
+        "name": "4-1 Turnabout Trump",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Trump",
         "evidence": [
             {
@@ -4439,10 +4439,10 @@
             "Room 1202",
             "12th Floor Hallway"
         ],
-        "french": "Volte-face et intrusion",
+        "french": "I1-1 Volte-face et intrusion",
         "victim": "Buddy Faith",
         "cause": "Shot in the stomach with a revolver",
-        "name": "Turnabout Visitor",
+        "name": "I1-1 Turnabout Visitor",
         "url": "https://aceattorney.fandom.com/wiki/Turnabout_Visitor",
         "evidence": [
             {
